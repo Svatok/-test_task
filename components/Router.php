@@ -26,20 +26,21 @@ class Router {
         $segments=explode('/',$path);
         $controllerName=ucfirst(array_shift($segments).'Controller');
         $actionName='action'.ucfirst(array_shift($segments));
-      } 
-    }
 
-    // Require file of Class Controller
-    $controllerFile=ROOT.'/controllers/'.$controllerName.'.php';
-    if (file_exists($controllerFile)){
-      include_once($controllerFile);
-    }
-    // Create object and run Action
-    $controllerObject=new $controllerName;
-    $result=$controllerObject->$actionName();
-    if ($result!=null){
-      break;
-    }
+        // Require file of Class Controller
+        $controllerFile=ROOT.'/controllers/'.$controllerName.'.php';
+        if (file_exists($controllerFile)){
+          include_once($controllerFile);
+        }
+        // Create object and run Action
+        $controllerObject=new $controllerName;
+        $result=$controllerObject->$actionName();
+        if ($result!=null){
+          break;
+        }
+      } 
+    }  
+        
   }
 }
 ?>
