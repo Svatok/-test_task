@@ -21,7 +21,7 @@ class Router {
     $uri=$this->getURI();
       
     // Check request in routes.php
-    foreach($this->rotes as $uriPattern=>$path){
+    foreach($this->routes as $uriPattern=>$path){
       echo '<br>$uriPattern -> $path';  
     }
     
