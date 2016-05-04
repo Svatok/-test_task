@@ -9,8 +9,21 @@ class Router {
   }
   
   public function run(){
-    print_r($this->routes);
-    echo 'Class Router, method Run';
+    // Take string request
+      if (!empty($_SERVER['REQUEST_URI'])){
+        $uri=trim($SERVER['REQUEST_URI'],'/');
+      }
+      
+      echo $uri;
+      
+    // Check request in routes.php
+    
+    // If there is a match then determine which Controller and wich Action process request
+    
+    // Require file of Class Controller
+    
+    // Create object and run Action
+    
   }
 }
 ?>
