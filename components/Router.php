@@ -18,10 +18,13 @@ class Router {
   
   public function run(){
     // Take string request
-      $uri=$this->getURI();
-      echo $uri;
+    $uri=$this->getURI();
+    echo $uri;
       
     // Check request in routes.php
+    foreach($this->rotes as $uriPattern=>$path){
+      echo '<br>$uriPattern -> $path';  
+    }
     
     // If there is a match then determine which Controller and wich Action process request
     
