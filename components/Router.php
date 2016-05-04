@@ -24,21 +24,22 @@ class Router {
     foreach($this->routes as $uriPattern=>$path){
       if (preg_match("~$uriPattern~", $uri)){
         $segments=explode('/',$path);
-        
         $controllerName=ucfirst(array_shift($segments).'Controller');
-        //$controllerName=ucfirst($controllerName);
         $actionName='action'.ucfirst(array_shift($segments));
-        echo $controllerName;
-        echo $actionName;
       } 
     }
-    
-    // If there is a match then determine which Controller and wich Action process request
-    
+
     // Require file of Class Controller
-    
+    $controllerFile=ROOT.'/controllers/'.$controllerName.'.php';
+    if (file_exists($controllerFile)){
+      include_once($controllerFile);
+    }
     // Create object and run Action
-    
+    $controllerObject=new $controllerName;
+    $result=$controllerObject->$actionName();
+    if ($result!=null){
+      break;
+    }
   }
 }
 ?>
