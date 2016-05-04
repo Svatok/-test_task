@@ -26,7 +26,7 @@ class Router {
         $segments=explode('/',$path);
         
         $controllerName=array_shift($segments).'Controller';
-        
+        $controllerName=ucfirst($controllerName);
         echo $controllerName;
       } 
     }
