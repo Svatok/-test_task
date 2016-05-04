@@ -1,5 +1,5 @@
 <?php
-class ProjectController{
+class ProjectsController{
   
   public function actionIndex(){
     echo 'ProjectController actionIndex';
