@@ -22,7 +22,7 @@ class Router {
       
     // Check request in routes.php
     foreach($this->routes as $uriPattern=>$path){
-      echo '<br>$uriPattern -> $path';  
+      echo '<br>'.$uriPattern.' -> '.$path;  
     }
     
     // If there is a match then determine which Controller and wich Action process request
