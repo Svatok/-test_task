@@ -25,9 +25,11 @@ class Router {
       if (preg_match("~$uriPattern~", $uri)){
         $segments=explode('/',$path);
         
-        $controllerName=array_shift($segments).'Controller';
-        $controllerName=ucfirst($controllerName);
+        $controllerName=ucfirst(array_shift($segments).'Controller');
+        //$controllerName=ucfirst($controllerName);
+        $actionName='action'.ucfirst(array_shift($segments));
         echo $controllerName;
+        echo $actionName;
       } 
     }
     
