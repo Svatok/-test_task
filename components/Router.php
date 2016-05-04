@@ -8,12 +8,17 @@ class Router {
     $this->routes=include($routesPath);
   }
   
+  
+  // Returns request string
+  private function getURI(){
+      if (!empty($_SERVER['REQUEST_URI'])){
+        return trim($_SERVER['REQUEST_URI'],'/');
+      }    
+  }
+  
   public function run(){
     // Take string request
-      if (!empty($_SERVER['REQUEST_URI'])){
-        $uri=trim($_SERVER['REQUEST_URI'],'/');
-      }
-      
+      $uri=$this->getURI();
       echo $uri;
       
     // Check request in routes.php
