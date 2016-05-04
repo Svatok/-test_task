@@ -19,7 +19,6 @@ class Router {
   public function run(){
     // Take string request
     $uri=$this->getURI();
-    echo $uri;
       
     // Check request in routes.php
     foreach($this->rotes as $uriPattern=>$path){
