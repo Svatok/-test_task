@@ -23,7 +23,11 @@ class Router {
     // Check request in routes.php
     foreach($this->routes as $uriPattern=>$path){
       if (preg_match("~$uriPattern~", $uri)){
-        echo '+';
+        $segments=explode('/',$path);
+        
+        echo '<pre>';
+        print_r($segments);
+        echo '</pre>';
       } 
     }
     
