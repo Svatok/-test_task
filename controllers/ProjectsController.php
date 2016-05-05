@@ -8,9 +8,7 @@ class ProjectsController{
     $projectsList=array();
     $projectsList=Projects::getProjectsList();
     
-    echo '<pre>';
-    print_r($projectsList);
-    echo '</pre>';
+    require_once(ROOT.'/views/projects/index.php');
     
     return true;
     
