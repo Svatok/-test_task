@@ -13,17 +13,15 @@ class UserController{
       
       $errors=false;
       
-      if (User::checkEmail($email)){
-        echo 'em-ok';
-      }else{
+      if (!User::checkEmail($email)){
         $errors[]='Wrong e-mail!';
       }
-      if (User::checkPassword($password)){
-        echo 'pass-ok';
-      }else{
+      if (!User::checkPassword($password)){
         $errors[]='Password have to more then 4 symbols!';
       }      
-      
+      if (!User::checkEmailExists($email)){
+        $errors[]='E-mail is used!';
+      }      
       
     }
     
