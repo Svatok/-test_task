@@ -16,7 +16,7 @@ class ProjectsController{
   
     public function actionTasks($params){
     $tasksList=array();
-    $tasksList=Projects::getTasksList();
+    $tasksList=Projects::getTasksList($params[0]);
     
     require_once(ROOT.'/views/projects/tasks_list.php');
     
