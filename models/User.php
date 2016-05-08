@@ -1,9 +1,17 @@
 <?php
 
 class User{
-  public static function register() {
-  
+  public static function register($email, $password) {
+    $db=Db::getConnection();
+    
+    $sql='INSERT INTO user_table (email, pass) VALUES (:email, :password)';
+    
+    $result=$db->prepare($sql);
+    $result->bindParam(':email',$email,PDO::PARAM_STR);
+    $result->bindParam(':password',$password,PDO::PARAM_STR);
+    return $result->execute();
   }
+  
   public static function checkEmail($email) {
     if (filter_var($email, FILTER_VALIDATE_EMAIL)){
       return true;
@@ -26,7 +34,6 @@ class User{
     $result->execute();
     
     if ($result->fetchColumn()){
-       echo 'tyt';
        return true;
     }
     return false;
