@@ -18,7 +18,7 @@ class ProjectsController{
     $tasksList=array();
     $tasksList=Projects::getTasksList();
     
-    echo $params[0];
+    require_once(ROOT.'/views/projects/tasks_list.php');
     
     return true;
     
