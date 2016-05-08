@@ -1,7 +1,7 @@
 <div>
   <form action="#" method="post">
-    <input type="text" placeholder="E-mail"/>
-    <input type="password" placeholder="Pass"/>
-    <button type="submit">Registration</button>
+    <input type="text" name="email" placeholder="E-mail"/>
+    <input type="password" name="password" placeholder="Pass"/>
+    <input type="submit" name="submit" value="Registration"/>
   </form>
 </div>
