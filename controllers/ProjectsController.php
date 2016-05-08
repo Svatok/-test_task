@@ -15,6 +15,8 @@ class ProjectsController{
   }
   
     public function actionTasks($params){
+    $tasksList=array();
+    $tasksList=Projects::getTasksList();
     
     echo $params[0];
     
