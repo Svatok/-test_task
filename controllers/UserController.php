@@ -21,7 +21,11 @@ class UserController{
       }      
       if (User::checkEmailExists($email)){
         $errors[]='E-mail is used!';
-      }      
+      }   
+      
+      if ($errors==false){
+        $result=User::register($email, $password);
+      }
       
     }
     
