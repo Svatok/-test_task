@@ -26,7 +26,8 @@ class User{
     $result->execute();
     
     if ($result->fetchColumn()){
-      return true;
+       echo 'tyt';
+       return true;
     }
     return false;
   }
