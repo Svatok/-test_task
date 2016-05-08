@@ -13,5 +13,14 @@ class ProjectsController{
     return true;
     
   }
+  
+    public function actionTasks($category, $id){
+    
+    echo $category;
+    echo '<br>'.$id;
+    
+    return true;
+    
+  }
 }
 ?>
