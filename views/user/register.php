@@ -1,4 +1,4 @@
-<?php if ($result): ?>
+<?php if (isset($result) && ($result)): ?>
   <div>Are you registered!</div>
 <?php else: ?>
   <div>
