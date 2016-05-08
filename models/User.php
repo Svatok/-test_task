@@ -19,7 +19,7 @@ class User{
   public static function checkEmailExists($email) {
     $db=Db::getConnection();
     
-    $sql='SELECT COUNT(*) FROM user WHERE email=:email';
+    $sql='SELECT COUNT(*) FROM user_table WHERE email=:email';
     
     $result=$db->prepare($sql);
     $result->bindParam(':email',$email,PDO::PARAM_STR);
