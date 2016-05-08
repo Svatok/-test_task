@@ -1,10 +1,12 @@
 <?php
 
 class UserController{
-  $email='';
-  $password='';
+
 
   public function actionRegister(){
+    $email='';
+    $password='';
+    
     if (isset($_POST['submit'])){
       $email=$_POST['email'];
       $password=$_POST['password'];
