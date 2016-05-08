@@ -19,7 +19,7 @@ class UserController{
       if (!User::checkPassword($password)){
         $errors[]='Password have to more then 4 symbols!';
       }      
-      if (!User::checkEmailExists($email)){
+      if (User::checkEmailExists($email)){
         $errors[]='E-mail is used!';
       }      
       
