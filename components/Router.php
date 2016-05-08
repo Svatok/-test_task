@@ -38,7 +38,8 @@ class Router {
         }
         // Create object and run Action
         $controllerObject=new $controllerName;
-        $result=call_user_func_array(array($controllerObject, $actionName), $parametrs);
+        //$result=call_user_func_array(array($controllerObject, $actionName), $parametrs);
+        $result=$controllerObject->$actionName($parametrs);
         if ($result!=null){
           break;
         }
