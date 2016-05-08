@@ -16,6 +16,20 @@ class User{
     }
     return false;
   }
+  public static function checkEmailExists($email) {
+    $db=Db::getConnection();
+    
+    $sql='SELECT COUNT(*) FROM user WHERE email=:email';
+    
+    $result=$db->prepare($sql);
+    $result->bindParam(':email',$email,PDO::PARAM_STR);
+    $result->execute();
+    
+    if ($result->fetchColumn()){
+      return true;
+    }
+    return false;
+  }
 }
 
 ?>
