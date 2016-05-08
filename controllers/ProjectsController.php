@@ -1,6 +1,6 @@
 <?php
 
-include_once ROOT.'/models/Projects.php';
+//include_once ROOT.'/models/Projects.php';
 
 class ProjectsController{
   
