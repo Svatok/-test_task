@@ -14,10 +14,9 @@ class ProjectsController{
     
   }
   
-    public function actionTasks($category, $id){
+    public function actionTasks($params){
     
-    echo $category;
-    echo '<br>'.$id;
+    echo $params[0];
     
     return true;
     
