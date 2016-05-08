@@ -29,10 +29,7 @@ class Router {
         $segments=explode('/',$internalRoute);
         $controllerName=ucfirst(array_shift($segments).'Controller');
         $actionName='action'.ucfirst(array_shift($segments));
-        
         $parametrs=$segments;
-        print_r($parametrs);
-        die;
 
         // Require file of Class Controller
         $controllerFile=ROOT.'/controllers/'.$controllerName.'.php';
@@ -41,7 +38,7 @@ class Router {
         }
         // Create object and run Action
         $controllerObject=new $controllerName;
-        $result=$controllerObject->$actionName();
+        $result=$controllerObject->$actionName($parametrs);
         if ($result!=null){
           break;
         }
