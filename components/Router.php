@@ -23,9 +23,16 @@ class Router {
     // Check request in routes.php
     foreach($this->routes as $uriPattern=>$path){
       if (preg_match("~$uriPattern~", $uri)){
-        $segments=explode('/',$path);
+        
+        $internalRoute=preg_replace("~$uriPattern~", $path, $uri);
+        
+        $segments=explode('/',$internalRoute);
         $controllerName=ucfirst(array_shift($segments).'Controller');
         $actionName='action'.ucfirst(array_shift($segments));
+        
+        $parametrs=$segments;
+        print_r($parametrs);
+        die;
 
         // Require file of Class Controller
         $controllerFile=ROOT.'/controllers/'.$controllerName.'.php';
