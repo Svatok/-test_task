@@ -33,5 +33,35 @@ class UserController{
     
     return true;
   }
+  
+  public function actionLogin(){
+    $email='';
+    $password='';
+    
+    if (isset($_POST('submit'))){
+      $email=$_POST['email'];
+      $password=['password'];
+      
+      $errors=false;
+      
+      if (!User::checkEmail($email)){
+        $errors[]='Wrong e-mail!';
+      }
+      if (!User::checkPassword($password)){
+        $errors[]='Password have to more then 4 symbols!';
+      }
+      $userId=User::checkUserData($email, $password);
+      if ($userId==false){
+        $errors[]='Wrong data for enter!';
+      }else{
+        User::auth($userId);
+        echo 'You are logged!';
+      }
+    }
+    
+    require_once(ROOT.'views/user/login.php');
+    
+    return true;
+  }
 }
 ?>
