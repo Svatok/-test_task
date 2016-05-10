@@ -38,7 +38,7 @@ class UserController{
     $email='';
     $password='';
     
-    if (isset($_POST('submit'))){
+    if (isset($_POST['submit'])){
       $email=$_POST['email'];
       $password=['password'];
       
