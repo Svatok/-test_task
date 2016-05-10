@@ -53,7 +53,7 @@ class UserController{
         $errors[]='Wrong data for enter!';
       }else{
         User::auth($userId);
-        echo 'You are logged!';
+        die('You are logged!');
       }
       
     }
