@@ -53,15 +53,20 @@ class UserController{
         $errors[]='Wrong data for enter!';
       }else{
         User::auth($userId);
-        header("Location: /projects/index");
+        header("Location: /");
       }
       
     }
-
     
     require_once(ROOT.'/views/user/login.php');
     
     return true;
+  }
+  
+  public function actionLogout(){
+    session_start();
+    unset($_SESSION["user"]);
+    header("Location: /user/login")
   }
 }
 ?>
