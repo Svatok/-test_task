@@ -36,6 +36,14 @@ class User{
     $_SESSION['user']=$userId;
   }
   
+  public static function checkLogged(){
+    session_start();
+    if (isset($_SESSION['user'])){
+      return $_SESSION['user'];
+    }
+    header("location: /user/login");
+  }
+  
   public static function checkEmail($email) {
     if (filter_var($email, FILTER_VALIDATE_EMAIL)){
       return true;
