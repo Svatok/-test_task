@@ -46,7 +46,7 @@ class UserController{
       if (!User::checkEmail($email)){
         $errors[]='Wrong e-mail!';
       }
-      if (!User::checkPassword($password)){
+      if (!User::checkPassword('test')){
         $errors[]='Password have to more then 4 symbols!';
       }
       $userId=User::checkUserData($email, $password);
