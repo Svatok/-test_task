@@ -32,12 +32,10 @@ class User{
   }
   
   public static function auth($userId){
-    session_start();
     $_SESSION['user']=$userId;
   }
   
   public static function checkLogged(){
-    session_start();
     if (isset($_SESSION['user'])){
       return $_SESSION['user'];
     }
