@@ -10,7 +10,6 @@ class UserController{
     if (isset($_POST['submit'])){
       $email=$_POST['email'];
       $password=$_POST['password'];
-      echo $password;
       $errors=false;
       
       if (!User::checkEmail($email)){
