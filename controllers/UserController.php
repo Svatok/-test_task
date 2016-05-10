@@ -59,7 +59,7 @@ class UserController{
       }
     }
     
-    require_once(ROOT.'views/user/login.php');
+    require_once(ROOT.'/views/user/login.php');
     
     return true;
   }
