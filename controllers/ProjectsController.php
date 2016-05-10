@@ -1,10 +1,12 @@
 <?php
 
-//include_once ROOT.'/models/Projects.php';
 
 class ProjectsController{
   
   public function actionIndex(){
+    $userId=User::checkLogged();
+    echo $userId;
+    
     $projectsList=array();
     $projectsList=Projects::getProjectsList();
     
