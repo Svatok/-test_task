@@ -9,7 +9,7 @@
     
 $(document).ready(function () {
     alert("11");
-    $.(".project").click(function (event){
+/*    $.(".project").click(function (event){
       event.preventDefault();
       
       var id=$(this).attr("data-id");
@@ -18,7 +18,7 @@ $(document).ready(function () {
         $("#div_tasks_"+id).html(data);
       });
       return false;
-    });
+    });*/
 }); 
 </script>
 </head>
