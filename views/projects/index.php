@@ -1,8 +1,9 @@
-<?php include ROOT.'/views/layouts/header.php';
-   foreach ($projectsList as $projectsItem):?>
+<?php include ROOT.'/views/layouts/header.php'; ?>
   <div>
-    <h2>ID: <?php echo $projectsItem['id'];?></h2>
-    <p>Project: <?php echo $projectsItem['name'];?></p>
+      <ul>
+      <?php foreach ($projectsList as $projectsItem):?>
+         <li><a href="/projects/<?php echo $projectsItem['id'];?>"><?php echo $projectsItem['name'];?></li>
+      <?php endforeach; ?>
+      </ul>
   </div>
-  <?php endforeach; 
-  include ROOT.'/views/layouts/footer.php'; ?>
+<?php include ROOT.'/views/layouts/footer.php'; ?>
