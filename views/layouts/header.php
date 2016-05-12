@@ -6,11 +6,8 @@
 <link href="template/css/style.css" rel="stylesheet" type="text/css" />
 <script src="template/js/jquery.js"></script>
 <script>
-    
 $(document).ready(function () {
-
-    $(".project").click(function (event){
-      //event.preventDefault();
+    $(".project").click(function (){
       var id=$(this).attr("data-id");
       $.post("/projects/"+id, {}, function (data){
         $("#div_tasks_"+id).html(data);
