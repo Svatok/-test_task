@@ -4,6 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Projects</title>
 <link href="template/css/style.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+  $(document).ready(function (){
+    $.(".project").click(function (){
+      var id=$(this).attr("href");
+      $.post("/projects/"+id, {}, function (data){
+        $("#div_tasks_"+id).html(data);
+      });
+      return false;
+    });
+  });
+</script>
 </head>
 
 <body>
