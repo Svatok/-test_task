@@ -1,4 +1,3 @@
-<?php include ROOT.'/views/layouts/header.php'; ?>
 <div>
     <?php if (isset($errors) && is_array($errors)): ?>
       <ul>
@@ -13,4 +12,3 @@
       <input type="submit" name="submit" value="Enter"/>
     </form>
   </div>
-  <?php include ROOT.'/views/layouts/footer.php'; ?>
