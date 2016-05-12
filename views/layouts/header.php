@@ -11,14 +11,12 @@ $(document).ready(function () {
 
     $(".project").click(function (event){
       event.preventDefault();
-        alert("11");
-/*      
       var id=$(this).attr("data-id");
       alert(id);
       $.post("/projects/"+id, {}, function (data){
         $("#div_tasks_"+id).html(data);
       });
-      return false;*/
+   //   return false;
     });
 }); 
 </script>
