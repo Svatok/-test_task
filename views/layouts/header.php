@@ -8,7 +8,7 @@
 <script>
   $(document).ready(function (){
     $.(".project").click(function (){
-      var id=$(this).attr("href");
+      var id=$(this).attr("data-id");
       $.post("/projects/"+id, {}, function (data){
         $("#div_tasks_"+id).html(data);
       });
