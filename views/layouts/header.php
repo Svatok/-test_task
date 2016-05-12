@@ -6,8 +6,9 @@
 <link href="template/css/style.css" rel="stylesheet" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script>
+  alert("11");
   $(document).ready(function (){
-    alert("11");
+    
     $.(".project").click(function (event){
       event.preventDefault();
       var id=$(this).attr("data-id");
