@@ -2,7 +2,7 @@
   <div id="div_project_<?php echo $projectsItem['id'];?>">
       <ul>
       <?php foreach ($projectsList as $projectsItem):?>
-         <li><a href="/projects/<?php echo $projectsItem['id'];?>"><?php echo $projectsItem['name'];?></li>
+         <li><a href="<?php echo $projectsItem['id'];?>" class="project"><?php echo $projectsItem['name'];?></li>
       <?php endforeach; ?>
       </ul>
       <div id="div_tasks_<?php echo $projectsItem['id'];?>">
