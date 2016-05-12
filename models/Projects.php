@@ -1,7 +1,7 @@
 <?php
 class Projects{
 
-  public static function getProjectsList(){
+  public static function getProjectsList($userId){
     
     $db=Db::getConnection();
     
