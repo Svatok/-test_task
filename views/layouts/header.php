@@ -4,11 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Projects</title>
 <link href="template/css/style.css" rel="stylesheet" type="text/css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script>
+    
+$(document).ready(function () {
     alert("11");
-    /*  $(document).ready(function (){
-
     $.(".project").click(function (event){
       event.preventDefault();
       
@@ -19,7 +19,7 @@
       });
       return false;
     });
-  }); */
+}); 
 </script>
 </head>
 
