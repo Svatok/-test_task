@@ -5,10 +5,9 @@ class ProjectsController{
   
   public function actionIndex(){
     $userId=User::checkLogged();
-    echo $userId;
     
     $projectsList=array();
-    $projectsList=Projects::getProjectsList();
+    $projectsList=Projects::getProjectsList($userId);
     
     require_once(ROOT.'/views/projects/index.php');
     
