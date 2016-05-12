@@ -6,17 +6,18 @@
 <link href="template/css/style.css" rel="stylesheet" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script>
-/*  $(document).ready(function (){
+  $(document).ready(function (){
     $.(".project").click(function (event){
       event.preventDefault();
-      var id=$(this).attr("data-id");
+      alert("11");
+/*      var id=$(this).attr("data-id");
       alert(id);
       $.post("/projects/"+id, {}, function (data){
         $("#div_tasks_"+id).html(data);
       });
-      return false;
+      return false;*/
     });
-  }); */
+  }); 
 </script>
 </head>
 
