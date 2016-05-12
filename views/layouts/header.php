@@ -7,7 +7,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script>
   $(document).ready(function (){
-    $.(".project").click(function (){
+    $.(".project").click(function (event){
+      event.preventDefault();
       var id=$(this).attr("data-id");
       alert(id);
       $.post("/projects/"+id, {}, function (data){
