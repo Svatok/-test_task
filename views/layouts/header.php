@@ -9,16 +9,6 @@
     
 $(document).ready(function () {
     alert("11");
-    $.(".project").click(function (event){
-      event.preventDefault();
-      
-      var id=$(this).attr("data-id");
-      alert(id);
-      $.post("/projects/"+id, {}, function (data){
-        $("#div_tasks_"+id).html(data);
-      });
-      return false;
-    });
 }); 
 </script>
 </head>
