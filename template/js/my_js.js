@@ -49,8 +49,8 @@ $(document).ready(function () {
             focused_element=$(e.target);
          });
       var id_form=$(this).closest('form').attr('id');
-      alert ($("#"+id_form+" .save"));
-      alert (focused_element);
+      alert (focused_element.attr('class'));
+      
       if (focused_element==$("#"+id_form+" .save")){
          alert ('=');
       }
