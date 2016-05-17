@@ -3,8 +3,8 @@ $(document).ready(function () {
     $('.div_tasks').on('click', '.edit', function(e){
       e.preventDefault();
       var id_form=$(this).closest('form').attr('id');
-      var id_task=id_form.replace(/[^0-9]/gim,'');
-      alert(id_task);
+      //var id_task=id_form.replace(/[^0-9]/gim,'');
+      alert($("#"+id_form+" .input_text").attr('value'));
       
     });
     
