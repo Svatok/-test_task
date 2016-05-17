@@ -49,7 +49,7 @@ $(document).ready(function () {
             focused_element=$(e.target);
          });
       var id_form=$(this).closest('form').attr('id');
-      alert (id_form);
+      alert ($("#"+id_form+" .save"));
       if (focused_element==$("#"+id_form+" .save")){
          alert ('=');
       }
