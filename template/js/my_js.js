@@ -52,6 +52,11 @@ $(document).ready(function () {
                e.preventDefault();
                alert("Task changed!");  
             }
+            alert('disable')
+            //input_text.prop('disabled', true);
+         //$("#"+id_form+" .in_edit").hide();
+         //$("#"+id_form+" .out_edit").css('display','inline-block');
+            
          });
          //input_text.prop('disabled', true);
          //$("#"+id_form+" .in_edit").hide();
