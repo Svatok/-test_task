@@ -14,7 +14,6 @@ $(document).ready(function () {
             $("#div_tasks_"+id).html(data);
           });
       } else {
-          alert("111");
           $("#div_tasks_"+id).empty();
       }
       return false;
