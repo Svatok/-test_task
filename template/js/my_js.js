@@ -4,8 +4,8 @@ $(document).ready(function () {
       e.preventDefault();
       var id_form=$(this).closest('form').attr('id');
       //var id_task=id_form.replace(/[^0-9]/gim,'');
-      alert($("#"+id_form+" .input_text").attr('value'));
-      
+      var input_text=$("#"+id_form+" .input_text");
+      input_text.prop('disabled', false);
     });
     
     $(".project").click(function (){
