@@ -20,6 +20,14 @@ $(document).ready(function () {
       $("#"+id_form+" .out_edit").css('display','inline-block');
     });    
     
+    $('.div_tasks').on('focusout', '.input_text', function(e){
+      e.preventDefault();
+      var id_form=$(this).closest('form').attr('id');
+      $(this).prop('disabled', true);
+      $("#"+id_form+" .in_edit").hide();
+      $("#"+id_form+" .out_edit").css('display','inline-block');
+    });   
+    
     $(".project").click(function (){
       var id=$(this).attr("data-id");
       if ($("#div_tasks_"+id).is(':empty')){
