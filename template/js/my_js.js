@@ -41,10 +41,10 @@ $(document).ready(function () {
     });       
     
     $('.div_tasks').on('focusout', '.input_text', function(event){
-      if ($('.div_tasks').on('focus', '.save')){
+      var id_form=$(this).closest('form').attr('id');      
+      if ($('.div_tasks').on('focus', '#'+id_form+' .save')){
          alert('11');
       }
-      var id_form=$(this).closest('form').attr('id');
       $(this).prop('disabled', true);
       $("#"+id_form+" .in_edit").hide();
       $("#"+id_form+" .out_edit").css('display','inline-block');
