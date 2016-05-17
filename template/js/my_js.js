@@ -68,7 +68,7 @@ $(document).ready(function () {
       var parent_li=$(this).closest('li');
       var kol_tasks=parent_ul.find($("li")).length;
       if (parent_li.attr('priority')<kol_tasks){
-         var priority_new=parent_li.attr('priority')+1;
+         var priority_new=parseInt(parent_li.attr('priority'))+1;
          var before_li=parent_ul.find($('[priority = '+priority_new+']'));
          alert(priority_new);
       }
