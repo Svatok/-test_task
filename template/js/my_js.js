@@ -2,8 +2,10 @@ $(document).ready(function () {
    
     $('.div_tasks').on('click', '.edit', function(e){
       e.preventDefault();
-      id_form=$(this).closest('form').attr('id');
-      alert(id_form);
+      var id_form=$(this).closest('form').attr('id');
+      var id_task=id_form.replace(/[0-9]/gim,'');
+      alert(id_task);
+      
     });
     
     $(".project").click(function (){
