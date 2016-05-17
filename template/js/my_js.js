@@ -20,7 +20,7 @@ $(document).ready(function () {
       $("#"+id_form+" .out_edit").css('display','inline-block');
     });    
     
-    $('.div_tasks').on('focusout', '.input_text', function(e){
+    $('.div_tasks').on('focusout', '.input_text', function(){
       e.preventDefault();
       var id_form=$(this).closest('form').attr('id');
       $(this).prop('disabled', true);
