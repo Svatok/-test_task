@@ -74,20 +74,22 @@ $(document).ready(function () {
          before_li.attr('priority', (priority_new-1));     
          parent_li.attr('priority', priority_new);
       }
-      var id_task=id_form.replace(/[^0-9]/gim,'');
-/*               $.ajax({
-                  url: '/path/to/action',
-                  method: 'post',
-                  data: $(this).closest('form').serialize(),
-                  success: function (data) {
-                     if (data){ */
-//                        alert("Task "+id_task+" deleted!");  
-/*                     }
-                  }
-               });*/
-
     }); 
     
+    $('.div_tasks').on('click', '.down_task', function(e){
+      e.preventDefault();
+      var parent_ul=$(this).closest('ul');
+      var parent_li=$(this).closest('li');
+      var kol_tasks=parent_ul.find($("li")).length;
+      if (parent_li.attr('priority')>kol_tasks){
+         var priority_new=parseInt(parent_li.attr('priority'))-1;
+         var after_li=parent_ul.find($('[priority = '+priority_new+']'));
+         after_li.after(parent_li);
+         after_li.attr('priority', (priority_new+1));     
+         parent_li.attr('priority', priority_new);
+      }
+    }); 
+
     $(".project").click(function (){
       var id=$(this).attr("data-id");
       if ($("#div_tasks_"+id).is(':empty')){
