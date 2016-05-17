@@ -41,12 +41,12 @@ $(document).ready(function () {
       });*/
     });       
     
-    $('.div_tasks').on('focusout', '.input_text', function(){
+/*    $('.div_tasks').on('focusout', '.input_text', function(){
       var id_form=$(this).closest('form').attr('id');
       $(this).prop('disabled', true);
       $("#"+id_form+" .in_edit").hide();
       $("#"+id_form+" .out_edit").css('display','inline-block');
-    });   
+    });   */
     
     $(".project").click(function (){
       var id=$(this).attr("data-id");
