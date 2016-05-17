@@ -9,6 +9,9 @@ body {
  padding: 0;
  height: 100%;
 }
+.out_edit{
+ display:inline-block;
+}
 .in_edit {
  visibility: hidden;
 }
