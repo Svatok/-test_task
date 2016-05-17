@@ -33,6 +33,7 @@ class Projects{
       $tasksList[$i]['id']=$row['id'];
       $tasksList[$i]['name']=$row['name'];
       $tasksList[$i]['status']=$row['status'];
+      $tasksList[$i]['priority']=$row['priority'];
       $i++;
     }
   
