@@ -53,10 +53,11 @@ $(document).ready(function () {
       $("#"+id_form+" .out_edit").css('display','inline-block');
     });   */
    
-   $(document).on('focus', document, function(){
-         if (edit_text){
-            alert('11!!');
-         }
+    $('.div_tasks').on('blur', '.input_text', function(event){
+      var id_form=$(this).closest('form').attr('id');      
+      $(this).prop('disabled', true);
+      $("#"+id_form+" .in_edit").hide();
+      $("#"+id_form+" .out_edit").css('display','inline-block');
     });   
     
     $(".project").click(function (){
