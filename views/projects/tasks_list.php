@@ -1,13 +1,13 @@
 <ul>
   <?php foreach ($tasksList as $tasksItem):?>
   <li>
-    <form action="" method="post" class="task_form">
+    <form action="" method="post" class="task_form" id="form_task_<?php echo $tasksItem['id'];?>">
       <?php if ($tasksItem['status']==1): ?>
         <input type="checkbox" checked>
       <?php else: ?>
         <input type="checkbox">
       <?php endif; ?>
-      <input type="text" id="<?php echo $tasksItem['id'];?>" value="<?php echo $tasksItem['name'];?>" class="task_input" disabled/>
+      <input type="text" id="input_text_<?php echo $tasksItem['id'];?>" value="<?php echo $tasksItem['name'];?>" class="task_input" disabled/>
       <div class="out_edit">
         <a href="" class="up_task">Up</a>
         <a href="" class="down_task">Down</a>
