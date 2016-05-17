@@ -43,14 +43,16 @@ $(document).ready(function () {
       });*/
     });       
     
-
-   
     $('.div_tasks').on('blur', '.input_text', function(event){
       var focused_element;   
          $(document).one('click', function(e) {
             focused_element=$(e.target);
-            alert(focused_element.attr('class')+'11');
          });
+      var id_form=$(this).closest('form').attr('id');
+      
+      if (focused_element==$("#"+id_form+" .save")){
+         alert ('=');
+      }
 /*      var id_form=$(this).closest('form').attr('id');      
       $(this).prop('disabled', true);
       $("#"+id_form+" .in_edit").hide();
