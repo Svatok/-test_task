@@ -16,7 +16,7 @@
       </div>
       <div class="in_edit">
         <a href="" class="save">Save</a>
-        <a href="" class="cansel">Cancel</a>
+        <a href="" class="cancel">Cancel</a>
       </div>
     </form>
   </li>
