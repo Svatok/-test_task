@@ -46,10 +46,8 @@ $(document).ready(function () {
     $('.div_tasks').on('blur', '.input_text', function(event){
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
-            var id_form=focused_element.closest('form').attr('id');
-            alert(focused_element);
-            alert($("#"+id_form+" .save"));
-            if (focused_element==$("#"+id_form+" .save")){
+            //var id_form=focused_element.closest('form').attr('id');
+            if (focused_element.attr('class')=='save'){
                alert ('=');
             }
          });
