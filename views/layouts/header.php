@@ -13,7 +13,8 @@ $(document).ready(function () {
           $.post("/projects/"+id, {}, function (data){
             $("#div_tasks_"+id).html(data);
           });
-      }else{
+      } else {
+          alert("111");
           $("#div_tasks_"+id).empty();
       }
       return false;
