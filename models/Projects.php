@@ -32,6 +32,7 @@ class Projects{
     while($row=$result->fetch()){
       $tasksList[$i]['id']=$row['id'];
       $tasksList[$i]['name']=$row['name'];
+      $tasksList[$i]['status']=$row['status'];
       $i++;
     }
   
