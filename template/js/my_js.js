@@ -44,19 +44,18 @@ $(document).ready(function () {
     });   */    
     
     $('.div_tasks').on('blur', '.input_text', function(event){
+         var id_form=focused_element.closest('form').attr('id');
+         var input_text=$("#"+id_form+" .input_text");
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
-            var id_form=focused_element.closest('form').attr('id');
-            var input_text=$("#"+id_form+" .input_text");
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
                alert("Task changed!");  
             }
-            input_text.prop('disabled', true);
-            $("#"+id_form+" .in_edit").hide();
-            $("#"+id_form+" .out_edit").css('display','inline-block');
          });
-
+         input_text.prop('disabled', true);
+         $("#"+id_form+" .in_edit").hide();
+         $("#"+id_form+" .out_edit").css('display','inline-block');
     });   
     
     $(".project").click(function (){
