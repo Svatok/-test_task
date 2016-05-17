@@ -55,7 +55,7 @@ $(document).ready(function () {
    
     $('.div_tasks').on('blur', '.input_text', function(event){
          $(document).one('click', function(e) {
-            alert(e.target.attr('class'));
+            alert(e.target);
         });
 /*      var id_form=$(this).closest('form').attr('id');      
       $(this).prop('disabled', true);
