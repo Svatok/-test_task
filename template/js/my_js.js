@@ -41,7 +41,8 @@ $(document).ready(function () {
     });       
     
     $('.div_tasks').on('focusout', '.input_text', function(event){
-      alert(event.target.attr('class'));
+      alert('sss');
+      alert(event.target);
       var id_form=$(this).closest('form').attr('id');
       $(this).prop('disabled', true);
       $("#"+id_form+" .in_edit").hide();
