@@ -22,23 +22,23 @@ $(document).ready(function () {
     
     $('.div_tasks').on('click', '.save', function(e){
       e.preventDefault();
-      var id_form=$(this).closest('form').attr('id');
+      alert("Task changed!");
+/*       var id_form=$(this).closest('form').attr('id');
       var input_text=$("#"+id_form+" .input_text");
-/*      $.ajax({
+              
+               input_text.prop('disabled', true);
+               $("#"+id_form+" .in_edit").hide();
+               $("#"+id_form+" .out_edit").css('display','inline-block');
+     $.ajax({
          url: '/path/to/action',
          method: 'post',
          data: $(this).closest('form').serialize(),
          success: function (data) {
             if (data){ */
-               alert("Task changed!");
-               input_text.prop('disabled', true);
-               $("#"+id_form+" .in_edit").hide();
-               $("#"+id_form+" .out_edit").css('display','inline-block');
+
 /*            }
          }
       });*/
-    
-       
     });       
     
     $('.div_tasks').on('focusout', '.input_text', function(){
