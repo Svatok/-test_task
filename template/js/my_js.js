@@ -53,9 +53,9 @@ $(document).ready(function () {
                alert("Task changed!");  
             }
          });
-         input_text.prop('disabled', true);
-         $("#"+id_form+" .in_edit").hide();
-         $("#"+id_form+" .out_edit").css('display','inline-block');
+         //input_text.prop('disabled', true);
+         //$("#"+id_form+" .in_edit").hide();
+         //$("#"+id_form+" .out_edit").css('display','inline-block');
     });   
     
     $(".project").click(function (){
