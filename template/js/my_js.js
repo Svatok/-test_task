@@ -44,7 +44,7 @@ $(document).ready(function () {
     });   */    
     
     $('.div_tasks').on('blur', '.input_text', function(event){
-         var id_form=focused_element.closest('form').attr('id');
+         var id_form=$(this).closest('form').attr('id');
          var input_text=$("#"+id_form+" .input_text");
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
