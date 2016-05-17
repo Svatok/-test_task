@@ -47,15 +47,15 @@ $(document).ready(function () {
       var focused_element;   
          $(document).one('click', function(e) {
             focused_element=$(e.target);
-            alert (focused_element.attr('class'));
+            alert (focused_element.closest('form').attr('id'));
          });
-      var id_form=$(this).closest('form').attr('id');
+/*      var id_form=$(this).closest('form').attr('id');
       
       
       if (focused_element==$("#"+id_form+" .save")){
          alert ('=');
       }
-/*      var id_form=$(this).closest('form').attr('id');      
+      var id_form=$(this).closest('form').attr('id');      
       $(this).prop('disabled', true);
       $("#"+id_form+" .in_edit").hide();
       $("#"+id_form+" .out_edit").css('display','inline-block');*/
