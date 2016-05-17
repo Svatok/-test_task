@@ -50,6 +50,7 @@ $(document).ready(function () {
          });
       var id_form=$(this).closest('form').attr('id');
       alert ($("#"+id_form+" .save"));
+      alert (focused_element);
       if (focused_element==$("#"+id_form+" .save")){
          alert ('=');
       }
