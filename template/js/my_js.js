@@ -1,5 +1,7 @@
 $(document).ready(function () {
    
+   var edit_text = false;
+   
     $('.div_tasks').on('click', '.edit', function(e){
       e.preventDefault();
       var id_form=$(this).closest('form').attr('id');
@@ -9,6 +11,7 @@ $(document).ready(function () {
       input_text.focus();
       $("#"+id_form+" .out_edit").hide();
       $("#"+id_form+" .in_edit").css('display','inline-block');
+      edit_text=true;
     });
     
     $('.div_tasks').on('click', '.cancel', function(e){
@@ -51,7 +54,9 @@ $(document).ready(function () {
     });   */
    
    $(document).on('focus', 'body', function(){
-         alert('11!!');
+         if (edit_text){
+            alert('11!!');
+         }
     });   
     
     $(".project").click(function (){
