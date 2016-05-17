@@ -12,3 +12,7 @@ body {
 .in_edit {
  visibility: hidden;
 }
+.task_input{
+ border:none;
+ width:250px;
+}
