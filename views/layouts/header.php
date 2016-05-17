@@ -5,21 +5,7 @@
 <title>Projects</title>
 <link href="template/css/style.css" rel="stylesheet" type="text/css" />
 <script src="template/js/jquery.js"></script>
-<script>
-$(document).ready(function () {
-    $(".project").click(function (){
-      var id=$(this).attr("data-id");
-      if ($("#div_tasks_"+id).is(':empty')){
-          $.post("/projects/"+id, {}, function (data){
-            $("#div_tasks_"+id).html(data);
-          });
-      } else {
-          $("#div_tasks_"+id).empty();
-      }
-      return false;
-    });
-}); 
-</script>
+<script> src="template/js/my_js.js"</script>
 </head>
 
 <body>
