@@ -13,7 +13,7 @@ body {
  display:inline-block;
 }
 .in_edit {
- visibility: hidden;
+ display:none;
 }
 .task_input{
  border:none;
