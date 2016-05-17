@@ -11,6 +11,15 @@ $(document).ready(function () {
       $("#"+id_form+" .in_edit").css('display','inline-block');
     });
     
+    $('.div_tasks').on('click', '.cancel', function(e){
+      e.preventDefault();
+      var id_form=$(this).closest('form').attr('id');
+      var input_text=$("#"+id_form+" .input_text");
+      input_text.prop('disabled', true);
+      $("#"+id_form+" .in_edit").hide();
+      $("#"+id_form+" .out_edit").css('display','inline-block');
+    });    
+    
     $(".project").click(function (){
       var id=$(this).attr("data-id");
       if ($("#div_tasks_"+id).is(':empty')){
