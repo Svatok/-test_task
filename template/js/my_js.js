@@ -23,7 +23,7 @@ $(document).ready(function () {
       $("#"+id_form+" .out_edit").css('display','inline-block');
     });    
     
-    $('.div_tasks').on('click', '.save', function(e){
+    $('.div_tasks').on('focus', '.save', function(e){
       e.preventDefault();
       var id_form=$(this).closest('form').attr('id');
       var input_text=$("#"+id_form+" .input_text");
