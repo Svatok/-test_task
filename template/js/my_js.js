@@ -1,11 +1,12 @@
 /*$('.edit').on('click', function(){
   alert('Вы нажали на элемент "foo"');
 });*/
-$('.div_tasks').on('click', '.edit', function(e){
-  e.preventDefault();
-  alert('Вы нажали на элемент "foo"');
-});
+
 $(document).ready(function () {
+    $('.div_tasks').on('click', '.edit', function(e){
+      e.preventDefault();
+      alert('Вы нажали на элемент "foo"');
+    });
     $(".project").click(function (){
       var id=$(this).attr("data-id");
       if ($("#div_tasks_"+id).is(':empty')){
