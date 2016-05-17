@@ -21,7 +21,7 @@ $(document).ready(function () {
     });    
     
     $('.div_tasks').on('focusout', '.input_text', function(){
-      e.preventDefault();
+      alert('ss');
       var id_form=$(this).closest('form').attr('id');
       $(this).prop('disabled', true);
       $("#"+id_form+" .in_edit").hide();
