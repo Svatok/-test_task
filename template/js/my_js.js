@@ -8,7 +8,7 @@ $(document).ready(function () {
       input_text.prop('disabled', false);
       input_text.focus();
       $("#"+id_form+" .out_edit").hide();
-      $("#"+id_form+" .in_edit").show();
+      $("#"+id_form+" .in_edit").css('display','inline-block');
     });
     
     $(".project").click(function (){
