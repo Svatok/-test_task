@@ -1,3 +1,6 @@
+$( ".edit" ).on( "click", function() {
+  alert('edit');
+});
 $(document).ready(function () {
     $(".project").click(function (){
       var id=$(this).attr("data-id");
