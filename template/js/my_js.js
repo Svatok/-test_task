@@ -43,20 +43,14 @@ $(document).ready(function () {
       });*/
     });       
     
-/*    $('.div_tasks').on('focusout', '.input_text', function(event){
-      var id_form=$(this).closest('form').attr('id');      
-      if ($('.div_tasks').on('focus', '#'+id_form+' .save')){
-         alert('11');
-      }
-      $(this).prop('disabled', true);
-      $("#"+id_form+" .in_edit").hide();
-      $("#"+id_form+" .out_edit").css('display','inline-block');
-    });   */
+
    
     $('.div_tasks').on('blur', '.input_text', function(event){
+      var focused_element;   
          $(document).one('click', function(e) {
-            alert($(e.target).attr('class'));
-        });
+            focused_element=$(e.target);
+            alert(focused_element.attr('class')+'11');
+         });
 /*      var id_form=$(this).closest('form').attr('id');      
       $(this).prop('disabled', true);
       $("#"+id_form+" .in_edit").hide();
