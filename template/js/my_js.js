@@ -70,7 +70,8 @@ $(document).ready(function () {
       if (parent_li.attr('priority')<kol_tasks){
          var priority_new=parseInt(parent_li.attr('priority'))+1;
          var before_li=parent_ul.find($('[priority = '+priority_new+']'));
-         alert(priority_new);
+         before_li.before(parent_li);
+         //alert(priority_new);
       }
       var id_task=id_form.replace(/[^0-9]/gim,'');
 /*               $.ajax({
