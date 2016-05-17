@@ -1,4 +1,8 @@
-$('.edit').on('click', function(){
+/*$('.edit').on('click', function(){
+  alert('Вы нажали на элемент "foo"');
+});*/
+$('.div_tasks').on('click', '.edit', function(e){
+  e.preventDefault();
   alert('Вы нажали на элемент "foo"');
 });
 $(document).ready(function () {
