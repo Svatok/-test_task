@@ -61,6 +61,29 @@ $(document).ready(function () {
             $("#"+id_form+" .out_edit").css('display','inline-block');
          });
     });   
+
+    $('.div_tasks').on('click', '.up_task', function(e){
+      e.preventDefault();
+      var parent_ul=$(this).closest('ul');
+      var parent_li=$(this).closest('li');
+      var kol_tasks=parent_ul.find($("li")).length;
+      alert(kol_tasks);
+ //     if (parent_li.attr('priority')!=){
+         
+//      }
+      var id_task=id_form.replace(/[^0-9]/gim,'');
+/*               $.ajax({
+                  url: '/path/to/action',
+                  method: 'post',
+                  data: $(this).closest('form').serialize(),
+                  success: function (data) {
+                     if (data){ */
+                        alert("Task "+id_task+" deleted!");  
+/*                     }
+                  }
+               });*/
+
+    }); 
     
     $(".project").click(function (){
       var id=$(this).attr("data-id");
