@@ -71,7 +71,8 @@ $(document).ready(function () {
          var priority_new=parseInt(parent_li.attr('priority'))+1;
          var before_li=parent_ul.find($('[priority = '+priority_new+']'));
          before_li.before(parent_li);
-         //alert(priority_new);
+         before_li.attr('priority', (priority_new-1));     
+         parent_li.attr('priority', priority_new);
       }
       var id_task=id_form.replace(/[^0-9]/gim,'');
 /*               $.ajax({
