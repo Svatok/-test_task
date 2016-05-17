@@ -1,5 +1,6 @@
-$( ".edit" ).on( "click", function() {
-  alert('edit');
+$('body').on('click', '.edit', function(e){
+  alert("edit");
+  return false;
 });
 $(document).ready(function () {
     $(".project").click(function (){
