@@ -47,13 +47,14 @@ $(document).ready(function () {
          var id_form=$(this).closest('form').attr('id');
          var input_text=$("#"+id_form+" .input_text");
          $(document).one('click', function(e) {
+            alert(id_form);
             var focused_element=$(e.target);
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
                alert("Task changed!");  
             }
-            alert('disable')
-            //input_text.prop('disabled', true);
+            //alert('disable')
+            input_text.prop('disabled', true);
          //$("#"+id_form+" .in_edit").hide();
          //$("#"+id_form+" .out_edit").css('display','inline-block');
             
