@@ -1,11 +1,10 @@
-/*$('.edit').on('click', function(){
-  alert('Вы нажали на элемент "foo"');
-});*/
-
 $(document).ready(function () {
-    $('.div_tasks').on('click', '.edit', function(e){
+ /*   $('.div_tasks').on('click', '.edit', function(e){
       e.preventDefault();
       alert('Вы нажали на элемент "foo"');
+    });*/
+    $('.edit').on('click', function(){
+      alert('Вы нажали на элемент "foo11"');
     });
     $(".project").click(function (){
       var id=$(this).attr("data-id");
