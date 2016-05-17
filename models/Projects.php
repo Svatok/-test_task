@@ -26,7 +26,7 @@ class Projects{
     $db=Db::getConnection();
     
     $tasksList=array();
-    $result=$db->query('SELECT * FROM tasks WHERE project_id='.$id);
+    $result=$db->query('SELECT * FROM tasks WHERE project_id='.$id.' ORDER BY priority');
     
     $i=0;
     while($row=$result->fetch()){
