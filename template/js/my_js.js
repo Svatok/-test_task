@@ -1,6 +1,5 @@
-$('body').on('click', '.edit', function(e){
-  alert("edit");
-  return false;
+$('.edit').on('click', function(){
+  alert('Вы нажали на элемент "foo"');
 });
 $(document).ready(function () {
     $(".project").click(function (){
