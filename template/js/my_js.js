@@ -6,6 +6,9 @@ $(document).ready(function () {
       //var id_task=id_form.replace(/[^0-9]/gim,'');
       var input_text=$("#"+id_form+" .input_text");
       input_text.prop('disabled', false);
+      input_text.focus();
+      $("#"+id_form+" .out_edit").hide();
+      $("#"+id_form+" .in_edit").show();
     });
     
     $(".project").click(function (){
