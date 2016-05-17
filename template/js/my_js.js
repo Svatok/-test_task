@@ -53,7 +53,7 @@ $(document).ready(function () {
       $("#"+id_form+" .out_edit").css('display','inline-block');
     });   */
    
-   $(document).on('focus', 'html', function(){
+   $(document).on('focus', document, function(){
          if (edit_text){
             alert('11!!');
          }
