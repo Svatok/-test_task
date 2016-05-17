@@ -47,9 +47,10 @@ $(document).ready(function () {
       var focused_element;   
          $(document).one('click', function(e) {
             focused_element=$(e.target);
+            alert (focused_element.attr('class'));
          });
       var id_form=$(this).closest('form').attr('id');
-      alert (focused_element.attr('class'));
+      
       
       if (focused_element==$("#"+id_form+" .save")){
          alert ('=');
