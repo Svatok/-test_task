@@ -1,17 +1,31 @@
 $(document).ready(function () {
    
-   var edit_text = false;
-   
+    $('.div_tasks').on('click', '.del', function(e){
+      e.preventDefault();
+      var id_form=$(this).closest('form').attr('id');
+      var id_task=id_form.replace(/[^0-9]/gim,'');
+/*               $.ajax({
+                  url: '/path/to/action',
+                  method: 'post',
+                  data: $(this).closest('form').serialize(),
+                  success: function (data) {
+                     if (data){ */
+                        alert("Task "+id_task+" deleted!");  
+/*                     }
+                  }
+               });*/
+
+    });   
+
     $('.div_tasks').on('click', '.edit', function(e){
       e.preventDefault();
       var id_form=$(this).closest('form').attr('id');
-      //var id_task=id_form.replace(/[^0-9]/gim,'');
       var input_text=$("#"+id_form+" .input_text");
       input_text.prop('disabled', false);
       input_text.focus();
       $("#"+id_form+" .out_edit").hide();
       $("#"+id_form+" .in_edit").css('display','inline-block');
-      edit_text=true;
+      //edit_text=true;
     });
     
     $('.div_tasks').on('click', '.cancel', function(e){
@@ -30,13 +44,14 @@ $(document).ready(function () {
             var focused_element=$(e.target);
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
+               var id_task=id_form.replace(/[^0-9]/gim,'');
 /*               $.ajax({
                   url: '/path/to/action',
                   method: 'post',
                   data: $(this).closest('form').serialize(),
                   success: function (data) {
                      if (data){ */
-                        alert("Task changed!");  
+                        alert("Task "+id_task+" changed!");  
 /*                     }
                   }
                });*/
