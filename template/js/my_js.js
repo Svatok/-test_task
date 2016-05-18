@@ -1,7 +1,10 @@
 $(document).ready(function () {
-
+    var max_height = 100;
+    
     $('.div_tasks').on('keyup input', '.input_text', function(){
-        alert('ss');
+       // alert('ss');
+        var offset = this.offsetHeight - this.clientHeight;
+        this.css('height', 'auto').css('height', Math.min(max_height, this.scrollHeight + offset));
     });
 
     $('.div_tasks').on('click', '.del', function(e){
