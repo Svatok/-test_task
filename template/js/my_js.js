@@ -101,7 +101,7 @@ $(document).ready(function () {
             $.post("/projects/"+id, {}, function (data){
                 $("#div_tasks_"+id).html(data);
                 $(".input_text").each(function() {
-                   $(this).css('background', 'red'); 
+                   $(this).trigger('keyup input');
                 });
             });
             
