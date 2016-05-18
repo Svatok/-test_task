@@ -110,9 +110,10 @@ $(document).ready(function () {
                 $("#div_tasks_"+id).html(data);
                 $(".input_text").each(function() {
                    $(this).trigger('keyup');
-                    var lht = parseInt($(this).css('lineHeight'),10);
-                    var lines = $(this).attr('scrollHeight') / lht;
-                    alert(lines);
+                    var text = $(this).val();   
+                    var lines = text.split(/\r|\r\n|\n/);
+                    var count = lines.length;
+                    alert(count);
                 });
             });
             
