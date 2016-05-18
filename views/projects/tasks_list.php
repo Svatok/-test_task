@@ -7,7 +7,7 @@
       <?php else: ?>
         <input type="checkbox">
       <?php endif; ?>
-      <textarea data-autoresize placeholder="Type some text" class="input_text" wrap="soft" disabled><?php echo $tasksItem['name'];?></textarea>
+      <textarea data-autoresize placeholder="Type some text" class="input_text" disabled><?php echo $tasksItem['name'];?></textarea>
       <div class="out_edit">
         <a href="" class="up_task">Up</a>
         <a href="" class="down_task">Down</a>
