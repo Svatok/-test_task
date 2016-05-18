@@ -100,12 +100,16 @@ $(document).ready(function () {
           $.post("/projects/"+id, {}, function (data){
             $("#div_tasks_"+id).html(data);
           });
-          $(".input_text").each(function() {
-            $(this).css('background', 'green'); 
-          });
       } else {
           $("#div_tasks_"+id).empty();
       }
       return false;
     });
+    
+    $("#button1").click(function(){
+        $(".inputs").each(function() {
+           $(this).css('background', 'green'); 
+        });
+    });    
+    
 }); 
