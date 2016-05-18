@@ -100,7 +100,9 @@ $(document).ready(function () {
           if ($("#div_tasks_"+id).is(':empty')){
             $.post("/projects/"+id, {}, function (data){
                 $("#div_tasks_"+id).html(data);
-                $('#button1').trigger('click');
+                $(".input_text").each(function() {
+                   $(this).css('background', 'green'); 
+                });
             });
             
           } else {
