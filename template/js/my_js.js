@@ -37,7 +37,7 @@ $(document).ready(function () {
       var resizeTextarea = function(el) {
             jQuery(el).css('height', 'auto').css('height', Math.min(max_height, el.scrollHeight + offset));
       };
-      jQuery(input_text).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
+      jQuery(input_text).on('keyup input', function() { resizeTextarea(input_text); }).removeAttr('data-autoresize');
       
       $("#"+id_form+" .out_edit").hide();
       $("#"+id_form+" .in_edit").css('display','inline-block');
