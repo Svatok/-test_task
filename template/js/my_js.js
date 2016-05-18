@@ -1,8 +1,8 @@
 jQuery(function(){
- jQuery('textarea').autoResize();
+ jQuery('.input_text').autoResize();
 });
 $(document).ready(function () {
-
+    
     $('.div_tasks').on('click', '.del', function(e){
       e.preventDefault();
       var id_form=$(this).closest('form').attr('id');
