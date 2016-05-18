@@ -2,6 +2,10 @@ jQuery(function(){
  jQuery('.input_text').autoResize();
 });
 $(document).ready(function () {
+
+    $('.div_tasks').on('click', '.input_text', function(){
+     alert('sds');
+    }); 
     
     $('.div_tasks').on('click', '.del', function(e){
       e.preventDefault();
