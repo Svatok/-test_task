@@ -15,11 +15,7 @@ body {
 .in_edit {
  display:none;
 }
-.task_input{
- border:none;
- width:250px;
-}
 .input_text{
-  width: 100px;
-  height: 100%;
+  width: 400px;
+  resize: none;
 }
