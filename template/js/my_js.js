@@ -9,10 +9,6 @@ $(document).ready(function () {
         jQuery(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
     });
     
-    $('.div_tasks').on('keyup', '.input_text', function(){
-     jQuery('.input_text').autoResize();
-    }); 
-    
     $('.div_tasks').on('click', '.del', function(e){
       e.preventDefault();
       var id_form=$(this).closest('form').attr('id');
