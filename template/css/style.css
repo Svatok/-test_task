@@ -19,6 +19,6 @@ body {
  width: 600px;
  resize: none;
 }
-.task_form{
+.task_form * {
  vertical-align: middle;
 }
