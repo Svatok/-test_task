@@ -3,8 +3,8 @@ jQuery(function(){
 });
 $(document).ready(function () {
 
-    $('.div_tasks').on('click', '.input_text', function(){
-     alert('sds');
+    $('.div_tasks').on('keyup', '.input_text', function(){
+     alert('keyup');
     }); 
     
     $('.div_tasks').on('click', '.del', function(e){
