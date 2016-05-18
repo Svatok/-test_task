@@ -100,9 +100,7 @@ $(document).ready(function () {
         $.post("/projects/"+id, {}, function (data){
             $("#div_tasks_"+id).html(data);
         });
-        $(".input_text").each(function() {
-           $(this).css('background', 'green'); 
-        });
+        $('#button1').trigger('click');
       } else {
         $("#div_tasks_"+id).empty();
       }
