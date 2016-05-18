@@ -2,8 +2,9 @@ $(document).ready(function () {
     $('.div_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
         var h= this.offsetHeight;
-        //$(this).css('height', 'auto').css('height', this.scrollHeight + offset);
-        alert(this.scrollHeight);
+        if (this.scrollHeight == this.offsetHeight){
+            $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
+        }
      /*   $(this).css({
             paddingTop: 0,
             height: 0
@@ -109,7 +110,7 @@ $(document).ready(function () {
             $.post("/projects/"+id, {}, function (data){
                 $("#div_tasks_"+id).html(data);
                 $(".input_text").each(function() {
-//                   $(this).trigger('keyup');
+                   $(this).trigger('keyup');
                 });
             });
             
