@@ -100,6 +100,7 @@ $(document).ready(function () {
                 $("#div_tasks_"+id).html(data);
                 $(".input_text").each(function() {
                    $(this).trigger('keyup');
+                   alert($(this).prop('rows'));
                 });
             });
             
