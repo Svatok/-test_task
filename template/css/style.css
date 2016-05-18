@@ -16,6 +16,9 @@ body {
  display:none;
 }
 .input_text{
-  width: 600px;
-  resize: none;
+ width: 600px;
+ resize: none;
+}
+.task_form{
+ vertical-align: middle;
 }
