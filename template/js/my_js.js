@@ -7,7 +7,7 @@ $(document).ready(function () {
             });
         if (this.scrollHeight != this.offsetHeight){
            // alert(this.scrollHeight+'!='+this.offsetHeight);
-            $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
+           // $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
         }
      /*   $(this).css({
             paddingTop: 0,
