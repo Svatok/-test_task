@@ -1,5 +1,14 @@
 $(document).ready(function () {
+    var max_height = 100;
 
+    jQuery.each(jQuery('textarea[data-autoresize]'), function() {
+        var offset = this.offsetHeight - this.clientHeight;
+        var resizeTextarea = function(el) {
+            jQuery(el).css('height', 'auto').css('height', Math.min(max_height, el.scrollHeight + offset));
+        };
+        jQuery(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
+    });
+    
     $('.div_tasks').on('keyup', '.input_text', function(){
      jQuery('.input_text').autoResize();
     }); 
