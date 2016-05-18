@@ -96,6 +96,10 @@ $(document).ready(function () {
 
     $(".project").click(function (){
       var id=$(this).attr("data-id");
+        $(".input_text").each(function (i) {
+              this.style.color = "blue";
+              alert('11');
+        });
       if ($("#div_tasks_"+id).is(':empty')){
           $.post("/projects/"+id, {}, function (data){
             $("#div_tasks_"+id).html(data);
