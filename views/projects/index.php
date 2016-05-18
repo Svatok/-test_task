@@ -7,3 +7,4 @@
     </div>
     <?php endforeach; 
 include ROOT.'/views/layouts/footer.php'; ?>
+<button type="button" id="button1">Add1</button>
