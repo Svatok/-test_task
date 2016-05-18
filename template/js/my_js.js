@@ -99,8 +99,12 @@ $(document).ready(function () {
             $.post("/projects/"+id, {}, function (data){
                 $("#div_tasks_"+id).html(data);
                 $(".input_text").each(function() {
+                   var text = $(this).val();   //помещаем в var text содержимое текстареи
+                   var lines = text.split(/\r|\r\n|\n/);  //разбиваем это содержимое на фрагменты по переносам строк
+                   var count = lines.length;
+                   alert(count);
                    $(this).trigger('keyup');
-                   alert($(this).prop('rows'));
+                   //alert($(this).prop('rows'));
                 });
             });
             
