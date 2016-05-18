@@ -1,7 +1,7 @@
+jQuery(function(){
+ jQuery('textarea').autoResize();
+});
 $(document).ready(function () {
-	jQuery('.input_text').autoResize({
-	   extraSpace : 0
-	});
 
     $('.div_tasks').on('click', '.del', function(e){
       e.preventDefault();
