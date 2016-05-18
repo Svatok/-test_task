@@ -99,7 +99,7 @@ $(document).ready(function () {
             $.post("/projects/"+id, {}, function (data){
                 $("#div_tasks_"+id).html(data);
                 $(".input_text").each(function() {
-                   $(this).trigger('keyup');
+                //   $(this).trigger('keyup');
                 });
             });
             
@@ -107,11 +107,5 @@ $(document).ready(function () {
             $("#div_tasks_"+id).empty();
           }
     });
-    
-    $("#button1").click(function(){
-        $(".input_text").each(function() {
-           $(this).css('background', 'green'); 
-        });
-    });    
     
 }); 
