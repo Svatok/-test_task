@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('.div_tasks').on('onkeyup', '.input_text', function(){
+    $('.div_tasks').on('keyup input', '.input_text', function(){
         alert('ss');
     });
 
