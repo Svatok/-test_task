@@ -100,12 +100,13 @@ $(document).ready(function () {
           if ($("#div_tasks_"+id).is(':empty')){
             $.post("/projects/"+id, {}, function (data){
                 $("#div_tasks_"+id).html(data);
+                $('#button1').trigger('click');
             });
             
           } else {
             $("#div_tasks_"+id).empty();
           }
-        $('#button1').trigger('click');
+        
     });
     
     $("#button1").click(function(){
