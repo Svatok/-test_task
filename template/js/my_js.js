@@ -1,10 +1,7 @@
-jQuery(function(){
- jQuery('.input_text').autoResize();
-});
 $(document).ready(function () {
 
     $('.div_tasks').on('keyup', '.input_text', function(){
-     alert('keyup');
+     jQuery('.input_text').autoResize();
     }); 
     
     $('.div_tasks').on('click', '.del', function(e){
