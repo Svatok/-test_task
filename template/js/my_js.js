@@ -3,7 +3,7 @@ $(document).ready(function () {
         var offset = this.offsetHeight - this.clientHeight;
         var h= this.offsetHeight;
         $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
-        alert($(this).prop('cols'));
+        alert(offset);
      /*   $(this).css({
             paddingTop: 0,
             height: 0
@@ -109,11 +109,7 @@ $(document).ready(function () {
             $.post("/projects/"+id, {}, function (data){
                 $("#div_tasks_"+id).html(data);
                 $(".input_text").each(function() {
-                   $(this).trigger('keyup');
-                    var text = $(this).val();   
-                    var lines = text.split(/\r|\r\n|\n/);
-                    var count = lines.length;
-                    alert(count);
+//                   $(this).trigger('keyup');
                 });
             });
             
