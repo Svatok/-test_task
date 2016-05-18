@@ -108,7 +108,7 @@ $(document).ready(function () {
     
     $("#button1").click(function(){
         alert('tyt');
-        $(".inputs").each(function() {
+        $(".input_text").each(function() {
            $(this).css('background', 'green'); 
         });
     });    
