@@ -3,8 +3,10 @@ $(document).ready(function () {
         var offset = this.offsetHeight - this.clientHeight;
         var h= this.offsetHeight;
         var scroll_h=this.scrollHeight+2;
-        $(this).css('paddingTop', 2);
-        $(this).css('height', 'auto');
+       // $(this).css('paddingTop', 2);
+        //$(this).css('height', 'auto');
+        $(this).css('paddingTop','');
+        $(this).css('height','');
         if (scroll_h != this.offsetHeight){
            // alert(scroll_h+'!='+this.offsetHeight+',Pad'+$(this).css('paddingTop'));
             $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
