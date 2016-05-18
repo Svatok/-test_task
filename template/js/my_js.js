@@ -4,6 +4,7 @@ $(document).ready(function () {
     $('.div_tasks').on('keyup input', '.input_text', function(){
        // alert('ss');
         var offset = this.offsetHeight - this.clientHeight;
+        alert(offset);
         this.css('height', 'auto').css('height', Math.min(max_height, this.scrollHeight + offset));
     });
 
