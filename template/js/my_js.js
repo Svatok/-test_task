@@ -2,8 +2,8 @@ $(document).ready(function () {
     $('.div_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
         var h= this.offsetHeight;
-        $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
-        alert(offset);
+        //$(this).css('height', 'auto').css('height', this.scrollHeight + offset);
+        alert(this.scrollHeight);
      /*   $(this).css({
             paddingTop: 0,
             height: 0
