@@ -4,9 +4,9 @@ $(document).ready(function () {
         var h= this.offsetHeight;
         var scroll_h=this.scrollHeight+2;
         $(this).css('paddingTop', 2);
-        $(this).css('height', 'auto');
+        //$(this).css('height', 'auto');
         if (scroll_h != this.offsetHeight){
-            alert(scroll_h+'!='+this.offsetHeight+',Pad'+$(this).css('paddingTop'));
+           // alert(scroll_h+'!='+this.offsetHeight+',Pad'+$(this).css('paddingTop'));
             $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
            // $(this).css('paddingTop', 2);
         }else{
@@ -18,7 +18,7 @@ $(document).ready(function () {
                 paddingTop: Math.max(0, h/2 - this.scrollHeight/2),
                 height: h
             });
-            alert(scroll_h+'='+this.offsetHeight+',Pad'+$(this).css('paddingTop'));
+           // alert(scroll_h+'='+this.offsetHeight+',Pad'+$(this).css('paddingTop'));
         }
     });
 
