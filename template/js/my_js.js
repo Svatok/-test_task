@@ -93,18 +93,15 @@ $(document).ready(function () {
          parent_li.attr('priority', priority_new);
       }
     }); 
-
+   
     $(".project").click(function (){
       var id=$(this).attr("data-id");
-        
-        $(".input_text").each(function() {
-           $(this).css('background', 'green'); 
-        });
-        
-        
       if ($("#div_tasks_"+id).is(':empty')){
           $.post("/projects/"+id, {}, function (data){
             $("#div_tasks_"+id).html(data);
+          });
+          $(".input_text").each(function() {
+            $(this).css('background', 'green'); 
           });
       } else {
           $("#div_tasks_"+id).empty();
