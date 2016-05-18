@@ -4,10 +4,10 @@ $(document).ready(function () {
         var h= this.offsetHeight;
         var scroll_h=this.scrollHeight+2;
         if (scroll_h != this.offsetHeight){
-//            alert(scroll_h+'!='+this.offsetHeight);
+            alert(scroll_h+'!='+this.offsetHeight+',Pad'+$(this).css('paddingTop'));
             $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
         }else{
-//            alert(scroll_h+'='+this.offsetHeight);
+            alert(scroll_h+'='+this.offsetHeight+',Pad'+$(this).css('paddingTop'));
             $(this).css({
                 paddingTop: 0,
                 height: 0
