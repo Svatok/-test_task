@@ -2,12 +2,12 @@ $(document).ready(function () {
     $('.div_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
         var h= this.offsetHeight;
-            $(this).scroll(function(){
-                alert('Был осуществлен Scroll');
-            });
-        if (this.scrollHeight != this.offsetHeight){
-           // alert(this.scrollHeight+'!='+this.offsetHeight);
-           // $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
+        var scroll_h=this.scrollHeight+2;
+        if (scroll_h != this.offsetHeight){
+            alert(scroll_h+'!='+this.offsetHeight);
+            $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
+        }else{
+            alert(scroll_h+'='+this.offsetHeight);
         }
      /*   $(this).css({
             paddingTop: 0,
