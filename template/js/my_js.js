@@ -2,16 +2,9 @@ $(document).ready(function () {
     var max_height = 100;
     
     $('.div_tasks').on('keyup input', '.input_text', function(){
-       // alert('ss');
         var offset = this.offsetHeight - this.clientHeight;
-        alert(offset);
         $(this).css('height', 'auto').css('height', Math.min(max_height, this.scrollHeight + offset));
     });
-    
-//    jQuery('div').on('keyup input', 'textarea[data-autoresize]', function() { 
-//    	var offset = this.offsetHeight - this.clientHeight;
-//    	jQuery(this).css('height', 'auto').css('height', Math.min(max_height, this.scrollHeight + offset));
-//    });
 
     $('.div_tasks').on('click', '.del', function(e){
       e.preventDefault();
