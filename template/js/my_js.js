@@ -1,14 +1,14 @@
 $(document).ready(function () {
     var max_height = 100;
 
-    jQuery.each(jQuery('textarea[data-autoresize]'), function() {
+/*    jQuery.each(jQuery('textarea[data-autoresize]'), function() {
         var offset = this.offsetHeight - this.clientHeight;
         var resizeTextarea = function(el) {
             jQuery(el).css('height', 'auto').css('height', Math.min(max_height, el.scrollHeight + offset));
         };
         jQuery(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
     });
-    
+*/    
     $('.div_tasks').on('click', '.del', function(e){
       e.preventDefault();
       var id_form=$(this).closest('form').attr('id');
@@ -32,6 +32,13 @@ $(document).ready(function () {
       var input_text=$("#"+id_form+" .input_text");
       input_text.prop('disabled', false);
       input_text.focus();
+      
+      var offset = input_text.offsetHeight - input_text.clientHeight;
+      var resizeTextarea = function(el) {
+            jQuery(el).css('height', 'auto').css('height', Math.min(max_height, el.scrollHeight + offset));
+      };
+      jQuery(input_text).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
+      
       $("#"+id_form+" .out_edit").hide();
       $("#"+id_form+" .in_edit").css('display','inline-block');
       //edit_text=true;
