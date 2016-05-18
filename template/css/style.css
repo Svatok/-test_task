@@ -22,3 +22,6 @@ body {
 .task_form * {
  vertical-align: middle;
 }
+.task_li {
+ margin:10px 0px 10px 0px;
+}
