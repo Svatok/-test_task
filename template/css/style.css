@@ -20,5 +20,6 @@ body {
  width:250px;
 }
 .input_text{
- height: auto;
+ width:400px;
+	height:70px;
 }
