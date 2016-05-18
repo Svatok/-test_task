@@ -18,7 +18,7 @@ body {
 .input_text{
  width: 600px;
  resize: none;
- paddingTop: 10px;
+ box-sizing: border-box;
 }
 .task_form * {
  vertical-align: middle;
