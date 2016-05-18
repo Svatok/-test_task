@@ -3,7 +3,7 @@ $(document).ready(function () {
         var offset = this.offsetHeight - this.clientHeight;
         var h= this.offsetHeight;
         $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
-        
+        alert($(this).prop('cols'));
      /*   $(this).css({
             paddingTop: 0,
             height: 0
