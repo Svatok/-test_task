@@ -6,7 +6,7 @@ $(document).ready(function () {
         if (scroll_h != this.offsetHeight){
             alert(scroll_h+'!='+this.offsetHeight+',Pad'+$(this).css('paddingTop'));
             $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
-            $(this).css('paddingTop', 2)
+            $(this).css('paddingTop', 2);
         }else{
             $(this).css({
                 paddingTop: 0,
