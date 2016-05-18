@@ -3,14 +3,15 @@ $(document).ready(function () {
         var offset = this.offsetHeight - this.clientHeight;
         var h= this.offsetHeight;
         $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
-        $(this).css({
+        
+     /*   $(this).css({
             paddingTop: 0,
             height: 0
         });
         $(this).css({
             paddingTop: Math.max(0, h/2 - this.scrollHeight/2),
             height: h
-        });
+        });*/
     });
 
     $('.div_tasks').on('click', '.del', function(e){
@@ -109,6 +110,9 @@ $(document).ready(function () {
                 $("#div_tasks_"+id).html(data);
                 $(".input_text").each(function() {
                    $(this).trigger('keyup');
+                    var lht = parseInt($(this).css('lineHeight'),10);
+                    var lines = $(this).attr('scrollHeight') / lht;
+                    alert(lines);
                 });
             });
             
