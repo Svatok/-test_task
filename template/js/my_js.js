@@ -1,7 +1,16 @@
 $(document).ready(function () {
     $('.div_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
+        var h= this.offsetHeight;
         $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
+        $(this).css({
+            paddingTop: 0,
+            height: 0
+        });
+        $(this).css({
+            paddingTop: Math.max(0, h/2 - this.scrollHeight/2),
+            height: h
+        });
     });
 
     $('.div_tasks').on('click', '.del', function(e){
