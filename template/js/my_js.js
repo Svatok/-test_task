@@ -1,5 +1,8 @@
 $(document).ready(function () {
-   
+	jQuery('.input_text').autoResize({
+	   extraSpace : 0
+	});
+
     $('.div_tasks').on('click', '.del', function(e){
       e.preventDefault();
       var id_form=$(this).closest('form').attr('id');
