@@ -94,17 +94,18 @@ $(document).ready(function () {
       }
     }); 
    
-    $(".project").click(function (){
-      var id=$(this).attr("data-id");
-      if ($("#div_tasks_"+id).is(':empty')){
-        $.post("/projects/"+id, {}, function (data){
-            $("#div_tasks_"+id).html(data);
-        });
+    $(".project").click(function (e){
+          e.preventDefault();
+          var id=$(this).attr("data-id");
+          if ($("#div_tasks_"+id).is(':empty')){
+            $.post("/projects/"+id, {}, function (data){
+                $("#div_tasks_"+id).html(data);
+            });
+            
+          } else {
+            $("#div_tasks_"+id).empty();
+          }
         $('#button1').trigger('click');
-      } else {
-        $("#div_tasks_"+id).empty();
-      }
-      return false;
     });
     
     $("#button1").click(function(){
