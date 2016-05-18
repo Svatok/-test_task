@@ -7,7 +7,7 @@
       <?php else: ?>
         <input type="checkbox">
       <?php endif; ?>
-      <input type="text" value="<?php echo $tasksItem['name'];?>" class="input_text" disabled/>
+      <textarea wrap="soft" class="input_text" disabled><?php echo $tasksItem['name'];?></textarea>
       <div class="out_edit">
         <a href="" class="up_task">Up</a>
         <a href="" class="down_task">Down</a>
