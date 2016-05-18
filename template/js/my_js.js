@@ -4,19 +4,19 @@ $(document).ready(function () {
         var h= this.offsetHeight;
         var scroll_h=this.scrollHeight+2;
         if (scroll_h != this.offsetHeight){
-            alert(scroll_h+'!='+this.offsetHeight);
+//            alert(scroll_h+'!='+this.offsetHeight);
             $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
         }else{
-            alert(scroll_h+'='+this.offsetHeight);
+//            alert(scroll_h+'='+this.offsetHeight);
+            $(this).css({
+                paddingTop: 0,
+                height: 0
+            });
+            $(this).css({
+                paddingTop: Math.max(0, h/2 - this.scrollHeight/2),
+                height: h
+            });
         }
-     /*   $(this).css({
-            paddingTop: 0,
-            height: 0
-        });
-        $(this).css({
-            paddingTop: Math.max(0, h/2 - this.scrollHeight/2),
-            height: h
-        });*/
     });
 
     $('.div_tasks').on('click', '.del', function(e){
