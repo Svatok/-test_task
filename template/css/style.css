@@ -36,7 +36,6 @@ body {
 .div_check, .div_task_text, .div_edit_buttons  {
   display: inline-block;
   vertical-align: middle;
-  background: #9F9;
 }
 .li_task:before { /* для IE8+ */
   content: "";
