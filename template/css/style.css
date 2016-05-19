@@ -19,7 +19,7 @@ body {
  width: 80%;
 }
 .div_edit_buttons{
- text-align:center;
+ margin: auto;
 }
 .input_text{
   resize:none;
