@@ -1,22 +1,22 @@
-function divClicked(div) {
-    var divHtml = $(div).html();
-    var editableText = $('<textarea class="input_text" />');
-    editableText.val(divHtml);
-    var h_div = $(div).css('height');
-//    $(editableText).css('height',h_div);
-    editableText.trigger('keyup');
-    $(div).replaceWith(editableText);
-    editableText.focus();
-}
-
-function editableTextBlurred(textarea) {
-    var html = $(textarea).val();
-    var viewableText = $('<div class="div_task_text">');
-    viewableText.html(html);
-    $(textarea).replaceWith(viewableText);
-}
-
 $(document).ready(function () {
+    function divClicked(div) {
+        var divHtml = $(div).html();
+        var editableText = $('<textarea class="input_text" />');
+        editableText.val(divHtml);
+        var h_div = $(div).css('height');
+    //    $(editableText).css('height',h_div);
+        $(editableText).trigger('keyup');
+        $(div).replaceWith(editableText);
+        editableText.focus();
+    }
+    
+    function editableTextBlurred(textarea) {
+        var html = $(textarea).val();
+        var viewableText = $('<div class="div_task_text">');
+        viewableText.html(html);
+        $(textarea).replaceWith(viewableText);
+    }
+
     $('.div_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
         $(this).css('height', 'auto').css('height', this.scrollHeight);
