@@ -23,7 +23,7 @@ $(document).ready(function () {
         var scroll_h=this.scrollHeight+h_pad;
 //        alert(scroll_h+' != '+ this.offsetHeight);
 //        $(this).css('height', 'auto').css('height', this.scrollHeight + offset );
-        $(this).css('height', 24);
+        $(this).css('height', '');
         if (scroll_h != this.offsetHeight){
 //            alert(scroll_h+'+'+ h_pad+' != '+ this.offsetHeight);
             $(this).css('height', 'auto').css('height', this.scrollHeight);
