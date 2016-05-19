@@ -24,7 +24,6 @@ body {
   resize:none;
 }
 .li_task * {
- vertical-align: middle;
  font-family: Verdana, Helvetica, Arial, sans-serif;
  font-size: 14px;
 }
