@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var before_edit;
     function divClicked(div) {
         var divHtml = $(div).html();
         var editableText = $('<textarea class="input_text"/>');
@@ -39,6 +40,8 @@ $(document).ready(function () {
 
     $('.div_tasks').on('click', '.edit', function(e){
       e.preventDefault();
+      before_edit=$("#"+id_li+" .div_task_text").text();
+      alert(before_edit);
       var id_li=$(this).closest('li').attr('id');
       var div_text=$("#"+id_li+" .div_task_text");
       divClicked(div_text);
