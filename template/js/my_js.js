@@ -5,7 +5,7 @@ $(document).ready(function () {
         editableText.val(divHtml);
         var h_div = $(div).css('height');
     //    $(editableText).css('height',h_div);
-        $(editableText).trigger('keyup');
+        editableText.trigger('keyup');
         $(div).replaceWith(editableText);
         editableText.focus();
     }
