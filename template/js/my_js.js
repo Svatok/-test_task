@@ -1,3 +1,22 @@
+function divClicked(div) {
+    var divHtml = $(div).html();
+    var editableText = $("<textarea />");
+    editableText.val(divHtml);
+    $(div).replaceWith(editableText);
+    editableText.focus();
+    // setup the blur event for this new textarea
+    editableText.blur(editableTextBlurred);
+}
+
+function editableTextBlurred() {
+    var html = $(this).val();
+    var viewableText = $("<div>");
+    viewableText.html(html);
+    $(this).replaceWith(viewableText);
+    // setup the click event for this new div
+    viewableText.click(divClicked);
+}
+
 $(document).ready(function () {
     $('.div_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
@@ -43,12 +62,13 @@ $(document).ready(function () {
 
     $('.div_tasks').on('click', '.edit', function(e){
       e.preventDefault();
-      var id_form=$(this).closest('form').attr('id');
-      var input_text=$("#"+id_form+" .input_text");
-      input_text.prop('disabled', false);
-      input_text.focus();
-      $("#"+id_form+" .out_edit").hide();
-      $("#"+id_form+" .in_edit").css('display','inline-block');
+      var id_li=$(this).closest('li').attr('id');
+      var div_text=$("#"+id_li+" .div_task_text");
+      divClicked(div_text);
+      //input_text.prop('disabled', false);
+      //input_text.focus();
+      $("#"+id_li+" .out_edit").hide();
+      $("#"+id_li+" .in_edit").css('display','inline-block');
     });
     
     $('.div_tasks').on('click', '.cancel', function(e){
