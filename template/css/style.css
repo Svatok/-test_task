@@ -20,7 +20,7 @@ body {
  text-align: left;
 }
 .div_edit_buttons{
- height: 100%;
+ border-left: 1px solid black;
  width: 15%;
 }
 .input_text{
