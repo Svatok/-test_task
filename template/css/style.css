@@ -25,4 +25,10 @@ body {
 }
 .li_task * {
  vertical-align: middle;
+ font-family: Verdana, Helvetica, Arial, sans-serif;
+ font-size: 14px;
+}
+.li_task {
+ list-style-type: none;
+ background:#FFFFE0;
 }
