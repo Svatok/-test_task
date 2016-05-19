@@ -8,7 +8,7 @@
         <input type="checkbox">
       <?php endif; ?>
       </div>
-      <div class="div_task_text"><?php echo $tasksItem['name'];?></div>
+      <div class="div_task_container"><div class="div_task_text"><?php echo $tasksItem['name'];?></div></div>
       <div class="div_edit_buttons">
         <div class="out_edit">
           <a href="" class="up_task">Up</a>
