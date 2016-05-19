@@ -18,14 +18,13 @@ function editableTextBlurred(textarea) {
 $(document).ready(function () {
     $('.div_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
-        var h= this.offsetHeight;
-        var scroll_h=this.scrollHeight+2;
         var h_pad=$(this).css('paddingTop');
         h_pad=h_pad.replace(/[^0-9]/gim,'');
         var new_h=(this.scrollHeight + offset - h_pad);
-        alert(this.scrollHeight + offset+'_'+new_h);
-//        $(this).css('height','');
+        alert(offset);
         $(this).css('height', 'auto').css('height', this.scrollHeight + offset );
+//        var scroll_h=this.scrollHeight+2;
+//        var h= this.offsetHeight;
 /*        if (scroll_h != this.offsetHeight){
             $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
         }else{
