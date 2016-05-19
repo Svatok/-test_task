@@ -22,6 +22,7 @@ $(document).ready(function () {
         var h= this.offsetHeight;
         var scroll_h=this.scrollHeight+2;
         var h_pad=$(this).css('paddingTop');
+        alert(h_pad);
 //        $(this).css('height','');
         $(this).css('height', 'auto').css('height', this.scrollHeight + offset - h_pad);
 /*        if (scroll_h != this.offsetHeight){
