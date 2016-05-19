@@ -4,7 +4,7 @@ function divClicked(div) {
     editableText.val(divHtml);
     var h_div = $(div).css('height');
     alert(h_div);
-    $(editableText).css('heigh',200)
+    $(editableText).css('heigh',200);
     $(div).replaceWith(editableText);
     editableText.focus();
 }
@@ -22,9 +22,10 @@ $(document).ready(function () {
         var h= this.offsetHeight;
         var scroll_h=this.scrollHeight+2;
         var h_pad=$(this).css('paddingTop');
-        alert(h_pad);
+        var new_h=(this.scrollHeight + offset - h_pad);
+        alert(new_h);
 //        $(this).css('height','');
-        $(this).css('height', 'auto').css('height', (this.scrollHeight + offset - h_pad));
+        $(this).css('height', 'auto').css('height', new_h );
 /*        if (scroll_h != this.offsetHeight){
             $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
         }else{
