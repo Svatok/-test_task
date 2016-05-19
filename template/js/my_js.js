@@ -24,6 +24,7 @@ $(document).ready(function () {
 //        alert(offset);
 //        $(this).css('height', 'auto').css('height', this.scrollHeight + offset );
         if (scroll_h != this.offsetHeight){
+            alert(scroll_h +' != '+ this.offsetHeight);
             $(this).css('height', 'auto').css('height', this.scrollHeight);
         }
 //        var scroll_h=this.scrollHeight+2;
