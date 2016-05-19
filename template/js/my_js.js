@@ -25,11 +25,7 @@ $(document).ready(function () {
 //        $(this).css('height', 'auto').css('height', this.scrollHeight + offset );
 //        $(this).css('height', 'auto');
 //        if (scroll_h != this.offsetHeight){
-             $(this).css('height', 'auto');
-            alert(scroll_h+' != '+ this.offsetHeight);
-            $(this).css('height', this.scrollHeight);
-            alert(scroll_h+' != '+ this.offsetHeight);
-//            $(this).css('height', 'auto').css('height', this.scrollHeight);
+            $(this).css('height', 'auto').css('height', this.scrollHeight);
  //       }
 //        var scroll_h=this.scrollHeight+2;
 //        var h= this.offsetHeight;
