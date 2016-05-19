@@ -22,7 +22,8 @@ $(document).ready(function () {
         h_pad=h_pad.replace(/[^0-9]/gim,'');
         var new_h=(this.scrollHeight + offset - h_pad);
         alert(offset);
-        $(this).css('height', 'auto').css('height', this.scrollHeight + offset );
+//        $(this).css('height', 'auto').css('height', this.scrollHeight + offset );
+        $(this).css('height', 'auto').css('height', this.scrollHeight);
 //        var scroll_h=this.scrollHeight+2;
 //        var h= this.offsetHeight;
 /*        if (scroll_h != this.offsetHeight){
