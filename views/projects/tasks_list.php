@@ -6,7 +6,7 @@
       <?php else: ?>
         <input type="checkbox">
       <?php endif; ?>
-      <div class="input_text"><?php echo $tasksItem['name'];?></div>
+      <div class="div_task_text"><?php echo $tasksItem['name'];?></div>
       <div class="out_edit">
         <a href="" class="up_task">Up</a>
         <a href="" class="down_task">Down</a>
