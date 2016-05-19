@@ -9,10 +9,14 @@ $(document).ready(function () {
         editableText.focus();
     }
     
-    function editableTextBlurred(textarea) {
+    function editableTextBlurred(textarea, save) {
         var html = $(textarea).val();
         var viewableText = $('<div class="div_task_text">');
-        viewableText.html(html);
+        if (save){
+            viewableText.html(html);
+        }else{
+            viewableText.html(before_edit);
+        }
         $(textarea).replaceWith(viewableText);
     }
 
@@ -42,7 +46,6 @@ $(document).ready(function () {
       e.preventDefault();
       var id_li=$(this).closest('li').attr('id');
       before_edit=$("#"+id_li+" .div_task_text").text();
-      alert(before_edit);
       var div_text=$("#"+id_li+" .div_task_text");
       divClicked(div_text);
       $("#"+id_li+" .out_edit").hide();
@@ -67,12 +70,14 @@ $(document).ready(function () {
                   data: $(this).closest('form').serialize(),
                   success: function (data) {
                      if (data){ */
-                        alert("Task "+id_task+" changed!");  
+                        alert("Task "+id_task+" changed!");
+                        editableTextBlurred(textarea_text, true);
 /*                     }
                   }
                });*/
+            }else{
+                editableTextBlurred(textarea_text, false);
             }
-            editableTextBlurred(textarea_text);
             $("#"+id_li+" .in_edit").hide();
             $("#"+id_li+" .out_edit").css('display','inline-block');
          });
@@ -111,9 +116,9 @@ $(document).ready(function () {
           if ($("#div_tasks_"+id).is(':empty')){
             $.post("/projects/"+id, {}, function (data){
                 $("#div_tasks_"+id).html(data);
- /*               $(".input_text").each(function() {
+                $(".input_text").each(function() {
                    $(this).trigger('keyup');
-                });*/
+                });
             });
             
           } else {
