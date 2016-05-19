@@ -21,9 +21,11 @@ $(document).ready(function () {
         var h_pad=$(this).css('paddingTop');
         h_pad=parseInt(h_pad.replace(/[^0-9]/gim,''));
         var scroll_h=this.scrollHeight+h_pad;
+        alert(scroll_h+'+'+ h_pad+' != '+ this.offsetHeight);
 //        $(this).css('height', 'auto').css('height', this.scrollHeight + offset );
+        $(this).css('height', 18 );
         if (scroll_h != this.offsetHeight){
-            alert(scroll_h+'+'+ h_pad+' != '+ this.offsetHeight);
+//            alert(scroll_h+'+'+ h_pad+' != '+ this.offsetHeight);
             $(this).css('height', 'auto').css('height', this.scrollHeight);
         }
 //        var scroll_h=this.scrollHeight+2;
