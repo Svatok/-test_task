@@ -31,4 +31,6 @@ body {
 .li_task {
  list-style-type: none;
  background:#FFFFE0;
+ height: 36px;
+ border: 1px solid black;
 }
