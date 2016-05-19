@@ -25,7 +25,7 @@ $(document).ready(function () {
         var new_h=(this.scrollHeight + offset - h_pad);
         alert(this.scrollHeight + offset+'_'+new_h);
 //        $(this).css('height','');
-        $(this).css('height', 'auto').css('height', new_h );
+        $(this).css('height', 'auto').css('height', this.scrollHeight + offset );
 /*        if (scroll_h != this.offsetHeight){
             $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
         }else{
