@@ -16,13 +16,8 @@ body {
  display:none;
 }
 .div_task_text{
- display:inline-block;
  width: 80%;
 }
-.edit_buttons{
- display:inline-block; 
-}
-
 .input_text{
   width: 80%;
   resize:none;
@@ -37,6 +32,11 @@ body {
  background:#FFFFE0;
  border: 1px solid black;
  min-height: 50px;
+}
+.div_check, .div_task_text, .div_edit_buttons  {
+  display: inline-block;
+  vertical-align: middle;
+  background: #9F9;
 }
 .li_task:before { /* для IE8+ */
   content: "";
