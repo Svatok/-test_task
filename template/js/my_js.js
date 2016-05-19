@@ -1,11 +1,11 @@
 $(document).ready(function () {
     function divClicked(div) {
         var divHtml = $(div).html();
-        var editableText = $('<textarea class="input_text" />');
+        var editableText = $('<textarea class="input_text" id="temp_edit_text" />');
         editableText.val(divHtml);
         var h_div = $(div).css('height');
         //$(editableText).css('height', h_div);
-        alert($(editableText).scrollHeight);
+        alert($("temp_edit_text").scrollHeight);
         $(editableText).css('height', 'auto').css('height', editableText.scrollHeight);
         $(editableText).css('paddingTop', 2);
     //    editableText.trigger('keyup');
