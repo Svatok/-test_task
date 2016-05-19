@@ -19,10 +19,8 @@ $(document).ready(function () {
     $('.div_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
         var h_pad=$(this).css('paddingTop');
-alert(h_pad);
-        h_pad=h_pad.replace(/[^0-9]/gim,'');
-        var scroll_h=this.scrollHeight;
-//        alert(offset);
+        h_pad=parseInt(h_pad.replace(/[^0-9]/gim,''));
+        var scroll_h=this.scrollHeight+h_pad;
 //        $(this).css('height', 'auto').css('height', this.scrollHeight + offset );
         if (scroll_h != this.offsetHeight){
             alert(scroll_h+'+'+ h_pad+' != '+ this.offsetHeight);
