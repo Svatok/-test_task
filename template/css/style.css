@@ -19,6 +19,10 @@ body {
  display:inline-block;
  width: 600px;
 }
+.input_text{
+  width: 600px;
+  resize:none;
+}
 .li_task * {
  vertical-align: middle;
 }
