@@ -3,8 +3,7 @@ function divClicked(div) {
     var editableText = $('<textarea class="input_text" />');
     editableText.val(divHtml);
     var h_div = $(div).css('height');
-    alert(h_div);
-    $(editableText).css('height',200);
+    $(editableText).css('height',h_div);
     $(div).replaceWith(editableText);
     editableText.focus();
 }
