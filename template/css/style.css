@@ -22,7 +22,7 @@ body {
 .input_text{
   resize:none;
   width: 100%;
-  margin-right: 20px;
+  box-sizing:border-box;
 }
 .li_task * {
  font-family: Verdana, Helvetica, Arial, sans-serif;
