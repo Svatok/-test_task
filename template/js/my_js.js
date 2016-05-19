@@ -5,6 +5,7 @@ $(document).ready(function () {
         editableText.val(divHtml);
         var h_div = $(div).css('height');
         //$(editableText).css('height', h_div);
+        alert(editableText.scrollHeight);
         $(editableText).css('height', 'auto').css('height', editableText.scrollHeight);
         $(editableText).css('paddingTop', 2);
     //    editableText.trigger('keyup');
