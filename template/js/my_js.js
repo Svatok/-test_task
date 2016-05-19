@@ -18,18 +18,15 @@ function editableTextBlurred(textarea) {
 }
 
 $(document).ready(function () {
-/*    $('.div_tasks').on('keyup input', '.input_text', function(){
+    $('.div_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
         var h= this.offsetHeight;
         var scroll_h=this.scrollHeight+2;
-       // $(this).css('paddingTop', 2);
-        //$(this).css('height', 'auto');
-        $(this).css('paddingTop','');
-        $(this).css('height','');
-        if (scroll_h != this.offsetHeight){
-           // alert(scroll_h+'!='+this.offsetHeight+',Pad'+$(this).css('paddingTop'));
+//        $(this).css('paddingTop','');
+//        $(this).css('height','');
+        $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
+/*        if (scroll_h != this.offsetHeight){
             $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
-           // $(this).css('paddingTop', 2);
         }else{
             $(this).css({
                 paddingTop: 0,
@@ -39,9 +36,8 @@ $(document).ready(function () {
                 paddingTop: Math.max(0, h/2 - this.scrollHeight/2),
                 height: h
             });
-           // alert(scroll_h+'='+this.offsetHeight+',Pad'+$(this).css('paddingTop'));
-        }
-    });*/
+        } */
+    });
 
     $('.div_tasks').on('click', '.del', function(e){
       e.preventDefault();
