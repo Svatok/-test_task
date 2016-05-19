@@ -5,11 +5,11 @@ $(document).ready(function () {
         editableText.val(divHtml);
         var h_div = $(div).css('height');
         //$(editableText).css('height', h_div);
-        alert($("#temp_edit_text").css('height'));
         $(editableText).css('height', 'auto').css('height', editableText.scrollHeight);
         $(editableText).css('paddingTop', 2);
     //    editableText.trigger('keyup');
         $(div).replaceWith(editableText);
+        alert($("#temp_edit_text").css('height'));
         editableText.focus();
     }
     
