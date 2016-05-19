@@ -20,7 +20,7 @@ $(document).ready(function () {
         var offset = this.offsetHeight - this.clientHeight;
         var h_pad=$(this).css('paddingTop');
         h_pad=h_pad.replace(/[^0-9]/gim,'');
-        var scroll_h=this.scrollHeight+h_pad;
+        var scroll_h=this.scrollHeight;
 //        alert(offset);
 //        $(this).css('height', 'auto').css('height', this.scrollHeight + offset );
         if (scroll_h != this.offsetHeight){
