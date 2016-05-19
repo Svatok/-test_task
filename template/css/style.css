@@ -17,10 +17,10 @@ body {
 }
 .div_task_text{
  display:inline-block;
- width: 100%;
+ width: 80%;
 }
 .input_text{
-  width: 100%;
+  width: 80%;
   resize:none;
 }
 .li_task * {
@@ -29,7 +29,7 @@ body {
  font-size: 14px;
 }
 .li_task {
- width: 600px;
+ width: 800px;
  list-style-type: none;
  background:#FFFFE0;
  border: 1px solid black;
