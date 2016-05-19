@@ -4,7 +4,8 @@ $(document).ready(function () {
         var editableText = $('<textarea class="input_text" />');
         editableText.val(divHtml);
         var h_div = $(div).css('height');
-        $(editableText).css('height', h_div);
+        //$(editableText).css('height', h_div);
+        $(editableText).css('height', 'auto').css('height', editableText.scrollHeight);
         $(editableText).css('paddingTop', 2);
     //    editableText.trigger('keyup');
         $(div).replaceWith(editableText);
