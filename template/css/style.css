@@ -20,6 +20,7 @@ body {
 }
 .input_text{
   resize:none;
+  width: 100%;
 }
 .li_task * {
  font-family: Verdana, Helvetica, Arial, sans-serif;
