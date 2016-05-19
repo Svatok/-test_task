@@ -3,13 +3,7 @@ $(document).ready(function () {
         var divHtml = $(div).html();
         var editableText = $('<textarea class="input_text" id="temp_edit_text" />');
         editableText.val(divHtml);
-        var h_div = $(div).css('height');
-        //$(editableText).css('height', h_div);
-    //    $(editableText).css('height', 'auto').css('height', editableText.scrollHeight);
-     //   $(editableText).css('paddingTop', 2);
-    //    editableText.trigger('keyup');
         $(div).replaceWith(editableText);
-        alert(editableText.css('height'));
         editableText.trigger('keyup');
         editableText.focus();
     }
