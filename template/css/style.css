@@ -18,12 +18,11 @@ body {
 .div_task_container{
  width: 80%;
 }
-.div_edit_buttons{
- margin-left: 50px;
-}
+
 .input_text{
   resize:none;
   width: 100%;
+  margin-right: 20px;
 }
 .li_task * {
  font-family: Verdana, Helvetica, Arial, sans-serif;
