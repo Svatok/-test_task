@@ -22,7 +22,7 @@ $(document).ready(function () {
 
     $('.div_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
-        $(this).css('height', 'auto').css('height', this.scrollHeight);
+        $(this).css('height', 'auto').css('height', this.scrollHeight+offset);
     });
 
     $('.div_tasks').on('click', '.del', function(e){
