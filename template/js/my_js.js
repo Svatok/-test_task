@@ -2,10 +2,12 @@ function divClicked(div) {
     var divHtml = $(div).html();
     var editableText = $('<textarea class="input_text" />');
     editableText.val(divHtml);
+//    var h = $(div).
+//    editableText.css('heigh','')
     $(div).replaceWith(editableText);
     editableText.focus();
     // setup the blur event for this new textarea
-    editableText.blur(editableTextBlurred);
+//    editableText.blur(editableTextBlurred);
 }
 
 function editableTextBlurred(textarea) {
@@ -14,7 +16,7 @@ function editableTextBlurred(textarea) {
     viewableText.html(html);
     $(textarea).replaceWith(viewableText);
     // setup the click event for this new div
-    viewableText.click(divClicked);
+//    viewableText.click(divClicked);
 }
 
 $(document).ready(function () {
