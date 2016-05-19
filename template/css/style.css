@@ -15,14 +15,9 @@ body {
 .in_edit {
  display:none;
 }
-.input_text{
+.div_task_text{
  width: 600px;
- resize: none;
- box-sizing: border-box;
 }
-.task_form * {
+.li_task * {
  vertical-align: middle;
-}
-.task_li {
- margin:10px 0px 10px 0px;
 }
