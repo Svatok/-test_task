@@ -1,6 +1,6 @@
 function divClicked(div) {
     var divHtml = $(div).html();
-    var editableText = $("<textarea />");
+    var editableText = $('<textarea class="input_text" />');
     editableText.val(divHtml);
     $(div).replaceWith(editableText);
     editableText.focus();
@@ -8,17 +8,17 @@ function divClicked(div) {
     editableText.blur(editableTextBlurred);
 }
 
-function editableTextBlurred() {
-    var html = $(this).val();
-    var viewableText = $("<div>");
+function editableTextBlurred(textarea) {
+    var html = $(textarea).val();
+    var viewableText = $('<div class="div_task_text">');
     viewableText.html(html);
-    $(this).replaceWith(viewableText);
+    $(textarea).replaceWith(viewableText);
     // setup the click event for this new div
     viewableText.click(divClicked);
 }
 
 $(document).ready(function () {
-    $('.div_tasks').on('keyup input', '.input_text', function(){
+/*    $('.div_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
         var h= this.offsetHeight;
         var scroll_h=this.scrollHeight+2;
@@ -41,7 +41,7 @@ $(document).ready(function () {
             });
            // alert(scroll_h+'='+this.offsetHeight+',Pad'+$(this).css('paddingTop'));
         }
-    });
+    });*/
 
     $('.div_tasks').on('click', '.del', function(e){
       e.preventDefault();
@@ -65,29 +65,27 @@ $(document).ready(function () {
       var id_li=$(this).closest('li').attr('id');
       var div_text=$("#"+id_li+" .div_task_text");
       divClicked(div_text);
-      //input_text.prop('disabled', false);
-      //input_text.focus();
       $("#"+id_li+" .out_edit").hide();
       $("#"+id_li+" .in_edit").css('display','inline-block');
     });
     
     $('.div_tasks').on('click', '.cancel', function(e){
       e.preventDefault();
-      var id_form=$(this).closest('form').attr('id');
-      var input_text=$("#"+id_form+" .input_text");
+      var id_li=$(this).closest('li').attr('id');
+      var div_text=$("#"+id_li+" .div_task_text");
       input_text.prop('disabled', true);
-      $("#"+id_form+" .in_edit").hide();
-      $("#"+id_form+" .out_edit").css('display','inline-block');
+      $("#"+id_li+" .in_edit").hide();
+      $("#"+id_li+" .out_edit").css('display','inline-block');
     });    
     
     $('.div_tasks').on('blur', '.input_text', function(event){
-         var id_form=$(this).closest('form').attr('id');
-         var input_text=$("#"+id_form+" .input_text");
+      var id_li=$(this).closest('li').attr('id');
+      var textarea_text=$("#"+id_li+" .input_text");
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
-               var id_task=id_form.replace(/[^0-9]/gim,'');
+               var id_task=id_li.replace(/[^0-9]/gim,'');
 /*               $.ajax({
                   url: '/path/to/action',
                   method: 'post',
@@ -99,9 +97,10 @@ $(document).ready(function () {
                   }
                });*/
             }
-            input_text.prop('disabled', true);
-            $("#"+id_form+" .in_edit").hide();
-            $("#"+id_form+" .out_edit").css('display','inline-block');
+            editableTextBlurred(textarea_text);
+            //input_text.prop('disabled', true);
+            $("#"+id_li+" .in_edit").hide();
+            $("#"+id_li+" .out_edit").css('display','inline-block');
          });
     });   
 
