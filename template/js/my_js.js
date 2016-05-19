@@ -40,9 +40,9 @@ $(document).ready(function () {
 
     $('.div_tasks').on('click', '.edit', function(e){
       e.preventDefault();
+      var id_li=$(this).closest('li').attr('id');
       before_edit=$("#"+id_li+" .div_task_text").text();
       alert(before_edit);
-      var id_li=$(this).closest('li').attr('id');
       var div_text=$("#"+id_li+" .div_task_text");
       divClicked(div_text);
       $("#"+id_li+" .out_edit").hide();
@@ -111,9 +111,9 @@ $(document).ready(function () {
           if ($("#div_tasks_"+id).is(':empty')){
             $.post("/projects/"+id, {}, function (data){
                 $("#div_tasks_"+id).html(data);
-                $(".input_text").each(function() {
+ /*               $(".input_text").each(function() {
                    $(this).trigger('keyup');
-                });
+                });*/
             });
             
           } else {
