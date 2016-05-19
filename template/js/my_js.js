@@ -2,12 +2,11 @@ function divClicked(div) {
     var divHtml = $(div).html();
     var editableText = $('<textarea class="input_text" />');
     editableText.val(divHtml);
-//    var h = $(div).
+    var h_div = $(div).css('height');
+    alert(h_div);
 //    editableText.css('heigh','')
     $(div).replaceWith(editableText);
     editableText.focus();
-    // setup the blur event for this new textarea
-//    editableText.blur(editableTextBlurred);
 }
 
 function editableTextBlurred(textarea) {
@@ -15,8 +14,6 @@ function editableTextBlurred(textarea) {
     var viewableText = $('<div class="div_task_text">');
     viewableText.html(html);
     $(textarea).replaceWith(viewableText);
-    // setup the click event for this new div
-//    viewableText.click(divClicked);
 }
 
 $(document).ready(function () {
@@ -24,9 +21,9 @@ $(document).ready(function () {
         var offset = this.offsetHeight - this.clientHeight;
         var h= this.offsetHeight;
         var scroll_h=this.scrollHeight+2;
-//        $(this).css('paddingTop','');
+        var h_pad=$(this).css('paddingTop');
 //        $(this).css('height','');
-        $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
+        $(this).css('height', 'auto').css('height', this.scrollHeight + offset - h_pad);
 /*        if (scroll_h != this.offsetHeight){
             $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
         }else{
