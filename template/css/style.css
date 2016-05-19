@@ -18,6 +18,9 @@ body {
 .div_task_container{
  width: 80%;
 }
+.div_edit_buttons{
+ text-align:center;
+}
 .input_text{
   resize:none;
   width: 100%;
