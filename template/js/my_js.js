@@ -27,7 +27,7 @@ $(document).ready(function () {
 
     $('.div_tasks').on('click', '.del', function(e){
       e.preventDefault();
-      var id_li=$(this).closest('li').attr('id');
+      var id_li=$(this).closest('tr').attr('id');
       var id_task=id_li.replace(/[^0-9]/gim,'');
 /*               $.ajax({
                   url: '/path/to/action',
@@ -57,7 +57,7 @@ $(document).ready(function () {
     });    
     
     $('.div_tasks').on('blur', '.input_text', function(event){
-      var id_li=$(this).closest('li').attr('id');
+      var id_li=$(this).closest('tr').attr('id');
       var textarea_text=$("#"+id_li+" .input_text");
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
@@ -85,9 +85,9 @@ $(document).ready(function () {
 
     $('.div_tasks').on('click', '.up_task', function(e){
       e.preventDefault();
-      var parent_ul=$(this).closest('ul');
-      var parent_li=$(this).closest('li');
-      var kol_tasks=parent_ul.find($("li")).length;
+      var parent_ul=$(this).closest('table');
+      var parent_li=$(this).closest('tr');
+      var kol_tasks=parent_ul.find($("tr")).length;
       if (parseInt(parent_li.attr('priority'))<kol_tasks){
          var priority_new=parseInt(parent_li.attr('priority'))+1;
          var before_li=parent_ul.find($('[priority = '+priority_new+']'));
@@ -99,8 +99,8 @@ $(document).ready(function () {
     
     $('.div_tasks').on('click', '.down_task', function(e){
       e.preventDefault();
-      var parent_ul=$(this).closest('ul');
-      var parent_li=$(this).closest('li');
+      var parent_ul=$(this).closest('table');
+      var parent_li=$(this).closest('tr');
       if (parseInt(parent_li.attr('priority'))>1){
          var priority_new=parseInt(parent_li.attr('priority'))-1;
          var after_li=parent_ul.find($('[priority = '+priority_new+']'));
