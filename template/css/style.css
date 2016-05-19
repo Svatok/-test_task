@@ -15,11 +15,10 @@ body {
 .in_edit {
  display:none;
 }
-.div_task_text{
+.div_task_container{
  width: 80%;
 }
 .input_text{
-  width: 80%;
   resize:none;
 }
 .li_task * {
