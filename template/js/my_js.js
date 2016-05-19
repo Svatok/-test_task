@@ -3,7 +3,8 @@ function divClicked(div) {
     var editableText = $('<textarea class="input_text" />');
     editableText.val(divHtml);
     var h_div = $(div).css('height');
-    $(editableText).css('height',h_div);
+//    $(editableText).css('height',h_div);
+    $(editableText).trigger('keyup');
     $(div).replaceWith(editableText);
     editableText.focus();
 }
@@ -17,30 +18,8 @@ function editableTextBlurred(textarea) {
 
 $(document).ready(function () {
     $('.div_tasks').on('keyup input', '.input_text', function(){
-//        var offset = this.offsetHeight - this.clientHeight;
-        var h_pad=$(this).css('paddingTop');
-        h_pad=parseInt(h_pad.replace(/[^0-9]/gim,''));
-        var scroll_h=this.scrollHeight+h_pad;
-//        alert(scroll_h+' != '+ this.offsetHeight);
-//        $(this).css('height', 'auto').css('height', this.scrollHeight + offset );
-//        $(this).css('height', 'auto');
-//        if (scroll_h != this.offsetHeight){
-            $(this).css('height', 'auto').css('height', this.scrollHeight);
- //       }
-//        var scroll_h=this.scrollHeight+2;
-//        var h= this.offsetHeight;
-/*        if (scroll_h != this.offsetHeight){
-            $(this).css('height', 'auto').css('height', this.scrollHeight + offset);
-        }else{
-            $(this).css({
-                paddingTop: 0,
-                height: 0
-            });
-            $(this).css({
-                paddingTop: Math.max(0, h/2 - this.scrollHeight/2),
-                height: h
-            });
-        } */
+        var offset = this.offsetHeight - this.clientHeight;
+        $(this).css('height', 'auto').css('height', this.scrollHeight+offset);
     });
 
     $('.div_tasks').on('click', '.del', function(e){
