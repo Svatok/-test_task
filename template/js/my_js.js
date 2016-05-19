@@ -4,7 +4,7 @@ function divClicked(div) {
     editableText.val(divHtml);
     var h_div = $(div).css('height');
 //    $(editableText).css('height',h_div);
-    $(editableText).trigger('keyup');
+    editableText.trigger('keyup');
     $(div).replaceWith(editableText);
     editableText.focus();
 }
@@ -19,7 +19,7 @@ function editableTextBlurred(textarea) {
 $(document).ready(function () {
     $('.div_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
-        $(this).css('height', 'auto').css('height', this.scrollHeight+offset);
+        $(this).css('height', 'auto').css('height', this.scrollHeight);
     });
 
     $('.div_tasks').on('click', '.del', function(e){
