@@ -4,7 +4,7 @@ function divClicked(div) {
     editableText.val(divHtml);
     var h_div = $(div).css('height');
     alert(h_div);
-    $(editableText).css('heigh',200);
+    editableText.css('heigh',200);
     $(div).replaceWith(editableText);
     editableText.focus();
 }
@@ -22,6 +22,7 @@ $(document).ready(function () {
         var h= this.offsetHeight;
         var scroll_h=this.scrollHeight+2;
         var h_pad=$(this).css('paddingTop');
+        h_pad=h_pad.replace(/[^0-9]/gim,'');
         var new_h=(this.scrollHeight + offset - h_pad);
         alert(new_h);
 //        $(this).css('height','');
