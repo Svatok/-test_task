@@ -18,9 +18,7 @@ body {
 .div_task_container{
  width: 80%;
 }
-.div_check{
- width: 50px;
-}
+
 .input_text{
   resize:none;
   width: 100%;
