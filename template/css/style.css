@@ -34,6 +34,7 @@ body {
  background:#FFFFE0;
  border: 1px solid black;
  min-height: 50px;
+ text-align: center;
 }
 .div_check, .div_task_container, .div_edit_buttons  {
   display: inline-block;
