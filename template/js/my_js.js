@@ -1,7 +1,7 @@
 $(document).ready(function () {
     function divClicked(div) {
         var divHtml = $(div).html();
-        var editableText = $('<textarea class="input_text" id="temp_edit_text" />');
+        var editableText = $('<textarea class="input_text"/>');
         editableText.val(divHtml);
         $(div).replaceWith(editableText);
         editableText.trigger('keyup');
