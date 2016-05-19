@@ -33,7 +33,7 @@ body {
  border: 1px solid black;
  min-height: 50px;
 }
-.div_check, .div_task_text, .div_edit_buttons  {
+.div_check, .div_task_container, .div_edit_buttons  {
   display: inline-block;
   vertical-align: middle;
 }
