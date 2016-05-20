@@ -34,12 +34,11 @@ body {
 }
 .container_tasks{
   width: 800px;
-  border-radius: 0px 0px 20px 20px;
-  border-radius: 10px;
+  border-radius: 0px 0px 10px 10pxx;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -khtml-border-radius: 10px;
-  border: 1px solid #000;
+  border: 1px solid grey;
   display: block;
 }
 .task {
