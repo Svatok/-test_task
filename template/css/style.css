@@ -28,11 +28,11 @@ body {
   width: 100%;
   box-sizing:border-box;
 }
-.li_task * {
+.task * {
  font-family: Verdana, Helvetica, Arial, sans-serif;
  font-size: 14px;
 }
-.li_task {
+.task {
  width: 800px;
  list-style-type: none;
  background:#FFFFE0;
@@ -44,7 +44,7 @@ body {
   display: inline-block;
   vertical-align: middle;
 }
-.li_task:before { /* для IE8+ */
+.task:before { /* для IE8+ */
   content: "";
   display: inline-block;
   min-height: inherit;
