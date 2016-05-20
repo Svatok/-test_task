@@ -27,8 +27,8 @@ $(document).ready(function () {
 
     $('.container_tasks').on('click', '.del', function(e){
       e.preventDefault();
-      var id_task=$(this).closest('tr').attr('id');
-      var id_task=id_task.replace(/[^0-9]/gim,'');
+      var id_task_attr=$(this).closest('tr').attr('id');
+      var id_task=id_task_attr.replace(/[^0-9]/gim,'');
 /*               $.ajax({
                   url: '/path/to/action',
                   method: 'post',
@@ -44,12 +44,12 @@ $(document).ready(function () {
 
     $('.container_tasks').on('click', '.edit', function(e){
       e.preventDefault();
-      var id_task=$(this).closest('tr').attr('id');
-      before_edit=$("#"+id_task+" .div_task_text").text();
-      var div_text=$("#"+id_task+" .div_task_text");
+      var id_task_attr=$(this).closest('tr').attr('id');
+      before_edit=$("#"+id_task_attr+" .div_task_text").text();
+      var div_text=$("#"+id_task_attr+" .div_task_text");
       divClicked(div_text);
-      $("#"+id_task+" .out_edit").hide();
-      $("#"+id_task+" .in_edit").css('display','inline-block');
+      $("#"+id_task_attr+" .out_edit").hide();
+      $("#"+id_task_attr+" .in_edit").css('display','inline-block');
     });
     
     $('.container_tasks').on('click', '.cancel', function(e){
@@ -57,13 +57,13 @@ $(document).ready(function () {
     });    
     
     $('.container_tasks').on('blur', '.input_text', function(event){
-      var id_task=$(this).closest('tr').attr('id');
-      var textarea_text=$("#"+id_task+" .input_text");
+      var id_task_attr=$(this).closest('tr').attr('id');
+      var textarea_text=$("#"+id_task_attr+" .input_text");
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
-               var id_task=id_task.replace(/[^0-9]/gim,'');
+               var id_task=id_task_attr.replace(/[^0-9]/gim,'');
 /*               $.ajax({
                   url: '/path/to/action',
                   method: 'post',
@@ -78,8 +78,8 @@ $(document).ready(function () {
             }else{
                 editableTextBlurred(textarea_text, false);
             }
-            $("#"+id_task+" .in_edit").hide();
-            $("#"+id_task+" .out_edit").css('display','inline-block');
+            $("#"+id_task_attr+" .in_edit").hide();
+            $("#"+id_task_attr+" .out_edit").css('display','inline-block');
          });
     });   
 
