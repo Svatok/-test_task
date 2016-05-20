@@ -1,6 +1,6 @@
 
   <?php foreach ($tasksList as $tasksItem):?>
-  <tr priority="<?php echo $tasksItem['priority'];?>" class="li_task" id="li_task_<?php echo $tasksItem['id'];?>">
+  <tr priority="<?php echo $tasksItem['priority'];?>" class="task" id="task_<?php echo $tasksItem['id'];?>">
       <td class="div_check">
       <?php if ($tasksItem['status']==1): ?>
         <input type="checkbox" checked>
