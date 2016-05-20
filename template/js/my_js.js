@@ -20,12 +20,12 @@ $(document).ready(function () {
         $(textarea).replaceWith(viewableText);
     }
 
-    $('.div_tasks').on('keyup input', '.input_text', function(){
+    $('.container_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
         $(this).css('height', 'auto').css('height', this.scrollHeight+offset);
     });
 
-    $('.div_tasks').on('click', '.del', function(e){
+    $('.container_tasks').on('click', '.del', function(e){
       e.preventDefault();
       var id_li=$(this).closest('tr').attr('id');
       var id_task=id_li.replace(/[^0-9]/gim,'');
@@ -42,7 +42,7 @@ $(document).ready(function () {
 
     });   
 
-    $('.div_tasks').on('click', '.edit', function(e){
+    $('.container_tasks').on('click', '.edit', function(e){
       e.preventDefault();
       var id_li=$(this).closest('tr').attr('id');
       before_edit=$("#"+id_li+" .div_task_text").text();
@@ -52,11 +52,11 @@ $(document).ready(function () {
       $("#"+id_li+" .in_edit").css('display','inline-block');
     });
     
-    $('.div_tasks').on('click', '.cancel', function(e){
+    $('.container_tasks').on('click', '.cancel', function(e){
       e.preventDefault();
     });    
     
-    $('.div_tasks').on('blur', '.input_text', function(event){
+    $('.container_tasks').on('blur', '.input_text', function(event){
       var id_li=$(this).closest('tr').attr('id');
       var textarea_text=$("#"+id_li+" .input_text");
          $(document).one('click', function(e) {
@@ -83,7 +83,7 @@ $(document).ready(function () {
          });
     });   
 
-    $('.div_tasks').on('click', '.up_task', function(e){
+    $('.container_tasks').on('click', '.up_task', function(e){
       e.preventDefault();
       var parent_ul=$(this).closest('table');
       var parent_li=$(this).closest('tr');
@@ -97,7 +97,7 @@ $(document).ready(function () {
       }
     }); 
     
-    $('.div_tasks').on('click', '.down_task', function(e){
+    $('.container_tasks').on('click', '.down_task', function(e){
       e.preventDefault();
       var parent_ul=$(this).closest('table');
       var parent_li=$(this).closest('tr');
@@ -113,16 +113,16 @@ $(document).ready(function () {
     $(".project").click(function (e){
           e.preventDefault();
           var id=$(this).attr("data-id");
-          if ($("#div_tasks_"+id).is(':empty')){
+          if ($("#container_tasks_"+id).is(':empty')){
             $.post("/projects/"+id, {}, function (data){
-                $("#div_tasks_"+id).html(data);
+                $("#container_tasks_"+id).html(data);
  //               $(".input_text").each(function() {
   //                 $(this).trigger('keyup');
 //                });
             });
             
           } else {
-            $("#div_tasks_"+id).empty();
+            $("#container_tasks_"+id).empty();
           }
     });
     
