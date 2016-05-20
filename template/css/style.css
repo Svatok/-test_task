@@ -41,15 +41,16 @@ body {
  border: 1px solid black;
  min-height: 50px;
  text-align: center;
+ vertical-align: middle;
 }
 .div_check, .div_task_container, .div_edit_buttons  {
   display: inline-block;
   vertical-align: middle;
 }
-.task:before { /* для IE8+ */
+/*.task:before {  для IE8+ 
   content: "";
   display: inline-block;
   min-height: inherit;
   height: 100%;
   vertical-align: middle;
-}
+}*/
