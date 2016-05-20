@@ -32,8 +32,10 @@ body {
  font-family: Verdana, Helvetica, Arial, sans-serif;
  font-size: 14px;
 }
+.container_tasks{
+  width: 800px;
+}
 .task {
- width: 800px;
  list-style-type: none;
  background:#FFFFE0;
  border: 1px solid black;
