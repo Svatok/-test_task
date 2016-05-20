@@ -27,8 +27,8 @@ $(document).ready(function () {
 
     $('.container_tasks').on('click', '.del', function(e){
       e.preventDefault();
-      var id_li=$(this).closest('tr').attr('id');
-      var id_task=id_li.replace(/[^0-9]/gim,'');
+      var id_task=$(this).closest('tr').attr('id');
+      var id_task=id_task.replace(/[^0-9]/gim,'');
 /*               $.ajax({
                   url: '/path/to/action',
                   method: 'post',
@@ -44,12 +44,12 @@ $(document).ready(function () {
 
     $('.container_tasks').on('click', '.edit', function(e){
       e.preventDefault();
-      var id_li=$(this).closest('tr').attr('id');
-      before_edit=$("#"+id_li+" .div_task_text").text();
-      var div_text=$("#"+id_li+" .div_task_text");
+      var id_task=$(this).closest('tr').attr('id');
+      before_edit=$("#"+id_task+" .div_task_text").text();
+      var div_text=$("#"+id_task+" .div_task_text");
       divClicked(div_text);
-      $("#"+id_li+" .out_edit").hide();
-      $("#"+id_li+" .in_edit").css('display','inline-block');
+      $("#"+id_task+" .out_edit").hide();
+      $("#"+id_task+" .in_edit").css('display','inline-block');
     });
     
     $('.container_tasks').on('click', '.cancel', function(e){
@@ -57,13 +57,13 @@ $(document).ready(function () {
     });    
     
     $('.container_tasks').on('blur', '.input_text', function(event){
-      var id_li=$(this).closest('tr').attr('id');
-      var textarea_text=$("#"+id_li+" .input_text");
+      var id_task=$(this).closest('tr').attr('id');
+      var textarea_text=$("#"+id_task+" .input_text");
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
-               var id_task=id_li.replace(/[^0-9]/gim,'');
+               var id_task=id_task.replace(/[^0-9]/gim,'');
 /*               $.ajax({
                   url: '/path/to/action',
                   method: 'post',
@@ -78,35 +78,35 @@ $(document).ready(function () {
             }else{
                 editableTextBlurred(textarea_text, false);
             }
-            $("#"+id_li+" .in_edit").hide();
-            $("#"+id_li+" .out_edit").css('display','inline-block');
+            $("#"+id_task+" .in_edit").hide();
+            $("#"+id_task+" .out_edit").css('display','inline-block');
          });
     });   
 
     $('.container_tasks').on('click', '.up_task', function(e){
       e.preventDefault();
-      var parent_ul=$(this).closest('table');
-      var parent_li=$(this).closest('tr');
-      var kol_tasks=parent_ul.find($("tr")).length;
-      if (parseInt(parent_li.attr('priority'))<kol_tasks){
-         var priority_new=parseInt(parent_li.attr('priority'))+1;
-         var before_li=parent_ul.find($('[priority = '+priority_new+']'));
-         before_li.before(parent_li);
+      var container_tasks=$(this).closest('table');
+      var task=$(this).closest('tr');
+      var kol_tasks=container_tasks.find($("tr")).length;
+      if (parseInt(task.attr('priority'))<kol_tasks){
+         var priority_new=parseInt(task.attr('priority'))+1;
+         var before_li=container_tasks.find($('[priority = '+priority_new+']'));
+         before_li.before(task);
          before_li.attr('priority', (priority_new-1));     
-         parent_li.attr('priority', priority_new);
+         task.attr('priority', priority_new);
       }
     }); 
     
     $('.container_tasks').on('click', '.down_task', function(e){
       e.preventDefault();
-      var parent_ul=$(this).closest('table');
-      var parent_li=$(this).closest('tr');
-      if (parseInt(parent_li.attr('priority'))>1){
-         var priority_new=parseInt(parent_li.attr('priority'))-1;
-         var after_li=parent_ul.find($('[priority = '+priority_new+']'));
-         after_li.after(parent_li);
+      var container_tasks=$(this).closest('table');
+      var task=$(this).closest('tr');
+      if (parseInt(task.attr('priority'))>1){
+         var priority_new=parseInt(task.attr('priority'))-1;
+         var after_li=container_tasks.find($('[priority = '+priority_new+']'));
+         after_li.after(task);
          after_li.attr('priority', (priority_new+1));     
-         parent_li.attr('priority', priority_new);
+         task.attr('priority', priority_new);
       }
     }); 
    
