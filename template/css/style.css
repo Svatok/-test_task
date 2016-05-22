@@ -55,7 +55,7 @@ body {
  vertical-align: middle;
 }
 .add_task_input {
- padding: 0px 0px 0px 5px;
+ padding: 20px 0px 20px 5px;
  }
 .add_task_input input{
  width: 100%;
