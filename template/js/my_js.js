@@ -72,9 +72,9 @@ $(document).ready(function () {
                         var container_tasks=textarea_text.closest('table');
                         var priority_new=container_tasks.find($("tr")).length+1;
                         var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
- /*                       var insert_html='<tr priority="'+priority_new+'" class="task" id="new">'+   
+                        var insert_html='<tr priority="'+priority_new+'" class="task" id="new">'+   
                                             '<td class="div_check"><input type="checkbox"></td>'+
-                                            '<td class="div_task_container"><div class="div_task_text">'.task_text.'</div></td>'+
+                                            '<td class="div_task_container"><div class="div_task_text">'+task_text+'</div></td>'+
                                             '<td class="div_edit_buttons">'+
                                                 '<div class="out_edit">'+
                                                   '<a href="" class="up_task">Up</a>'+
@@ -87,7 +87,7 @@ $(document).ready(function () {
                                                   '<a href="" class="cancel">Cancel</a>'+
                                                 '</div>'+
                                             '</td>'+
-                                        '</tr>';*/
+                                        '</tr>';
                         //before_li.before('');
 //                            task.attr('priority', priority_new);
                         
