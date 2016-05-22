@@ -70,8 +70,9 @@ $(document).ready(function () {
                   success: function (data) {
                      if (data){ */
                         var container_tasks=textarea_text.closest('table');
-                        var priority_new=container_tasks.find($("tr")).length+1;
+                        var priority_new=(container_tasks.find($("tr")).length)+1;
                         var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
+                        alert(before_li.attr('class'));
                         var insert_task='<tr priority="'+priority_new+'" class="task" id="new">'+   
                                             '<td class="div_check"><input type="checkbox"></td>'+
                                             '<td class="div_task_container"><div class="div_task_text">'+task_text+'</div></td>'+
