@@ -55,6 +55,52 @@ $(document).ready(function () {
     $('.container_tasks').on('click', '.cancel', function(e){
       e.preventDefault();
     });    
+    $('.container_tasks').on('blur', '.add_task_input input', function(event){
+      var id_task_attr=$(this).closest('tr').attr('id');
+      var textarea_text=$(this);
+      var task_text=textarea_text.val();
+         $(document).one('click', function(e) {
+            var focused_element=$(e.target);
+            if (focused_element.attr('class')=='save_add'){
+               e.preventDefault();
+/*               $.ajax({
+                  url: '/path/to/action',
+                  method: 'post',
+                  data: $(this).closest('form').serialize(),
+                  success: function (data) {
+                     if (data){ */
+                        var container_tasks=textarea_text.closest('table');
+                        var priority_new=container_tasks.find($("tr")).length+1;
+                        var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
+                        var insert_html='';
+                        before_li.before('<tr priority="'+priority_new+'" class="task" id="new">'+   
+                                            '<td class="div_check"><input type="checkbox"></td>'+
+                                            '<td class="div_task_container"><div class="div_task_text">'.task_text.'</div></td>'+
+                                            '<td class="div_edit_buttons">'+
+                                                '<div class="out_edit">'+
+                                                  '<a href="" class="up_task">Up</a>'+
+                                                  '<a href="" class="down_task">Down</a>'+
+                                                  '<a href="" class="edit">Edit</a>'+
+                                                  '<a href="" class="del">Del</a>'+
+                                                '</div>'+
+                                                '<div class="in_edit">'+
+                                                  '<a href="" class="save">Save</a>'+
+                                                  '<a href="" class="cancel">Cancel</a>'+
+                                                '</div>'+
+                                            '</td>'+
+                                        '</tr>');
+                            before_li.attr('priority', (priority_new-1));     
+                            task.attr('priority', priority_new);
+                        
+                        alert("Task "+"new"+" add!");
+/*                     }
+                  }
+               });*/
+            }else{
+                $(textarea).val()="";
+            }
+         });
+    });   
     
     $('.container_tasks').on('blur', '.input_text', function(event){
       var id_task_attr=$(this).closest('tr').attr('id');
