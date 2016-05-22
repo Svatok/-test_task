@@ -41,6 +41,12 @@ body {
   border: 1px solid grey;
   display: block;
  border-collapse: separate;
+ Как вариант обернуть дивом
+/*
+div
+overflow: hidden;
+padding: 0;
+border-radius: 15px*/
 }
 .task {
  background:#FFFFE0;
