@@ -72,7 +72,6 @@ $(document).ready(function () {
                         var container_tasks=textarea_text.closest('table');
                         var priority_new=(container_tasks.find($("tr.task")).length)+1;
                         var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
-                        alert(priority_new);
                         var insert_task='<tr priority="'+priority_new+'" class="task" id="new">'+   
                                             '<td class="div_check"><input type="checkbox"></td>'+
                                             '<td class="div_task_container"><div class="div_task_text">'+task_text+'</div></td>'+
