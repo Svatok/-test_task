@@ -89,6 +89,7 @@ $(document).ready(function () {
                                             '</td>'+
                                         '</tr>';
                         before_li.before(insert_task);
+                        container_tasks.find($('[priority = '+priority_new+']').find.css('min-height','50px');
                         alert("Task "+"new"+" add!");
 /*                     }
                   }
