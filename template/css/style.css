@@ -53,10 +53,13 @@ body {
  text-align: center;
  vertical-align: middle;
 }
+.add_task_input {
+ padding: 0px 0px 0px 5px;
+ }
 .add_task_input input{
  width: 100%;
- text-align: right;  
-}
+ box-sizing:border-box;
+ }
 .add_task_button{
  text-align: left;  
 }
