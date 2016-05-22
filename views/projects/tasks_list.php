@@ -1,4 +1,16 @@
 
+  <tr class="add_task">
+    <td>
+      +
+    </td>
+    <td>
+      <input type="text" placeholder="Start typing here to create a task..."></input>
+    </td>
+    <td>
+      <a href="#" class="add_task_button">Add Task</a>
+    </td>
+  </tr>
+  
   <?php foreach ($tasksList as $tasksItem):?>
   <tr priority="<?php echo $tasksItem['priority'];?>" class="task" id="task_<?php echo $tasksItem['id'];?>">
       <td class="div_check">
