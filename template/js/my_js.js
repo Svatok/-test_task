@@ -94,8 +94,7 @@ $(document).ready(function () {
                   }
                });*/
             }
-            alert('tyt');
-            $(textarea).val()="";
+            $(textarea).val('');
          });
     });   
     
