@@ -59,7 +59,6 @@ $(document).ready(function () {
       var id_task_attr=$(this).closest('tr').attr('id');
       var textarea_text=$(this);
       var task_text=textarea_text.val();
-      alert(task_text);
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
             if (focused_element.attr('class')=='save_add'){
@@ -95,6 +94,7 @@ $(document).ready(function () {
                   }
                });*/
             }
+            alert('tyt');
             $(textarea).val()="";
          });
     });   
