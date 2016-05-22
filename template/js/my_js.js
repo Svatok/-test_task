@@ -88,11 +88,11 @@ $(document).ready(function () {
                                                 '</div>'+
                                             '</td>'+
                                         '</tr>';
-                        var new_task_tr = $('<tr></tr>');
-                        before_li.before(new_task_tr);
-                        new_task_tr.prop('class','task');
-                        new_task_tr.prop('priority', priority_new);
-                        //container_tasks.find($('[priority = '+priority_new+']').find.css('min-height','50px');
+//                        var new_task_tr = $('<tr></tr>');
+                        before_li.before(insert_task);
+//                        new_task_tr.prop('class','task');
+//                        new_task_tr.prop('priority', priority_new);
+                        container_tasks.find($('[priority = '+priority_new+']').css('min-height','50px');
                         alert("Task "+"new"+" add!");
 /*                     }
                   }
