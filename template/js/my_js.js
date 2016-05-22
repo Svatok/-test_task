@@ -89,9 +89,9 @@ $(document).ready(function () {
                                             '</td>'+
                                         '</tr>';
                         var new_task_tr = $('<tr></tr>');
+                        before_li.before(new_task_tr);
                         new_task_tr.prop('class','task');
                         new_task_tr.prop('priority', priority_new);
-                        before_li.before(new_task_tr);
                         //container_tasks.find($('[priority = '+priority_new+']').find.css('min-height','50px');
                         alert("Task "+"new"+" add!");
 /*                     }
