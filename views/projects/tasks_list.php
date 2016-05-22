@@ -4,7 +4,7 @@
       +
     </td>
     <td class="add_task_input"> 
-      <input type="text" width="90%" placeholder="Start typing here to create a task..."></input>
+      <input type="text" placeholder="Start typing here to create a task..."></input>
     </td>
     <td class="add_task_button">
       <a href="#">Add Task</a>
