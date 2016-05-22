@@ -70,7 +70,7 @@ $(document).ready(function () {
                   success: function (data) {
                      if (data){ */
                         var container_tasks=textarea_text.closest('table');
-                        var priority_new=(container_tasks.find($("tr")).length)+1;
+                        var priority_new=(container_tasks.find($(".task tr")).length)+1;
                         var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
                         alert(priority_new);
                         var insert_task='<tr priority="'+priority_new+'" class="task" id="new">'+   
