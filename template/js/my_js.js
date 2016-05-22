@@ -89,6 +89,7 @@ $(document).ready(function () {
                                             '</td>'+
                                         '</tr>';
                         var new_task_tr = $('<tr priority="'+priority_new+'" class="task" id="new"></tr>');
+                        new_task_tr.css('min-height','50px');
                         before_li.before(new_task_tr);
                         //container_tasks.find($('[priority = '+priority_new+']').find.css('min-height','50px');
                         alert("Task "+"new"+" add!");
