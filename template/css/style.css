@@ -40,7 +40,7 @@ body {
   -khtml-border-radius: 0px 0px 10px 10px;
   border: 1px solid grey;
   display: block;
-  border-collapse: collapse;
+ /*border-collapse: collapse;*/
 }
 .task {
  background:#FFFFE0;
@@ -55,7 +55,7 @@ body {
  vertical-align: middle;
 }
 .add_task_input {
- padding: 20px 0px 20px 5px;
+ padding: 10px 0px 10px 5px;
  }
 .add_task_input input{
  width: 100%;
