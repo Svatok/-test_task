@@ -40,6 +40,7 @@ body {
   -khtml-border-radius: 0px 0px 10px 10px;
   border: 1px solid grey;
   display: block;
+  border-collapse: collapse;
 }
 .task {
  background:#FFFFE0;
