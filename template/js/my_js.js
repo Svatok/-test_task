@@ -69,6 +69,7 @@ $(document).ready(function () {
                   data: $(this).closest('form').serialize(),
                   success: function (data) {
                      if (data){ */
+                     alert('111');
                         var container_tasks=textarea_text.closest('table');
                         var priority_new=container_tasks.find($("tr")).length+1;
                         var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
@@ -94,7 +95,7 @@ $(document).ready(function () {
                   }
                });*/
             }
-            $(textarea).val('');
+            $(textarea_text).val('');
          });
     });   
     
