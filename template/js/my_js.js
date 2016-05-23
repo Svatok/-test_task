@@ -77,14 +77,14 @@ $(document).ready(function () {
                                             '<td class="div_task_container"><div class="div_task_text">'+task_text+'</div></td>'+
                                             '<td class="div_edit_buttons">'+
                                                 '<div class="out_edit">'+
-                                                  '<a href="" class="up_task">Up</a>'+
-                                                  '<a href="" class="down_task">Down</a>'+
-                                                  '<a href="" class="edit">Edit</a>'+
-                                                  '<a href="" class="del">Del</a>'+
+                                                  '<a href="" class="up_task">Up</a> '+
+                                                  '<a href="" class="down_task">Down</a> '+
+                                                  '<a href="" class="edit">Edit</a> '+
+                                                  '<a href="" class="del">Del</a> '+
                                                 '</div>'+
                                                 '<div class="in_edit">'+
-                                                  '<a href="" class="save">Save</a>'+
-                                                  '<a href="" class="cancel">Cancel</a>'+
+                                                  '<a href="" class="save">Save</a> '+
+                                                  '<a href="" class="cancel">Cancel</a> '+
                                                 '</div>'+
                                             '</td>'+
                                         '</tr>';
