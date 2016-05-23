@@ -92,7 +92,7 @@ $(document).ready(function () {
                         before_li.before(insert_task);
 //                        new_task_tr.prop('class','task');
 //                        new_task_tr.prop('priority', priority_new);
-                        container_tasks.find($('[priority = '+priority_new+']').css('min-height','50px');
+                        //container_tasks.find($('[priority = '+priority_new+']').css('min-height','50px');
                         alert("Task "+"new"+" add!");
 /*                     }
                   }
