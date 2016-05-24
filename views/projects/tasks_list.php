@@ -1,15 +1,27 @@
-<ul>
+
+  <tr class="add_task">
+    <td>
+      +
+    </td>
+    <td class="add_task_input"> 
+      <input type="text" placeholder="Start typing here to create a task..."></input>
+    </td>
+    <td class="add_task_button">
+      <a href="#" class="save_add">Add Task</a>
+    </td>
+  </tr>
+  
   <?php foreach ($tasksList as $tasksItem):?>
-  <li priority="<?php echo $tasksItem['priority'];?>" class="li_task" id="li_task_<?php echo $tasksItem['id'];?>">
-      <div class="div_check">
+  <tr priority="<?php echo $tasksItem['priority'];?>" class="task" id="task_<?php echo $tasksItem['id'];?>">
+      <td class="div_check">
       <?php if ($tasksItem['status']==1): ?>
         <input type="checkbox" checked>
       <?php else: ?>
         <input type="checkbox">
       <?php endif; ?>
-      </div>
-      <div class="div_task_container"><div class="div_task_text"><?php echo $tasksItem['name'];?></div></div>
-      <div class="div_edit_buttons">
+      </td>
+      <td class="div_task_container"><div class="div_task_text"><?php echo $tasksItem['name'];?></div></td>
+      <td class="div_edit_buttons">
         <div class="out_edit">
           <a href="" class="up_task">Up</a>
           <a href="" class="down_task">Down</a>
@@ -20,8 +32,8 @@
           <a href="" class="save">Save</a>
           <a href="" class="cancel">Cancel</a>
         </div>
-      </div>
-  </li>
+      </td>
+  </tr>
   <?php endforeach; ?>
-</ul>
+
 

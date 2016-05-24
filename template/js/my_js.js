@@ -20,15 +20,15 @@ $(document).ready(function () {
         $(textarea).replaceWith(viewableText);
     }
 
-    $('.div_tasks').on('keyup input', '.input_text', function(){
+    $('.container_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
         $(this).css('height', 'auto').css('height', this.scrollHeight+offset);
     });
 
-    $('.div_tasks').on('click', '.del', function(e){
+    $('.container_tasks').on('click', '.del', function(e){
       e.preventDefault();
-      var id_li=$(this).closest('li').attr('id');
-      var id_task=id_li.replace(/[^0-9]/gim,'');
+      var id_task_attr=$(this).closest('tr').attr('id');
+      var id_task=id_task_attr.replace(/[^0-9]/gim,'');
 /*               $.ajax({
                   url: '/path/to/action',
                   method: 'post',
@@ -42,28 +42,74 @@ $(document).ready(function () {
 
     });   
 
-    $('.div_tasks').on('click', '.edit', function(e){
+    $('.container_tasks').on('click', '.edit', function(e){
       e.preventDefault();
-      var id_li=$(this).closest('li').attr('id');
-      before_edit=$("#"+id_li+" .div_task_text").text();
-      var div_text=$("#"+id_li+" .div_task_text");
+      var id_task_attr=$(this).closest('tr').attr('id');
+      before_edit=$("#"+id_task_attr+" .div_task_text").text();
+      var div_text=$("#"+id_task_attr+" .div_task_text");
       divClicked(div_text);
-      $("#"+id_li+" .out_edit").hide();
-      $("#"+id_li+" .in_edit").css('display','inline-block');
+      $("#"+id_task_attr+" .out_edit").hide();
+      $("#"+id_task_attr+" .in_edit").css('display','inline-block');
     });
     
-    $('.div_tasks').on('click', '.cancel', function(e){
+    $('.container_tasks').on('click', '.cancel', function(e){
       e.preventDefault();
     });    
+    $('.container_tasks').on('blur', '.add_task_input input', function(event){
+      var id_task_attr=$(this).closest('tr').attr('id');
+      var textarea_text=$(this);
+      var task_text=textarea_text.val();
+         $(document).one('click', function(e) {
+            var focused_element=$(e.target);
+            if (focused_element.attr('class')=='save_add'){
+               e.preventDefault();
+/*               $.ajax({
+                  url: '/path/to/action',
+                  method: 'post',
+                  data: $(this).closest('form').serialize(),
+                  success: function (data) {
+                     if (data){ */
+                        var container_tasks=textarea_text.closest('table');
+                        var priority_new=(container_tasks.find($("tr.task")).length)+1;
+                        var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
+                        var insert_task='<tr priority="'+priority_new+'" class="task" id="new">'+   
+                                            '<td class="div_check"><input type="checkbox"></td>'+
+                                            '<td class="div_task_container"><div class="div_task_text">'+task_text+'</div></td>'+
+                                            '<td class="div_edit_buttons">'+
+                                                '<div class="out_edit">'+
+                                                  '<a href="" class="up_task">Up</a> '+
+                                                  '<a href="" class="down_task">Down</a> '+
+                                                  '<a href="" class="edit">Edit</a> '+
+                                                  '<a href="" class="del">Del</a> '+
+                                                '</div>'+
+                                                '<div class="in_edit">'+
+                                                  '<a href="" class="save">Save</a> '+
+                                                  '<a href="" class="cancel">Cancel</a> '+
+                                                '</div>'+
+                                            '</td>'+
+                                        '</tr>';
+//                        var new_task_tr = $('<tr></tr>');
+                        before_li.before(insert_task);
+//                        new_task_tr.prop('class','task');
+//                        new_task_tr.prop('priority', priority_new);
+                        //container_tasks.find($('[priority = '+priority_new+']').css('min-height','50px');
+                        alert("Task "+"new"+" add!");
+/*                     }
+                  }
+               });*/
+            }
+            $(textarea_text).val('');
+         });
+    });   
     
-    $('.div_tasks').on('blur', '.input_text', function(event){
-      var id_li=$(this).closest('li').attr('id');
-      var textarea_text=$("#"+id_li+" .input_text");
+    $('.container_tasks').on('blur', '.input_text', function(event){
+      var id_task_attr=$(this).closest('tr').attr('id');
+      var textarea_text=$("#"+id_task_attr+" .input_text");
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
-               var id_task=id_li.replace(/[^0-9]/gim,'');
+               var id_task=id_task_attr.replace(/[^0-9]/gim,'');
 /*               $.ajax({
                   url: '/path/to/action',
                   method: 'post',
@@ -78,51 +124,51 @@ $(document).ready(function () {
             }else{
                 editableTextBlurred(textarea_text, false);
             }
-            $("#"+id_li+" .in_edit").hide();
-            $("#"+id_li+" .out_edit").css('display','inline-block');
+            $("#"+id_task_attr+" .in_edit").hide();
+            $("#"+id_task_attr+" .out_edit").css('display','inline-block');
          });
     });   
 
-    $('.div_tasks').on('click', '.up_task', function(e){
+    $('.container_tasks').on('click', '.up_task', function(e){
       e.preventDefault();
-      var parent_ul=$(this).closest('ul');
-      var parent_li=$(this).closest('li');
-      var kol_tasks=parent_ul.find($("li")).length;
-      if (parseInt(parent_li.attr('priority'))<kol_tasks){
-         var priority_new=parseInt(parent_li.attr('priority'))+1;
-         var before_li=parent_ul.find($('[priority = '+priority_new+']'));
-         before_li.before(parent_li);
+      var container_tasks=$(this).closest('table');
+      var task=$(this).closest('tr');
+      var kol_tasks=container_tasks.find($("tr")).length;
+      if (parseInt(task.attr('priority'))<kol_tasks){
+         var priority_new=parseInt(task.attr('priority'))+1;
+         var before_li=container_tasks.find($('[priority = '+priority_new+']'));
+         before_li.before(task);
          before_li.attr('priority', (priority_new-1));     
-         parent_li.attr('priority', priority_new);
+         task.attr('priority', priority_new);
       }
     }); 
     
-    $('.div_tasks').on('click', '.down_task', function(e){
+    $('.container_tasks').on('click', '.down_task', function(e){
       e.preventDefault();
-      var parent_ul=$(this).closest('ul');
-      var parent_li=$(this).closest('li');
-      if (parseInt(parent_li.attr('priority'))>1){
-         var priority_new=parseInt(parent_li.attr('priority'))-1;
-         var after_li=parent_ul.find($('[priority = '+priority_new+']'));
-         after_li.after(parent_li);
+      var container_tasks=$(this).closest('table');
+      var task=$(this).closest('tr');
+      if (parseInt(task.attr('priority'))>1){
+         var priority_new=parseInt(task.attr('priority'))-1;
+         var after_li=container_tasks.find($('[priority = '+priority_new+']'));
+         after_li.after(task);
          after_li.attr('priority', (priority_new+1));     
-         parent_li.attr('priority', priority_new);
+         task.attr('priority', priority_new);
       }
     }); 
    
     $(".project").click(function (e){
           e.preventDefault();
           var id=$(this).attr("data-id");
-          if ($("#div_tasks_"+id).is(':empty')){
+          if ($("#container_tasks_"+id).is(':empty')){
             $.post("/projects/"+id, {}, function (data){
-                $("#div_tasks_"+id).html(data);
-                $(".input_text").each(function() {
-                   $(this).trigger('keyup');
-                });
+                $("#container_tasks_"+id).html(data);
+ //               $(".input_text").each(function() {
+  //                 $(this).trigger('keyup');
+//                });
             });
             
           } else {
-            $("#div_tasks_"+id).empty();
+            $("#container_tasks_"+id).empty();
           }
     });
     

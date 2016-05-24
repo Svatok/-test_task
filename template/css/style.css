@@ -28,26 +28,45 @@ body {
   width: 100%;
   box-sizing:border-box;
 }
-.li_task * {
+.task * {
  font-family: Verdana, Helvetica, Arial, sans-serif;
  font-size: 14px;
 }
-.li_task {
- width: 800px;
- list-style-type: none;
+.container_tasks{
+  width: 800px;
+  border-radius: 0px 0px 10px 10px;
+  -webkit-border-radius: 0px 0px 10px 10px;
+  -moz-border-radius: 0px 0px 10px 10px;
+  -khtml-border-radius: 0px 0px 10px 10px;
+  border: 1px solid grey;
+  display: block;
+ border-collapse: separate;
+ Как вариант обернуть дивом
+/*
+div
+overflow: hidden;
+padding: 0;
+border-radius: 15px*/
+}
+.task {
  background:#FFFFE0;
- border: 1px solid black;
  min-height: 50px;
  text-align: center;
+ vertical-align: middle;
 }
-.div_check, .div_task_container, .div_edit_buttons  {
-  display: inline-block;
-  vertical-align: middle;
+.add_task {
+ background:#BEBEBE;
+ min-height: 50px;
+ text-align: center;
+ vertical-align: middle;
 }
-.li_task:before { /* для IE8+ */
-  content: "";
-  display: inline-block;
-  min-height: inherit;
-  height: 100%;
-  vertical-align: middle;
+.add_task_input {
+ padding: 10px 0px 10px 5px;
+ }
+.add_task_input input{
+ width: 100%;
+ box-sizing:border-box;
+ }
+.add_task_button{
+ text-align: left;  
 }
