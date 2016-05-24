@@ -70,3 +70,6 @@ border-radius: 15px*/
 .add_task_button{
  text-align: left;  
 }
+.input_text{
+ height: auto;
+}
