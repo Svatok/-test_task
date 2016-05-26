@@ -11,8 +11,8 @@ class TaskController{
       $updateData=();
       
       if (isset($_POST['status'])){
-        if (Tasks::checkStatus($_POST['status'])){
-          $taskStatus=$_POST['status'];
+        $taskStatus=Tasks::clean($_POST['status']);
+        if ($taskStatus){
           if ($taskData['status']!=$taskStatus){
             if(Tasks::editTaskData('status', $taskStatus, $params[0])){
               $updateData['status']='Success:Status was changed!';
@@ -26,8 +26,8 @@ class TaskController{
       }
       
       if (isset($_POST['name'])){
-        if (Tasks::checkText($_POST['name'])){
-          $taskText=$_POST['name'];
+        $taskText=Tasks::clean($_POST['name']);
+        if ($taskText){
           if ($taskData['name']!=$taskText){
             if(Tasks::editTaskData('name', $taskText, $params[0])){
               $updateData['name']='Success:Task was changed!';
@@ -41,8 +41,8 @@ class TaskController{
       }
 
       if (isset($_POST['priority'])){
-        if (Tasks::checkPriority($_POST['priority'])){
-          $taskPriority=$_POST['priority'];
+        $taskPriority=Tasks::clean($_POST['priority']);
+        if ($taskPriority){
           if ($taskData['priority']!=$taskPriority){
             if(Tasks::editTaskData('priority', $taskPriority, $params[0])){
               $updateData['priority']='Success:Priority was changed!';
