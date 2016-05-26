@@ -69,6 +69,7 @@ $(document).ready(function () {
                   data: $(this).closest('form').serialize(),
                   success: function (data) {
                      if (data){ */
+                        //var result = jQuery.parseJSON( data );
                         var container_tasks=textarea_text.closest('table');
                         var priority_new=(container_tasks.find($("tr.task")).length)+1;
                         var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
