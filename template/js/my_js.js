@@ -62,6 +62,8 @@ $(document).ready(function () {
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
             if (focused_element.attr('class')=='save_add'){
+               var errors = new Array();
+               var successes = new Array();
                e.preventDefault();
 /*               $.ajax({
                   url: '/path/to/action',
