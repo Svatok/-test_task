@@ -32,6 +32,15 @@ class Tasks{
     }
   }
   
+  public static function clean($value) {
+      $value = trim($value);
+      $value = stripslashes($value);
+      $value = strip_tags($value);
+      $value = htmlspecialchars($value);
+      
+      return $value;
+  }
+  
   public static function checkStatus($val){
     if (in_array($val, $allowedStatuses)){
       return true;
@@ -39,6 +48,40 @@ class Tasks{
       return false;
     }
   }  
+
+  public static function checkText($val){
+    if((empty($val)) || (strlen($val) < 5) || (strlen($val) > 250)) {
+      return false;
+    }else{
+      return true;
+    }
+  }    
+  
+  public static function checkPriority($val, $id){
+      $id=intval($id);
+      
+      $db=Db::getConnection();
+      
+      $priorityData=array();
+      $result=$db->query('SELECT count(*) as max_priority FROM tasks WHERE project_id=(SELECT project_id FROM tasks WHERE id='.$id.')');
+      $priorityData=$result->fetch();
+      $maxPriority=$priorityData['max_priority'];
+ 
+      $priorityData=array();
+      $result=$db->query('SELECT priority FROM tasks WHERE id='.$id);
+      $priorityData=$result->fetch();
+      $curPriority=$priorityData['priority'];
+      
+      if (($val=$curPriority+1) || ($val=$curPriority-1)){
+        if (($val>0) && ($val<=$maxPriority)){
+          return true;
+        }else{
+          return false;
+        }
+      }else{
+        return false;
+      }
+  }   
   
 }
 ?>
