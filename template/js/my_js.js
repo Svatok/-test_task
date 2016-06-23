@@ -144,6 +144,7 @@ $(document).ready(function () {
                e.preventDefault();
                var id_task=id_task_attr.replace(/[^0-9]/gim,'');
                if (checkText(textarea_text.val())){
+//                   before_edit
                    $.ajax({
                       data: {name:textarea_text.val()},
                       url: '/task/edit/'+id_task,
