@@ -1,7 +1,7 @@
 
 <?php
 class Tasks{
-  $allowedStatuses = array(0, 1, 2); // 0 - In work, 1 - Done, 2 - Delete
+  $allowedStatuses = array("0", "1", "2"); // 0 - In work, 1 - Done, 2 - Delete
   
   public static function getTaskData($id){
     
