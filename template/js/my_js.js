@@ -143,7 +143,6 @@ $(document).ready(function () {
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
                var id_task=id_task_attr.replace(/[^0-9]/gim,'');
-               alert(checkText(textarea_text.val()));
                if (checkText(textarea_text.val())){
                    $.ajax({
                       data: {name:textarea_text.val()},
