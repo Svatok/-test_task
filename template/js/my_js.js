@@ -129,7 +129,6 @@ $(document).ready(function () {
                             }else{
                                result_msg=result_msg+'<p class="success_text">'+value+'</p>';
                             }
-    //                        alert(value);
                         });
                         if (result_errors){
                             editableTextBlurred(textarea_text, false);    
@@ -138,9 +137,9 @@ $(document).ready(function () {
                         }
                         var n = noty({
                             text: result_msg,
-                            closeWith: ['hover'] // ['click', 'button', 'hover', 'backdrop'] // backdrop click will close all notifications
+                            closeWith: ['hover'], // ['click', 'button', 'hover', 'backdrop'] // backdrop click will close all notifications
+                            timeout: '500'
                         }); 
-                        // вывести всплывающий див вместо алерта выше
                      }
                   },
                   error: function(){
