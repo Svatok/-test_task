@@ -136,10 +136,10 @@ $(document).ready(function () {
                         }else{
                             editableTextBlurred(textarea_text, true);
                         }
-                        var n = noty({
+ /*                       var n = noty({
                             text: result_msg,
                             closeWith: ['hover'] // ['click', 'button', 'hover', 'backdrop'] // backdrop click will close all notifications
-                        });
+                        }); */
                         // вывести всплывающий див вместо алерта выше
                      }
                   }
