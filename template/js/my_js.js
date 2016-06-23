@@ -124,10 +124,20 @@ $(document).ready(function () {
                         var result_msg = '';
                         $.each(result_data, function(index, value){
                             if (value.replace(/\:.*/, '')=='Error'){
-                               result_errors = true;
-                               result_msg=result_msg+'<p class="error_text">'+value+'</p>';
+                                result_errors = true;
+                                var n = noty({
+                                    text: value,
+                                    type: 'error',
+                                    closeWith: ['hover'], // ['click', 'button', 'hover', 'backdrop'] // backdrop click will close all notifications
+                                    timeout: '1000'
+                                }); 
                             }else{
-                               result_msg=result_msg+'<p class="success_text">'+value+'</p>';
+                                var n = noty({
+                                    text: value,
+                                    type: 'success',
+                                    closeWith: ['hover'], // ['click', 'button', 'hover', 'backdrop'] // backdrop click will close all notifications
+                                    timeout: '1000'
+                                }); 
                             }
                         });
                         if (result_errors){
@@ -135,11 +145,7 @@ $(document).ready(function () {
                         }else{
                             editableTextBlurred(textarea_text, true);
                         }
-                        var n = noty({
-                            text: result_msg,
-                            closeWith: ['hover'], // ['click', 'button', 'hover', 'backdrop'] // backdrop click will close all notifications
-                            timeout: '500'
-                        }); 
+
                      }
                   },
                   error: function(){
