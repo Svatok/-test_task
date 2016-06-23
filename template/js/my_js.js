@@ -113,15 +113,16 @@ $(document).ready(function () {
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
                var id_task=id_task_attr.replace(/[^0-9]/gim,'');
+               alert(textarea_text.val());
 /*               $.ajax({
-                  url: '/path/to/action',
+                  data: {name:"123"},
+                  url: '/task/edit/'+id_task,
                   method: 'post',
-                  data: $(this).closest('form').serialize(),
                   success: function (data) {
-                     if (data){ */
+                     if (data){ 
                         alert("Task "+id_task+" changed!");
                         editableTextBlurred(textarea_text, true);
-/*                     }
+                     }
                   }
                });*/
             }else{
