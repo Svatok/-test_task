@@ -21,7 +21,7 @@ $(document).ready(function () {
         }
         $(textarea).replaceWith(viewableText);
     }
-    
+
     function checkText(val){
         if((empty(val)) || (strlen(val) < 5) || (strlen(val) > 250)) {
           return false;
@@ -143,45 +143,53 @@ $(document).ready(function () {
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
                var id_task=id_task_attr.replace(/[^0-9]/gim,'');
-               $.ajax({
-                  data: {name:textarea_text.val()},
-                  url: '/task/edit/'+id_task,
-                  method: 'post',
-                  success: function (data) {
-                     if (data){ 
-                        var result_data = $.parseJSON(data);
-                        var result_errors = false;
-                        var result_msg = '';
-                        $.each(result_data, function(index, value){
-                            if (value.replace(/\:.*/, '')=='Error'){
-                                result_errors = true;
-                                var n = noty({
-                                    text: value,
-                                    type: 'error',
-                                    closeWith: ['hover'], // ['click', 'button', 'hover', 'backdrop'] // backdrop click will close all notifications
-                                    timeout: '1000'
-                                }); 
+               if (checkText(textarea_text.val())){
+                   $.ajax({
+                      data: {name:textarea_text.val()},
+                      url: '/task/edit/'+id_task,
+                      method: 'post',
+                      success: function (data) {
+                         if (data){ 
+                            var result_data = $.parseJSON(data);
+                            var result_errors = false;
+                            var result_msg = '';
+                            $.each(result_data, function(index, value){
+                                if (value.replace(/\:.*/, '')=='Error'){
+                                    result_errors = true;
+                                    var n = noty({
+                                        text: value,
+                                        type: 'error',
+                                        closeWith: ['hover'],
+                                        timeout: '1000'
+                                    }); 
+                                }else{
+                                    var n = noty({
+                                        text: value,
+                                        type: 'success',
+                                        closeWith: ['hover'],
+                                        timeout: '1000'
+                                    }); 
+                                }
+                            });
+                            if (result_errors){
+                                editableTextBlurred(textarea_text, false);    
                             }else{
-                                var n = noty({
-                                    text: value,
-                                    type: 'success',
-                                    closeWith: ['hover'], // ['click', 'button', 'hover', 'backdrop'] // backdrop click will close all notifications
-                                    timeout: '1000'
-                                }); 
+                                editableTextBlurred(textarea_text, true);
                             }
-                        });
-                        if (result_errors){
-                            editableTextBlurred(textarea_text, false);    
-                        }else{
-                            editableTextBlurred(textarea_text, true);
-                        }
-
-                     }
-                  },
-                  error: function(){
-                    editableTextBlurred(textarea_text, false);  
-                  }
-               });
+                         }
+                      },
+                      error: function(){
+                        editableTextBlurred(textarea_text, false);  
+                      }
+                   });
+               }else{
+                    var n = noty({
+                        text: 'Invalid text of task!',
+                        type: 'error',
+                        timeout: '1000'
+                    });                    
+                    editableTextBlurred(textarea_text, false)
+               }   
             }else{
                editableTextBlurred(textarea_text, false);
             }
