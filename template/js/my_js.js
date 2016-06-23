@@ -123,12 +123,12 @@ $(document).ready(function () {
                         $.each(result_data, function(index, value){
                             alert(value);                        
                         });
-                        editableTextBlurred(textarea_text, true);
                      }
                   }
                });
+               editableTextBlurred(textarea_text, true);
             }else{
-                editableTextBlurred(textarea_text, false);
+               editableTextBlurred(textarea_text, false);
             }
             $("#"+id_task_attr+" .in_edit").hide();
             $("#"+id_task_attr+" .out_edit").css('display','inline-block');
