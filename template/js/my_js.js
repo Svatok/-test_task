@@ -120,13 +120,33 @@ $(document).ready(function () {
                   success: function (data) {
                      if (data){ 
                         var result_data = $.parseJSON(data);
+                        var result_errors = false;
+                        var result_msg = '';
                         $.each(result_data, function(index, value){
-                            alert(value);                        
+                            if (value.replace(/\:.*/, '')=='Error'){
+                               result_errors = true;
+                               result_msg=result_msg+'<p class="error_text">'+value+'</p>';
+                            }else{
+                               result_msg=result_msg+'<p class="success_text">'+value+'</p>';
+                            }
+    //                        alert(value);
                         });
+                        if (result_errors){
+                            editableTextBlurred(textarea_text, false);    
+                        }else{
+                            editableTextBlurred(textarea_text, true);
+                        }
+                        var n = noty({
+                            text: result_msg,
+                            closeWith: ['hover'] // ['click', 'button', 'hover', 'backdrop'] // backdrop click will close all notifications
+                        });
+                        // вывести всплывающий див вместо алерта выше
                      }
                   }
+                  error: function(){
+                    editableTextBlurred(textarea_text, false);  
+                  }
                });
-               editableTextBlurred(textarea_text, true);
             }else{
                editableTextBlurred(textarea_text, false);
             }
