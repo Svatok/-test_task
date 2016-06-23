@@ -113,18 +113,20 @@ $(document).ready(function () {
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
                var id_task=id_task_attr.replace(/[^0-9]/gim,'');
-               alert(textarea_text.val());
-/*               $.ajax({
-                  data: {name:"123"},
+               $.ajax({
+                  data: {name:textarea_text.val()},
                   url: '/task/edit/'+id_task,
                   method: 'post',
                   success: function (data) {
                      if (data){ 
-                        alert("Task "+id_task+" changed!");
+                        var result_data = $.parseJSON(data);
+                        $.each(result_data, function(index, value){
+                            alert(value);                        
+                        });
                         editableTextBlurred(textarea_text, true);
                      }
                   }
-               });*/
+               });
             }else{
                 editableTextBlurred(textarea_text, false);
             }
