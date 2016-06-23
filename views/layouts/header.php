@@ -7,6 +7,7 @@
 <script src="template/js/jquery.js"></script>
 <script src="template/js/my_js.js"></script>
 <script src="template/js/noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+<script src="template/js/jquery.validate.js"></script>
 </head>
 
 <body>
