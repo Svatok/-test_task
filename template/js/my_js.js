@@ -23,7 +23,7 @@ $(document).ready(function () {
     }
 
     function checkText(val){
-        if((empty(val)) || (strlen(val) < 5) || (strlen(val) > 250)) {
+        if((val=="") || (val.length < 5) || (val.length > 250)) {
           return false;
         }else{
           return true;
