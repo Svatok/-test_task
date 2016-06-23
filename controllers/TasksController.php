@@ -8,7 +8,7 @@ class TaskController{
       $userId=User::checkLogged();
       $taskData=Tasks::getTaskData($params[0]);
       $errors=false;
-      $updateData=();
+      $updateData=array();
       
       if (isset($_POST['status'])){
         $taskStatus=Tasks::clean($_POST['status']);
