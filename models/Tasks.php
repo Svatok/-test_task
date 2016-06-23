@@ -22,7 +22,7 @@ class Tasks{
     $db=Db::getConnection();
     
     $sql = "UPDATE tasks SET ".$prop." = :val WHERE ID = :id";
-    $stmt = $pdo->prepare($sql);                                  
+    $stmt = $db->prepare($sql);                                  
     $stmt->bindParam(':val',$val, PDO::PARAM_STR);       
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);   
     if ($stmt->execute()){
