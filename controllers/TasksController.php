@@ -1,5 +1,5 @@
 <?php
-class TaskController{
+class TasksController{
   
   public function actionEdit($params){
     $taskStatus='';
