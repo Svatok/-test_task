@@ -142,7 +142,7 @@ $(document).ready(function () {
                         }); */
                         // вывести всплывающий див вместо алерта выше
                      }
-                  }
+                  },
                   error: function(){
                     editableTextBlurred(textarea_text, false);  
                   }
