@@ -1,5 +1,7 @@
 $(document).ready(function () {
+    var allowedStatuses=[0,1,2]; // 0 - In work, 1 - Done, 2 - Delete
     var before_edit;
+    
     function divClicked(div) {
         var divHtml = $(div).html();
         var editableText = $('<textarea class="input_text"/>');
@@ -19,6 +21,34 @@ $(document).ready(function () {
         }
         $(textarea).replaceWith(viewableText);
     }
+    
+    function checkText(val){
+        if((empty(val)) || (strlen(val) < 5) || (strlen(val) > 250)) {
+          return false;
+        }else{
+          return true;
+        }
+    }   
+    
+    function checkStatus(val){
+        if ($.inArray(val, allowedStatuses)>-1){
+          return true;
+        }else{
+          return false;
+        }
+    }  
+    
+    function checkPriority(val, old_val, max){
+      if ((val=old_val+1) || (val=old_val-1)){
+        if ((val>0) && (val<=max)){
+          return true;
+        }else{
+          return false;
+        }
+      }else{
+        return false;
+      }
+  } 
 
     $('.container_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
