@@ -6,6 +6,7 @@
 <link href="template/css/style.css" rel="stylesheet" type="text/css" />
 <script src="template/js/jquery.js"></script>
 <script src="template/js/my_js.js"></script>
+<script src="/template/js/noty/packaged/jquery.noty.packaged.min.js"></script>
 </head>
 
 <body>
