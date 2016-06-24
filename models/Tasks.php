@@ -1,7 +1,6 @@
 
 <?php
 class Tasks{
-  public $allowedStatuses = array("0", "1", "2"); // 0 - In work, 1 - Done, 2 - Delete
   
   public static function getTaskData($id){
     
@@ -42,6 +41,7 @@ class Tasks{
   }
   
   public static function checkStatus($val){
+    var $allowedStatuses = array("0", "1", "2"); // 0 - In work, 1 - Done, 2 - Delete
     if (in_array($val, $allowedStatuses)){
       return true;
     }else{
