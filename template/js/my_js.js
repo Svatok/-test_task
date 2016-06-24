@@ -297,8 +297,7 @@ $(document).ready(function () {
       if (parseInt(task.attr('priority'))<kol_tasks){
          var priority_new=parseInt(task.attr('priority'))+1;
          var before_li=container_tasks.find($('[priority = '+priority_new+']'));
-            alert(id_task);
-/*         $.ajax({
+         $.ajax({
             data: {priority:priority_new},
             url: '/task/edit/'+id_task,
             method: 'post',
@@ -306,9 +305,9 @@ $(document).ready(function () {
                 if (data){ 
                     var result_data = $.parseJSON(data);
                     var result_errors = false;
-                    $.each(result_data, function(index, value){*/
-//                        if (value.replace(/\:.*/, '')=='Error'){
-/*                            result_errors = true;
+                    $.each(result_data, function(index, value){
+                        if (value.replace(/\:.*/, '')=='Error'){
+                            result_errors = true;
                             noty({
                                 text: value,
                                 type: 'error',
@@ -335,7 +334,7 @@ $(document).ready(function () {
                     timeout: '1000'
                 });  
             }
-         });*/
+         });
       }
     }); 
 // change priority of task to DOWN    
