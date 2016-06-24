@@ -71,8 +71,8 @@ $(document).ready(function () {
                });*/
     }); 
 // change status of task
-    $('.container_tasks').on('click', '.task_status', function(){
-//      e.preventDefault();
+    $('.container_tasks').on('click', '.task_status', function(e){
+      e.preventDefault();
       alert('tyt');
       var id_task_attr=$(this).closest('tr').attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
