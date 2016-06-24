@@ -71,12 +71,10 @@ $(document).ready(function () {
                });*/
     }); 
 // change status of task
-    $('.container_tasks').on('click', '.task_status', function(e){
-//      e.preventDefault();
+    $('.container_tasks').on('click', '.task_status', function(){
       var id_task_attr=$(this).closest('tr').attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       var status = $(this).prop('checked');
-      alert($(this).prop('checked'));
       var checkbox_edit=$(this);
       if (!status){
         var new_status = 0;
@@ -85,29 +83,42 @@ $(document).ready(function () {
         var new_status = 1;
         var old_status_bul = false;
       }
-               $.ajax({
-                  data: {status:new_status},
-                  url: '/task/edit/'+id_task,
-                  method: 'post',
-                  success: function (data) {
-                    if (data){ 
-                        var result_data = $.parseJSON(data);
-                        var result_errors = false;
-                        $.each(result_data, function(index, value){ 
-                            if (value.replace(/\:.*/, '')=='Error'){
-                                result_errors = true;
-                                alert(value);
-                            }
-                        });
-                        if (result_errors){
-                            checkbox_edit.prop('checked', old_status_bul); 
+      if (checkStatus(new_status)){
+        $.ajax({
+            data: {status:new_status},
+            url: '/task/edit/'+id_task,
+            method: 'post',
+            success: function (data) {
+                if (data){ 
+                    var result_data = $.parseJSON(data);
+                    var result_errors = false;
+                    $.each(result_data, function(index, value){ 
+                        if (value.replace(/\:.*/, '')=='Error'){
+                            result_errors = true;
+                            var n = noty({
+                                text: value,
+                                type: 'error',
+                                timeout: '1000'
+                            }); 
                         }
+                    });
+                    if (result_errors){
+                        checkbox_edit.prop('checked', old_status_bul); 
                     }
-                  },
-                  error: function(data){
-                    alert(data);
-                  }
-               }); 
+                }
+            },
+            error: function(data){
+                checkbox_edit.prop('checked', old_status_bul); 
+            }
+        }); 
+      }else{
+        var n = noty({
+            text: 'Invalid status of task!',
+            type: 'error',
+            timeout: '1000'
+        });                    
+        checkbox_edit.prop('checked', old_status_bul);  
+      }
     }); 
 // text of task or project go in edit mode 
     $('.container_tasks').on('click', '.edit', function(e){
@@ -226,7 +237,7 @@ $(document).ready(function () {
                         type: 'error',
                         timeout: '1000'
                     });                    
-                    editableTextBlurred(textarea_text, false)
+                    editableTextBlurred(textarea_text, false);
                }   
             }else{
                editableTextBlurred(textarea_text, false);
