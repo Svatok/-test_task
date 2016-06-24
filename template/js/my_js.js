@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var allowedStatuses=[0,1,2]; // 0 - In work, 1 - Done, 2 - Delete
     var before_edit;
-    
+// function wich replace div on textbox before edit         
     function divClicked(div) {
         var divHtml = $(div).html();
         var editableText = $('<textarea class="input_text"/>');
@@ -10,7 +10,7 @@ $(document).ready(function () {
         editableText.trigger('keyup');
         editableText.focus();
     }
-    
+// function wich replace textbox on div after edit      
     function editableTextBlurred(textarea, save) {
         var html = $(textarea).val();
         var viewableText = $('<div class="div_task_text">');
@@ -21,7 +21,7 @@ $(document).ready(function () {
         }
         $(textarea).replaceWith(viewableText);
     }
-
+// check valid text of project or task    
     function checkText(val){
         if((val=="") || (val.length < 5) || (val.length > 250)) {
           return false;
@@ -29,7 +29,7 @@ $(document).ready(function () {
           return true;
         }
     }   
-    
+// check valid status        
     function checkStatus(val){
         if ($.inArray(val, allowedStatuses)>-1){
           return true;
@@ -37,7 +37,7 @@ $(document).ready(function () {
           return false;
         }
     }  
-    
+// check valid priority    
     function checkPriority(val, old_val, max){
       if ((val=old_val+1) || (val=old_val-1)){
         if ((val>0) && (val<=max)){
@@ -48,13 +48,13 @@ $(document).ready(function () {
       }else{
         return false;
       }
-  } 
-
+    } 
+// resize textbox
     $('.container_tasks').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
         $(this).css('height', 'auto').css('height', this.scrollHeight+offset);
     });
-
+// delete task
     $('.container_tasks').on('click', '.del', function(e){
       e.preventDefault();
       var id_task_attr=$(this).closest('tr').attr('id');
@@ -69,9 +69,43 @@ $(document).ready(function () {
 /*                     }
                   }
                });*/
-
-    });   
-
+    }); 
+// change status of task
+    $('.container_tasks').on('click', 'checkbox', function(e){
+      e.preventDefault();
+      var id_task_attr=$(this).closest('tr').attr('id');
+      var id_task=id_task_attr.replace(/[^0-9]/gim,'');
+      var status = $(this).prop('checked');
+      var checkbox_edit=$(this);
+      if (status){
+        var new_status = 0;
+        var new_status_bul = false;
+      }else{
+        var new_status = 1;
+        var new_status_bul = true;
+      }
+/*               $.ajax({
+                  data: {status:new_status},
+                  url: '/task/edit/'+id_task,
+                  method: 'post',
+                  success: function (data) {
+                    if (data){ 
+                        var result_data = $.parseJSON(data);
+                        var result_errors = false;
+                        $.each(result_data, function(index, value){
+                            if (value.replace(/\:.*/, '')=='Error'){
+                                result_errors = true;
+                                alert(value);
+                            }
+                        });
+                        if (!result_errors){
+                            checkbox_edit.prop('checked', new_status_bul); 
+                        }
+                    }
+                  }
+               }); */
+    }); 
+// text of task or project go in edit mode 
     $('.container_tasks').on('click', '.edit', function(e){
       e.preventDefault();
       var id_task_attr=$(this).closest('tr').attr('id');
@@ -81,10 +115,11 @@ $(document).ready(function () {
       $("#"+id_task_attr+" .out_edit").hide();
       $("#"+id_task_attr+" .in_edit").css('display','inline-block');
     });
-    
+// cancel edit mode of text of task or project
     $('.container_tasks').on('click', '.cancel', function(e){
       e.preventDefault();
-    });    
+    });   
+// lost focus after add task (cancel or save)   
     $('.container_tasks').on('blur', '.add_task_input input', function(event){
       var id_task_attr=$(this).closest('tr').attr('id');
       var textarea_text=$(this);
@@ -134,7 +169,7 @@ $(document).ready(function () {
             $(textarea_text).val('');
          });
     });   
-    
+// lost focus after edit task (cancel or save)       
     $('.container_tasks').on('blur', '.input_text', function(event){
       var id_task_attr=$(this).closest('tr').attr('id');
       var textarea_text=$("#"+id_task_attr+" .input_text");
@@ -153,21 +188,18 @@ $(document).ready(function () {
                              if (data){ 
                                 var result_data = $.parseJSON(data);
                                 var result_errors = false;
-                                var result_msg = '';
                                 $.each(result_data, function(index, value){
                                     if (value.replace(/\:.*/, '')=='Error'){
                                         result_errors = true;
                                         var n = noty({
                                             text: value,
                                             type: 'error',
-                                            closeWith: ['hover'],
                                             timeout: '1000'
                                         }); 
                                     }else{
                                         var n = noty({
                                             text: value,
                                             type: 'success',
-                                            closeWith: ['hover'],
                                             timeout: '1000'
                                         }); 
                                     }
@@ -199,7 +231,7 @@ $(document).ready(function () {
             $("#"+id_task_attr+" .out_edit").css('display','inline-block');
          });
     });   
-
+// change priority of task to UP
     $('.container_tasks').on('click', '.up_task', function(e){
       e.preventDefault();
       var container_tasks=$(this).closest('table');
@@ -213,7 +245,7 @@ $(document).ready(function () {
          task.attr('priority', priority_new);
       }
     }); 
-    
+// change priority of task to DOWN    
     $('.container_tasks').on('click', '.down_task', function(e){
       e.preventDefault();
       var container_tasks=$(this).closest('table');
@@ -226,7 +258,7 @@ $(document).ready(function () {
          task.attr('priority', priority_new);
       }
     }); 
-   
+// get tasks of project   
     $(".project").click(function (e){
           e.preventDefault();
           var id=$(this).attr("data-id");
@@ -237,10 +269,10 @@ $(document).ready(function () {
   //                 $(this).trigger('keyup');
 //                });
             });
-            
           } else {
             $("#container_tasks_"+id).empty();
           }
+
     });
     
 }); 
