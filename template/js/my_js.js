@@ -92,9 +92,9 @@ $(document).ready(function () {
                     if (data){ 
                         var result_data = $.parseJSON(data);
                         var result_errors = false;
-                        $.each(result_data, function(index, value){
-                            if (value.replace(/\:.*/, '')=='Error'){
-                                result_errors = true;
+                        $.each(result_data, function(index, value){ */
+//                            if (value.replace(/\:.*/, '')=='Error'){
+/*                                result_errors = true;
                                 alert(value);
                             }
                         });
