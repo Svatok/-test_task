@@ -73,7 +73,6 @@ $(document).ready(function () {
 // change status of task
     $('.container_tasks').on('click', '.task_status', function(e){
       e.preventDefault();
-      alert('tyt');
       var id_task_attr=$(this).closest('tr').attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       var status = $(this).prop('checked');
@@ -85,7 +84,7 @@ $(document).ready(function () {
         var new_status = 1;
         var new_status_bul = true;
       }
-/*               $.ajax({
+               $.ajax({
                   data: {status:new_status},
                   url: '/task/edit/'+id_task,
                   method: 'post',
@@ -93,9 +92,9 @@ $(document).ready(function () {
                     if (data){ 
                         var result_data = $.parseJSON(data);
                         var result_errors = false;
-                        $.each(result_data, function(index, value){ */
-//                            if (value.replace(/\:.*/, '')=='Error'){
-/*                                result_errors = true;
+                        $.each(result_data, function(index, value){ 
+                            if (value.replace(/\:.*/, '')=='Error'){
+                                result_errors = true;
                                 alert(value);
                             }
                         });
@@ -104,7 +103,7 @@ $(document).ready(function () {
                         }
                     }
                   }
-               }); */
+               }); 
     }); 
 // text of task or project go in edit mode 
     $('.container_tasks').on('click', '.edit', function(e){
