@@ -315,6 +315,7 @@ $(document).ready(function () {
                             }); 
                         }
                     });
+                    alert(result_errors);
                     if (!result_errors){
                         alert('tyt');
                         before_li.before(task);
