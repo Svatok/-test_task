@@ -316,7 +316,7 @@ $(document).ready(function () {
                         }
                     });
                     if (!result_errors){
-                        alert('tyt')
+                        alert('tyt');
                         before_li.before(task);
                         before_li.attr('priority', (priority_new-1));     
                         task.attr('priority', priority_new);  
