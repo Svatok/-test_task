@@ -63,7 +63,8 @@ $(document).ready(function () {
       noty({
     	text: 'Do you want to delete task?',
     	buttons: [
-    		{addClass: 'btn btn-primary', text: 'Ok', onClick: function($noty) {
+    	//	addClass: 'btn btn-primary', 
+    		{text: 'Ok', onClick: function($noty) {
                 /*    $.ajax({
                         data: {status:"2"},
                         url: '/task/edit/'+id_task,
@@ -82,14 +83,15 @@ $(document).ready(function () {
                                         }); 
                                     }
                                 });
-                                if (!result_errors){
+                                if (!result_errors){*/
                                     task_box.remove();
-                                    var n = noty({
+                                    $noty.close();
+                                    noty({
                                         text: 'Task deleted!',
                                         type: 'success',
                                         timeout: '1000'
                                     }); 
-                                }
+                       /*         }
                             }
                         },
                         error: function(data){
@@ -100,16 +102,10 @@ $(document).ready(function () {
                             });     
                         }
                     });     */
-    				// this = button element
-    				// $noty = $noty element
-    
-    				$noty.close();
-    				noty({text: 'You clicked "Ok" button', type: 'success'});
     			}
     		},
-    		{addClass: 'btn btn-danger', text: 'Cancel', onClick: function($noty) {
+    		{text: 'Cancel', onClick: function($noty) {
     				$noty.close();
-    				noty({text: 'You clicked "Cancel" button', type: 'error'});
     			}
     		}
     	]
