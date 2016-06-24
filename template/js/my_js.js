@@ -294,9 +294,7 @@ $(document).ready(function () {
       var task=$(this).closest('tr');
       var id_task=task.attr('id').replace(/[^0-9]/gim,'');
       var kol_tasks=container_tasks.find($("tr.task")).length;
-      alert(kol_tasks);
       if (parseInt(task.attr('priority'))<kol_tasks){
-         alert (task.attr('priority')+' < '+kol_tasks);
          var priority_new=parseInt(task.attr('priority'))+1;
          var before_li=container_tasks.find($('[priority = '+priority_new+']'));
          $.ajax({
