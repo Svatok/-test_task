@@ -324,7 +324,8 @@ $(document).ready(function () {
                     if (!result_errors){
                         before_li.before(task);
                         before_li.attr('priority', (priority_new-1));     
-                        task.attr('priority', priority_new);   
+                        task.attr('priority', priority_new);  
+                    }
                 }
             },
             error: function(){
