@@ -57,18 +57,63 @@ $(document).ready(function () {
 // delete task
     $('.container_tasks').on('click', '.del', function(e){
       e.preventDefault();
-      var id_task_attr=$(this).closest('tr').attr('id');
+      var task_box=$(this).closest('tr');
+      var id_task_attr=task_box.attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
-/*               $.ajax({
-                  url: '/path/to/action',
-                  method: 'post',
-                  data: $(this).closest('form').serialize(),
-                  success: function (data) {
-                     if (data){ */
-                        alert("Task "+id_task+" deleted!");  
-/*                     }
-                  }
-               });*/
+      noty({
+    	text: 'Do you want to delete task?',
+    	buttons: [
+    		{addClass: 'btn btn-primary', text: 'Ok', onClick: function($noty) {
+                /*    $.ajax({
+                        data: {status:"2"},
+                        url: '/task/edit/'+id_task,
+                        method: 'post',
+                        success: function (data) {
+                            if (data){ 
+                                var result_data = $.parseJSON(data);
+                                var result_errors = false;
+                                $.each(result_data, function(index, value){ */
+                      //              if (value.replace(/\:.*/, '')=='Error'){
+                     /*                   result_errors = true;
+                                        var n = noty({
+                                            text: 'Task not deleted!',
+                                            type: 'error',
+                                            timeout: '1000'
+                                        }); 
+                                    }
+                                });
+                                if (!result_errors){
+                                    task_box.remove();
+                                    var n = noty({
+                                        text: 'Task deleted!',
+                                        type: 'success',
+                                        timeout: '1000'
+                                    }); 
+                                }
+                            }
+                        },
+                        error: function(data){
+                            var n = noty({
+                                text: 'Task not deleted!',
+                                type: 'error',
+                                timeout: '1000'
+                            });     
+                        }
+                    });     */
+    				// this = button element
+    				// $noty = $noty element
+    
+    				$noty.close();
+    				noty({text: 'You clicked "Ok" button', type: 'success'});
+    			}
+    		},
+    		{addClass: 'btn btn-danger', text: 'Cancel', onClick: function($noty) {
+    				$noty.close();
+    				noty({text: 'You clicked "Cancel" button', type: 'error'});
+    			}
+    		}
+    	]
+      });        
     }); 
 // change status of task
     $('.container_tasks').on('click', '.task_status', function(){
