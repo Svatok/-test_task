@@ -62,6 +62,7 @@ $(document).ready(function () {
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       noty({
     	text: 'Do you want to delete task?',
+    	theme: 'relax',
     	buttons: [
     	//	addClass: 'btn btn-primary', 
     		{text: 'Ok', onClick: function($noty) {
