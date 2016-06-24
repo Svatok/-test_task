@@ -59,7 +59,7 @@ class Tasks{
   
   public static function checkPriority($val, $id){
       $id=intval($id);
-      echo 'prior:'.$val.' id:'.$id;
+      
       $db=Db::getConnection();
       
       $priorityData=array();
