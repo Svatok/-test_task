@@ -72,18 +72,18 @@ $(document).ready(function () {
     }); 
 // change status of task
     $('.container_tasks').on('click', '.task_status', function(e){
-      e.preventDefault();
+//      e.preventDefault();
       var id_task_attr=$(this).closest('tr').attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       var status = $(this).prop('checked');
       alert($(this).prop('checked'));
       var checkbox_edit=$(this);
-      if (status){
+      if (!status){
         var new_status = 0;
-        var new_status_bul = false;
+        var old_status_bul = true;
       }else{
         var new_status = 1;
-        var new_status_bul = true;
+        var old_status_bul = false;
       }
                $.ajax({
                   data: {status:new_status},
@@ -99,8 +99,8 @@ $(document).ready(function () {
                                 alert(value);
                             }
                         });
-                        if (!result_errors){
-                            checkbox_edit.prop('checked', new_status_bul); 
+                        if (result_errors){
+                            checkbox_edit.prop('checked', old_status_bul); 
                         }
                     }
                   },
