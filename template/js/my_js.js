@@ -71,11 +71,12 @@ $(document).ready(function () {
                });*/
     }); 
 // change status of task
-    $('.container_tasks').on('click', '.task_status', function(e){
-      e.preventDefault();
+    $('.container_tasks').on('click', '.task_status', function(){
+//      e.preventDefault();
       var id_task_attr=$(this).closest('tr').attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       var status = $(this).prop('checked');
+      alert($(this).prop('checked'));
       var checkbox_edit=$(this);
       if (status){
         var new_status = 0;
