@@ -295,6 +295,7 @@ $(document).ready(function () {
       var id_task=task.attr('id').replace(/[^0-9]/gim,'');
       var kol_tasks=container_tasks.find($("tr")).length;
       if (parseInt(task.attr('priority'))<kol_tasks){
+         alert (task.attr('priority')+' < '+kol_tasks);
          var priority_new=parseInt(task.attr('priority'))+1;
          var before_li=container_tasks.find($('[priority = '+priority_new+']'));
          $.ajax({
