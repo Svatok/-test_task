@@ -102,6 +102,9 @@ $(document).ready(function () {
                             checkbox_edit.prop('checked', new_status_bul); 
                         }
                     }
+                  },
+                  error: function(data){
+                    alert(data);
                   }
                }); 
     }); 
