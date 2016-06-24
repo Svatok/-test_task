@@ -42,7 +42,7 @@ class TasksController{
 
       if (isset($_POST['priority'])){
         $taskPriority=Tasks::clean($_POST['priority']);
-        if (Tasks::checkPriority($taskPriority, $params)){
+        if (Tasks::checkPriority($taskPriority, $params[0])){
           if ($taskData['priority']!=$taskPriority){
             if(Tasks::editTaskData('priority', $taskPriority, $params[0])){
               $updateData['priority']='Success:Priority was changed!';
