@@ -313,15 +313,10 @@ $(document).ready(function () {
                                 type: 'error',
                                 timeout: '1000'
                             }); 
-                        }else{
-                            noty({
-                                text: value,
-                                type: 'success',
-                                timeout: '1000'
-                            }); 
                         }
                     });
                     if (!result_errors){
+                        alert('tyt')
                         before_li.before(task);
                         before_li.attr('priority', (priority_new-1));     
                         task.attr('priority', priority_new);  
