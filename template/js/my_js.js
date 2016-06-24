@@ -71,7 +71,7 @@ $(document).ready(function () {
                });*/
     }); 
 // change status of task
-    $('.container_tasks').on('click', 'checkbox', function(e){
+    $('.container_tasks').on('change', 'checkbox', function(e){
       e.preventDefault();
       alert('tyt');
       var id_task_attr=$(this).closest('tr').attr('id');
