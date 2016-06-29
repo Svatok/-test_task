@@ -72,14 +72,14 @@ class Tasks{
       $priorityData=$result->fetch();
       $curPriority=$priorityData['priority'];
       
-      if (($val=$curPriority+1) || ($val=$curPriority-1)){
+      if (($val==$curPriority+1) || ($val==$curPriority-1)){
         if (($val>0) && ($val<=$maxPriority)){
-          return true;
+          return $curPriority;
         }else{
-          return false;
+          return -1;
         }
       }else{
-        return false;
+        return -1;
       }
   }   
   
