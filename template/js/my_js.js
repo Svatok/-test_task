@@ -315,9 +315,7 @@ $(document).ready(function () {
                             }); 
                         }
                     });
-                    alert(result_errors);
                     if (!result_errors){
-                        alert('tyt');
                         before_li.before(task);
                         before_li.attr('priority', (priority_new-1));     
                         task.attr('priority', priority_new);  
