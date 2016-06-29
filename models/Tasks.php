@@ -1,7 +1,6 @@
 
 <?php
 class Tasks{
-  public $allowedStatuses = array("0", "1", "2"); // 0 - In work, 1 - Done, 2 - Delete
   
   public static function getTaskData($id){
     
@@ -42,6 +41,7 @@ class Tasks{
   }
   
   public static function checkStatus($val){
+    $allowedStatuses = array("0", "1", "2"); // 0 - In work, 1 - Done, 2 - Delete
     if (in_array($val, $allowedStatuses)){
       return true;
     }else{
@@ -72,16 +72,29 @@ class Tasks{
       $priorityData=$result->fetch();
       $curPriority=$priorityData['priority'];
       
-      if (($val=$curPriority+1) || ($val=$curPriority-1)){
+      if (($val==$curPriority+1) || ($val==$curPriority-1)){
         if (($val>0) && ($val<=$maxPriority)){
-          return true;
+          return $curPriority;
         }else{
-          return false;
+          return -1;
         }
       }else{
-        return false;
+        return -1;
       }
-  }   
+  } 
+  
+  public static function getOldTaskId($priority, $newTaskId){
+    $newTaskId=intval($newTaskId);
+    
+    $db=Db::getConnection();
+    
+    $oldTaskData=array();
+    $result=$db->query('SELECT id FROM tasks WHERE project_id=(SELECT project_id FROM tasks WHERE id='.$newTaskId.') AND priority='.$priority);
+    $oldTaskData=$result->fetch();
+    $oldTaskId=$oldTaskData['id'];
+  
+    return $oldTaskId;
+  }
   
 }
 ?>
