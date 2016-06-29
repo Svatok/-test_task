@@ -81,7 +81,20 @@ class Tasks{
       }else{
         return -1;
       }
-  }   
+  } 
+  
+  public static function getOldTaskId($priority, $newTaskId){
+    $newTaskId=intval($newTaskId);
+    
+    $db=Db::getConnection();
+    
+    $oldTaskData=array();
+    $result=$db->query('SELECT id FROM tasks WHERE project_id=(SELECT project_id FROM tasks WHERE id='.$newTaskId.') AND priority='.$priority);
+    $oldTaskData=$result->fetch();
+    $oldTaskId=$oldTaskData['id'];
+  
+    return $oldTaskId;
+  }
   
 }
 ?>
