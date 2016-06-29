@@ -62,6 +62,28 @@ class TasksController{
     
     return true;
   }
+
+  public function actionAdd(){
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $userId=User::checkLogged();
+      $errors=false;
+      $updateData=array();
+      
+      if (isset($_POST['name'])){
+        $taskText=Tasks::clean($_POST['name']);
+        if (Tasks::checkText($taskText)){
+            if(Tasks::addTaskData($taskText)){
+              $updateData['name']='Success:Task was added!';
+            }else{
+              $updateData['name']='Error:Database Error: Task is not changed';
+            }
+        }else{
+          $updateData['name']='Error:Invalid text of task!';
+        }
+      }
+    }
+  }
   
 }
 ?>
