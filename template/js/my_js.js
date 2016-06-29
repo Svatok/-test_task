@@ -337,12 +337,43 @@ $(document).ready(function () {
       e.preventDefault();
       var container_tasks=$(this).closest('table');
       var task=$(this).closest('tr');
+      var id_task=task.attr('id').replace(/[^0-9]/gim,'');
       if (parseInt(task.attr('priority'))>1){
          var priority_new=parseInt(task.attr('priority'))-1;
          var after_li=container_tasks.find($('[priority = '+priority_new+']'));
-         after_li.after(task);
-         after_li.attr('priority', (priority_new+1));     
-         task.attr('priority', priority_new);
+         $.ajax({
+            data: {priority:priority_new},
+            url: '/task/edit/'+id_task,
+            method: 'post',
+            success: function (data) {
+                if (data){ 
+                    var result_data = $.parseJSON(data);
+                    var result_errors = false;
+                    $.each(result_data, function(index, value){
+                        if (value.replace(/\:.*/, '')=='Error'){
+                            result_errors = true;
+                            noty({
+                                text: value,
+                                type: 'error',
+                                timeout: '1000'
+                            }); 
+                        }
+                    });
+                    if (!result_errors){
+                        after_li.after(task);
+                        after_li.attr('priority', (priority_new+1));     
+                        task.attr('priority', priority_new);  
+                    }
+                }
+            },
+            error: function(){
+                noty({
+                    text: 'Can not change priority!',
+                    type: 'error',
+                    timeout: '1000'
+                });  
+            }
+         });
       }
     }); 
 // get tasks of project   
