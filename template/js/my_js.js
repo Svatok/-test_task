@@ -186,41 +186,55 @@ $(document).ready(function () {
                var errors = new Array();
                var successes = new Array();
                e.preventDefault();
-/*               $.ajax({
-                  url: '/path/to/action',
-                  method: 'post',
-                  data: $(this).closest('form').serialize(),
-                  success: function (data) {
-                     if (data){ */
-                        //var result = jQuery.parseJSON( data );
-                        var container_tasks=textarea_text.closest('table');
-                        var priority_new=(container_tasks.find($("tr.task")).length)+1;
-                        var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
-                        var insert_task='<tr priority="'+priority_new+'" class="task" id="new">'+   
-                                            '<td class="div_check"><input type="checkbox"></td>'+
-                                            '<td class="div_task_container"><div class="div_task_text">'+task_text+'</div></td>'+
-                                            '<td class="div_edit_buttons">'+
-                                                '<div class="out_edit">'+
-                                                  '<a href="" class="up_task">Up</a> '+
-                                                  '<a href="" class="down_task">Down</a> '+
-                                                  '<a href="" class="edit">Edit</a> '+
-                                                  '<a href="" class="del">Del</a> '+
-                                                '</div>'+
-                                                '<div class="in_edit">'+
-                                                  '<a href="" class="save">Save</a> '+
-                                                  '<a href="" class="cancel">Cancel</a> '+
-                                                '</div>'+
-                                            '</td>'+
-                                        '</tr>';
-//                        var new_task_tr = $('<tr></tr>');
-                        before_li.before(insert_task);
-//                        new_task_tr.prop('class','task');
-//                        new_task_tr.prop('priority', priority_new);
-                        //container_tasks.find($('[priority = '+priority_new+']').css('min-height','50px');
-                        alert("Task "+"new"+" add!");
-/*                     }
-                  }
-               });*/
+               $.ajax({
+                    data: {name:textarea_text.val()},
+                    url: '/task/edit/'+id_task,
+                    method: 'post',
+                    success: function (data) {
+                        if (data){ 
+                            var result_data = $.parseJSON(data);
+                            var result_errors = false;
+                            $.each(result_data, function(index, value){
+                                if (value.replace(/\:.*/, '')=='Error'){
+                                    result_errors = true;
+                                    noty({
+                                        text: value,
+                                        type: 'error',
+                                        timeout: '1000'
+                                    }); 
+                                }else{
+                                    noty({
+                                        text: value,
+                                        type: 'success',
+                                        timeout: '1000'
+                                    }); 
+                                }
+                            });
+                            if (!result_errors){
+                                var container_tasks=textarea_text.closest('table');
+                                var priority_new=(container_tasks.find($("tr.task")).length)+1;
+                                var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
+                                var insert_task='<tr priority="'+priority_new+'" class="task" id="new">'+   
+                                                    '<td class="div_check"><input type="checkbox"></td>'+
+                                                    '<td class="div_task_container"><div class="div_task_text">'+task_text+'</div></td>'+
+                                                    '<td class="div_edit_buttons">'+
+                                                        '<div class="out_edit">'+
+                                                          '<a href="" class="up_task">Up</a> '+
+                                                          '<a href="" class="down_task">Down</a> '+
+                                                          '<a href="" class="edit">Edit</a> '+
+                                                          '<a href="" class="del">Del</a> '+
+                                                        '</div>'+
+                                                        '<div class="in_edit">'+
+                                                          '<a href="" class="save">Save</a> '+
+                                                          '<a href="" class="cancel">Cancel</a> '+
+                                                        '</div>'+
+                                                    '</td>'+
+                                                '</tr>';
+                                before_li.before(insert_task);
+                            }
+                        }
+                    }
+                });
             }
             $(textarea_text).val('');
          });
