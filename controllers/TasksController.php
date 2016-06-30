@@ -86,6 +86,9 @@ class TasksController{
         }
       }
     }
+    echo json_encode($updateData);
+
+    return true;
   }
   
 }
