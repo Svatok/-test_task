@@ -214,7 +214,7 @@ $(document).ready(function () {
                             if (!result_errors){
                                 var priority_new=(container_tasks.find($("tr.task")).length)+1;
                                 var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
-                                var insert_task='<tr priority="'+priority_new+'" class="task" id="'+result_data['taskId']+'">'+   
+                                var insert_task='<tr priority="'+priority_new+'" class="task" id="task_'+result_data['taskId']+'">'+   
                                                     '<td class="div_check"><input type="checkbox"></td>'+
                                                     '<td class="div_task_container"><div class="div_task_text">'+task_text+'</div></td>'+
                                                     '<td class="div_edit_buttons">'+
