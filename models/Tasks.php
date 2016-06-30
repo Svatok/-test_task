@@ -111,7 +111,7 @@ class Tasks{
     $stmt->bindParam(':priority', $taskPriority, PDO::PARAM_INT);   
     $stmt->bindParam(':project_id', $projectId, PDO::PARAM_INT);   
     if ($stmt->execute()){
-      return $db->lastInsertId();
+      return $db->lastInsertId('tasks_id_seq');
     }else{
       return false;
     }
