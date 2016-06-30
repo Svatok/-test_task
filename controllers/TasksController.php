@@ -70,13 +70,16 @@ class TasksController{
       $errors=false;
       $updateData=array();
       
-      if (isset($_POST['name'])){
+      if ((isset($_POST['name']))&&(isset($_POST['project']))){
         $taskText=Tasks::clean($_POST['name']);
+        $projectId=intval($_POST['project']);
         if (Tasks::checkText($taskText)){
-            if(Tasks::addTaskData($taskText)){
+            $taskId=Tasks::addTaskData($taskText,$projectId);
+            if($taskId){
               $updateData['name']='Success:Task was added!';
+              $updateData['taskId']=$taskId;
             }else{
-              $updateData['name']='Error:Database Error: Task is not changed';
+              $updateData['name']='Error:Database Error: Task is not added';
             }
         }else{
           $updateData['name']='Error:Invalid text of task!';
