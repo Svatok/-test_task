@@ -177,7 +177,8 @@ $(document).ready(function () {
     });   
 // lost focus after add task (cancel or save)   
     $('.container_tasks').on('blur', '.add_task_input input', function(event){
-      var id_task_attr=$(this).closest('tr').attr('id');
+      var container_tasks=$(this).closest('table');
+      var id_project=container_tasks.attr('id').replace(/[^0-9]/gim,'');
       var textarea_text=$(this);
       var task_text=textarea_text.val();
          $(document).one('click', function(e) {
@@ -187,8 +188,8 @@ $(document).ready(function () {
                var successes = new Array();
                e.preventDefault();
                $.ajax({
-                    data: {name:textarea_text.val()},
-                    url: '/task/edit/'+id_task,
+                    data: {name:task_text, project:id_project},
+                    url: '/task/add/',
                     method: 'post',
                     success: function (data) {
                         if (data){ 
@@ -202,7 +203,7 @@ $(document).ready(function () {
                                         type: 'error',
                                         timeout: '1000'
                                     }); 
-                                }else{
+                                }else if (index!='taskId'){
                                     noty({
                                         text: value,
                                         type: 'success',
@@ -211,10 +212,9 @@ $(document).ready(function () {
                                 }
                             });
                             if (!result_errors){
-                                var container_tasks=textarea_text.closest('table');
                                 var priority_new=(container_tasks.find($("tr.task")).length)+1;
                                 var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
-                                var insert_task='<tr priority="'+priority_new+'" class="task" id="new">'+   
+                                var insert_task='<tr priority="'+priority_new+'" class="task" id="'+result_data['taskId']+'">'+   
                                                     '<td class="div_check"><input type="checkbox"></td>'+
                                                     '<td class="div_task_container"><div class="div_task_text">'+task_text+'</div></td>'+
                                                     '<td class="div_edit_buttons">'+
