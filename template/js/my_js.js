@@ -189,7 +189,7 @@ $(document).ready(function () {
                e.preventDefault();
                $.ajax({
                     data: {name:task_text, project:id_project},
-                    url: '/task/add/',
+                    url: '/task/add',
                     method: 'post',
                     success: function (data) {
                         if (data){ 
