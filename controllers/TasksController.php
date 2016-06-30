@@ -75,7 +75,7 @@ class TasksController{
         $projectId=intval($_POST['project']);
         if (Tasks::checkText($taskText)){
             $taskId=Tasks::addTaskData($taskText,$projectId);
-            if($taskId!=false){
+            if($taskId){
               $updateData['name']='Success:Task was added!';
               $updateData['taskId']=$taskId;
             }else{
