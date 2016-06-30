@@ -95,6 +95,28 @@ class Tasks{
   
     return $oldTaskId;
   }
+
+  public static function addTaskData($taskText, $projectId){
+
+    $db=Db::getConnection();
+
+    $priorityData=array();
+    $result=$db->query('SELECT count(*) as max_priority FROM tasks WHERE project_id='.$projectId);
+    $priorityData=$result->fetch();
+    $taskPriority=$priorityData['max_priority']+1;
+    
+    $sql = "INSERT INTO tasks (name, status, priority, project_id) VALUES (:name, 0, :priority, :project_id)";
+    $stmt = $db->prepare($sql);                                  
+    $stmt->bindParam(':name',$taskText, PDO::PARAM_STR);       
+    $stmt->bindParam(':priority', $taskPriority, PDO::PARAM_INT);   
+    $stmt->bindParam(':project_id', $projectId, PDO::PARAM_INT);   
+    if ($stmt->execute()){
+      return $db->lastInsertId();
+    }else{
+      return false;
+    }
+  }
+
   
 }
 ?>
