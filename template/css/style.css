@@ -41,8 +41,8 @@ body {
   border: 1px solid grey;
   display: block;
  border-collapse: separate;
- Как вариант обернуть дивом
-/*
+/* Как вариант обернуть дивом
+
 div
 overflow: hidden;
 padding: 0;
