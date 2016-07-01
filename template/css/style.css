@@ -65,6 +65,7 @@ border-radius: 15px*/
  min-height: 50px;
  text-align: center;
  vertical-align: middle;
+ color: #FFFFFF;
 }
 .add_task_input {
  padding: 10px 0px 10px 5px;
