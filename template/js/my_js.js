@@ -182,6 +182,9 @@ $(document).ready(function () {
       var textarea_text=$(this);
       var task_text=textarea_text.val();
          $(document).one('click', function(e) {
+            if (task_text==''){
+                alert('tyt');
+            }
             var focused_element=$(e.target);
             if (focused_element.attr('class')=='save_add'){
                var errors = new Array();
