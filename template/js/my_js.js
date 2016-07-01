@@ -427,12 +427,11 @@ $(document).ready(function () {
           var project_tr=$(this);
           var id_project=$(this).closest('tr').attr('id').replace(/[^0-9]/gim,'');
           if (!$("tr").is("#container_tasks_"+id_project+" .add_task")){
-            alert ($("tr").is("#container_tasks_"+id_project+" .add_task"));
             $.post("/projects/"+id_project, {}, function (data){
                 project_tr.after(data);
             });
           } else {
-            $("#"+container_tasks_id+" .task").remove();
+            $("#"+container_tasks_id+" .task, .add_task").remove();
           }
     });  
     
