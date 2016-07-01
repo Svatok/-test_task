@@ -174,7 +174,11 @@ $(document).ready(function () {
 // cancel edit mode of text of task or project
     $('.container_tasks').on('click', '.cancel', function(e){
       e.preventDefault();
-    });   
+    });  
+// cancel action of link
+    $('.container_tasks').on('click', '.save_add', function(e){
+      e.preventDefault();
+    });
 // lost focus after add task (cancel or save)   
     $('.container_tasks').on('blur', '.add_task_input input', function(event){
       var container_tasks=$(this).closest('table');
