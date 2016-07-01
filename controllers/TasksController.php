@@ -62,6 +62,34 @@ class TasksController{
     
     return true;
   }
+
+  public function actionAdd(){
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $userId=User::checkLogged();
+      $errors=false;
+      $updateData=array();
+      
+      if ((isset($_POST['name']))&&(isset($_POST['project']))){
+        $taskText=Tasks::clean($_POST['name']);
+        $projectId=intval($_POST['project']);
+        if (Tasks::checkText($taskText)){
+            $taskId=Tasks::addTaskData($taskText,$projectId);
+            if($taskId){
+              $updateData['name']='Success:Task was added!';
+              $updateData['taskId']=$taskId;
+            }else{
+              $updateData['name']='Error:Database Error: Task is not added';
+            }
+        }else{
+          $updateData['name']='Error:Invalid text of task!';
+        }
+      }
+    }
+    echo json_encode($updateData);
+
+    return true;
+  }
   
 }
 ?>
