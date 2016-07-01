@@ -15,7 +15,7 @@ body {
 .in_edit {
  display:none;
 }
-.div_task_container{
+.div_task_container, .div_project_container{
  width: 80%;
  text-align: left;
 }
