@@ -65,7 +65,7 @@ $(document).ready(function () {
     	buttons: [
     	//	addClass: 'btn btn-primary', 
     		{text: 'Ok', onClick: function($noty) {
-                /*    $.ajax({
+                    $.ajax({
                         data: {status:"2"},
                         url: '/task/edit/'+id_task,
                         method: 'post',
@@ -73,17 +73,17 @@ $(document).ready(function () {
                             if (data){ 
                                 var result_data = $.parseJSON(data);
                                 var result_errors = false;
-                                $.each(result_data, function(index, value){ */
-                      //              if (value.replace(/\:.*/, '')=='Error'){
-                     /*                   result_errors = true;
-                                        var n = noty({
+                                $.each(result_data, function(index, value){
+                                    if (value.replace(/\:.*/, '')=='Error'){
+                                        result_errors = true;
+                                        noty({
                                             text: 'Task not deleted!',
                                             type: 'error',
                                             timeout: '1000'
                                         }); 
                                     }
                                 });
-                                if (!result_errors){*/
+                                if (!result_errors){
                                     task_box.remove();
                                     $noty.close();
                                     noty({
@@ -91,17 +91,17 @@ $(document).ready(function () {
                                         type: 'success',
                                         timeout: '1000'
                                     }); 
-                       /*         }
+                                }
                             }
                         },
                         error: function(data){
-                            var n = noty({
+                            noty({
                                 text: 'Task not deleted!',
                                 type: 'error',
                                 timeout: '1000'
                             });     
                         }
-                    });     */
+                    });
     			}
     		},
     		{text: 'Cancel', onClick: function($noty) {
@@ -136,7 +136,7 @@ $(document).ready(function () {
                     $.each(result_data, function(index, value){ 
                         if (value.replace(/\:.*/, '')=='Error'){
                             result_errors = true;
-                            var n = noty({
+                            noty({
                                 text: value,
                                 type: 'error',
                                 timeout: '1000'
@@ -186,9 +186,6 @@ $(document).ready(function () {
       var textarea_text=$(this);
       var task_text=textarea_text.val();
          $(document).one('click', function(e) {
-            if (task_text==''){
-                alert('tyt');
-            }
             var focused_element=$(e.target);
             if (focused_element.attr('class')=='save_add'){
                var errors = new Array();
