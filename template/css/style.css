@@ -67,6 +67,9 @@ border-radius: 15px*/
  vertical-align: middle;
  color: #FFFFFF;
 }
+.project_tr .out_edit, .in_edit{
+  color: #FFFFFF;
+}
 .add_task_input {
  padding: 10px 0px 10px 5px;
  }
