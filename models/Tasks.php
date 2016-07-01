@@ -20,8 +20,12 @@ class Tasks{
     $id=intval($id);
     $db=Db::getConnection();
     
-    $sql = "UPDATE tasks SET ".$prop." = :val WHERE ID = :id";
-    $stmt = $db->prepare($sql);                                  
+    if (($prop=='status') && ($val==2)){
+      $sql = "UPDATE tasks SET ".$prop." = :val, priority = 0 WHERE ID = :id";
+    }else{
+      $sql = "UPDATE tasks SET ".$prop." = :val WHERE ID = :id";
+    }
+    $stmt = $db->prepare($sql);    
     $stmt->bindParam(':val',$val, PDO::PARAM_STR);       
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);   
     if ($stmt->execute()){
