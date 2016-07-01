@@ -87,8 +87,10 @@ $(document).ready(function () {
                                 if (!result_errors){
                                     // update priority other tasks
                                     $("#"+id_project_attr+" .task").each(function() {
-                                        if (parseInt($(this).attr('priority')>parseInt(task_box.attr('priority')))){
-                                            var new_priority=parseInt($(this).attr('priority')-1;
+                                        var del_priority=parseInt(task_box.attr('priority'));
+                                        var cur_priority=parseInt($(this).attr('priority'));
+                                        if (cur_priority>del_priority){
+                                            var new_priority=cur_priority-1;
                                             $(this).attr('priority', new_priority);
                                         }
                                     });     
