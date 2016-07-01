@@ -31,7 +31,7 @@ class Tasks{
         $sqlUpdatePriority = "UPDATE tasks SET priority = :priority WHERE ID = :id";
         $stmtUpdatePriority = $db->prepare($sqlUpdatePriority);
         $stmtUpdatePriority->bindParam(':priority',$taskPriorityNew, PDO::PARAM_INT);       
-        $stmtUpdatePriority->bindParam(':id', =$taskPriority['id'], PDO::PARAM_INT);  
+        $stmtUpdatePriority->bindParam(':id', $taskPriority['id'], PDO::PARAM_INT);  
         $stmtUpdatePriority->execute();
       }
       
