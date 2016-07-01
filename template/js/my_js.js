@@ -420,6 +420,7 @@ $(document).ready(function () {
     });
 // get tasks of project   
     $(".project_tr").click(function (){
+        alert ('tyt');
           var container_tasks_id=$(this).closest('table').attr('id');
           var project_tr=$(this);
           var id_project=$(this).closest('tr').attr('id').replace(/[^0-9]/gim,'');
