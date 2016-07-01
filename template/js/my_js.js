@@ -431,7 +431,7 @@ $(document).ready(function () {
                 project_tr.after(data);
             });
           } else {
-            $("#"+container_tasks_id+" .task, .add_task").remove();
+            $("#"+container_tasks_id+" .task, #"+container_tasks_id+" .add_task").remove();
           }
     });  
     
