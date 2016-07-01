@@ -3,7 +3,7 @@
     <div id="div_project_<?php echo $projectsItem['id'];?>">
       <h2><a href="/projects/<?php echo $projectsItem['id'];?>" data-id="<?php echo $projectsItem['id'];?>" class="project"><?php echo $projectsItem['name'];?></a></h2>
         <table id="container_tasks_<?php echo $projectsItem['id'];?>" class="container_tasks"></table>
-          <tr class="project_tr" id="project_<?php echo $projectsItem['id'];?>>
+          <tr class="project_tr" id="project_<?php echo $projectsItem['id'];?>">
             <td>
               !!!
             </td>
