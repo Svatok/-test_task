@@ -58,7 +58,7 @@ $(document).ready(function () {
     $('.container_tasks').on('click', '.del', function(e){
       e.preventDefault();
       var id_project_attr=$(this).closest('table').attr('id');
-                                     $(id_project_attr+" .task").each(function() {
+                                     $(".task").each(function() {
                                         alert($(this).attr('priority'));
                                     });     
 /*      var task_box=$(this).closest('tr');
