@@ -412,14 +412,25 @@ $(document).ready(function () {
           if ($("#container_tasks_"+id).is(':empty')){
             $.post("/projects/"+id, {}, function (data){
                 $("#container_tasks_"+id).html(data);
- //               $(".input_text").each(function() {
-  //                 $(this).trigger('keyup');
-//                });
             });
           } else {
             $("#container_tasks_"+id).empty();
           }
 
     });
+// get tasks of project   
+    $(".project_tr").click(function (){
+          var container_tasks_id=$(this).closest('table').attr('id');
+          var project_tr=$(this);
+          var id_project=$(this).closest('tr').attr('id').replace(/[^0-9]/gim,'');
+          if ($("#container_tasks_"+id_project).is("add_task")){
+            $.post("/projects/"+id_project, {}, function (data){
+                project_tr.after(data);
+            });
+          } else {
+            $("#container_tasks_"+id_project).empty();
+            $("#"+container_tasks_id+" .task").remove();
+          }
+    });   
     
 }); 
