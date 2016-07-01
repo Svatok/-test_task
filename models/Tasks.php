@@ -119,7 +119,7 @@ class Tasks{
     $db=Db::getConnection();
 
     $priorityData=array();
-    $result=$db->query('SELECT count(*) as max_priority FROM tasks WHERE project_id='.$projectId);
+    $result=$db->query('SELECT count(*) as max_priority FROM tasks WHERE status<>2 AND project_id='.$projectId);
     $priorityData=$result->fetch();
     $taskPriority=$priorityData['max_priority']+1;
     
