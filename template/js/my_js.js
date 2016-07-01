@@ -57,7 +57,11 @@ $(document).ready(function () {
 // delete task
     $('.container_tasks').on('click', '.del', function(e){
       e.preventDefault();
-      var task_box=$(this).closest('tr');
+      var id_project_attr=$(this).closest('table').attr('id');
+                                     $(id_project_attr+" .task").each(function() {
+                                        alert($(this).attr('priority'));
+                                    });     
+/*      var task_box=$(this).closest('tr');
       var id_task_attr=task_box.attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       noty({
@@ -73,9 +77,9 @@ $(document).ready(function () {
                             if (data){ 
                                 var result_data = $.parseJSON(data);
                                 var result_errors = false;
-                                $.each(result_data, function(index, value){
-                                    if (value.replace(/\:.*/, '')=='Error'){
-                                        result_errors = true;
+                                $.each(result_data, function(index, value){*/
+                      //              if (value.replace(/\:.*/, '')=='Error'){
+                     /*                   result_errors = true;
                                         noty({
                                             text: 'Task not deleted!',
                                             type: 'error',
@@ -86,6 +90,8 @@ $(document).ready(function () {
                                 if (!result_errors){
                                     task_box.remove();
                                     $noty.close();
+                                    // update priority other tasks
+
                                     noty({
                                         text: 'Task deleted!',
                                         type: 'success',
@@ -109,7 +115,7 @@ $(document).ready(function () {
     			}
     		}
     	]
-      });        
+      });        */
     }); 
 // change status of task
     $('.container_tasks').on('click', '.task_status', function(){
