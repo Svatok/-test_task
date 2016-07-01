@@ -58,10 +58,7 @@ $(document).ready(function () {
     $('.container_tasks').on('click', '.del', function(e){
       e.preventDefault();
       var id_project_attr=$(this).closest('table').attr('id');
-                                     $("#"+id_project_attr+" .task").each(function() {
-                                        alert($(this).attr('priority'));
-                                    });     
-/*      var task_box=$(this).closest('tr');
+      var task_box=$(this).closest('tr');
       var id_task_attr=task_box.attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       noty({
@@ -77,9 +74,9 @@ $(document).ready(function () {
                             if (data){ 
                                 var result_data = $.parseJSON(data);
                                 var result_errors = false;
-                                $.each(result_data, function(index, value){*/
-                      //              if (value.replace(/\:.*/, '')=='Error'){
-                     /*                   result_errors = true;
+                                $.each(result_data, function(index, value){
+                                    if (value.replace(/\:.*/, '')=='Error'){
+                                        result_errors = true;
                                         noty({
                                             text: 'Task not deleted!',
                                             type: 'error',
@@ -88,10 +85,16 @@ $(document).ready(function () {
                                     }
                                 });
                                 if (!result_errors){
+                                    // update priority other tasks
+                                    $("#"+id_project_attr+" .task").each(function() {
+                                        if (parseInt($(this).attr('priority')>parseInt(task_box.attr('priority')))){
+                                            var new_priority=parseInt($(this).attr('priority')-1;
+                                            $(this).attr('priority', new_priority);
+                                        }
+                                    });     
+                                    // remove element
                                     task_box.remove();
                                     $noty.close();
-                                    // update priority other tasks
-
                                     noty({
                                         text: 'Task deleted!',
                                         type: 'success',
@@ -115,7 +118,7 @@ $(document).ready(function () {
     			}
     		}
     	]
-      });        */
+      });        
     }); 
 // change status of task
     $('.container_tasks').on('click', '.task_status', function(){
