@@ -20,8 +20,26 @@ class Tasks{
     $id=intval($id);
     $db=Db::getConnection();
     
-    $sql = "UPDATE tasks SET ".$prop." = :val WHERE ID = :id";
-    $stmt = $db->prepare($sql);                                  
+    if (($prop=='status') && ($val==2)){
+      $taskData=Tasks::getTaskData($id);
+      
+      $taskPriority=array();
+      $result=$db->query('SELECT id, priority FROM tasks WHERE project_id='.$taskData['project_id'].' AND priority>'.$taskData['priority'].' AND status<>2');
+      while($taskPriority=$result->fetch()){
+        $taskPriorityNew=$taskPriority['priority']-1;
+        
+        $sqlUpdatePriority = "UPDATE tasks SET priority = :priority WHERE ID = :id";
+        $stmtUpdatePriority = $db->prepare($sqlUpdatePriority);
+        $stmtUpdatePriority->bindParam(':priority',$taskPriorityNew, PDO::PARAM_INT);       
+        $stmtUpdatePriority->bindParam(':id', $taskPriority['id'], PDO::PARAM_INT);  
+        $stmtUpdatePriority->execute();
+      }
+      
+      $sql = "UPDATE tasks SET ".$prop." = :val, priority = 0 WHERE ID = :id";
+    }else{
+      $sql = "UPDATE tasks SET ".$prop." = :val WHERE ID = :id";
+    }
+    $stmt = $db->prepare($sql);    
     $stmt->bindParam(':val',$val, PDO::PARAM_STR);       
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);   
     if ($stmt->execute()){
@@ -101,7 +119,7 @@ class Tasks{
     $db=Db::getConnection();
 
     $priorityData=array();
-    $result=$db->query('SELECT count(*) as max_priority FROM tasks WHERE project_id='.$projectId);
+    $result=$db->query('SELECT count(*) as max_priority FROM tasks WHERE status<>2 AND project_id='.$projectId);
     $priorityData=$result->fetch();
     $taskPriority=$priorityData['max_priority']+1;
     

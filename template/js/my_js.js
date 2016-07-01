@@ -57,6 +57,7 @@ $(document).ready(function () {
 // delete task
     $('.container_tasks').on('click', '.del', function(e){
       e.preventDefault();
+      var id_project_attr=$(this).closest('table').attr('id');
       var task_box=$(this).closest('tr');
       var id_task_attr=task_box.attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
@@ -84,6 +85,16 @@ $(document).ready(function () {
                                     }
                                 });
                                 if (!result_errors){
+                                    // update priority other tasks
+                                    $("#"+id_project_attr+" .task").each(function() {
+                                        var del_priority=parseInt(task_box.attr('priority'));
+                                        var cur_priority=parseInt($(this).attr('priority'));
+                                        if (cur_priority>del_priority){
+                                            var new_priority=cur_priority-1;
+                                            $(this).attr('priority', new_priority);
+                                        }
+                                    });     
+                                    // remove element
                                     task_box.remove();
                                     $noty.close();
                                     noty({
@@ -219,7 +230,7 @@ $(document).ready(function () {
                                 var priority_new=(container_tasks.find($("tr.task")).length)+1;
                                 var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
                                 var insert_task='<tr priority="'+priority_new+'" class="task" id="task_'+result_data['taskId']+'">'+   
-                                                    '<td class="div_check"><input type="checkbox"></td>'+
+                                                    '<td class="div_check"><input type="checkbox" class="task_status"></td>'+
                                                     '<td class="div_task_container"><div class="div_task_text">'+task_text+'</div></td>'+
                                                     '<td class="div_edit_buttons">'+
                                                         '<div class="out_edit">'+
