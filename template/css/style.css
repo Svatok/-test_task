@@ -37,8 +37,10 @@ overflow: hidden;
 padding: 0;
 border-radius: 0px 0px 10px 10px;
 border: 1px solid grey;
-display: inline-block;
-/*vertical-align: top;*/
+float: left;
+clear:both;
+/*display: inline-block;
+vertical-align: top;*/
 margin:auto;
 }
 .container_tasks{
