@@ -13,6 +13,7 @@
                   <a href="" class="edit">Edit</a>
                   <a href="" class="del">Del</a>
                   <a href="" class="del">Del</a>
+                  <a href="" class="del">Del</a>
                 </div>
                 <div class="in_edit">
                   <a href="" class="save">Save</a>
