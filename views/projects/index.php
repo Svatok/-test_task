@@ -4,7 +4,7 @@
       <h2><a href="/projects/<?php echo $projectsItem['id'];?>" data-id="<?php echo $projectsItem['id'];?>" class="project"><?php echo $projectsItem['name'];?></a></h2>
         <table id="container_tasks_<?php echo $projectsItem['id'];?>" class="container_tasks">
           <tr priority="100" class="task" id="task_100">
-              <td class="div_check">
+              <td class="project_icon">
                 !!!
               </td>
               <td class="div_task_container"><div class="div_task_text"><?php echo $projectsItem['name'];?></div></td>
