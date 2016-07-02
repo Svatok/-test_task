@@ -5,7 +5,7 @@
         <table id="container_tasks_<?php echo $projectsItem['id'];?>" class="container_tasks">
           <tr priority="100" class="task" id="task_100">
               <td class="div_check">
-                <input type="checkbox" class="task_status">
+                !!!
               </td>
               <td class="div_task_container"><div class="div_task_text"><?php echo $projectsItem['name'];?></div></td>
               <td class="div_edit_buttons">
