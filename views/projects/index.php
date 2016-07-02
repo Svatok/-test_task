@@ -7,7 +7,7 @@
               <td class="project_icon">
                 !!!
               </td>
-              <td class="div_task_container"><div class="div_task_text"><?php echo $projectsItem['name'];?></div></td>
+              <td class="div_project_container"><div class="div_task_text"><?php echo $projectsItem['name'];?></div></td>
               <td class="div_edit_buttons">
                 <div class="out_edit">
                   <a href="" class="up_task">Up</a>
