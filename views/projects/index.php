@@ -1,5 +1,5 @@
 <?php include ROOT.'/views/layouts/header.php';?>
-<button>
+<button class="center_but">
   <?php foreach ($projectsList as $projectsItem):?>
     <div id="div_project_<?php echo $projectsItem['id'];?>" class="div_project_border">
         <table id="container_tasks_<?php echo $projectsItem['id'];?>" class="container_tasks">
