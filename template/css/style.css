@@ -8,7 +8,11 @@ body {
  margin: 0;
  padding: 0;
  height: 100%;
- text-align: center;
+}
+.main_div{
+ float: left;
+ position: relative;
+ left: 50%;
 }
 .out_edit{
  display:inline-block;
@@ -34,16 +38,16 @@ body {
  font-size: 14px;
 }
 .div_project_border{
-margin: auto;
-padding: 0;
-border-radius: 0px 0px 10px 10px;
-border: 1px solid grey;
-float: left;
-clear:both;
-/*display: inline-block;
-vertical-align: top;
-overflow: hidden;
-*/
+ position: relative;
+ left: -50%;
+ border-radius: 0px 0px 10px 10px;
+ border: 1px solid grey;
+ float: left;
+ clear:both;
+ /*display: inline-block;
+ vertical-align: top;
+ overflow: hidden;
+ */
 }
 .container_tasks{
   width: 800px;
