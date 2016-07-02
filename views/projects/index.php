@@ -21,6 +21,17 @@
                 </div>
             </td>
           </tr>
+            <tr class="add_task">
+                <td>
+                  +
+                </td>
+                <td class="add_task_input"> 
+                  <input type="text" placeholder="Start typing here to create a task..."></input>
+                </td>
+                <td class="add_task_button">
+                  <a href="#" class="save_add">Add Task</a>
+                </td>
+              </tr>
         </table>
     </div>
     <?php endforeach; 
