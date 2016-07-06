@@ -84,14 +84,14 @@ border-radius: 15px*/
  text-align: center;
  vertical-align: middle;
 }
-.project_tr {
+.project {
  background:#2D0A7F;
  min-height: 50px;
  text-align: center;
  vertical-align: middle;
  color: #FFFFFF;
 }
-.project_tr .in_edit, .project_tr .out_edit{
+.project .in_edit, .project .out_edit{
   color: #FFFFFF;
 }
 .add_task_input {
