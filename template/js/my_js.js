@@ -426,7 +426,7 @@ $(document).ready(function () {
 // get tasks of project   
     $(".project .div_project_container, .project .project_icon").click(function (){
           var container_tasks_id=$(this).closest('table').attr('id');
-          var project_tr=$(this);
+          var project_tr=$(this).closest('.project');
           var id_project=$(this).closest('tr').attr('id').replace(/[^0-9]/gim,'');
           if (!$("tr").is("#container_tasks_"+id_project+" .add_task")){
             $.post("/projects/"+id_project, {}, function (data){
