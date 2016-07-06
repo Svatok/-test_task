@@ -176,8 +176,9 @@ $(document).ready(function () {
     $('.container_tasks').on('click', '.edit', function(e){
       e.preventDefault();
       var id_task_attr=$(this).closest('tr').attr('id');
-      before_edit=$("#"+id_task_attr+" .div_task_text").text();
-      var div_text=$("#"+id_task_attr+" .div_task_text");
+      var class_tr_attr=$(this).closest('tr').attr('class');
+      before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
+      var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text");
       divClicked(div_text);
       $("#"+id_task_attr+" .out_edit").hide();
       $("#"+id_task_attr+" .in_edit").css('display','inline-block');
