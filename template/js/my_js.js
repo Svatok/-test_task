@@ -406,7 +406,7 @@ $(document).ready(function () {
       }
     }); 
 // get tasks of project   
-    $(".project").click(function (e){
+/*    $(".project").click(function (e){
           e.preventDefault();
           var id=$(this).attr("data-id");
           if ($("#container_tasks_"+id).is(':empty')){
@@ -419,10 +419,10 @@ $(document).ready(function () {
           } else {
             $("#container_tasks_"+id).empty();
           }
-    });
+    });*/
 
 // get tasks of project   
-    $(".project_tr").click(function (){
+    $(".project").click(function (){
           var container_tasks_id=$(this).closest('table').attr('id');
           var project_tr=$(this);
           var id_project=$(this).closest('tr').attr('id').replace(/[^0-9]/gim,'');
