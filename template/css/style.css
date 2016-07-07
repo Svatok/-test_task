@@ -9,13 +9,18 @@ body {
  padding: 0;
  height: 100%;
 }
+.main_div{
+ float: left;
+ position: relative;
+ left: 50%;
+}
 .out_edit{
  display:inline-block;
 }
 .in_edit {
  display:none;
 }
-.div_task_container{
+.div_task_container, .div_project_container{
  width: 80%;
  text-align: left;
 }
@@ -32,23 +37,42 @@ body {
  font-family: Verdana, Helvetica, Arial, sans-serif;
  font-size: 14px;
 }
+.head_div {
+    position: relative;
+    left: -50%;
+    text-align: center;
+}
+.div_project_border{
+ position: relative;
+ left: -50%;
+ border-radius: 0px 0px 10px 10px;
+ border: 1px solid grey;
+ float: left;
+ clear:both;
+ margin: 10px 0px;
+ /*display: inline-block;
+ vertical-align: top;
+ overflow: hidden;
+ */
+}
 .container_tasks{
   width: 800px;
-  border-radius: 0px 0px 10px 10px;
+/*  border-radius: 0px 0px 10px 10px;
   -webkit-border-radius: 0px 0px 10px 10px;
   -moz-border-radius: 0px 0px 10px 10px;
   -khtml-border-radius: 0px 0px 10px 10px;
   border: 1px solid grey;
   display: block;
  border-collapse: separate;
- Как вариант обернуть дивом
-/*
+/* Как вариант обернуть дивом
+
 div
 overflow: hidden;
 padding: 0;
 border-radius: 15px*/
 }
 .task {
+ width: 100%;
  background:#FFFFE0;
  min-height: 50px;
  text-align: center;
@@ -59,6 +83,16 @@ border-radius: 15px*/
  min-height: 50px;
  text-align: center;
  vertical-align: middle;
+}
+.project {
+ background:#2D0A7F;
+ min-height: 50px;
+ text-align: center;
+ vertical-align: middle;
+ color: #FFFFFF;
+}
+.project .in_edit, .project .out_edit{
+  color: #FFFFFF;
 }
 .add_task_input {
  padding: 10px 0px 10px 5px;

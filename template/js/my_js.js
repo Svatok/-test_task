@@ -11,9 +11,9 @@ $(document).ready(function () {
         editableText.focus();
     }
 // function wich replace textbox on div after edit      
-    function editableTextBlurred(textarea, save) {
+    function editableTextBlurred(textarea, save, type) {
         var html = $(textarea).val();
-        var viewableText = $('<div class="div_task_text">');
+        var viewableText = $('<div class="div_'+type+'_text">');
         if (save){
             viewableText.html(html);
         }else{
@@ -176,8 +176,9 @@ $(document).ready(function () {
     $('.container_tasks').on('click', '.edit', function(e){
       e.preventDefault();
       var id_task_attr=$(this).closest('tr').attr('id');
-      before_edit=$("#"+id_task_attr+" .div_task_text").text();
-      var div_text=$("#"+id_task_attr+" .div_task_text");
+      var class_tr_attr=$(this).closest('tr').attr('class');
+      before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
+      var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text");
       divClicked(div_text);
       $("#"+id_task_attr+" .out_edit").hide();
       $("#"+id_task_attr+" .in_edit").css('display','inline-block');
@@ -257,6 +258,7 @@ $(document).ready(function () {
 // lost focus after edit task (cancel or save)       
     $('.container_tasks').on('blur', '.input_text', function(event){
       var id_task_attr=$(this).closest('tr').attr('id');
+      var class_attr=$(this).closest('tr').attr('class');
       var textarea_text=$("#"+id_task_attr+" .input_text");
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
@@ -267,7 +269,7 @@ $(document).ready(function () {
                  if (textarea_text.val()!=before_edit){
                        $.ajax({
                           data: {name:textarea_text.val()},
-                          url: '/task/edit/'+id_task,
+                          url: '/'+class_attr+'/edit/'+id_task,
                           method: 'post',
                           success: function (data) {
                              if (data){ 
@@ -290,14 +292,14 @@ $(document).ready(function () {
                                     }
                                 });
                                 if (result_errors){
-                                    editableTextBlurred(textarea_text, false);    
+                                    editableTextBlurred(textarea_text, false, class_attr);    
                                 }else{
-                                    editableTextBlurred(textarea_text, true);
+                                    editableTextBlurred(textarea_text, true, class_attr);
                                 }
                              }
                           },
                           error: function(){
-                            editableTextBlurred(textarea_text, false);  
+                            editableTextBlurred(textarea_text, false, class_attr);  
                           }
                        });
                  }
@@ -307,10 +309,10 @@ $(document).ready(function () {
                         type: 'error',
                         timeout: '1000'
                     });                    
-                    editableTextBlurred(textarea_text, false);
+                    editableTextBlurred(textarea_text, false, class_attr);
                }   
             }else{
-               editableTextBlurred(textarea_text, false);
+               editableTextBlurred(textarea_text, false, class_attr);
             }
             $("#"+id_task_attr+" .in_edit").hide();
             $("#"+id_task_attr+" .out_edit").css('display','inline-block');
@@ -406,32 +408,33 @@ $(document).ready(function () {
       }
     }); 
 // get tasks of project   
-    $(".project").click(function (e){
+/*    $(".project").click(function (e){
           e.preventDefault();
           var id=$(this).attr("data-id");
           if ($("#container_tasks_"+id).is(':empty')){
             $.post("/projects/"+id, {}, function (data){
                 $("#container_tasks_"+id).html(data);
+ //               $(".input_text").each(function() {
+  //                 $(this).trigger('keyup');
+//                });
             });
           } else {
             $("#container_tasks_"+id).empty();
           }
+    });*/
 
-    });
 // get tasks of project   
-    $(".project_tr").click(function (){
-        alert ('tyt');
+    $(".project .div_project_container, .project .project_icon").click(function (){
           var container_tasks_id=$(this).closest('table').attr('id');
-          var project_tr=$(this);
+          var project_tr=$(this).closest('.project');
           var id_project=$(this).closest('tr').attr('id').replace(/[^0-9]/gim,'');
-          if ($("#container_tasks_"+id_project).is("add_task")){
+          if (!$("tr").is("#container_tasks_"+id_project+" .add_task")){
             $.post("/projects/"+id_project, {}, function (data){
                 project_tr.after(data);
             });
           } else {
-            $("#container_tasks_"+id_project).empty();
-            $("#"+container_tasks_id+" .task").remove();
+            $("#"+container_tasks_id+" .task, #"+container_tasks_id+" .add_task").remove();
           }
-    });   
+    });  
     
-}); 
+});
