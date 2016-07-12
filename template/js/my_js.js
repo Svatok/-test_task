@@ -338,10 +338,10 @@ function ucfirst(str) {
                                     editableTextBlurred(textarea_text, false, class_attr);    
                                 }else{
                                     editableTextBlurred(textarea_text, true, class_attr);
-                                    alert('tyt1');
+                                    $("#"+id_task_attr+" .in_edit").hide();
+                                    $("#"+id_task_attr+" .out_edit").css('display','inline-block');
                                     //add project
                                     if (typeof result_data['projectId'] !=="undefined"){
-                                        alert('tyt');
                                         $('#div_project_NEW').attr('id', 'div_project_'+result_data['projectId']);
                                         $('#container_tasks_NEW').attr('id', 'container_tasks_'+result_data['projectId']);
                                         $('#project_NEW').attr('id', 'project_'+result_data['projectId']);
@@ -373,7 +373,6 @@ function ucfirst(str) {
                 }
             }
          });
-         alert('last');
     });   
 // change priority of task to UP
     $('.main_div').on('click', '.up_task', function(e){
