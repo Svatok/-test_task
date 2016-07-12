@@ -343,7 +343,6 @@ function ucfirst(str) {
                                         $('#div_project_NEW').attr('id', 'div_project_'+result_data['projectId']);
                                         $('#container_tasks_NEW').attr('id', 'container_tasks_'+result_data['projectId']);
                                         $('#project_NEW').attr('id', 'project_'+result_data['projectId']);
-                                        $(".project .div_project_container, .project .project_icon")
                                         $("#project_"+result_data['projectId']+" .div_project_container").trigger('click');
                                     }
                                 }
