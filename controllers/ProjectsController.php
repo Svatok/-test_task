@@ -54,5 +54,32 @@ class ProjectsController{
     return true;
   }
   
+  public function actionAdd(){
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $userId=User::checkLogged();
+      $errors=false;
+      $updateData=array();
+      
+      if (isset($_POST['name'])){
+        $projectText=Projects::clean($_POST['name']);
+        if (Projects::checkText($projectText)){
+            $projectId=Projects::addProjectData($projectText);
+            if($projectId){
+              $updateData['name']='Success:Project was added!';
+              $updateData['projectId']=$projectId;
+            }else{
+              $updateData['name']='Error:Database Error: Project is not added';
+            }
+        }else{
+          $updateData['name']='Error:Invalid text of project!';
+        }
+      }
+    }
+    echo json_encode($updateData);
+    
+    return true;
+  }
+  
 }
 ?>
