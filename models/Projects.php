@@ -1,6 +1,19 @@
 <?php
 class Projects{
 
+  public static function getProjectData($id){
+    
+    $id=intval($id);
+    
+    $db=Db::getConnection();
+    
+    $projectData=array();
+    $result=$db->query('SELECT * FROM projects WHERE id='.$id);
+    $projectData=$result->fetch();
+  
+    return $projectData;
+  }
+  
   public static function getProjectsList($userId){
     
     $db=Db::getConnection();
