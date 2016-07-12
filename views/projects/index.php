@@ -4,7 +4,6 @@
         <h1>SIMPLE TODO LISTS</h1>
         <h2>FROM RUBY GARAGE</h2>
     </div>
-    <div class="add_button_project"><a href="">Add TODO List</a></div>
 <?php  foreach ($projectsList as $projectsItem):?>
     <div id="div_project_<?php echo $projectsItem['id'];?>" class="div_project_border">
         <table id="container_tasks_<?php echo $projectsItem['id'];?>" class="container_tasks">
@@ -27,6 +26,6 @@
         </table>
     </div>
     <?php endforeach;?>
-    
+    <div class="add_button_project"><button>Add TODO List</button></div>
 </div>
 <?php include ROOT.'/views/layouts/footer.php'; ?>
