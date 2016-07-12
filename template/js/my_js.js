@@ -338,6 +338,7 @@ function ucfirst(str) {
                                     editableTextBlurred(textarea_text, false, class_attr);    
                                 }else{
                                     editableTextBlurred(textarea_text, true, class_attr);
+                                    alert('tyt1');
                                     //add project
                                     if (typeof result_data['projectId'] !=="undefined"){
                                         alert('tyt');
