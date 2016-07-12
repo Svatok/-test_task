@@ -39,5 +39,39 @@ class Projects{
   
     return $tasksList;
   }
+
+  public static function editProjectData($prop, $val, $id){
+    
+    $id=intval($id);
+    $db=Db::getConnection();
+    
+    $sql = "UPDATE projects SET ".$prop." = :val WHERE ID = :id";
+    $stmt = $db->prepare($sql);    
+    $stmt->bindParam(':val',$val, PDO::PARAM_STR);       
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);   
+    if ($stmt->execute()){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  
+  public static function clean($value) {
+      $value = trim($value);
+      $value = stripslashes($value);
+      $value = strip_tags($value);
+      $value = htmlspecialchars($value);
+      
+      return $value;
+  }
+  
+  public static function checkText($val){
+    if((empty($val)) || (strlen($val) < 5) || (strlen($val) > 250)) {
+      return false;
+    }else{
+      return true;
+    }
+  }  
+  
 }
 ?>
