@@ -8,7 +8,7 @@ class Projects{
     $db=Db::getConnection();
     
     $projectData=array();
-    $result=$db->query('SELECT * FROM projects WHERE id='.$id);
+    $result=$db->query('SELECT * FROM projects WHERE id='.$id.' ORDER BY id');
     $projectData=$result->fetch();
   
     return $projectData;
