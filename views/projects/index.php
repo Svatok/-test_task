@@ -26,6 +26,6 @@
         </table>
     </div>
     <?php endforeach;?>
-    <div class="add_button_project"><button>Add TODO List</button></div>
+    <div class="add_button_project"><a href="">Add TODO List</a></div>
 </div>
 <?php include ROOT.'/views/layouts/footer.php'; ?>
