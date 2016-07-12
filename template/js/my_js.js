@@ -352,9 +352,6 @@ function ucfirst(str) {
                           },
                           error: function(){
                             editableTextBlurred(textarea_text, false, class_attr);  
-                            if ($("div").is("#div_project_NEW")){
-                                $('#div_project_NEW').remove();
-                            }
                           }
                        });
                  }
@@ -365,19 +362,14 @@ function ucfirst(str) {
                         timeout: '1000'
                     });                    
                     editableTextBlurred(textarea_text, false, class_attr);
-                    if ($("div").is("#div_project_NEW")){
-                        $('#div_project_NEW').remove();
-                    }
                }   
             }else{
                editableTextBlurred(textarea_text, false, class_attr);
-               if ($("div").is("#div_project_NEW")){
-                   $('#div_project_NEW').remove();
-               }
             }
             $("#"+id_task_attr+" .in_edit").hide();
             $("#"+id_task_attr+" .out_edit").css('display','inline-block');
             if ($("div").is("#div_project_NEW")){
+                alert('rem');
                 $('#div_project_NEW').remove();
             }
          });
