@@ -42,6 +42,12 @@ body {
     left: -50%;
     text-align: center;
 }
+.add_button_project{
+    position: relative;
+    left: -50%;
+    text-align: center; 
+    clear:both;
+}
 .div_project_border{
  position: relative;
  left: -50%;
@@ -94,6 +100,9 @@ border-radius: 15px*/
 .project .in_edit, .project .out_edit{
   color: #FFFFFF;
 }
+ .project .div_project_container, .project .project_icon{
+  cursor: pointer
+ }
 .add_task_input {
  padding: 10px 0px 10px 5px;
  }

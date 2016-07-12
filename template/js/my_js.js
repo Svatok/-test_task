@@ -173,7 +173,7 @@ $(document).ready(function () {
       }
     }); 
 // text of task or project go in edit mode 
-    $('.container_tasks').on('click', '.edit', function(e){
+    $('.main_div').on('click', '.edit', function(e){
       e.preventDefault();
       var id_task_attr=$(this).closest('tr').attr('id');
       var class_tr_attr=$(this).closest('tr').attr('class');
@@ -190,6 +190,33 @@ $(document).ready(function () {
 // cancel action of link
     $('.container_tasks').on('click', '.save_add', function(e){
       e.preventDefault();
+    });
+// text of task or project go in edit mode 
+    $('.main_div').on('click', '.add_button_project button', function(e){
+        e.preventDefault();
+        before_div=$(this).closest('div');
+        var insert_project='<div id="div_project_NEW" class="div_project_border">'+   
+                                '<table id="container_tasks_NEW" class="container_tasks">'+
+                                    '<tr class="project" id="project_NEW">'+
+                                        '<td class="project_icon">'+
+                                            '!!!'+
+                                        '</td>'+
+                                        '<td class="div_project_container"><div class="div_project_text"></div></td>'+
+                                        '<td class="div_edit_buttons">'+
+                                            '<div class="out_edit">'+
+                                                '<a href="" class="edit">Edit</a>'+
+                                                '<a href="" class="del">Del</a>'+
+                                            '</div>'+
+                                            '<div class="in_edit">'+
+                                                '<a href="" class="save">Save</a>'+
+                                                '<a href="" class="cancel">Cancel</a>'+
+                                            '</div>'+
+                                        '</td>'+
+                                    '</tr>'+
+                                '</table>'+
+                            '</div>';
+        before_div.before(insert_project);
+        $("#project_NEW .edit").trigger('click');
     });
 // lost focus after add task (cancel or save)   
     $('.container_tasks').on('blur', '.add_task_input input', function(event){
@@ -278,13 +305,13 @@ $(document).ready(function () {
                                 $.each(result_data, function(index, value){
                                     if (value.replace(/\:.*/, '')=='Error'){
                                         result_errors = true;
-                                        var n = noty({
+                                        noty({
                                             text: value,
                                             type: 'error',
                                             timeout: '1000'
                                         }); 
                                     }else{
-                                        var n = noty({
+                                        noty({
                                             text: value,
                                             type: 'success',
                                             timeout: '1000'
@@ -304,7 +331,7 @@ $(document).ready(function () {
                        });
                  }
                }else{
-                    var n = noty({
+                    noty({
                         text: 'Invalid text of task!',
                         type: 'error',
                         timeout: '1000'

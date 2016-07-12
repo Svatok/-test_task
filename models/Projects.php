@@ -1,13 +1,26 @@
 <?php
 class Projects{
 
+  public static function getProjectData($id){
+    
+    $id=intval($id);
+    
+    $db=Db::getConnection();
+    
+    $projectData=array();
+    $result=$db->query('SELECT * FROM projects WHERE id='.$id);
+    $projectData=$result->fetch();
+  
+    return $projectData;
+  }
+  
   public static function getProjectsList($userId){
     
     $db=Db::getConnection();
     
     $projectsList=array();
     
-    $result=$db->query('SELECT id, name FROM projects');
+    $result=$db->query('SELECT id, name FROM projects ORDER BY id');
     
     $i=0;
     while($row=$result->fetch()){
@@ -39,5 +52,39 @@ class Projects{
   
     return $tasksList;
   }
+
+  public static function editProjectData($prop, $val, $id){
+    
+    $id=intval($id);
+    $db=Db::getConnection();
+    
+    $sql = "UPDATE projects SET ".$prop." = :val WHERE ID = :id";
+    $stmt = $db->prepare($sql);    
+    $stmt->bindParam(':val',$val, PDO::PARAM_STR);       
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);   
+    if ($stmt->execute()){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  
+  public static function clean($value) {
+      $value = trim($value);
+      $value = stripslashes($value);
+      $value = strip_tags($value);
+      $value = htmlspecialchars($value);
+      
+      return $value;
+  }
+  
+  public static function checkText($val){
+    if((empty($val)) || (strlen($val) < 5) || (strlen($val) > 250)) {
+      return false;
+    }else{
+      return true;
+    }
+  }  
+  
 }
 ?>
