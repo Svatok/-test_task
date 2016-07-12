@@ -69,6 +69,19 @@ class Projects{
     }
   }
   
+  public static function addTaskData($projectText){
+    $db=Db::getConnection();
+    
+    $sql = "INSERT INTO projects (name) VALUES (:name)";
+    $stmt = $db->prepare($sql);                                  
+    $stmt->bindParam(':name',$projectText, PDO::PARAM_STR);       
+    if ($stmt->execute()){
+      return $db->lastInsertId('projects_id_seq');
+    }else{
+      return false;
+    }
+  }
+  
   public static function clean($value) {
       $value = trim($value);
       $value = stripslashes($value);
