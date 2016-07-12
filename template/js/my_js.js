@@ -1,6 +1,11 @@
 $(document).ready(function () {
     var allowedStatuses=[0,1,2]; // 0 - In work, 1 - Done, 2 - Delete
     var before_edit;
+
+function ucfirst(str) {
+    var first = str.charAt(0).toUpperCase();
+    return first + str.substr(1);
+}
 // function wich replace div on textbox before edit         
     function divClicked(div) {
         var divHtml = $(div).html();
@@ -59,16 +64,17 @@ $(document).ready(function () {
       e.preventDefault();
       var id_project_attr=$(this).closest('table').attr('id');
       var task_box=$(this).closest('tr');
+      var class_attr=task_box.attr('class');
       var id_task_attr=task_box.attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       noty({
-    	text: 'Do you want to delete task?',
+    	text: 'Do you want to delete '+class_attr+'?',
     	buttons: [
     	//	addClass: 'btn btn-primary', 
     		{text: 'Ok', onClick: function($noty) {
                     $.ajax({
                         data: {status:"2"},
-                        url: '/task/edit/'+id_task,
+                        url: '/'+class_attr+'/edit/'+id_task,
                         method: 'post',
                         success: function (data) {
                             if (data){ 
@@ -78,27 +84,32 @@ $(document).ready(function () {
                                     if (value.replace(/\:.*/, '')=='Error'){
                                         result_errors = true;
                                         noty({
-                                            text: 'Task not deleted!',
+                                            text: ucfirst(class_attr)+' not deleted!',
                                             type: 'error',
                                             timeout: '1000'
                                         }); 
                                     }
                                 });
                                 if (!result_errors){
-                                    // update priority other tasks
-                                    $("#"+id_project_attr+" .task").each(function() {
-                                        var del_priority=parseInt(task_box.attr('priority'));
-                                        var cur_priority=parseInt($(this).attr('priority'));
-                                        if (cur_priority>del_priority){
-                                            var new_priority=cur_priority-1;
-                                            $(this).attr('priority', new_priority);
-                                        }
-                                    });     
-                                    // remove element
-                                    task_box.remove();
+                                    if (class_attr=='task'){
+                                        // update priority other tasks
+                                        $("#"+id_project_attr+" .task").each(function() {
+                                            var del_priority=parseInt(task_box.attr('priority'));
+                                            var cur_priority=parseInt($(this).attr('priority'));
+                                            if (cur_priority>del_priority){
+                                                var new_priority=cur_priority-1;
+                                                $(this).attr('priority', new_priority);
+                                            }
+                                        });
+                                        // remove element
+                                        task_box.remove();                                        
+                                    }else{
+                                        // remove element
+                                        task_box.closest('.div_project_border').remove();   
+                                    }
                                     $noty.close();
                                     noty({
-                                        text: 'Task deleted!',
+                                        text: ucfirst(class_attr)+' deleted!',
                                         type: 'success',
                                         timeout: '1000'
                                     }); 
@@ -107,7 +118,7 @@ $(document).ready(function () {
                         },
                         error: function(data){
                             noty({
-                                text: 'Task not deleted!',
+                                text: ucfirst(class_attr)+' not deleted!',
                                 type: 'error',
                                 timeout: '1000'
                             });     
@@ -340,22 +351,34 @@ $(document).ready(function () {
                           },
                           error: function(){
                             editableTextBlurred(textarea_text, false, class_attr);  
+                            if ($("div").is("#div_project_NEW"){
+                                $('#div_project_NEW').remove();
+                            }
                           }
                        });
                  }
                }else{
                     noty({
-                        text: 'Invalid text of task!',
+                        text: 'Invalid text of '+class_attr+'!',
                         type: 'error',
                         timeout: '1000'
                     });                    
                     editableTextBlurred(textarea_text, false, class_attr);
+                    if ($("div").is("#div_project_NEW"){
+                        $('#div_project_NEW').remove();
+                    }
                }   
             }else{
                editableTextBlurred(textarea_text, false, class_attr);
+               if ($("div").is("#div_project_NEW"){
+                   $('#div_project_NEW').remove();
+               }
             }
             $("#"+id_task_attr+" .in_edit").hide();
             $("#"+id_task_attr+" .out_edit").css('display','inline-block');
+            if ($("div").is("#div_project_NEW"){
+                $('#div_project_NEW').remove();
+            }
          });
     });   
 // change priority of task to UP
