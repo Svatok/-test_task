@@ -191,33 +191,6 @@ $(document).ready(function () {
     $('.main_div').on('click', '.save_add', function(e){
       e.preventDefault();
     });
-// text of task or project go in edit mode 
-    $('.main_div').on('click', '.add_button_project button', function(e){
-        e.preventDefault();
-        before_div=$(this).closest('div');
-        var insert_project='<div id="div_project_NEW" class="div_project_border">'+   
-                                '<table id="container_tasks_NEW" class="container_tasks">'+
-                                    '<tr class="project" id="project_NEW">'+
-                                        '<td class="project_icon">'+
-                                            '!!!'+
-                                        '</td>'+
-                                        '<td class="div_project_container"><div class="div_project_text"></div></td>'+
-                                        '<td class="div_edit_buttons">'+
-                                            '<div class="out_edit">'+
-                                                '<a href="" class="edit">Edit</a>'+
-                                                '<a href="" class="del">Del</a>'+
-                                            '</div>'+
-                                            '<div class="in_edit">'+
-                                                '<a href="" class="save">Save</a>'+
-                                                '<a href="" class="cancel">Cancel</a>'+
-                                            '</div>'+
-                                        '</td>'+
-                                    '</tr>'+
-                                '</table>'+
-                            '</div>';
-        before_div.before(insert_project);
-        $("#project_NEW .edit").trigger('click');
-    });
 // lost focus after add task (cancel or save)   
     $('.main_div').on('blur', '.add_task_input input', function(event){
       var container_tasks=$(this).closest('table');
@@ -282,6 +255,33 @@ $(document).ready(function () {
             $(textarea_text).val('');
          });
     });   
+// text of task or project go in edit mode 
+    $('.main_div').on('click', '.add_button_project button', function(e){
+        e.preventDefault();
+        before_div=$(this).closest('div');
+        var insert_project='<div id="div_project_NEW" class="div_project_border">'+   
+                                '<table id="container_tasks_NEW" class="container_tasks">'+
+                                    '<tr class="project" id="project_NEW">'+
+                                        '<td class="project_icon">'+
+                                            '!!!'+
+                                        '</td>'+
+                                        '<td class="div_project_container"><div class="div_project_text"></div></td>'+
+                                        '<td class="div_edit_buttons">'+
+                                            '<div class="out_edit">'+
+                                                '<a href="" class="edit">Edit</a>'+
+                                                '<a href="" class="del">Del</a>'+
+                                            '</div>'+
+                                            '<div class="in_edit">'+
+                                                '<a href="" class="save">Save</a>'+
+                                                '<a href="" class="cancel">Cancel</a>'+
+                                            '</div>'+
+                                        '</td>'+
+                                    '</tr>'+
+                                '</table>'+
+                            '</div>';
+        before_div.before(insert_project);
+        $("#project_NEW .edit").trigger('click');
+    });
 // lost focus after edit task (cancel or save)       
     $('.main_div').on('blur', '.input_text', function(event){
       var id_task_attr=$(this).closest('tr').attr('id');
@@ -292,11 +292,16 @@ $(document).ready(function () {
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
                var id_task=id_task_attr.replace(/[^0-9]/gim,'');
+               if (id_task_attr=='project_NEW'){
+                   url_str='/'+class_attr+'/add';
+               }else{
+                   url_str='/'+class_attr+'/edit/'+id_task
+               }
                if (checkText(textarea_text.val())){
                  if (textarea_text.val()!=before_edit){
                        $.ajax({
                           data: {name:textarea_text.val()},
-                          url: '/'+class_attr+'/edit/'+id_task,
+                          url: url_str,
                           method: 'post',
                           success: function (data) {
                              if (data){ 
@@ -310,7 +315,7 @@ $(document).ready(function () {
                                             type: 'error',
                                             timeout: '1000'
                                         }); 
-                                    }else{
+                                    }else if (index!='projectId'){
                                         noty({
                                             text: value,
                                             type: 'success',
@@ -322,6 +327,14 @@ $(document).ready(function () {
                                     editableTextBlurred(textarea_text, false, class_attr);    
                                 }else{
                                     editableTextBlurred(textarea_text, true, class_attr);
+                                    //add project
+                                    if (isset(result_data['projectId'])){
+                                        $('#div_project_NEW').attr('id', 'div_project_'+result_data['projectId']);
+                                        $('#container_tasks_NEW').attr('id', 'container_tasks_'+result_data['projectId']);
+                                        $('#project_NEW').attr('id', 'project_'+result_data['projectId']);
+                                        $(".project .div_project_container, .project .project_icon")
+                                        $("#project_"+result_data['projectId']+" .div_project_container").trigger('click');
+                                    }
                                 }
                              }
                           },
