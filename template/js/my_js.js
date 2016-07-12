@@ -340,6 +340,7 @@ function ucfirst(str) {
                                     editableTextBlurred(textarea_text, true, class_attr);
                                     //add project
                                     if (typeof result_data['projectId'] !=="undefined"){
+                                        alert('tyt');
                                         $('#div_project_NEW').attr('id', 'div_project_'+result_data['projectId']);
                                         $('#container_tasks_NEW').attr('id', 'container_tasks_'+result_data['projectId']);
                                         $('#project_NEW').attr('id', 'project_'+result_data['projectId']);
