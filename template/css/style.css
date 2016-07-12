@@ -94,6 +94,9 @@ border-radius: 15px*/
 .project .in_edit, .project .out_edit{
   color: #FFFFFF;
 }
+ .project .div_project_container, .project .project_icon{
+  cursor: pointer
+ }
 .add_task_input {
  padding: 10px 0px 10px 5px;
  }
