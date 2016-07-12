@@ -39,13 +39,13 @@ class ProjectsController{
         if (Projects::checkText($projectText)){
           if ($projectData['name']!=$projectText){
             if(Projects::editProjectData('name', $projectText, $params[0])){
-              $updateData['name']='Success:Task was changed!';
+              $updateData['name']='Success:Project was changed!';
             }else{
-              $updateData['name']='Error:Database Error: Task is not changed';
+              $updateData['name']='Error:Database Error: Project is not changed';
             }
           }          
         }else{
-          $updateData['name']='Error:Invalid text of task!';
+          $updateData['name']='Error:Invalid text of project!';
         }
       }
     }
