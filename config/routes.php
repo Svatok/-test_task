@@ -1,5 +1,6 @@
 <?php
 return array (
+  'project/add' => 'projects/add',
   'task/add' => 'tasks/add',
   'task/edit/([0-9]+)' => 'tasks/edit/$1',
   'project/edit/([0-9]+)' => 'projects/edit/$1',
