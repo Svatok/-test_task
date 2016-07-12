@@ -69,7 +69,7 @@ class Projects{
     }
   }
   
-  public static function addTaskData($projectText){
+  public static function addProjectData($projectText){
     $db=Db::getConnection();
     
     $sql = "INSERT INTO projects (name) VALUES (:name)";
