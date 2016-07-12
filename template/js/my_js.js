@@ -278,13 +278,13 @@ $(document).ready(function () {
                                 $.each(result_data, function(index, value){
                                     if (value.replace(/\:.*/, '')=='Error'){
                                         result_errors = true;
-                                        var n = noty({
+                                        noty({
                                             text: value,
                                             type: 'error',
                                             timeout: '1000'
                                         }); 
                                     }else{
-                                        var n = noty({
+                                        noty({
                                             text: value,
                                             type: 'success',
                                             timeout: '1000'
@@ -304,7 +304,7 @@ $(document).ready(function () {
                        });
                  }
                }else{
-                    var n = noty({
+                    noty({
                         text: 'Invalid text of task!',
                         type: 'error',
                         timeout: '1000'
