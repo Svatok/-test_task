@@ -191,6 +191,33 @@ $(document).ready(function () {
     $('.container_tasks').on('click', '.save_add', function(e){
       e.preventDefault();
     });
+// text of task or project go in edit mode 
+    $('.main_div').on('click', '.add_button_project button', function(e){
+        e.preventDefault();
+        before_div=$(this).closest('div');
+        var insert_project='<div id="div_project_NEW" class="div_project_border">'+   
+                                '<table id="container_tasks_NEW" class="container_tasks">'+
+                                    '<tr class="project" id="project_NEW">'+
+                                        '<td class="project_icon">'+
+                                            '!!!'+
+                                        '</td>'+
+                                        '<td class="div_project_container"><div class="div_project_text"></div></td>'+
+                                        '<td class="div_edit_buttons">'+
+                                            '<div class="out_edit">'+
+                                                '<a href="" class="edit">Edit</a>'+
+                                                '<a href="" class="del">Del</a>'+
+                                            '</div>'+
+                                            '<div class="in_edit">'+
+                                                '<a href="" class="save">Save</a>'+
+                                                '<a href="" class="cancel">Cancel</a>'+
+                                            '</div>'+
+                                        '</td>'+
+                                    '</tr>'+
+                                '</table>'+
+                            '</div>';
+        before_div.before(insert_project);
+        $("#project_NEW .edit").trigger('click');
+    });
 // lost focus after add task (cancel or save)   
     $('.container_tasks').on('blur', '.add_task_input input', function(event){
       var container_tasks=$(this).closest('table');
