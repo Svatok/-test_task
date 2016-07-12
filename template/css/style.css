@@ -46,6 +46,7 @@ body {
     position: relative;
     left: -50%;
     text-align: center; 
+    clear:both;
 }
 .div_project_border{
  position: relative;
