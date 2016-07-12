@@ -50,12 +50,12 @@ $(document).ready(function () {
       }
     } 
 // resize textbox
-    $('.container_tasks').on('keyup input', '.input_text', function(){
+    $('.main_div').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
         $(this).css('height', 'auto').css('height', this.scrollHeight+offset);
     });
 // delete task
-    $('.container_tasks').on('click', '.del', function(e){
+    $('.main_div').on('click', '.del', function(e){
       e.preventDefault();
       var id_project_attr=$(this).closest('table').attr('id');
       var task_box=$(this).closest('tr');
@@ -123,7 +123,7 @@ $(document).ready(function () {
       });        
     }); 
 // change status of task
-    $('.container_tasks').on('click', '.task_status', function(){
+    $('.main_div').on('click', '.task_status', function(){
       var id_task_attr=$(this).closest('tr').attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       var status = $(this).prop('checked');
@@ -184,11 +184,11 @@ $(document).ready(function () {
       $("#"+id_task_attr+" .in_edit").css('display','inline-block');
     });
 // cancel edit mode of text of task or project
-    $('.container_tasks').on('click', '.cancel', function(e){
+    $('.main_div').on('click', '.cancel', function(e){
       e.preventDefault();
     });  
 // cancel action of link
-    $('.container_tasks').on('click', '.save_add', function(e){
+    $('.main_div').on('click', '.save_add', function(e){
       e.preventDefault();
     });
 // text of task or project go in edit mode 
@@ -219,7 +219,7 @@ $(document).ready(function () {
         $("#project_NEW .edit").trigger('click');
     });
 // lost focus after add task (cancel or save)   
-    $('.container_tasks').on('blur', '.add_task_input input', function(event){
+    $('.main_div').on('blur', '.add_task_input input', function(event){
       var container_tasks=$(this).closest('table');
       var id_project=container_tasks.attr('id').replace(/[^0-9]/gim,'');
       var textarea_text=$(this);
@@ -283,7 +283,7 @@ $(document).ready(function () {
          });
     });   
 // lost focus after edit task (cancel or save)       
-    $('.container_tasks').on('blur', '.input_text', function(event){
+    $('.main_div').on('blur', '.input_text', function(event){
       var id_task_attr=$(this).closest('tr').attr('id');
       var class_attr=$(this).closest('tr').attr('class');
       var textarea_text=$("#"+id_task_attr+" .input_text");
@@ -346,7 +346,7 @@ $(document).ready(function () {
          });
     });   
 // change priority of task to UP
-    $('.container_tasks').on('click', '.up_task', function(e){
+    $('.main_div').on('click', '.up_task', function(e){
       e.preventDefault();
       var container_tasks=$(this).closest('table');
       var task=$(this).closest('tr');
@@ -391,7 +391,7 @@ $(document).ready(function () {
       }
     }); 
 // change priority of task to DOWN    
-    $('.container_tasks').on('click', '.down_task', function(e){
+    $('.main_div').on('click', '.down_task', function(e){
       e.preventDefault();
       var container_tasks=$(this).closest('table');
       var task=$(this).closest('tr');
