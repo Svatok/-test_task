@@ -173,7 +173,7 @@ $(document).ready(function () {
       }
     }); 
 // text of task or project go in edit mode 
-    $('.container_tasks').on('click', '.edit', function(e){
+    $('.main_div').on('click', '.edit', function(e){
       e.preventDefault();
       var id_task_attr=$(this).closest('tr').attr('id');
       var class_tr_attr=$(this).closest('tr').attr('class');
