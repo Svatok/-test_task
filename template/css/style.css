@@ -42,6 +42,11 @@ body {
     left: -50%;
     text-align: center;
 }
+.add_button_project{
+    position: relative;
+    left: -50%;
+    text-align: center; 
+}
 .div_project_border{
  position: relative;
  left: -50%;
