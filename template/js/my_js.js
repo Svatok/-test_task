@@ -365,14 +365,15 @@ function ucfirst(str) {
                }   
             }else{
                editableTextBlurred(textarea_text, false, class_attr);
-            }
-            $("#"+id_task_attr+" .in_edit").hide();
-            $("#"+id_task_attr+" .out_edit").css('display','inline-block');
-            if ($("div").is("#div_project_NEW")){
-                alert('rem');
-                $('#div_project_NEW').remove();
+                $("#"+id_task_attr+" .in_edit").hide();
+                $("#"+id_task_attr+" .out_edit").css('display','inline-block');
+                if ($("div").is("#div_project_NEW")){
+                    alert('rem');
+                    $('#div_project_NEW').remove();
+                }
             }
          });
+         alert('last');
     });   
 // change priority of task to UP
     $('.main_div').on('click', '.up_task', function(e){
