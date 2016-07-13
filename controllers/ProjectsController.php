@@ -64,7 +64,7 @@ class ProjectsController{
       if (isset($_POST['name'])){
         $projectText=Projects::clean($_POST['name']);
         if (Projects::checkText($projectText)){
-            $projectId=Projects::addProjectData($projectText);
+            $projectId=Projects::addProjectData($projectText, $userId);
             if($projectId){
               $updateData['name']='Success:Project was added!';
               $updateData['projectId']=$projectId;
