@@ -20,7 +20,7 @@ class Projects{
     
     $projectsList=array();
     
-    $result=$db->query('SELECT id, name FROM projects ORDER BY id');
+    $result=$db->query('SELECT id, name FROM projects WHERE user_id='.$userId.' AND status<>2 ORDER BY id');
     
     $i=0;
     while($row=$result->fetch()){
@@ -69,12 +69,13 @@ class Projects{
     }
   }
   
-  public static function addProjectData($projectText){
+  public static function addProjectData($projectText, $userId){
     $db=Db::getConnection();
     
-    $sql = "INSERT INTO projects (name) VALUES (:name)";
+    $sql = "INSERT INTO projects (name, user_id, status) VALUES (:name, :user_id, 0)";
     $stmt = $db->prepare($sql);                                  
-    $stmt->bindParam(':name',$projectText, PDO::PARAM_STR);       
+    $stmt->bindParam(':name',$projectText, PDO::PARAM_STR);
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
     if ($stmt->execute()){
       return $db->lastInsertId('projects_id_seq');
     }else{
