@@ -38,8 +38,8 @@ body {
  font-size: 14px;
 }
 .head_div {
-    /*position: relative;*/
-    left: -50%;
+    /*position: relative;
+    left: -50%;*/
     text-align: center;
     position: fixed;
     z-index: 101;
