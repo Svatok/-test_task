@@ -38,9 +38,11 @@ body {
  font-size: 14px;
 }
 .head_div {
-    position: relative;
+    /*position: relative;*/
     left: -50%;
     text-align: center;
+    position: fixed;
+    z-index: 101;
 }
 .add_button_project{
     position: relative;
