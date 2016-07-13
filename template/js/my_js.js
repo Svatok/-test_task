@@ -368,7 +368,6 @@ function ucfirst(str) {
                 $("#"+id_task_attr+" .in_edit").hide();
                 $("#"+id_task_attr+" .out_edit").css('display','inline-block');
                 if ($("div").is("#div_project_NEW")){
-                    alert('rem');
                     $('#div_project_NEW').remove();
                 }
             }
