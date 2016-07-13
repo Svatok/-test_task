@@ -1,9 +1,9 @@
 <?php include ROOT.'/views/layouts/header.php';?>
-<div>
     <div class="head_div">
         <h1>SIMPLE TODO LISTS</h1>
         <h2>FROM RUBY GARAGE</h2>
     </div>
+<div>
 <div class="main_div">
 
 <?php  foreach ($projectsList as $projectsItem):?>
