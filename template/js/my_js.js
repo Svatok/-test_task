@@ -479,7 +479,8 @@ function ucfirst(str) {
     });*/
 
 // get tasks of project   
-    $(".project .div_project_container, .project .project_icon").click(function (){
+    $('.main_div').on('click', '.project .div_project_container, .project .project_icon', function(){
+//    $("").click(function (){
           var container_tasks_id=$(this).closest('table').attr('id');
           var project_tr=$(this).closest('.project');
           var id_project=$(this).closest('tr').attr('id').replace(/[^0-9]/gim,'');
