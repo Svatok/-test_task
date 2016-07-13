@@ -1,9 +1,10 @@
 <?php include ROOT.'/views/layouts/header.php';?>
-<div class="main_div">
     <div class="head_div">
         <h1>SIMPLE TODO LISTS</h1>
         <h2>FROM RUBY GARAGE</h2>
     </div>
+<div class="main_div">
+
 <?php  foreach ($projectsList as $projectsItem):?>
     <div id="div_project_<?php echo $projectsItem['id'];?>" class="div_project_border">
         <table id="container_tasks_<?php echo $projectsItem['id'];?>" class="container_tasks">
