@@ -38,7 +38,7 @@ class ProjectsController{
         $projectStatus=Projects::clean($_POST['status']);
         if (Projects::checkStatus($projectStatus)){
           if ($projectData['status']!=$projectStatus){
-            if(Projects::editTaskData('status', $projectStatus, $params[0])){
+            if(Projects::editProjectData('status', $projectStatus, $params[0])){
               $updateData['status']='Success:Status was changed!';
             }else{
               $updateData['status']='Error:Database Error: Status is not changed';
