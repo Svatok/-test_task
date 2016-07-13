@@ -1,4 +1,5 @@
 <?php include ROOT.'/views/layouts/header.php';?>
+<div>
     <div class="head_div">
         <h1>SIMPLE TODO LISTS</h1>
         <h2>FROM RUBY GARAGE</h2>
@@ -28,5 +29,6 @@
     </div>
     <?php endforeach;?>
     <div class="add_button_project"><button>Add TODO List</button></div>
+</div>
 </div>
 <?php include ROOT.'/views/layouts/footer.php'; ?>
