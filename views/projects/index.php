@@ -3,8 +3,8 @@
         <h1>SIMPLE TODO LISTS</h1>
         <h2>FROM RUBY GARAGE</h2>
     </div>
-<div>
-<div class="main_div">
+<!--<div>-->
+<div class="main_div"> 
 
 <?php  foreach ($projectsList as $projectsItem):?>
     <div id="div_project_<?php echo $projectsItem['id'];?>" class="div_project_border">
@@ -30,5 +30,5 @@
     <?php endforeach;?>
     <div class="add_button_project"><button>Add TODO List</button></div>
 </div>
-</div>
+<!--</div>-->
 <?php include ROOT.'/views/layouts/footer.php'; ?>
