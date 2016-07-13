@@ -33,6 +33,21 @@ class ProjectsController{
       $projectData=Projects::getProjectData($params[0]);
       $errors=false;
       $updateData=array();
+
+      if (isset($_POST['status'])){
+        $projectStatus=Projects::clean($_POST['status']);
+        if (Projects::checkStatus($projectStatus)){
+          if ($projectData['status']!=$projectStatus){
+            if(Projects::editProjectData('status', $projectStatus, $params[0])){
+              $updateData['status']='Success:Status was changed!';
+            }else{
+              $updateData['status']='Error:Database Error: Status is not changed';
+            }
+          }          
+        }else{
+          $updateData['status']='Error:Invalid status of project!';
+        }
+      }
       
       if (isset($_POST['name'])){
         $projectText=Projects::clean($_POST['name']);
@@ -44,6 +59,33 @@ class ProjectsController{
               $updateData['name']='Error:Database Error: Project is not changed';
             }
           }          
+        }else{
+          $updateData['name']='Error:Invalid text of project!';
+        }
+      }
+    }
+    echo json_encode($updateData);
+    
+    return true;
+  }
+  
+  public function actionAdd(){
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $userId=User::checkLogged();
+      $errors=false;
+      $updateData=array();
+      
+      if (isset($_POST['name'])){
+        $projectText=Projects::clean($_POST['name']);
+        if (Projects::checkText($projectText)){
+            $projectId=Projects::addProjectData($projectText, $userId);
+            if($projectId){
+              $updateData['name']='Success:Project was added!';
+              $updateData['projectId']=$projectId;
+            }else{
+              $updateData['name']='Error:Database Error: Project is not added';
+            }
         }else{
           $updateData['name']='Error:Invalid text of project!';
         }

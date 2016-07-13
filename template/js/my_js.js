@@ -1,6 +1,11 @@
 $(document).ready(function () {
     var allowedStatuses=[0,1,2]; // 0 - In work, 1 - Done, 2 - Delete
     var before_edit;
+
+function ucfirst(str) {
+    var first = str.charAt(0).toUpperCase();
+    return first + str.substr(1);
+}
 // function wich replace div on textbox before edit         
     function divClicked(div) {
         var divHtml = $(div).html();
@@ -50,25 +55,26 @@ $(document).ready(function () {
       }
     } 
 // resize textbox
-    $('.container_tasks').on('keyup input', '.input_text', function(){
+    $('.main_div').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
         $(this).css('height', 'auto').css('height', this.scrollHeight+offset);
     });
 // delete task
-    $('.container_tasks').on('click', '.del', function(e){
+    $('.main_div').on('click', '.del', function(e){
       e.preventDefault();
       var id_project_attr=$(this).closest('table').attr('id');
       var task_box=$(this).closest('tr');
+      var class_attr=task_box.attr('class');
       var id_task_attr=task_box.attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       noty({
-    	text: 'Do you want to delete task?',
+    	text: 'Do you want to delete '+class_attr+'?',
     	buttons: [
     	//	addClass: 'btn btn-primary', 
     		{text: 'Ok', onClick: function($noty) {
                     $.ajax({
                         data: {status:"2"},
-                        url: '/task/edit/'+id_task,
+                        url: '/'+class_attr+'/edit/'+id_task,
                         method: 'post',
                         success: function (data) {
                             if (data){ 
@@ -78,27 +84,32 @@ $(document).ready(function () {
                                     if (value.replace(/\:.*/, '')=='Error'){
                                         result_errors = true;
                                         noty({
-                                            text: 'Task not deleted!',
+                                            text: ucfirst(class_attr)+' not deleted!',
                                             type: 'error',
                                             timeout: '1000'
                                         }); 
                                     }
                                 });
                                 if (!result_errors){
-                                    // update priority other tasks
-                                    $("#"+id_project_attr+" .task").each(function() {
-                                        var del_priority=parseInt(task_box.attr('priority'));
-                                        var cur_priority=parseInt($(this).attr('priority'));
-                                        if (cur_priority>del_priority){
-                                            var new_priority=cur_priority-1;
-                                            $(this).attr('priority', new_priority);
-                                        }
-                                    });     
-                                    // remove element
-                                    task_box.remove();
+                                    if (class_attr=='task'){
+                                        // update priority other tasks
+                                        $("#"+id_project_attr+" .task").each(function() {
+                                            var del_priority=parseInt(task_box.attr('priority'));
+                                            var cur_priority=parseInt($(this).attr('priority'));
+                                            if (cur_priority>del_priority){
+                                                var new_priority=cur_priority-1;
+                                                $(this).attr('priority', new_priority);
+                                            }
+                                        });
+                                        // remove element
+                                        task_box.remove();                                        
+                                    }else{
+                                        // remove element
+                                        task_box.closest('.div_project_border').remove();   
+                                    }
                                     $noty.close();
                                     noty({
-                                        text: 'Task deleted!',
+                                        text: ucfirst(class_attr)+' deleted!',
                                         type: 'success',
                                         timeout: '1000'
                                     }); 
@@ -107,7 +118,7 @@ $(document).ready(function () {
                         },
                         error: function(data){
                             noty({
-                                text: 'Task not deleted!',
+                                text: ucfirst(class_attr)+' not deleted!',
                                 type: 'error',
                                 timeout: '1000'
                             });     
@@ -123,7 +134,7 @@ $(document).ready(function () {
       });        
     }); 
 // change status of task
-    $('.container_tasks').on('click', '.task_status', function(){
+    $('.main_div').on('click', '.task_status', function(){
       var id_task_attr=$(this).closest('tr').attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       var status = $(this).prop('checked');
@@ -184,43 +195,17 @@ $(document).ready(function () {
       $("#"+id_task_attr+" .in_edit").css('display','inline-block');
     });
 // cancel edit mode of text of task or project
-    $('.container_tasks').on('click', '.cancel', function(e){
+    $('.main_div').on('click', '.cancel', function(e){
       e.preventDefault();
     });  
 // cancel action of link
-    $('.container_tasks').on('click', '.save_add', function(e){
+    $('.main_div').on('click', '.save_add', function(e){
       e.preventDefault();
     });
-// text of task or project go in edit mode 
-    $('.main_div').on('click', '.add_button_project button', function(e){
-        e.preventDefault();
-        before_div=$(this).closest('div');
-        var insert_project='<div id="div_project_NEW" class="div_project_border">'+   
-                                '<table id="container_tasks_NEW" class="container_tasks">'+
-                                    '<tr class="project" id="project_NEW">'+
-                                        '<td class="project_icon">'+
-                                            '!!!'+
-                                        '</td>'+
-                                        '<td class="div_project_container"><div class="div_project_text"></div></td>'+
-                                        '<td class="div_edit_buttons">'+
-                                            '<div class="out_edit">'+
-                                                '<a href="" class="edit">Edit</a>'+
-                                                '<a href="" class="del">Del</a>'+
-                                            '</div>'+
-                                            '<div class="in_edit">'+
-                                                '<a href="" class="save">Save</a>'+
-                                                '<a href="" class="cancel">Cancel</a>'+
-                                            '</div>'+
-                                        '</td>'+
-                                    '</tr>'+
-                                '</table>'+
-                            '</div>';
-        before_div.before(insert_project);
-        $("#project_NEW .edit").trigger('click');
-    });
 // lost focus after add task (cancel or save)   
-    $('.container_tasks').on('blur', '.add_task_input input', function(event){
+    $('.main_div').on('blur', '.add_task_input input', function(event){
       var container_tasks=$(this).closest('table');
+      var container_task_add=$(this).closest('tr');
       var id_project=container_tasks.attr('id').replace(/[^0-9]/gim,'');
       var textarea_text=$(this);
       var task_text=textarea_text.val();
@@ -273,7 +258,11 @@ $(document).ready(function () {
                                                         '</div>'+
                                                     '</td>'+
                                                 '</tr>';
-                                before_li.before(insert_task);
+                                if ((priority_new-1)==0){
+                                    container_task_add.after(insert_task);
+                                }else{
+                                    before_li.before(insert_task);
+                                }
                             }
                         }
                     }
@@ -282,8 +271,35 @@ $(document).ready(function () {
             $(textarea_text).val('');
          });
     });   
+// text of task or project go in edit mode 
+    $('.main_div').on('click', '.add_button_project button', function(e){
+        e.preventDefault();
+        before_div=$(this).closest('div');
+        var insert_project='<div id="div_project_NEW" class="div_project_border">'+   
+                                '<table id="container_tasks_NEW" class="container_tasks">'+
+                                    '<tr class="project" id="project_NEW">'+
+                                        '<td class="project_icon">'+
+                                            '!!!'+
+                                        '</td>'+
+                                        '<td class="div_project_container"><div class="div_project_text"></div></td>'+
+                                        '<td class="div_edit_buttons">'+
+                                            '<div class="out_edit">'+
+                                                '<a href="" class="edit">Edit</a>'+
+                                                '<a href="" class="del">Del</a>'+
+                                            '</div>'+
+                                            '<div class="in_edit">'+
+                                                '<a href="" class="save">Save</a>'+
+                                                '<a href="" class="cancel">Cancel</a>'+
+                                            '</div>'+
+                                        '</td>'+
+                                    '</tr>'+
+                                '</table>'+
+                            '</div>';
+        before_div.before(insert_project);
+        $("#project_NEW .edit").trigger('click');
+    });
 // lost focus after edit task (cancel or save)       
-    $('.container_tasks').on('blur', '.input_text', function(event){
+    $('.main_div').on('blur', '.input_text', function(event){
       var id_task_attr=$(this).closest('tr').attr('id');
       var class_attr=$(this).closest('tr').attr('class');
       var textarea_text=$("#"+id_task_attr+" .input_text");
@@ -292,11 +308,16 @@ $(document).ready(function () {
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
                var id_task=id_task_attr.replace(/[^0-9]/gim,'');
+               if (id_task_attr=='project_NEW'){
+                   url_str='/'+class_attr+'/add';
+               }else{
+                   url_str='/'+class_attr+'/edit/'+id_task
+               }
                if (checkText(textarea_text.val())){
                  if (textarea_text.val()!=before_edit){
                        $.ajax({
                           data: {name:textarea_text.val()},
-                          url: '/'+class_attr+'/edit/'+id_task,
+                          url: url_str,
                           method: 'post',
                           success: function (data) {
                              if (data){ 
@@ -310,7 +331,7 @@ $(document).ready(function () {
                                             type: 'error',
                                             timeout: '1000'
                                         }); 
-                                    }else{
+                                    }else if (index!='projectId'){
                                         noty({
                                             text: value,
                                             type: 'success',
@@ -322,6 +343,15 @@ $(document).ready(function () {
                                     editableTextBlurred(textarea_text, false, class_attr);    
                                 }else{
                                     editableTextBlurred(textarea_text, true, class_attr);
+                                    $("#"+id_task_attr+" .in_edit").hide();
+                                    $("#"+id_task_attr+" .out_edit").css('display','inline-block');
+                                    //add project
+                                    if (typeof result_data['projectId'] !=="undefined"){
+                                        $('#div_project_NEW').attr('id', 'div_project_'+result_data['projectId']);
+                                        $('#container_tasks_NEW').attr('id', 'container_tasks_'+result_data['projectId']);
+                                        $('#project_NEW').attr('id', 'project_'+result_data['projectId']);
+                                        $("#project_"+result_data['projectId']+" .div_project_container").trigger('click');
+                                    }
                                 }
                              }
                           },
@@ -332,7 +362,7 @@ $(document).ready(function () {
                  }
                }else{
                     noty({
-                        text: 'Invalid text of task!',
+                        text: 'Invalid text of '+class_attr+'!',
                         type: 'error',
                         timeout: '1000'
                     });                    
@@ -340,13 +370,16 @@ $(document).ready(function () {
                }   
             }else{
                editableTextBlurred(textarea_text, false, class_attr);
+                $("#"+id_task_attr+" .in_edit").hide();
+                $("#"+id_task_attr+" .out_edit").css('display','inline-block');
+                if ($("div").is("#div_project_NEW")){
+                    $('#div_project_NEW').remove();
+                }
             }
-            $("#"+id_task_attr+" .in_edit").hide();
-            $("#"+id_task_attr+" .out_edit").css('display','inline-block');
          });
     });   
 // change priority of task to UP
-    $('.container_tasks').on('click', '.up_task', function(e){
+    $('.main_div').on('click', '.up_task', function(e){
       e.preventDefault();
       var container_tasks=$(this).closest('table');
       var task=$(this).closest('tr');
@@ -391,7 +424,7 @@ $(document).ready(function () {
       }
     }); 
 // change priority of task to DOWN    
-    $('.container_tasks').on('click', '.down_task', function(e){
+    $('.main_div').on('click', '.down_task', function(e){
       e.preventDefault();
       var container_tasks=$(this).closest('table');
       var task=$(this).closest('tr');
@@ -451,7 +484,8 @@ $(document).ready(function () {
     });*/
 
 // get tasks of project   
-    $(".project .div_project_container, .project .project_icon").click(function (){
+    $('.main_div').on('click', '.project .div_project_container, .project .project_icon', function(){
+//    $("").click(function (){
           var container_tasks_id=$(this).closest('table').attr('id');
           var project_tr=$(this).closest('.project');
           var id_project=$(this).closest('tr').attr('id').replace(/[^0-9]/gim,'');
