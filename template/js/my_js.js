@@ -205,6 +205,7 @@ function ucfirst(str) {
 // lost focus after add task (cancel or save)   
     $('.main_div').on('blur', '.add_task_input input', function(event){
       var container_tasks=$(this).closest('table');
+      var container_task_add=$(this).closest('tr');
       var id_project=container_tasks.attr('id').replace(/[^0-9]/gim,'');
       var textarea_text=$(this);
       var task_text=textarea_text.val();
@@ -257,7 +258,11 @@ function ucfirst(str) {
                                                         '</div>'+
                                                     '</td>'+
                                                 '</tr>';
-                                before_li.before(insert_task);
+                                if ((priority_new-1)==0){
+                                    container_task_add.after(insert_task);
+                                }else{
+                                    before_li.before(insert_task);
+                                }
                             }
                         }
                     }
