@@ -33,6 +33,21 @@ class ProjectsController{
       $projectData=Projects::getProjectData($params[0]);
       $errors=false;
       $updateData=array();
+
+      if (isset($_POST['status'])){
+        $projectStatus=Projects::clean($_POST['status']);
+        if (Projects::checkStatus($projectStatus)){
+          if ($projectData['status']!=$projectStatus){
+            if(Projects::editTaskData('status', $projectStatus, $params[0])){
+              $updateData['status']='Success:Status was changed!';
+            }else{
+              $updateData['status']='Error:Database Error: Status is not changed';
+            }
+          }          
+        }else{
+          $updateData['status']='Error:Invalid status of project!';
+        }
+      }
       
       if (isset($_POST['name'])){
         $projectText=Projects::clean($_POST['name']);
