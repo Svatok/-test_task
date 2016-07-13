@@ -13,6 +13,7 @@ body {
  float: left;
  position: relative;
  left: 50%;
+ margin-top: 150px;
 }
 .out_edit{
  display:inline-block;
@@ -43,6 +44,8 @@ body {
     text-align: center;
     position: fixed;
     z-index: 101;
+    width: 100%;
+    height: 130px;
 }
 .add_button_project{
     position: relative;
