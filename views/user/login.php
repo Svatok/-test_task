@@ -18,3 +18,4 @@
 </div>
 </form>
 </div>
+<?php include ROOT.'/views/layouts/footer.php'; ?>
