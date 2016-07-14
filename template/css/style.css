@@ -127,7 +127,7 @@ border-radius: 15px*/
     position: fixed; /* or absolute */
     top: 50%;
     left: 50%;
-    margin: -125px 0 0 -171px;
+    margin: -143px 0 0 -171px;
  
    border: 1px solid #000000;
    background: #dbdbdb;
@@ -149,6 +149,7 @@ border-radius: 15px*/
    min-width:300px;
    padding:20px;
    width:300px;
+   height:244px;
    }
 .form-field {
    border: 1px solid #c9b7a2;
