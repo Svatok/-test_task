@@ -1,3 +1,4 @@
+<?php include ROOT.'/views/layouts/header.php';?>
 <div class="parent_enter">
 <form action="" method="post" class="form-container">
         <?php if (isset($errors) && is_array($errors)): ?>
