@@ -130,12 +130,24 @@ border-radius: 15px*/
     top: 0;
     left: 0;
     overflow: auto;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 0;
+    
+    &:before {
+        height: 100%;
+        display: inline-block;
+        vertical-align: middle;
+        content: '';
+    }
 }
 .form-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -125px 0 0 -125px;
+    display: inline-block;
+    white-space: normal;
+    vertical-align: middle;
+    text-align: left;
+    background: #60a839;
+    
    border: 1px solid #000000;
    background: #dbdbdb;
    background: -webkit-gradient(linear, left top, left bottom, from(#dbdbdb), to(#dbdbdb));
