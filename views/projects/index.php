@@ -1,8 +1,7 @@
 <?php include ROOT.'/views/layouts/header.php';?>
-<div class="parent_enter">
 <form action="" method="post" class="form-container">
-        <?php if (isset($errors) && is_array($errors)): ?>
-      <ul>
+   <?php if (isset($errors) && is_array($errors)): ?>
+        <ul>
         <?php foreach ($errors as $error): ?>
           <li> - <?php echo $error; ?></li>
         <?php endforeach; ?>
@@ -17,7 +16,6 @@
 <input class="submit-button" type="submit" name="submit" value="Enter" />
 </div>
 </form>
-</div>
 <div class="head_div">
     <h1>SIMPLE TODO LISTS</h1>
     <h2>FROM RUBY GARAGE</h2>
