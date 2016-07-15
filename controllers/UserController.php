@@ -37,9 +37,16 @@ class UserController{
   //  $email='test@test.com';
   //  $password='test';
     
-    if (isset($_POST['submit'])){
-      $email=$_POST['email'];
-      $password=$_POST['password'];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+      $email='';
+      $password='';
+      
+      if (isset($_POST['email'])){
+        $email=$_POST['email'];
+      }
+      if (isset($_POST['password'])){
+        $password=$_POST['password'];
+      }
       $errors=false;
       $enterData=array();
       
@@ -65,7 +72,7 @@ class UserController{
       
     }
     
-    require_once(ROOT.'/views/user/login.php');
+    //require_once(ROOT.'/views/user/login.php');
     
     return true;
   }
