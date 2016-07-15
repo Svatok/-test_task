@@ -1,4 +1,4 @@
-<form action="" method="post" class="form-container">
+<form action="/user/login" method="post" class="form-container">
    <?php if (isset($errors) && is_array($errors)): ?>
         <ul>
         <?php foreach ($errors as $error): ?>
