@@ -34,8 +34,8 @@ class UserController{
   }
   
   public function actionLogin(){
-    $email='test@test.com';
-    $password='test';
+  //  $email='test@test.com';
+  //  $password='test';
     
     if (isset($_POST['submit'])){
       $email=$_POST['email'];
