@@ -39,7 +39,7 @@ body {
  font-size: 14px;
 }
 .menu {
-    text-align: center;
+    text-align: right;
     position: fixed;
     z-index: 102;
     width: 100%;
