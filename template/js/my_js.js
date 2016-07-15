@@ -498,8 +498,9 @@ function ucfirst(str) {
                             noty({
                                 text: value,
                                 type: 'error',
-                                timeout: '1000'
-                            }); 
+                                timeout: '2000'
+                            });
+                            $('#'+index).css('border-color','red');
                         }
                     });
                     if (!result_errors){
@@ -514,7 +515,7 @@ function ucfirst(str) {
                 noty({
                     text: 'Can not enter!',
                     type: 'error',
-                    timeout: '1000'
+                    timeout: '2000'
                 });  
             }
          });
