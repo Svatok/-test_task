@@ -61,7 +61,7 @@ class UserController{
       $userId=User::checkUserData($email, $password);
       if ($userId==false){
         $errors[]='Wrong data for enter!';
-        $enterData['id']=$userId;
+        $enterData['id']="Error:Wrong data for enter!";
       }else{
         User::auth($userId);
         $enterData['id']="$userId";
