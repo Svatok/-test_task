@@ -6,7 +6,7 @@ class ProjectsController{
   public function actionIndex(){
     $userId=User::checkLogged();
     
-    if (!$userId){
+    if ($userId){
       $projectsList=array();
       $projectsList=Projects::getProjectsList($userId);
     }
