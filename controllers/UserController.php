@@ -41,20 +41,27 @@ class UserController{
       $email=$_POST['email'];
       $password=$_POST['password'];
       $errors=false;
+      $enterData=array();
       
       if (!User::checkEmail($email)){
         $errors[]='Wrong e-mail!';
+        $enterData['email']='Error:Wrong e-mail!';
       }
       if (!User::checkPassword($password)){
         $errors[]='Password have to more then 4 symbols!';
+        $enterData['password']='Error:Password have to more then 4 symbols!';
       }      
       $userId=User::checkUserData($email, $password);
       if ($userId==false){
         $errors[]='Wrong data for enter!';
+        $enterData['id']=$userId;
       }else{
         User::auth($userId);
-        header("Location: /");
+        $enterData['id']=$userId;
+       // header("Location: /");
       }
+      
+      echo json_encode($enterData);
       
     }
     
