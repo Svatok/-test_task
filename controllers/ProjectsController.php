@@ -6,20 +6,38 @@ class ProjectsController{
   public function actionIndex(){
     $userId=User::checkLogged();
     
-    if ($userId){
-      $projectsList=array();
-      $projectsList=Projects::getProjectsList($userId);
+    if (!$userId){
+      header("Location: /");
     }
-    require_once(ROOT.'/views/projects/projects_list.php');
+    $projectsList=array();
+    $projectsList=Projects::getProjectsList($userId);
+    require_once(ROOT.'/views/projects/index.php');
     
     return true;
     
   }
   
-  public function actionTasks($params){
-    $tasksList=array();
-    $tasksList=Projects::getTasksList($params[0]);
+  public function actionProjects(){
+    $userId=User::checkLogged();
     
+    if (!$userId){
+      header("Location: /");
+    }
+    $projectsList=array();
+    $projectsList=Projects::getProjectsList($userId);
+    require_once(ROOT.'/views/projects/projects_list.php');
+      
+    return true;
+    
+  }
+  
+  public function actionTasks($params){
+    $userId=User::checkLogged();
+    
+    if ($userId){
+      $tasksList=array();
+      $tasksList=Projects::getTasksList($params[0]);
+    }
     require_once(ROOT.'/views/projects/tasks_list.php');
     
     return true;
