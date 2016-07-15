@@ -64,7 +64,7 @@ class UserController{
         $enterData['id']=$userId;
       }else{
         User::auth($userId);
-        $enterData['id']=$userId;
+        $enterData['id']="$userId";
        // header("Location: /");
       }
       
