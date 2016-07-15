@@ -520,5 +520,9 @@ function ucfirst(str) {
             }
          });
     });  
+// cancel red border of wrong data input   
+    $('body').on('keyup input', '.form-field', function(){
+        $(this).css('border-color', '#c9b7a2');
+    });
     
 }); 
