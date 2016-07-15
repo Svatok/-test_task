@@ -498,7 +498,7 @@ function ucfirst(str) {
                             noty({
                                 text: value,
                                 type: 'error',
-                                timeout: '2000'
+                                timeout: '3000'
                             });
                             $('#'+index).css('border-color','red');
                         }
