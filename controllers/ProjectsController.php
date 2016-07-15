@@ -10,7 +10,7 @@ class ProjectsController{
       $projectsList=array();
       $projectsList=Projects::getProjectsList($userId);
     }
-    require_once(ROOT.'/views/projects/index.php');
+    require_once(ROOT.'/views/projects/projects_list.php');
     
     return true;
     
