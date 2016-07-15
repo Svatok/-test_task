@@ -497,5 +497,43 @@ function ucfirst(str) {
             $("#"+container_tasks_id+" .task, #"+container_tasks_id+" .add_task").remove();
           }
     });  
+// log in button
+    $('body').on('click', '.submit-button', function(e){
+      e.preventDefault();
+      var enter_form=$(this).closest('form');
+         $.ajax({
+            data: enter_form.serialize(),
+            url: '/user/login',
+            method: 'post',
+            success: function (data) {
+                if (data){ 
+                    var result_data = $.parseJSON(data);
+                    var result_errors = false;
+                    $.each(result_data, function(index, value){
+                        if (value.replace(/\:.*/, '')=='Error'){
+                            result_errors = true;
+                            noty({
+                                text: value,
+                                type: 'error',
+                                timeout: '1000'
+                            }); 
+                        }
+                    });
+                    if (!result_errors){
+                        $.post("/projects/index", {}, function (data){
+                            $('.head_div').after(data);
+                        });
+                    }
+                }
+            },
+            error: function(){
+                noty({
+                    text: 'Can not enter!',
+                    type: 'error',
+                    timeout: '1000'
+                });  
+            }
+         });
+    });  
     
 }); 
