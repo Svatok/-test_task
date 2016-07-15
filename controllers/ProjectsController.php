@@ -7,10 +7,10 @@ class ProjectsController{
     $userId=User::checkLogged();
     
     if (!$userId){
-      header("Location: /");
+      $projectsList=array();
+      $projectsList=Projects::getProjectsList($userId);
     }
-    $projectsList=array();
-    $projectsList=Projects::getProjectsList($userId);
+
     require_once(ROOT.'/views/projects/index.php');
     
     return true;
