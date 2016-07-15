@@ -528,7 +528,7 @@ function ucfirst(str) {
             $('.menu').remove();
             $.post("/views/user/login.php", {}, function (data){
                 $('.head_div').after(data);
-            }
+            });
         });
     }); 
 // cancel red border of wrong data input   
