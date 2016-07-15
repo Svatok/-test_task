@@ -1,7 +1,4 @@
 <?php include ROOT.'/views/layouts/header.php';?>
-<div class="menu">
-    <a href="">Log out</a>
-</div>
 <div class="head_div">
     <h1>SIMPLE TODO LISTS</h1>
     <h2>FROM RUBY GARAGE</h2>
