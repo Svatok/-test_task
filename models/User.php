@@ -38,8 +38,10 @@ class User{
   public static function checkLogged(){
     if (isset($_SESSION['user'])){
       return $_SESSION['user'];
+    }else{
+      return false;
     }
-    header("location: /user/login");
+    //header("location: /user/login");
   }
   
   public static function checkEmail($email) {
