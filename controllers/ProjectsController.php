@@ -6,9 +6,10 @@ class ProjectsController{
   public function actionIndex(){
     $userId=User::checkLogged();
     
-    $projectsList=array();
-    $projectsList=Projects::getProjectsList($userId);
-    
+    if ($userId){
+      $projectsList=array();
+      $projectsList=Projects::getProjectsList($userId);
+    }
     require_once(ROOT.'/views/projects/index.php');
     
     return true;
