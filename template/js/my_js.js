@@ -520,7 +520,7 @@ function ucfirst(str) {
                         }
                     });
                     if (!result_errors){
-                        $.post("/projects/index", {}, function (data){
+                        $.post("/projects", {}, function (data){
                             $('.head_div').after(data);
                         });
                     }
