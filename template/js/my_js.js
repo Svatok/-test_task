@@ -55,12 +55,12 @@ function ucfirst(str) {
       }
     } 
 // resize textbox
-    $('.main_div').on('keyup input', '.input_text', function(){
+    $('body').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
         $(this).css('height', 'auto').css('height', this.scrollHeight+offset);
     });
 // delete task
-    $('.main_div').on('click', '.del', function(e){
+    $('body').on('click', '.del', function(e){
       e.preventDefault();
       var id_project_attr=$(this).closest('table').attr('id');
       var task_box=$(this).closest('tr');
@@ -134,7 +134,7 @@ function ucfirst(str) {
       });        
     }); 
 // change status of task
-    $('.main_div').on('click', '.task_status', function(){
+    $('body').on('click', '.task_status', function(){
       var id_task_attr=$(this).closest('tr').attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       var status = $(this).prop('checked');
@@ -184,7 +184,7 @@ function ucfirst(str) {
       }
     }); 
 // text of task or project go in edit mode 
-    $('.main_div').on('click', '.edit', function(e){
+    $('body').on('click', '.edit', function(e){
       e.preventDefault();
       var id_task_attr=$(this).closest('tr').attr('id');
       var class_tr_attr=$(this).closest('tr').attr('class');
@@ -195,15 +195,15 @@ function ucfirst(str) {
       $("#"+id_task_attr+" .in_edit").css('display','inline-block');
     });
 // cancel edit mode of text of task or project
-    $('.main_div').on('click', '.cancel', function(e){
+    $('body').on('click', '.cancel', function(e){
       e.preventDefault();
     });  
 // cancel action of link
-    $('.main_div').on('click', '.save_add', function(e){
+    $('body').on('click', '.save_add', function(e){
       e.preventDefault();
     });
 // lost focus after add task (cancel or save)   
-    $('.main_div').on('blur', '.add_task_input input', function(event){
+    $('body').on('blur', '.add_task_input input', function(event){
       var container_tasks=$(this).closest('table');
       var container_task_add=$(this).closest('tr');
       var id_project=container_tasks.attr('id').replace(/[^0-9]/gim,'');
@@ -272,7 +272,7 @@ function ucfirst(str) {
          });
     });   
 // text of task or project go in edit mode 
-    $('.main_div').on('click', '.add_button_project button', function(e){
+    $('body').on('click', '.add_button_project button', function(e){
         e.preventDefault();
         before_div=$(this).closest('div');
         var insert_project='<div id="div_project_NEW" class="div_project_border">'+   
@@ -299,7 +299,7 @@ function ucfirst(str) {
         $("#project_NEW .edit").trigger('click');
     });
 // lost focus after edit task (cancel or save)       
-    $('.main_div').on('blur', '.input_text', function(event){
+    $('body').on('blur', '.input_text', function(event){
       var id_task_attr=$(this).closest('tr').attr('id');
       var class_attr=$(this).closest('tr').attr('class');
       var textarea_text=$("#"+id_task_attr+" .input_text");
@@ -379,7 +379,7 @@ function ucfirst(str) {
          });
     });   
 // change priority of task to UP
-    $('.main_div').on('click', '.up_task', function(e){
+    $('body').on('click', '.up_task', function(e){
       e.preventDefault();
       var container_tasks=$(this).closest('table');
       var task=$(this).closest('tr');
@@ -424,7 +424,7 @@ function ucfirst(str) {
       }
     }); 
 // change priority of task to DOWN    
-    $('.main_div').on('click', '.down_task', function(e){
+    $('body').on('click', '.down_task', function(e){
       e.preventDefault();
       var container_tasks=$(this).closest('table');
       var task=$(this).closest('tr');
@@ -468,24 +468,7 @@ function ucfirst(str) {
       }
     }); 
 // get tasks of project   
-/*    $(".project").click(function (e){
-          e.preventDefault();
-          var id=$(this).attr("data-id");
-          if ($("#container_tasks_"+id).is(':empty')){
-            $.post("/projects/"+id, {}, function (data){
-                $("#container_tasks_"+id).html(data);
- //               $(".input_text").each(function() {
-  //                 $(this).trigger('keyup');
-//                });
-            });
-          } else {
-            $("#container_tasks_"+id).empty();
-          }
-    });*/
-
-// get tasks of project   
     $('body').on('click', '.project .div_project_container, .project .project_icon', function(){
-//    $("").click(function (){
           var container_tasks_id=$(this).closest('table').attr('id');
           var project_tr=$(this).closest('.project');
           var id_project=$(this).closest('tr').attr('id').replace(/[^0-9]/gim,'');
