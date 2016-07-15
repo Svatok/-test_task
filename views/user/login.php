@@ -3,7 +3,7 @@
     <div class="form-title">Email</div>
     <input class="form-field" type="text" name="email" placeholder="E-mail" value="test@test.com" /><br />
     <div class="form-title">Password</div>
-    <input class="form-field" type="password" name="password" placeholder="Password"/><br />
+    <input class="form-field" type="password" name="password" placeholder="Password" value="test"/><br />
     <div class="submit-container">
         <input class="submit-button" type="submit" name="submit" value="Enter" />
     </div>
