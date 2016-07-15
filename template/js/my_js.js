@@ -519,7 +519,18 @@ function ucfirst(str) {
                 });  
             }
          });
-    });  
+    }); 
+// log out
+    $('body').on('click', '#log_out', function(e){
+        e.preventDefault();
+        $.post("/user/logout", {}, function (){
+            $('.main_div').remove();
+            $('.menu').remove();
+            $.post("/views/user/login.php", {}, function (data){
+                $('.head_div').after(data);
+            }
+        });
+    }); 
 // cancel red border of wrong data input   
     $('body').on('keyup input', '.form-field', function(){
         $(this).css('border-color', '#c9b7a2');
