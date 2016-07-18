@@ -109,5 +109,20 @@ class Projects{
     }
   }
   
+  public static function projectOwner($userId, $projectId){
+    $db=Db::getConnection();
+    
+    $sql='SELECT * FROM projects WHERE id=:id AND user_id=:userId';
+    $result=$db->prepare($sql);
+    $result->bindParam(':id',$email,PDO::PARAM_INT);
+    $result->bindParam(':userId',$password,PDO::PARAM_INT);
+    $result->execute();
+
+    if ($result->fetch()){
+      return true;
+    }
+      return false;
+  }
+  
 }
 ?>
