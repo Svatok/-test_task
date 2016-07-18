@@ -53,6 +53,10 @@ class ProjectsController{
       $errors=false;
       $updateData=array();
 
+      if (!Projects::projectOwner($userId, $params[0])){
+        header("Location: /");
+      }
+
       if (isset($_POST['status'])){
         $projectStatus=Projects::clean($_POST['status']);
         if (Projects::checkStatus($projectStatus)){
