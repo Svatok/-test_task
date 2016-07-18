@@ -9,8 +9,11 @@ class User{
     $result=$db->prepare($sql);
     $result->bindParam(':email',$email,PDO::PARAM_STR);
     $result->bindParam(':password',$password,PDO::PARAM_STR);
-    $result->execute();
-    return $db->lastInsertId('user_table_id_seq');
+    if ($result->execute()){
+      return $db->lastInsertId('user_table_id_seq');
+    }else{
+      return false;
+    }
   }
   
   public static function checkUserData($email, $password){
