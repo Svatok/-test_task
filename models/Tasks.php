@@ -135,7 +135,7 @@ class Tasks{
     }
   }
 
-   public static function projectOwner($userId, $taskId){
+   public static function taskOwner($userId, $taskId){
     $db=Db::getConnection();
     
     $sql='SELECT * FROM projects WHERE user_id=:userId AND id=(SELECT project_id FROM tasks WHERE id=:taskId)';
