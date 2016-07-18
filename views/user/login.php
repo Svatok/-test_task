@@ -5,6 +5,6 @@
     <div class="form-title">Password</div>
     <input class="form-field" type="password" name="password" id="password" placeholder="Password" value="test"/><br />
     <div class="submit-container">
-        <input class="submit-button" type="submit" name="submit" value="Enter" />
+        <input class="submit-button" type="submit" name="submit" value="Sign in" />
     </div>
 </form>
