@@ -6,6 +6,6 @@
     <input class="form-field" type="password" name="password" id="password" placeholder="Password" value="test"/><br />
     <div class="submit-container">
         <input class="submit-button" type="submit" name="submit" value="Sign In" />
-        <input class="reg-button" type="submit" name="submit" value="Sign Up" />
+        <input class="reg-button" type="button" name="submit" value="Sign Up" />
     </div>
 </form>
