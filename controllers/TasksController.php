@@ -10,6 +10,10 @@ class TasksController{
       $errors=false;
       $updateData=array();
       
+      if (!Tasks::taskOwner($userId, $params[0])){
+        header("Location: /");
+      }
+      
       if (isset($_POST['status'])){
         $taskStatus=Tasks::clean($_POST['status']);
         if (Tasks::checkStatus($taskStatus)){
