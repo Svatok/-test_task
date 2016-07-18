@@ -114,8 +114,8 @@ class Projects{
     
     $sql='SELECT * FROM projects WHERE id=:id AND user_id=:userId';
     $result=$db->prepare($sql);
-    $result->bindParam(':id',$email,PDO::PARAM_INT);
-    $result->bindParam(':userId',$password,PDO::PARAM_INT);
+    $result->bindParam(':id',$projectId,PDO::PARAM_INT);
+    $result->bindParam(':userId',$userId,PDO::PARAM_INT);
     $result->execute();
 
     if ($result->fetch()){
