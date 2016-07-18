@@ -193,9 +193,9 @@ border-radius: 15px*/
    }
 .submit-container {
    margin:8px 0;
-   text-align:right;
+   text-align:center;
    }
-.submit-button {
+.submit-button, .reg-button {
    border: 1px solid #545453;
    background: #3644a3;
    background: -webkit-gradient(linear, left top, left bottom, from(#5a97bf), to(#3644a3));
@@ -218,7 +218,7 @@ border-radius: 15px*/
    text-decoration: none;
    vertical-align: middle;
    }
-.submit-button:hover {
+.submit-button:hover, .reg-button:hover {
    border: 1px solid #447314;
    text-shadow: #31540c 0 1px 0;
    background: #6aa436;
@@ -230,7 +230,7 @@ border-radius: 15px*/
    background-image: -ms-linear-gradient(top, #8dc059 0%, #6aa436 100%);
    color: #fff;
    }
-.submit-button:active {
+.submit-button:active, .reg-button:active {
    text-shadow: #31540c 0 1px 0;
    border: 1px solid #447314;
    background: #8dc059;
