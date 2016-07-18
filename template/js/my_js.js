@@ -481,12 +481,18 @@ function ucfirst(str) {
           }
     });  
 // log in button
-    $('body').on('click', '.submit-button', function(e){
+    $('body').on('click', '.submit-button, .reg-button', function(e){
       e.preventDefault();
       var enter_form=$(this).closest('form');
+      var class_button=$(this).attr('class');
+      if (class_button='reg-button'){
+        var text_url='/user/register';   
+      }else{
+        var text_url='/user/login';  
+      }
          $.ajax({
             data: enter_form.serialize(),
-            url: '/user/login',
+            url: text_url,
             method: 'post',
             success: function (data) {
                 if (data){ 
@@ -507,6 +513,13 @@ function ucfirst(str) {
                         $.post("/projects", {}, function (data){
                             $('.head_div').after(data);
                             $('.form-container').remove();
+                            if (class_button='reg-button'){
+                                noty({
+                                    text: 'You have successfully registered!',
+                                    type: 'success',
+                                    timeout: '1000'
+                                }); 
+                            }
                         });
                     }
                 }
