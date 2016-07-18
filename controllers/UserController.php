@@ -4,31 +4,48 @@ class UserController{
 
 
   public function actionRegister(){
-    $email='';
-    $password='';
+  //  $email='';
+  //  $password='';
     
-    if (isset($_POST['submit'])){
-      $email=$_POST['email'];
-      $password=$_POST['password'];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+      $email='';
+      $password='';
+      
+      if (isset($_POST['email'])){
+        $email=$_POST['email'];
+      }
+      if (isset($_POST['password'])){
+        $password=$_POST['password'];
+      }
       $errors=false;
+      $regData=array();      
       
       if (!User::checkEmail($email)){
         $errors[]='Wrong e-mail!';
+        $regData['email']='Error:Wrong e-mail!';
       }
       if (!User::checkPassword($password)){
         $errors[]='Password have to more then 4 symbols!';
+        $regData['password']='Error:Password have to more then 4 symbols!';
       }      
       if (User::checkEmailExists($email)){
         $errors[]='E-mail is used!';
+        $regData['email']='Error:E-mail is used!';
       }   
       
       if ($errors==false){
-        $result=User::register($email, $password);
+        $userId=User::register($email, $password);
       }
-      
-    }
+      if ($userId){
+        User::auth($userId);
+        $regData['id']="$userId";
+      }
     
-    require_once(ROOT.'/views/user/register.php');
+    echo json_encode($regData);  
+    
+    }
+
+    //require_once(ROOT.'/views/user/register.php');
     
     return true;
   }
