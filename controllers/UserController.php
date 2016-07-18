@@ -35,6 +35,7 @@ class UserController{
       
       if ($errors==false){
         $userId=User::register($email, $password);
+        $regData['id']="$userId";
         if ($userId){
           User::auth($userId, $email);
           $regData['id']="$userId";
