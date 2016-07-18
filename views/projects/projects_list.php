@@ -1,5 +1,5 @@
 <div class="menu">
-    <a href="" id="log_out">Log out</a>
+    <?php echo $_SESSION['email']?>, <a href="" id="log_out">Log out</a>
 </div>
 <div class="main_div"> 
 <?php  foreach ($projectsList as $projectsItem):?>
