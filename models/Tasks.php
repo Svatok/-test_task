@@ -135,6 +135,19 @@ class Tasks{
     }
   }
 
+   public static function projectOwner($userId, $taskId){
+    $db=Db::getConnection();
+    
+    $sql='SELECT * FROM projects WHERE user_id=:userId AND project_id=(SELECT project_id FROM tasks WHERE id=:taskId)';
+    $result=$db->prepare($sql);
+    $result->bindParam(':id',$userId,PDO::PARAM_INT);
+    $result->bindParam(':taskId',$taskId,PDO::PARAM_INT);
+    $result->execute();
+    if ($result->fetch()){
+      return true;
+    }
+      return false;
+  }
   
 }
 ?>
