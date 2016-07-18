@@ -37,7 +37,7 @@ class UserController{
         $userId=User::register($email, $password);
       }
       if ($userId){
-        User::auth($userId);
+        User::auth($userId, $email);
         $regData['id']="$userId";
       }
     
@@ -80,7 +80,7 @@ class UserController{
         $errors[]='Wrong data for enter!';
         $enterData['id']="Error:Wrong data for enter!";
       }else{
-        User::auth($userId);
+        User::auth($userId, $email);
         $enterData['id']="$userId";
        // header("Location: /");
       }
