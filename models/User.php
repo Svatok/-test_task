@@ -35,8 +35,9 @@ class User{
     
   }
   
-  public static function auth($userId){
+  public static function auth($userId, $email){
     $_SESSION['user']=$userId;
+    $_SESSION['email']=$email;
   }
   
   public static function checkLogged(){
