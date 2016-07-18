@@ -35,11 +35,12 @@ class UserController{
       
       if ($errors==false){
         $userId=User::register($email, $password);
+        if ($userId){
+          User::auth($userId, $email);
+          $regData['id']="$userId";
+        }
       }
-      if ((isset($userId)) && ($userId)){
-        User::auth($userId, $email);
-        $regData['id']="$userId";
-      }
+
     
     echo json_encode($regData);  
     
