@@ -485,7 +485,7 @@ function ucfirst(str) {
       e.preventDefault();
       var enter_form=$(this).closest('form');
       var class_button=$(this).attr('class');
-      if (class_button='reg-button'){
+      if (class_button=='reg-button'){
         var text_url='/user/register';   
       }else{
         var text_url='/user/login';  
@@ -513,7 +513,7 @@ function ucfirst(str) {
                         $.post("/projects", {}, function (data){
                             $('.head_div').after(data);
                             $('.form-container').remove();
-                            if (class_button='reg-button'){
+                            if (class_button=='reg-button'){
                                 noty({
                                     text: 'You have successfully registered!',
                                     type: 'success',
