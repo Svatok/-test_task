@@ -149,27 +149,28 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 }
 /* project div*/ 
 .project_icon{
-  width: 45px;
+  width: 40px;
+  text-align: right;
 }
 .div_project_container{
-  width: 535px;
+  width: 540px;
 }
 /* add div*/ 
 .add_icon{
-  width: 35px;
+  width: 40px;
 }
 .add_task_button{
-    width: 117px;
+    width: 120px;
  }
 .add_task_input{
-   width: 545px;
+   width: 540px;
 }
 .add_task_input input{
   padding: 0 0 0 10px;
 }
 /* task div*/ 
 .div_check{
-  width: 35px;
+  width: 40px;
 }
 .border_div{
   width: 3px;
