@@ -113,6 +113,9 @@ border-radius: 15px*/
  vertical-align: middle;
  color: #FFFFFF;
 }
+.div_project_text{
+  min-height: 50px;
+}
 .project .in_edit, .project .out_edit{
   color: #FFFFFF;
 }
