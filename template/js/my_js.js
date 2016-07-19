@@ -469,10 +469,10 @@ function ucfirst(str) {
     }); 
 // get tasks of project   
     $('body').on('click', '.project .div_project_container, .project .project_icon', function(){
-          var container_tasks_id=$(this).closest('table').attr('id');
+          var container_tasks_id=$(this).closest('.container_tasks').attr('id');
           var project_tr=$(this).closest('.project');
-          var id_project=$(this).closest('tr').attr('id').replace(/[^0-9]/gim,'');
-          if (!$("tr").is("#container_tasks_"+id_project+" .add_task")){
+          var id_project=container_tasks_id.replace(/[^0-9]/gim,'');
+          if (!$("div").is("#container_tasks_"+id_project+" .add_task")){
             $.post("/projects/"+id_project, {}, function (data){
                 project_tr.after(data);
             });
