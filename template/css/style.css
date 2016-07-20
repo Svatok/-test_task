@@ -173,6 +173,28 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 .div_check{
   width: 40px;
 }
+.div_check input[type="checkbox"] {
+    display:none;            
+}
+.div_check input[type="checkbox"] + label{
+  cursor: pointer;
+}
+.div_check input[type="checkbox"] + label::before{
+    content: "";
+    display: inline-block;
+    height: 18px;
+    width: 16px;
+    margin: 0;
+    background-image: url("/template/img/check.fw.png");
+    background-repeat: no-repeat;
+}
+/*.div_check input[type="checkbox"] + label::before {
+    background-position: -38px -260px;    
+}*/
+.div_check input[type="checkbox"]:checked + label::before {
+    background-image: url("/template/img/edit_task.fw.png");
+    background-repeat: no-repeat;
+}
 .border_div{
   width: 3px;
 }
