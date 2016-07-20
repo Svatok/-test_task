@@ -171,12 +171,14 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 }
 .project .edit{
   padding-right: 16px;
+  margin-left: 35px;
   background: url(/template/img/edit_pr.fw.png) no-repeat;
 }
 .project .border_buttons{
  height: 16px;
  border-right: 1px solid #4B80BE;
  margin: 0px 10px;
+ cursor: default;
 }
 .project .del{
   padding-right: 16px;
