@@ -173,10 +173,10 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 }
 /* task div*/ 
 .div_check{
-  width: 33px;
+  width: 30px;
   text-align: right;
   padding-top: 3px;
-  padding-right: 7px;
+  padding-right: 10px;
   height: 47px;
 }
 .div_check input[type="checkbox"] {
