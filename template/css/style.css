@@ -170,16 +170,16 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
   height:48px;
 }
 .project .edit{
-  height: 16px;
-  width: 16px;
-  padding-right: 10px;
-  border-right: 1px solid #4B80BE;
+  padding-right: 16px;
   background: url(/template/img/edit_pr.fw.png) no-repeat;
 }
+.project .border_buttons{
+ height: 16px;
+ border-right: 1px solid #4B80BE;
+ margin: 0px 10px;
+}
 .project .del{
-  height: 16px;
-  width: 16px;
-  padding-left: 10px;
+  padding-right: 16px;
   background: url(/template/img/del_pr.fw.png) no-repeat;
 }
 /* add div*/ 
