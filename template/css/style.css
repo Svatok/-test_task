@@ -222,11 +222,8 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
     background-image: url("/template/img/check.fw.png");
     background-repeat: no-repeat;
 }
-/*.div_check input[type="checkbox"] + label::before {
-    background-position: -38px -260px;    
-}*/
 .div_check input[type="checkbox"]:checked + label::before {
-    background-image: url("/template/img/edit_task.fw.png");
+    background-image: url("/template/img/check_1.fw.png");
     background-repeat: no-repeat;
 }
 .border_div{
