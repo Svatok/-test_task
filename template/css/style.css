@@ -246,22 +246,23 @@ box-shadow:inset 0px 1px 2px 0px rgba(0,0,0,0.75);
  height: auto;
 }
 .save_add{
-  /* Firefox v3.6+ */
-background-image:-moz-linear-gradient(rgb(150,205,176) 0%,rgb(77,132,100) 97%); 
-/* safari v4.0+ and by Chrome v3.0+ */
-background-image:-webkit-gradient(linear,color-stop(0, rgb(150,205,176)),color-stop(0.97, rgb(77,132,100)));
-/* Chrome v10.0+ and by safari nightly build*/
-background-image:-webkit-linear-gradient(rgb(150,205,176) 0%,rgb(77,132,100) 97%);
-/* Opera v11.10+ */
-background-image:-o-linear-gradient(rgb(150,205,176) 0%,rgb(77,132,100) 97%);
-/* IE v10+ */
-background-image:-ms-linear-gradient(rgb(150,205,176) 0%,rgb(77,132,100) 97%);
-background-image:linear-gradient(rgb(150,205,176) 0%,rgb(77,132,100) 97%);
-border-color:rgb(68,117,87);
-border-width:1px;
-border-style:solid;
--ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff96cdb0,endColorstr=#ff4d8464)";
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff96cdb0,endColorstr=#ff4d8464);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding-top: 5px;
+    line-height: 120%;
+    font-weight: bold;
+    color: rgb(255,255,255);
+    text-align: center;
+    border: 1px solid #333;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 0px 5px 5px 0px;
+    width: 106px;
+    height: 23px;
+    background-image: linear-gradient(rgb(150,205,176) 0%,rgb(77,132,100) 97%);
+    border-color: rgb(68,117,87);
+    border-width: 1px;
+    border-style: solid;
 }
 /* enter form */
 .form-container {
