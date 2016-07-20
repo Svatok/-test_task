@@ -1,6 +1,6 @@
 <div class="add_task">
   <div class="add_icon">
-    +
+    <img src="/template/img/a-11.fw.png">
   </div>
   <div class="add_task_input"> 
     <input type="text" placeholder="Start typing here to create a task...">
