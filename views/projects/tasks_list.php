@@ -14,10 +14,11 @@
 <div priority="<?php echo $tasksItem['priority'];?>" class="task" id="task_<?php echo $tasksItem['id'];?>">
   <div class="div_check">
       <?php if ($tasksItem['status']==1): ?>
-        <input type="checkbox" checked class="task_status">
+        <input id="check_<?php echo $tasksItem['id'];?>" type="checkbox" checked class="task_status">
       <?php else: ?>
-        <input type="checkbox" class="task_status">
+        <input id="check_<?php echo $tasksItem['id'];?>" type="checkbox" class="task_status">
       <?php endif; ?>
+      <label for="check_<?php echo $tasksItem['id'];?>"></label>
   </div>
   <div class="border_div">
   </div>
