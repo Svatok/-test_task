@@ -15,7 +15,7 @@
             <div class="div_edit_buttons">
                 <div class="out_edit">
                     <a href="" class="edit"></a>
-                    <a class="border_buttons"></div>
+                    <a class="border_buttons"></a>
                     <a href="" class="del"></a>
                 </div>
                 <div class="in_edit">
