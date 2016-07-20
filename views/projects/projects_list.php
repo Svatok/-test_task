@@ -7,7 +7,7 @@
     <div id="container_tasks_<?php echo $projectsItem['id'];?>" class="container_tasks">
         <div class="project" id="project_<?php echo $projectsItem['id'];?>">
             <div class="project_icon">
-                <img src="/template/jpg/logo_p.fw.png">
+                <img src="/template/img/logo_p.fw.png">
             </div>
             <div class="div_project_container">
                 <div class="div_project_text"><?php echo $projectsItem['name'];?></div>
