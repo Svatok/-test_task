@@ -158,15 +158,15 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 }
 /* add div*/ 
 .add_icon{
-  width: 37px;
+  width: 42px;
   text-align: right;
-  padding-right: 3px;
+  padding-right: 8px;
 }
 .add_task_button{
     width: 120px;
  }
 .add_task_input{
-   width: 540px;
+   width: 535px;
 }
 .add_task_input input{
   padding: 0 0 0 10px;
