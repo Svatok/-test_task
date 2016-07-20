@@ -158,7 +158,9 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 }
 /* add div*/ 
 .add_icon{
-  width: 40px;
+  width: 37px;
+  text-align: right;
+  padding-right: 3px;
 }
 .add_task_button{
     width: 120px;
