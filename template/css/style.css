@@ -149,9 +149,10 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 }
 /* project div*/ 
 .project_icon{
-  width: 40px;
-  text-align: right;
-  padding-top: 4px;
+    width: 38px;
+    text-align: right;
+    padding-top: 4px;
+    padding-right: 2px;
 }
 .div_project_container{
   width: 540px;
