@@ -232,7 +232,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
   width: 3px;
 }
 .div_task_container{
-  width: 539px;
+  width: 536px;
 }
 .div_edit_buttons{
   width: 120px;
@@ -255,9 +255,9 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 .add_task_input input{
  box-sizing:border-box;
  background-color:rgb(255,255,255);
-width:533px;
-height:30px;
- }
+ width:530px;
+ height:30px;
+}
 .add_task_button{
  text-align: left;  
 }
