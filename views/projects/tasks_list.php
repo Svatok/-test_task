@@ -27,10 +27,12 @@
   </div>
   <div class="div_edit_buttons">
     <div class="out_edit">
-      <a href="" class="up_task">Up</a>
-      <a href="" class="down_task">Down</a>
-      <a href="" class="edit">Edit</a>
-      <a href="" class="del">Del</a>
+      <a href="" class="up_task"></a>
+      <a href="" class="down_task"></a>
+      <a class="border_buttons"></a>
+      <a href="" class="edit"></a>
+      <a class="border_buttons"></a>
+      <a href="" class="del"></a>
     </div>
     <div class="in_edit">
       <a href="" class="save">Save</a>
