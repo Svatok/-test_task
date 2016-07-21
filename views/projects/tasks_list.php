@@ -27,8 +27,11 @@
   </div>
   <div class="div_edit_buttons">
     <div class="out_edit">
-      <a href="" class="up_task"></a>
-      <a href="" class="down_task"></a>
+      <div class="priority_buttons">
+        <div class="up_task"></div>
+        <div class="border_proirity"></div>
+        <div class="down_task"></div>
+      </div>
       <a class="border_buttons"></a>
       <a href="" class="edit"></a>
       <a class="border_buttons"></a>
