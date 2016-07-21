@@ -240,24 +240,29 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 .task .up_task{
   padding-right: 8px;
   background: url(/template/img/up.fw.png) no-repeat; 
+  font-size: 3px;
 }
 .task .down_task{
   padding-right: 8px;
   background: url(/template/img/down.fw.png) no-repeat; 
+  font-size: 3px;
 }
 .task .edit{
   padding-right: 12px;
   background: url(/template/img/edit_task.fw.png) no-repeat;
+  font-size: 10px;
 }
 .task .del{
   padding-right: 12px;
   background: url(/template/img/del_task.fw.png) no-repeat;
+  font-size: 10px;
 }
 .task .border_buttons{
  height: 12px;
  border-right: 1px solid #4B80BE;
  margin: 0px 10px;
  cursor: default;
+ font-size: 10px;
 }
 .div_check, .div_task_container, .border_div {
     border-right: 1px solid #E7EBEA;
