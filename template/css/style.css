@@ -237,6 +237,28 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 .div_edit_buttons{
   width: 120px;
 }
+.task .up_task{
+  padding-right: 8px;
+  background: url(/template/img/up.fw.png) no-repeat; 
+}
+.task .down_task{
+  padding-right: 8px;
+  background: url(/template/img/down.fw.png) no-repeat; 
+}
+.task .edit{
+  padding-right: 12px;
+  background: url(/template/img/edit_task.fw.png) no-repeat;
+}
+.task .del{
+  padding-right: 12px;
+  background: url(/template/img/del_task.fw.png) no-repeat;
+}
+.task .border_buttons{
+ height: 12px;
+ border-right: 1px solid #4B80BE;
+ margin: 0px 10px;
+ cursor: default;
+}
 .div_check, .div_task_container, .border_div {
     border-right: 1px solid #E7EBEA;
 }
