@@ -91,7 +91,7 @@ border-radius: 0px 0px 15px 15px;
     display:inline-block;
 }
 .task:hover .out_edit{
-    display:inline-block;
+    display:block;
 }
 .task:hover {
     background:#FCFED5;
@@ -251,7 +251,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 .border_proirity{
  height: 1px;
  width: 10px;
- background: grey;
+ background: #999999;
  margin: 2px 0px;
 }
 .task .down_task{
@@ -272,7 +272,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 }
 .task .border_buttons{
  height: 12px;
- border-right: 1px solid #4B80BE;
+ border-right: 1px solid #CCCCCC;
  margin: 0px 10px;
  cursor: default;
  font-size: 10px;
