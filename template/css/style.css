@@ -274,9 +274,24 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
   background: url(/template/img/edit_task.fw.png) no-repeat;
   font-size: 10px;
 }
+.task .save{
+  padding-right: 12px;
+  background: url(/template/img/save.fw.png) no-repeat;
+  font-size: 10px;
+}
+.task .deadline{
+  padding-right: 12px;
+  background: url(/template/img/deadline.fw.png) no-repeat;
+  font-size: 10px;
+}
 .task .del{
   padding-right: 12px;
   background: url(/template/img/del_task.fw.png) no-repeat;
+  font-size: 10px;
+}
+.task .cancel{
+  padding-right: 12px;
+  background: url(/template/img/cancel_task.fw.png) no-repeat;
   font-size: 10px;
 }
 .task .border_buttons{
