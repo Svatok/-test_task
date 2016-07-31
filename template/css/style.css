@@ -294,10 +294,14 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
   background: url(/template/img/cancel_task.fw.png) no-repeat;
   font-size: 10px;
 }
+.out_edit .border_buttons:first-child{
+ margin-left: 2px;
+}
+
 .task .border_buttons{
  height: 12px;
  border-right: 1px solid #CCCCCC;
- margin: 0px 10px;
+ margin: 0px 7px;
  cursor: default;
  font-size: 10px;
 }
