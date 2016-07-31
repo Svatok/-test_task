@@ -20,6 +20,7 @@
                 </div>
                 <div class="in_edit">
                     <a href="" class="save">Save</a>
+                    <a class="border_buttons"></a>
                     <a href="" class="cancel">Cancel</a>
                 </div>
             </div>
