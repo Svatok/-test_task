@@ -35,10 +35,13 @@
       <a class="border_buttons"></a>
       <a href="" class="edit"></a>
       <a class="border_buttons"></a>
+      <a href="" class="deadline"></a>
+      <a class="border_buttons"></a>
       <a href="" class="del"></a>
     </div>
     <div class="in_edit">
       <a href="" class="save">Save</a>
+      <a class="border_buttons"></a>
       <a href="" class="cancel">Cancel</a>
     </div>
   </div>
