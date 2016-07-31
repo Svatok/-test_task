@@ -40,9 +40,9 @@
       <a href="" class="del"></a>
     </div>
     <div class="in_edit">
-      <a href="" class="save">Save</a>
+      <a href="" class="save"></a>
       <a class="border_buttons"></a>
-      <a href="" class="cancel">Cancel</a>
+      <a href="" class="cancel"></a>
     </div>
   </div>
 </div>
