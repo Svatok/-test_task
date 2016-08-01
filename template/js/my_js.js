@@ -196,6 +196,15 @@ function ucfirst(str) {
       $("#"+id_task_attr+" .out_edit").attr('class','out_edit_nondisp');
       $("#"+id_task_attr+" .in_edit").css('display','inline-block');
     });
+// deadline of task 
+    $('body').on('click', '.deadline', function(e){
+      e.preventDefault();
+      $("#datepicker").datepicker(
+          function(){
+            alert("Событие onSelect");
+          }
+      );
+    });
 // cancel edit mode of text of task or project
     $('body').on('click', '.cancel', function(e){
       e.preventDefault();
