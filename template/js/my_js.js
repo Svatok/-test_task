@@ -274,6 +274,7 @@ function ucfirst(str) {
                                                           '<a class="border_buttons"></a>'+
                                                           '<a href="" class="edit"></a> '+
                                                           '<a class="border_buttons"></a>'+
+                                                          '<input class="deadline_input" type="hidden" />'+
                                                           '<a href="" class="deadline"></a>'+
                                                           '<a class="border_buttons"></a>'+
                                                           '<a href="" class="del"></a> '+
