@@ -186,7 +186,7 @@ function ucfirst(str) {
 // text of task or project go in edit mode 
     $('body').on('click', '.edit', function(e){
       e.preventDefault();
-      var id_task_attr=$(this).closest('.task, .project'').attr('id');
+      var id_task_attr=$(this).closest('.task, .project').attr('id');
       var class_tr_attr=$(this).closest('.task, .project').attr('class');
       before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
       var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text");
