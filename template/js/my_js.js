@@ -200,6 +200,10 @@ function ucfirst(str) {
         $('.deadline_input').datepicker({
             startDate: '01/01/2000',
             firstDay: 1
+/*            onSelect:
+              function(dateText, inst) {
+                  $(this).siblings('.pickDate').text(dateText);
+              }*/
         });
         $('body').on('click', '.deadline', function(e){
             $(this).siblings('.deadline_input').datepicker("show");
