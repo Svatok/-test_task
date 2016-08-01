@@ -62,8 +62,8 @@ function ucfirst(str) {
 // delete task
     $('body').on('click', '.del', function(e){
       e.preventDefault();
-      var id_project_attr=$(this).closest('table').attr('id');
-      var task_box=$(this).closest('tr');
+      var id_project_attr=$(this).closest('.container_tasks').attr('id');
+      var task_box=$(this).closest('.task');
       var class_attr=task_box.attr('class');
       var id_task_attr=task_box.attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
@@ -135,7 +135,7 @@ function ucfirst(str) {
     }); 
 // change status of task
     $('body').on('click', '.task_status', function(){
-      var id_task_attr=$(this).closest('tr').attr('id');
+      var id_task_attr=$(this).closest('.task').attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       var status = $(this).prop('checked');
       var checkbox_edit=$(this);
@@ -186,8 +186,8 @@ function ucfirst(str) {
 // text of task or project go in edit mode 
     $('body').on('click', '.edit', function(e){
       e.preventDefault();
-      var id_task_attr=$(this).closest('tr').attr('id');
-      var class_tr_attr=$(this).closest('tr').attr('class');
+      var id_task_attr=$(this).closest('.task').attr('id');
+      var class_tr_attr=$(this).closest('.task').attr('class');
       before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
       var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text");
       divClicked(div_text);
@@ -204,8 +204,8 @@ function ucfirst(str) {
     });
 // lost focus after add task (cancel or save)   
     $('body').on('blur', '.add_task_input input', function(event){
-      var container_tasks=$(this).closest('table');
-      var container_task_add=$(this).closest('tr');
+      var container_tasks=$(this).closest('.container_tasks');
+      var container_task_add=$(this).closest('.task');
       var id_project=container_tasks.attr('id').replace(/[^0-9]/gim,'');
       var textarea_text=$(this);
       var task_text=textarea_text.val();
@@ -240,24 +240,33 @@ function ucfirst(str) {
                                 }
                             });
                             if (!result_errors){
-                                var priority_new=(container_tasks.find($("tr.task")).length)+1;
+                                var priority_new=(container_tasks.find($("div.task")).length)+1;
                                 var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
-                                var insert_task='<tr priority="'+priority_new+'" class="task" id="task_'+result_data['taskId']+'">'+   
-                                                    '<td class="div_check"><input type="checkbox" class="task_status"></td>'+
-                                                    '<td class="div_task_container"><div class="div_task_text">'+task_text+'</div></td>'+
-                                                    '<td class="div_edit_buttons">'+
+                                var insert_task='<div priority="'+priority_new+'" class="task" id="task_'+result_data['taskId']+'">'+   
+                                                    '<div class="div_check"><input type="checkbox" class="task_status"></div>'+
+                                                    '<div class="border_div"></div>'+
+                                                    '<div class="div_task_container"><div class="div_task_text">'+task_text+'</div></div>'+
+                                                    '<div class="div_edit_buttons">'+
                                                         '<div class="out_edit">'+
-                                                          '<a href="" class="up_task">Up</a> '+
-                                                          '<a href="" class="down_task">Down</a> '+
-                                                          '<a href="" class="edit">Edit</a> '+
-                                                          '<a href="" class="del">Del</a> '+
+                                                          '<div class="priority_buttons">'+
+                                                              '<div class="up_task"></div> '+
+                                                              '<div class="border_proirity"></div>'+
+                                                              '<div class="down_task"></div> '+
+                                                          '/div'+
+                                                          '<a class="border_buttons"></a>'+
+                                                          '<a href="" class="edit"></a> '+
+                                                          '<a class="border_buttons"></a>'+
+                                                          '<a href="" class="deadline"></a>'+
+                                                          '<a class="border_buttons"></a>'+
+                                                          '<a href="" class="del"></a> '+
                                                         '</div>'+
                                                         '<div class="in_edit">'+
-                                                          '<a href="" class="save">Save</a> '+
-                                                          '<a href="" class="cancel">Cancel</a> '+
+                                                          '<a href="" class="save"></a> '+
+                                                          '<a class="border_buttons"></a>'+
+                                                          '<a href="" class="cancel"></a> '+
                                                         '</div>'+
-                                                    '</td>'+
-                                                '</tr>';
+                                                    '</div>'+
+                                                '</div>';
                                 if ((priority_new-1)==0){
                                     container_task_add.after(insert_task);
                                 }else{
@@ -276,32 +285,34 @@ function ucfirst(str) {
         e.preventDefault();
         before_div=$(this).closest('div');
         var insert_project='<div id="div_project_NEW" class="div_project_border">'+   
-                                '<table id="container_tasks_NEW" class="container_tasks">'+
-                                    '<tr class="project" id="project_NEW">'+
-                                        '<td class="project_icon">'+
-                                            '!!!'+
-                                        '</td>'+
-                                        '<td class="div_project_container"><div class="div_project_text"></div></td>'+
-                                        '<td class="div_edit_buttons">'+
+                                '<div id="container_tasks_NEW" class="container_tasks">'+
+                                    '<div class="project" id="project_NEW">'+
+                                        '<div class="project_icon">'+
+                                            '<img src="/template/img/logo_p.fw.png">'+
+                                        '</div>'+
+                                        '<div class="div_project_container"><div class="div_project_text"></div></div>'+
+                                        '<div class="div_edit_buttons">'+
                                             '<div class="out_edit">'+
-                                                '<a href="" class="edit">Edit</a>'+
-                                                '<a href="" class="del">Del</a>'+
+                                                '<a href="" class="edit"></a>'+
+                                                '<a class="border_buttons"></a>'+
+                                                '<a href="" class="del"></a>'+
                                             '</div>'+
                                             '<div class="in_edit">'+
-                                                '<a href="" class="save">Save</a>'+
-                                                '<a href="" class="cancel">Cancel</a>'+
+                                                '<a href="" class="save"></a>'+
+                                                '<a class="border_buttons"></a>'+
+                                                '<a href="" class="cancel"></a>'+
                                             '</div>'+
-                                        '</td>'+
-                                    '</tr>'+
-                                '</table>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'+
                             '</div>';
         before_div.before(insert_project);
         $("#project_NEW .edit").trigger('click');
     });
 // lost focus after edit task (cancel or save)       
     $('body').on('blur', '.input_text', function(event){
-      var id_task_attr=$(this).closest('tr').attr('id');
-      var class_attr=$(this).closest('tr').attr('class');
+      var id_task_attr=$(this).closest('.task').attr('id');
+      var class_attr=$(this).closest('.task').attr('class');
       var textarea_text=$("#"+id_task_attr+" .input_text");
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
@@ -381,10 +392,10 @@ function ucfirst(str) {
 // change priority of task to UP
     $('body').on('click', '.up_task', function(e){
       e.preventDefault();
-      var container_tasks=$(this).closest('table');
-      var task=$(this).closest('tr');
+      var container_tasks=$(this).closest('.container_tasks');
+      var task=$(this).closest('.task');
       var id_task=task.attr('id').replace(/[^0-9]/gim,'');
-      var kol_tasks=container_tasks.find($("tr.task")).length;
+      var kol_tasks=container_tasks.find($("div.task")).length;
       if (parseInt(task.attr('priority'))<kol_tasks){
          var priority_new=parseInt(task.attr('priority'))+1;
          var before_li=container_tasks.find($('[priority = '+priority_new+']'));
@@ -426,8 +437,8 @@ function ucfirst(str) {
 // change priority of task to DOWN    
     $('body').on('click', '.down_task', function(e){
       e.preventDefault();
-      var container_tasks=$(this).closest('table');
-      var task=$(this).closest('tr');
+      var container_tasks=$(this).closest('.container_tasks');
+      var task=$(this).closest('.task');
       var id_task=task.attr('id').replace(/[^0-9]/gim,'');
       if (parseInt(task.attr('priority'))>1){
          var priority_new=parseInt(task.attr('priority'))-1;
