@@ -38,6 +38,9 @@ body {
 .out_edit{
  display:none;
 }
+.out_edit_nondisp{
+ display:none;
+}
 .in_edit {
  display:none;
 }
