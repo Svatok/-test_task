@@ -499,6 +499,8 @@ function ucfirst(str) {
           } else {
             $("#"+container_tasks_id+" .task, #"+container_tasks_id+" .add_task").remove();
           }
+    }).children('.input_text').click(function(e) {
+        return false;
     });  
 // log in button
     $('body').on('click', '.submit-button, .reg-button', function(e){
