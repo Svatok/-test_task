@@ -197,18 +197,18 @@ function ucfirst(str) {
       $("#"+id_task_attr+" .in_edit").css('display','inline-block');
     });
 // deadline of task 
-        $('.deadline_input').datepicker({
+/*        $('.deadline_input').datepicker({
             startDate: '01/01/2000',
             firstDay: 1
-/*            onSelect:
+            onSelect:
               function(dateText, inst) {
                   $(this).siblings('.pickDate').text(dateText);
-              }*/
+              }
         });
         $('body').on('click', '.deadline', function(e){
             $(this).siblings('.deadline_input').datepicker("show");
             e.preventDefault();
-        });
+        });*/
 // cancel edit mode of text of task or project
     $('body').on('click', '.cancel', function(e){
       e.preventDefault();
