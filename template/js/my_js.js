@@ -488,7 +488,8 @@ function ucfirst(str) {
       }
     }); 
 // get tasks of project   
-    $('body').on('click', '.project .div_project_container, .project .project_icon', function(){
+    $('body').on('click', '.project .div_project_container > input, .project .project_icon', function(e){
+          if(e.target != this) return;
           var container_tasks_id=$(this).closest('.container_tasks').attr('id');
           var project_tr=$(this).closest('.project');
           var id_project=container_tasks_id.replace(/[^0-9]/gim,'');
@@ -499,9 +500,6 @@ function ucfirst(str) {
           } else {
             $("#"+container_tasks_id+" .task, #"+container_tasks_id+" .add_task").remove();
           }
-    }).children().click(function(e) {
-        alert('222');
-        return false;
     });  
 // log in button
     $('body').on('click', '.submit-button, .reg-button', function(e){
