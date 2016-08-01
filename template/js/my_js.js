@@ -245,7 +245,10 @@ function ucfirst(str) {
                                 var priority_new=(container_tasks.find($("div.task")).length)+1;
                                 var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
                                 var insert_task='<div priority="'+priority_new+'" class="task" id="task_'+result_data['taskId']+'">'+   
-                                                    '<div class="div_check"><input type="checkbox" class="task_status"></div>'+
+                                                    '<div class="div_check">'+
+                                                        '<input id="check_'+result_data['taskId']+'" type="checkbox" class="task_status">'+
+                                                        '<label for="check_'+result_data['taskId']+'"></label>'+
+                                                    '</div>'+
                                                     '<div class="border_div"></div>'+
                                                     '<div class="div_task_container"><div class="div_task_text">'+task_text+'</div></div>'+
                                                     '<div class="div_edit_buttons">'+
@@ -254,7 +257,7 @@ function ucfirst(str) {
                                                               '<div class="up_task"></div> '+
                                                               '<div class="border_proirity"></div>'+
                                                               '<div class="down_task"></div> '+
-                                                          '/div'+
+                                                          '</div>'+
                                                           '<a class="border_buttons"></a>'+
                                                           '<a href="" class="edit"></a> '+
                                                           '<a class="border_buttons"></a>'+
