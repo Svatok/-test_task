@@ -63,6 +63,9 @@ body {
   padding: 8px 0 8px 10px;
   margin-left: 8px
 }
+.input_text:focus { 
+ outline: none; 
+}
 .task * {
  font-family: Verdana, Helvetica, Arial, sans-serif;
  font-size: 14px;
