@@ -63,6 +63,12 @@ body {
   padding: 8px 0 8px 10px;
   margin-left: 8px
 }
+.project .input_text{
+    margin-top: 5px;
+}
+.task .input_text{
+    margin-top: 2px;
+}
 .input_text:focus { 
  outline: none; 
 }
