@@ -192,7 +192,7 @@ function ucfirst(str) {
       var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text");
       divClicked(div_text);
      // $("#"+id_task_attr+" .out_edit").css('display','none');
-      $(class_tr_attr+":hover .out_edit").css('display','none');
+      $("."+class_tr_attr+":hover .out_edit").css('display','none');
       $("#"+id_task_attr+" .in_edit").css('display','inline-block');
     });
 // cancel edit mode of text of task or project
@@ -357,7 +357,7 @@ function ucfirst(str) {
                                     editableTextBlurred(textarea_text, true, class_attr);
                                     $("#"+id_task_attr+" .in_edit").hide();
                                     //$("#"+id_task_attr+" .out_edit").css('display','inline-block');
-                                    $(class_attr+":hover .out_edit").css('display','inline-block');
+                                    $("."+class_attr+":hover .out_edit").css('display','inline-block');
                                     //add project
                                     if (typeof result_data['projectId'] !=="undefined"){
                                         $('#div_project_NEW').attr('id', 'div_project_'+result_data['projectId']);
@@ -385,7 +385,7 @@ function ucfirst(str) {
                editableTextBlurred(textarea_text, false, class_attr);
                 $("#"+id_task_attr+" .in_edit").hide();
                // $("#"+id_task_attr+" .out_edit").css('display','inline-block');
-                $(class_attr+":hover .out_edit").css('display','inline-block');
+                $("."+class_attr+":hover .out_edit").css('display','inline-block');
                 if ($("div").is("#div_project_NEW")){
                     $('#div_project_NEW').remove();
                 }
