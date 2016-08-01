@@ -499,7 +499,7 @@ function ucfirst(str) {
           } else {
             $("#"+container_tasks_id+" .task, #"+container_tasks_id+" .add_task").remove();
           }
-    }).children('.input_text').click(function(e) {
+    }).children().click(function(e) {
         alert('222');
         return false;
     });  
