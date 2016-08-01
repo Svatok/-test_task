@@ -207,7 +207,7 @@ function ucfirst(str) {
 // lost focus after add task (cancel or save)   
     $('body').on('blur', '.add_task_input input', function(event){
       var container_tasks=$(this).closest('.container_tasks');
-      var container_task_add=$(this).closest('.task');
+      var container_task_add=$(this).closest('.add_task_input');
       var id_project=container_tasks.attr('id').replace(/[^0-9]/gim,'');
       var textarea_text=$(this);
       var task_text=textarea_text.val();
