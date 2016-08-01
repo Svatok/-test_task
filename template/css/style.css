@@ -110,6 +110,9 @@ border-radius: 0px 0px 15px 15px;
 .task:hover .out_edit{
     display:block;
 }
+.task:hover .div_deadline{
+    display:none;
+}
 .task:hover {
     background:#FCFED5;
 }
