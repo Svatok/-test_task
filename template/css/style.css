@@ -334,7 +334,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
   float: right;
   margin-left: 10px;
 }
- .project .div_project_container, .project .project_icon, .div_task_container{
+ .project .div_project_text, .project .project_icon, .div_task_container{
   cursor: pointer;
  }
 .add_task_input input{
