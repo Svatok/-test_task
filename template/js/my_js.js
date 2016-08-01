@@ -63,7 +63,7 @@ function ucfirst(str) {
     $('body').on('click', '.del', function(e){
       e.preventDefault();
       var id_project_attr=$(this).closest('.container_tasks').attr('id');
-      var task_box=$(this).closest('.task');
+      var task_box=$(this).closest('.task, .project');
       var class_attr=task_box.attr('class');
       var id_task_attr=task_box.attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
@@ -186,8 +186,8 @@ function ucfirst(str) {
 // text of task or project go in edit mode 
     $('body').on('click', '.edit', function(e){
       e.preventDefault();
-      var id_task_attr=$(this).closest('.task').attr('id');
-      var class_tr_attr=$(this).closest('.task').attr('class');
+      var id_task_attr=$(this).closest('.task, .project'').attr('id');
+      var class_tr_attr=$(this).closest('.task, .project').attr('class');
       before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
       var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text");
       divClicked(div_text);
@@ -311,8 +311,8 @@ function ucfirst(str) {
     });
 // lost focus after edit task (cancel or save)       
     $('body').on('blur', '.input_text', function(event){
-      var id_task_attr=$(this).closest('.task').attr('id');
-      var class_attr=$(this).closest('.task').attr('class');
+      var id_task_attr=$(this).closest('.task, .project').attr('id');
+      var class_attr=$(this).closest('.task, .project').attr('class');
       var textarea_text=$("#"+id_task_attr+" .input_text");
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
@@ -382,7 +382,7 @@ function ucfirst(str) {
             }else{
                editableTextBlurred(textarea_text, false, class_attr);
                 $("#"+id_task_attr+" .in_edit").hide();
-                $("#"+id_task_attr+" .out_edit").css('display','inline-block');
+               // $("#"+id_task_attr+" .out_edit").css('display','inline-block');
                 if ($("div").is("#div_project_NEW")){
                     $('#div_project_NEW').remove();
                 }
