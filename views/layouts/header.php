@@ -10,8 +10,8 @@
 <!--<link href="template/js/jquery-ui-1.12.0.custom/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <script src="template/js/jquery-ui-1.12.0.custom/jquery-ui.js"></script> -->
 <link type="text/css"
-    href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/base/jquery-ui.css" rel="stylesheet" />
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 </head>
 
 <body>
