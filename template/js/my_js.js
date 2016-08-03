@@ -503,12 +503,12 @@ function ucfirst(str) {
                 project_tr.after(data);
                 $('.deadline_input').datepicker({
                     startDate: '01/01/2000',
-                    firstDay: 1
-                    /*,
+                    firstDay: 1,
                     onSelect:
                       function(dateText, inst) {
-                          $(this).siblings('.pickDate').text(dateText);
-                      }*/
+                          var container_deadline=$(this).closest('.div_edit_buttons').children(".div_deadline");
+                          container_deadline.html(dateText);
+                      }
                 });
             });
           } else {
