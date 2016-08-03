@@ -197,14 +197,10 @@ function ucfirst(str) {
       $("#"+id_task_attr+" .in_edit").css('display','inline-block');
     });
 // deadline of task 
-
-
-        $('body').on('click', '.deadline', function(e){
-            e.preventDefault();
-            alert($(this).siblings('.deadline_input').attr('class'));
-            $(this).siblings('.deadline_input').datepicker("show");
-            
-        });
+    $('body').on('click', '.deadline', function(e){
+        e.preventDefault();
+        $(this).siblings('.deadline_input').datepicker("show");
+    });
 // cancel edit mode of text of task or project
     $('body').on('click', '.cancel', function(e){
       e.preventDefault();
