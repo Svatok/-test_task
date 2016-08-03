@@ -206,8 +206,10 @@ function ucfirst(str) {
               }
         });
         $('body').on('click', '.deadline', function(e){
-            $(this).siblings('.deadline_input').datepicker("show");
             e.preventDefault();
+            alert('111')
+            //$(this).siblings('.deadline_input').datepicker("show");
+            
         });
 // cancel edit mode of text of task or project
     $('body').on('click', '.cancel', function(e){
