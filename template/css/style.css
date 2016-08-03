@@ -38,7 +38,7 @@ body {
 .out_edit{
  display:none;
 }
-.out_edit_nondisp{
+.out_edit_nondisp, .div_deadline_nondisp{
  display:none;
 }
 .in_edit {
