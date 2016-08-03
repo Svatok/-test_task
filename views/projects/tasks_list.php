@@ -26,7 +26,7 @@
     <div class="div_task_text"><?php echo $tasksItem['name'];?></div>
   </div>
   <div class="div_edit_buttons">
-    <div class="div_deadline">25/07/2016</div>
+    <div class="div_deadline"><?php echo $tasksItem['deadline_date'];?></div>
     <div class="out_edit">
       <div class="priority_buttons">
         <div class="up_task"></div>
