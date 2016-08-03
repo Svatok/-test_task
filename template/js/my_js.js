@@ -197,15 +197,16 @@ function ucfirst(str) {
       $("#"+id_task_attr+" .in_edit").css('display','inline-block');
     });
 // deadline of task 
-        $('.deadline_input').datepicker({
-            startDate: '01/01/2000',
-            firstDay: 1
+//        $('.deadline_input').datepicker({
+//            startDate: '01/01/2000',
+//            firstDay: 1
             /*,
             onSelect:
               function(dateText, inst) {
                   $(this).siblings('.pickDate').text(dateText);
               }*/
-        });
+//        });
+
         $('body').on('click', '.deadline', function(e){
             e.preventDefault();
             alert($(this).siblings('.deadline_input').attr('class'));
@@ -585,5 +586,14 @@ function ucfirst(str) {
     $('body').on('keyup input', '.form-field', function(){
         $(this).css('border-color', '#c9b7a2');
     });
+
+        $('.deadline_input').each(function() {
+            $(this).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd-mm-yy',
+                yearRange: '1920:2020'
+            });
+        });
     
 }); 
