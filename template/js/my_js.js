@@ -506,7 +506,7 @@ function ucfirst(str) {
                 project_tr.after(data);
                 $('.deadline_input').datepicker({
                     startDate: '01/01/2000',
-                    dateFormat: 'dd/mm/yy',
+                    dateFormat: 'yy-mm-dd',
                     firstDay: 1,
                     onSelect:
                         function(dateText, inst) {
