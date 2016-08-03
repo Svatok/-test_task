@@ -509,10 +509,45 @@ function ucfirst(str) {
                     dateFormat: 'dd/mm/yy',
                     firstDay: 1,
                     onSelect:
-                      function(dateText, inst) {
-                          var container_deadline=$(this).closest('.div_edit_buttons').children(".div_deadline");
-                          container_deadline.html(dateText);
-                      }
+                        function(dateText, inst) {
+                            var container_deadline=$(this).closest('.div_edit_buttons').children(".div_deadline");
+                            var task=$(this).closest('.task');
+                            var id_task=task.attr('id').replace(/[^0-9]/gim,'');
+                            if (dateText!=container_deadline.html()){
+/*                                $.ajax({
+                                    data: {deadline:dateText},
+                                    url: '/task/edit/'+id_task,
+                                    method: 'post',
+                                    success: function (data) {
+                                        if (data){ 
+                                            var result_data = $.parseJSON(data);
+                                            var result_errors = false;
+                                            $.each(result_data, function(index, value){         */
+  //                                              if (value.replace(/\:.*/, '')=='Error'){
+ /*                                                   result_errors = true;
+                                                    noty({
+                                                        text: value,
+                                                        type: 'error',
+                                                        timeout: '1000'
+                                                    }); 
+                                                }
+                                            });
+                                            if (!result_errors){*/
+                                                container_deadline.html(dateText);
+                                                alert('changed');
+/*                                            }
+                                        }
+                                    },
+                                    error: function(){
+                                        noty({
+                                            text: 'Can not change deadline!',
+                                            type: 'error',
+                                            timeout: '1000'
+                                        });  
+                                    }
+                                 }); */
+                            }
+                        }
                 });
             });
           } else {
