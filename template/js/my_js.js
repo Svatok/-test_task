@@ -194,6 +194,7 @@ function ucfirst(str) {
      // $("#"+id_task_attr+" .out_edit").css('display','none');
       //$("."+class_tr_attr+":not(.out_edit):hover").css('display','none');
       $("#"+id_task_attr+" .out_edit").attr('class','out_edit_nondisp');
+      $("#"+id_task_attr+" .div_deadline").attr('class','div_deadline_nondisp');
       $("#"+id_task_attr+" .in_edit").css('display','inline-block');
     });
 // deadline of task 
@@ -369,6 +370,7 @@ function ucfirst(str) {
                                     //$("#"+id_task_attr+" .out_edit").css('display','inline-block');
                                     //$("."+class_attr+":hover .out_edit").css('display','inline-block');
                                     $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
+                                    $("#"+id_task_attr+" .div_deadline_nondisp").attr('class','div_deadline');
                                     //add project
                                     if (typeof result_data['projectId'] !=="undefined"){
                                         $('#div_project_NEW').attr('id', 'div_project_'+result_data['projectId']);
@@ -398,6 +400,7 @@ function ucfirst(str) {
                // $("#"+id_task_attr+" .out_edit").css('display','inline-block');
                 //$("."+class_attr+":hover .out_edit").css('display','inline-block');
                 $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
+                $("#"+id_task_attr+" .div_deadline_nondisp").attr('class','div_deadline');
                 if ($("div").is("#div_project_NEW")){
                     $('#div_project_NEW').remove();
                 }
@@ -503,7 +506,7 @@ function ucfirst(str) {
                 project_tr.after(data);
                 $('.deadline_input').datepicker({
                     startDate: '01/01/2000',
-                    dateFormat: 'dd-mm-yyyy',
+                    dateFormat: 'dd/mm/yy',
                     firstDay: 1,
                     onSelect:
                       function(dateText, inst) {
