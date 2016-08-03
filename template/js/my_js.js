@@ -199,7 +199,8 @@ function ucfirst(str) {
 // deadline of task 
         $('.deadline_input').datepicker({
             startDate: '01/01/2000',
-            firstDay: 1/*,
+            firstDay: 1
+            /*,
             onSelect:
               function(dateText, inst) {
                   $(this).siblings('.pickDate').text(dateText);
@@ -207,7 +208,7 @@ function ucfirst(str) {
         });
         $('body').on('click', '.deadline', function(e){
             e.preventDefault();
-            //alert('111')
+            alert($(this).siblings('.deadline_input').attr('class'));
             $(this).siblings('.deadline_input').datepicker("show");
             
         });
