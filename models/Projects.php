@@ -47,6 +47,7 @@ class Projects{
       $tasksList[$i]['name']=$row['name'];
       $tasksList[$i]['status']=$row['status'];
       $tasksList[$i]['priority']=$row['priority'];
+      $tasksList[$i]['deadline_date']=$row['deadline_date'];
       $i++;
     }
   
