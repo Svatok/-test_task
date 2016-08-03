@@ -197,15 +197,7 @@ function ucfirst(str) {
       $("#"+id_task_attr+" .in_edit").css('display','inline-block');
     });
 // deadline of task 
-//        $('.deadline_input').datepicker({
-//            startDate: '01/01/2000',
-//            firstDay: 1
-            /*,
-            onSelect:
-              function(dateText, inst) {
-                  $(this).siblings('.pickDate').text(dateText);
-              }*/
-//        });
+
 
         $('body').on('click', '.deadline', function(e){
             e.preventDefault();
@@ -513,6 +505,15 @@ function ucfirst(str) {
           if (!$("div").is("#container_tasks_"+id_project+" .add_task")){
             $.post("/projects/"+id_project, {}, function (data){
                 project_tr.after(data);
+                $('.deadline_input').datepicker({
+                    startDate: '01/01/2000',
+                    firstDay: 1
+                    /*,
+                    onSelect:
+                      function(dateText, inst) {
+                          $(this).siblings('.pickDate').text(dateText);
+                      }*/
+                });
             });
           } else {
             $("#"+container_tasks_id+" .task, #"+container_tasks_id+" .add_task").remove();
@@ -587,13 +588,5 @@ function ucfirst(str) {
         $(this).css('border-color', '#c9b7a2');
     });
 
-        $('.deadline_input').each(function() {
-            $(this).datepicker({
-                changeMonth: true,
-                changeYear: true,
-                dateFormat: 'dd-mm-yy',
-                yearRange: '1920:2020'
-            });
-        });
     
 }); 
