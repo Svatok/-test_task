@@ -18,22 +18,22 @@ body {
 .menu {
     text-align: right;
     position: fixed;
-    z-index: 102;
+    z-index: 101;
     width: 100%;
-    height: 10px;
-    background: #fff;
+    height: 6px;
+    background: #333333;
     padding-right: 30px;
-    box-sizing: border-box;
+/*    box-sizing: border-box;*/
 }
 .head_div {
     /*position: relative;
     left: -50%;*/
     text-align: center;
-    position: fixed;
-    z-index: 101;
+/*    position: fixed;
+    z-index: 101;*/
     width: 100%;
     height: 130px;
-    background: #fff;
+/*    background: #fff;*/
 }
 .main_div{
  float: left;
