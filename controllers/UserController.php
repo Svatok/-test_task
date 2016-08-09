@@ -39,6 +39,7 @@ class UserController{
         if ($userId){
           User::auth($userId, $email);
           $regData['id']="$userId";
+          $regData['name_email']=$email;
         }
       }
 
@@ -84,6 +85,7 @@ class UserController{
       }else{
         User::auth($userId, $email);
         $enterData['id']="$userId";
+        $enterData['name_email']=$email;
        // header("Location: /");
       }
       
