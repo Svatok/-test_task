@@ -1,6 +1,4 @@
-<div class="menu">
-    <?php echo $_SESSION['email']?>, <a href="" id="log_out">Log out</a>
-</div>
+
 <div class="main_div"> 
 <?php  foreach ($projectsList as $projectsItem):?>
 <div id="div_project_<?php echo $projectsItem['id'];?>" class="div_project_border">
