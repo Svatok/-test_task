@@ -72,7 +72,9 @@ body {
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endColorstr=#ff375d9e,GradientType=0);
   border-radius: 3px;
 }
-
+.add_button_project img{
+ vertical-align: middle;
+}
 .head_div {
     /*position: relative;
     left: -50%;*/
