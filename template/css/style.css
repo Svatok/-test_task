@@ -23,7 +23,8 @@ body {
     height: 6px;
     background: #333333;
     padding-right: 30px;
-/*    box-sizing: border-box;*/
+    box-sizing: border-box;
+    padding-top: 6px;
 }
 .head_div {
     /*position: relative;
@@ -33,7 +34,6 @@ body {
     z-index: 101;*/
     width: 100%;
     height: 130px;
-/*    background: #fff;*/
 }
 .main_div{
  float: left;
