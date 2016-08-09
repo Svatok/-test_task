@@ -534,7 +534,6 @@ function ucfirst(str) {
                                             });
                                             if (!result_errors){
                                                 container_deadline.html(dateText);
-                                                alert('changed');
                                             }
                                         }
                                     },
