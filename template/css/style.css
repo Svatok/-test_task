@@ -89,7 +89,15 @@ body {
     position: fixed;
     z-index: 100;
     width: 100%;
-    height: 130px;
+    height: 115px;
+    padding-top: 70px;
+}
+.h1_div{
+    font-weight: bold;
+    font-size: 28px;
+}
+.h2_div{
+  font-size: 18px;
 }
 .main_div{
  float: left;
