@@ -586,6 +586,7 @@ function ucfirst(str) {
                     if (!result_errors){
                         $.post("/projects", {}, function (data){
                             $('.head_div').after(data);
+                            $('.menu').html(result_data['name_email']+', <a href="" id="log_out">Log out</a>');
                             $('.form-container').remove();
                             if (class_button=='reg-button'){
                                 noty({
@@ -612,7 +613,7 @@ function ucfirst(str) {
         e.preventDefault();
         $.post("/user/logout", {}, function (){
             $('.main_div').remove();
-            $('.menu').remove();
+            $('.menu').html('');
             $.post("/views/user/login.php", {}, function (data){
                 $('.head_div').after(data);
             });
