@@ -24,9 +24,9 @@
   </div>
   <div class="div_task_container">
     <?php if ($tasksItem['status']==1): ?>
-      <div class="div_task_text"><?php echo $tasksItem['name'];?></div>
-    <?php else: ?>
       <div class="div_task_text_check"><?php echo $tasksItem['name'];?></div>
+    <?php else: ?>
+      <div class="div_task_text"><?php echo $tasksItem['name'];?></div>
     <?php endif; ?>
   </div>
   <div class="div_edit_buttons">
