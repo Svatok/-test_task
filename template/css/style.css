@@ -3,17 +3,17 @@
 
 html {
  height: 100%;
-}
-body {
- margin: 0;
- padding: 0;
- height: 100%;
  background: url(/template/img/bg.png) no-repeat center center fixed;
  -webkit-background-size: cover;
  -moz-background-size: cover;
  -o-background-size: cover;
  background-size: cover;
  overflow-x: hidden;
+}
+body {
+ margin: 0;
+ padding: 0;
+ height: 100%;
 }
 .menu {
     text-align: right;
@@ -26,12 +26,19 @@ body {
     box-sizing: border-box;
     padding-top: 6px;
 }
+.div_down_band{
+    position: fixed;
+    z-index: 101;
+    width: 100%;
+    height: 6px;
+    background: #333333;
+}
 .head_div {
     /*position: relative;
     left: -50%;*/
     text-align: center;
-/*    position: fixed;
-    z-index: 101;*/
+    position: fixed;
+    z-index: 101;
     width: 100%;
     height: 130px;
 }
