@@ -28,6 +28,7 @@ body {
 }
 .menu a:link {
  text-decoration:none;
+ color: black;
 }
 .menu a:visited {
  text-decoration:none;
