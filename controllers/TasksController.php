@@ -48,8 +48,8 @@ class TasksController{
         $taskDeadline=Tasks::clean($_POST['deadline']);
         $taskDeadline=Tasks::checkDate($taskDeadline);
         if ($taskDeadline){
-          if ($taskData['deadline']!=$taskDeadline){
-            if(Tasks::editTaskData('deadline', $taskDeadline, $params[0])){
+          if ($taskData['deadline_date']!=$taskDeadline){
+            if(Tasks::editTaskData('deadline_date', $taskDeadline, $params[0])){
               $updateData['deadline']='Success:Deadline was changed!';
             }else{
               $updateData['deadline']='Error:Database Error: Deadline is not changed';
