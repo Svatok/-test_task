@@ -131,6 +131,9 @@ class Tasks{
 
   public static function addTaskData($taskText, $projectId){
 
+    $date = new DateTime(date('Y-m-d'));
+    $date->add(new DateInterval('P1D'));
+    
     $db=Db::getConnection();
 
     $priorityData=array();
@@ -138,11 +141,12 @@ class Tasks{
     $priorityData=$result->fetch();
     $taskPriority=$priorityData['max_priority']+1;
     
-    $sql = "INSERT INTO tasks (name, status, priority, project_id) VALUES (:name, 0, :priority, :project_id)";
+    $sql = "INSERT INTO tasks (name, status, priority, project_id, deadline_date) VALUES (:name, 0, :priority, :project_id, :deadline_date)";
     $stmt = $db->prepare($sql);                                  
     $stmt->bindParam(':name',$taskText, PDO::PARAM_STR);       
     $stmt->bindParam(':priority', $taskPriority, PDO::PARAM_INT);   
-    $stmt->bindParam(':project_id', $projectId, PDO::PARAM_INT);   
+    $stmt->bindParam(':project_id', $projectId, PDO::PARAM_INT);
+    $stmt->bindParam(':deadline_date', $date->format('Y-m-d') , PDO::PARAM_STR); 
     if ($stmt->execute()){
       return $db->lastInsertId('tasks_id_seq');
     }else{
