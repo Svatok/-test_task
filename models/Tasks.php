@@ -133,6 +133,7 @@ class Tasks{
 
     $date = new DateTime(date('Y-m-d'));
     $date->add(new DateInterval('P1D'));
+    $curDate=$date->format('Y-m-d');
     
     $db=Db::getConnection();
 
@@ -146,7 +147,7 @@ class Tasks{
     $stmt->bindParam(':name',$taskText, PDO::PARAM_STR);       
     $stmt->bindParam(':priority', $taskPriority, PDO::PARAM_INT);   
     $stmt->bindParam(':project_id', $projectId, PDO::PARAM_INT);
-    $stmt->bindParam(':deadline_date', $date->format('Y-m-d') , PDO::PARAM_STR); 
+    $stmt->bindParam(':deadline_date', $curDate , PDO::PARAM_STR); 
     if ($stmt->execute()){
       return $db->lastInsertId('tasks_id_seq');
     }else{
