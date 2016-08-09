@@ -514,7 +514,7 @@ function ucfirst(str) {
                             var task=$(this).closest('.task');
                             var id_task=task.attr('id').replace(/[^0-9]/gim,'');
                             if (dateText!=container_deadline.html()){
-/*                                $.ajax({
+                                $.ajax({
                                     data: {deadline:dateText},
                                     url: '/task/edit/'+id_task,
                                     method: 'post',
@@ -522,9 +522,9 @@ function ucfirst(str) {
                                         if (data){ 
                                             var result_data = $.parseJSON(data);
                                             var result_errors = false;
-                                            $.each(result_data, function(index, value){         */
-  //                                              if (value.replace(/\:.*/, '')=='Error'){
- /*                                                   result_errors = true;
+                                            $.each(result_data, function(index, value){         
+                                                if (value.replace(/\:.*/, '')=='Error'){
+                                                    result_errors = true;
                                                     noty({
                                                         text: value,
                                                         type: 'error',
@@ -532,10 +532,10 @@ function ucfirst(str) {
                                                     }); 
                                                 }
                                             });
-                                            if (!result_errors){*/
+                                            if (!result_errors){
                                                 container_deadline.html(dateText);
                                                 alert('changed');
-/*                                            }
+                                            }
                                         }
                                     },
                                     error: function(){
@@ -545,7 +545,7 @@ function ucfirst(str) {
                                             timeout: '1000'
                                         });  
                                     }
-                                 }); */
+                                 }); 
                             }
                         }
                 });
