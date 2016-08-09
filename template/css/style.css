@@ -105,6 +105,19 @@ body {
  left: 50%;
  margin-top: 185px;
 }
+.copy_r {
+    text-align: center;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 115px;
+    left: 0; 
+    bottom: 0;
+    padding-bottom:50px;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
 .out_edit{
  display:none;
 }
