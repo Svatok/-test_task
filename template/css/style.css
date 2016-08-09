@@ -26,6 +26,12 @@ body {
     box-sizing: border-box;
     padding-top: 6px;
 }
+.menu a:link {
+ text-decoration:none;
+}
+.menu a:visited {
+ text-decoration:none;
+}
 .div_down_band{
     position: fixed;
     z-index: 101;
