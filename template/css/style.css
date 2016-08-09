@@ -389,27 +389,27 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 .task .edit{
   padding-right: 12px;
   background: url(/template/img/edit_task.fw.png) no-repeat;
-  font-size: 10px;
+  font-size: 11px;
 }
 .task .save{
   padding-right: 12px;
   background: url(/template/img/save.fw.png) no-repeat;
-  font-size: 10px;
+  font-size: 11px;
 }
 .task .deadline{
   padding-right: 12px;
   background: url(/template/img/deadline.fw.png) no-repeat;
-  font-size: 10px;
+  font-size: 11px;
 }
 .task .del{
   padding-right: 12px;
   background: url(/template/img/del_task.fw.png) no-repeat;
-  font-size: 10px;
+  font-size: 11px;
 }
 .task .cancel{
   padding-right: 12px;
   background: url(/template/img/cancel_task.fw.png) no-repeat;
-  font-size: 10px;
+  font-size: 11px;
 }
 .out_edit .border_buttons:first-child{
  margin-left: 2px;
@@ -418,9 +418,9 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 .task .border_buttons{
  height: 12px;
  border-right: 1px solid #CCCCCC;
- margin: 0px 7px;
+ margin: 0px 6px;
  cursor: default;
- font-size: 10px;
+ font-size: 11px;
 }
 .div_check, .div_task_container, .border_div {
     border-right: 1px solid #E7EBEA;
