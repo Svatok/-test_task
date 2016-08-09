@@ -293,7 +293,7 @@ function ucfirst(str) {
          });
     });   
 // text of task or project go in edit mode 
-    $('body').on('click', '.add_button_project button', function(e){
+    $('body').on('click', '.div_add_button_project button', function(e){
         e.preventDefault();
         before_div=$(this).closest('div');
         var insert_project='<div id="div_project_NEW" class="div_project_border">'+   
