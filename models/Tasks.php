@@ -73,7 +73,22 @@ class Tasks{
     }else{
       return true;
     }
-  }    
+  }  
+
+  public static function checkDate($val){
+    $regularka = "/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/";
+   
+    if ( preg_match($regularka, $val, $razdeli) ){
+      /* Формат проверки - YYYY-MM-DD  */
+      if ( checkdate($razdeli[2],$razdeli[3],$razdeli[1]) ){
+        return $razdeli[1].'-'.$razdeli[2].'-'.$razdeli[3];
+      }else{
+        return false;
+      }
+    }else{
+      return false;
+    }
+  }   
   
   public static function checkPriority($val, $id){
       $id=intval($id);
