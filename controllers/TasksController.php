@@ -46,7 +46,8 @@ class TasksController{
 
       if (isset($_POST['deadline'])){
         $taskDeadline=Tasks::clean($_POST['deadline']);
-        if (Tasks::checkDate($taskDeadline)){
+        $taskDeadline=Tasks::checkDate($taskDeadline);
+        if ($taskDeadline){
           if ($taskData['deadline']!=$taskDeadline){
             if(Tasks::editTaskData('deadline', $taskDeadline, $params[0])){
               $updateData['deadline']='Success:Deadline was changed!';
