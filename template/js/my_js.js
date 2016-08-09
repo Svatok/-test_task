@@ -134,6 +134,10 @@ function ucfirst(str) {
       });        
     }); 
 // change status of task
+    $('body').on('click', '.div_task_text_check, .div_task_text', function(){
+        var id_task_attr=$(this).closest('.task').attr('id');
+        $("#"+id_task_attr+" .task_status").trigger('click');
+    });
     $('body').on('click', '.task_status', function(){
       var id_task_attr=$(this).closest('.task').attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
@@ -169,9 +173,9 @@ function ucfirst(str) {
                         checkbox_edit.prop('checked', old_status_bul);
                     }else{
                         if (old_status_bul){
-                            $('#'+id_task_attr+' .div_task_text_check').attr('class', '.div_task_text');
+                            $('#'+id_task_attr+' .div_task_text_check').attr('class', 'div_task_text');
                         }else{
-                            $('#'+id_task_attr+' .div_task_text').attr('class', '.div_task_text_check');
+                            $('#'+id_task_attr+' .div_task_text').attr('class', 'div_task_text_check');
                         }
                     }
                 }
