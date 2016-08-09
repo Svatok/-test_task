@@ -14,7 +14,7 @@
 <div priority="<?php echo $tasksItem['priority'];?>" class="task" id="task_<?php echo $tasksItem['id'];?>">
   <div class="div_check">
       <?php if ($tasksItem['status']==1): ?>
-        <input id="check_<?php echo $tasksItem['id'];?>" type="checkbox" checked class="task_status">
+        <input id="check_<?php echo $tasksItem['id'];?>" type="checkbox" checked class="task_status_check">
       <?php else: ?>
         <input id="check_<?php echo $tasksItem['id'];?>" type="checkbox" class="task_status">
       <?php endif; ?>
