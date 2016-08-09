@@ -14,7 +14,7 @@
 <div priority="<?php echo $tasksItem['priority'];?>" class="task" id="task_<?php echo $tasksItem['id'];?>">
   <div class="div_check">
       <?php if ($tasksItem['status']==1): ?>
-        <input id="check_<?php echo $tasksItem['id'];?>" type="checkbox" checked class="task_status_check">
+        <input id="check_<?php echo $tasksItem['id'];?>" type="checkbox" checked class="task_status">
       <?php else: ?>
         <input id="check_<?php echo $tasksItem['id'];?>" type="checkbox" class="task_status">
       <?php endif; ?>
@@ -23,7 +23,11 @@
   <div class="border_div">
   </div>
   <div class="div_task_container">
-    <div class="div_task_text"><?php echo $tasksItem['name'];?></div>
+    <?php if ($tasksItem['status']==1): ?>
+      <div class="div_task_text"><?php echo $tasksItem['name'];?></div>
+    <?php else: ?>
+      <div class="div_task_text_check"><?php echo $tasksItem['name'];?></div>
+    <?php endif; ?>
   </div>
   <div class="div_edit_buttons">
     <div class="div_deadline"><?php echo $tasksItem['deadline_date'];?></div>
