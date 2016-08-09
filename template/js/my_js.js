@@ -166,7 +166,13 @@ function ucfirst(str) {
                         }
                     });
                     if (result_errors){
-                        checkbox_edit.prop('checked', old_status_bul); 
+                        checkbox_edit.prop('checked', old_status_bul);
+                    }else{
+                        if (old_status_bul){
+                            $('#'+id_task_attr+' .div_task_text_check').attr('class', '.div_task_text');
+                        }else{
+                            $('#'+id_task_attr+' .div_task_text').attr('class', '.div_task_text_check');
+                        }
                     }
                 }
             },
