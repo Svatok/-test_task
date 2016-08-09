@@ -38,16 +38,20 @@ body {
 .div_add_button_project{
     position: relative;
     left: -50%;
-    text-align: center; 
-    clear:both;
+    text-align: center;
+    clear: both;
+    margin-top: 15px;
+    float: left;
+    width: 700px;
 }
 .add_button_project{
-  width: 220px;
-  height: 50px;
-  padding-left: 50px;
-  color: #FFFFFF;
-  font-size: 16px;
-  font-weight: bold;
+    width: 230px;
+    height: 50px;
+    padding-top: 3px;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
   /* Firefox v3.6+ */
   background-image:-moz-linear-gradient(37% 0% -90deg,rgb(81,131,190) 0%,rgb(55,93,158) 99%); 
   /* safari v4.0+ and by Chrome v3.0+ */
@@ -73,7 +77,10 @@ body {
   border-radius: 3px;
 }
 .add_button_project img{
- vertical-align: middle;
+    vertical-align: middle;
+    margin-right: 20px;
+    margin-left: 7px;
+    margin-bottom: 5px;
 }
 .head_div {
     /*position: relative;
@@ -136,7 +143,7 @@ body {
  left: -50%;
  float: left;
  clear:both;
- margin: 10px 0px;
+ margin-bottom: 40px;
  background-color:rgb(255,255,255);
 /* Firefox v3.5+ */
 -moz-box-shadow:0px 1px 2px 0px rgba(0,0,0,0.5);
