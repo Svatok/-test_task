@@ -434,6 +434,12 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
   float: right;
   margin-left: 10px;
 }
+.div_task_text_check{
+  width:523px;
+  float: right;
+  margin-left: 10px;
+  text-decoration: line-through;
+}
  .project .div_project_text, .project .project_icon, .div_task_container{
   cursor: pointer;
  }
