@@ -516,12 +516,11 @@ function ucfirst(str) {
           if (!$("div").is("#container_tasks_"+id_project+" .add_task")){
             $.post("/projects/"+id_project, {}, function (data){
                 project_tr.after(data);
-/*                var content_height=($('.main_div').height()+185);
+                var content_height=($('.main_div').height()+185);
                 var window_height=$("body").height();
                 if (content_height>window_height){
-                    alert('oH:'+$('body').offsetHeight+' cH:'+$('body').clientHeight);
-                }*/
-                $(window).trigger('resize');
+                     $(window).trigger('resize');
+                }
                 $('.deadline_input').datepicker({
                     startDate: '01/01/2000',
                     dateFormat: 'yy-mm-dd',
@@ -569,6 +568,11 @@ function ucfirst(str) {
             });
           } else {
             $("#"+container_tasks_id+" .task, #"+container_tasks_id+" .add_task").remove();
+            var content_height=($('.main_div').height()+185);
+            var window_height=$("body").height();
+            if (content_height<window_height){
+                $(window).trigger('resize');
+            }
           }
     });  
 // log in button
