@@ -517,7 +517,7 @@ function ucfirst(str) {
             $.post("/projects/"+id_project, {}, function (data){
                 project_tr.after(data);
                 if ($('body').offsetHeight>$('body').clientHeight){
-                    alert('oH:'+($('body').offsetHeight+' cH:'+clientHeight);
+                    alert('oH:'+$('body').offsetHeight+' cH:'+$('body').clientHeight);
                 }
 
                 $('.deadline_input').datepicker({
