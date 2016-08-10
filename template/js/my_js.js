@@ -635,5 +635,23 @@ function ucfirst(str) {
         $(this).css('border-color', '#c9b7a2');
     });
 
+    var img = new Image;
+    img.src = "/template/img/bg.png";
+    
+    /* размер оригинальной картинки */
+    var bgImgWidth = img.width;
+    var bgImgHeight = img.height;
+    
+    /* размер блока */
+    var divH = $("html").height();
+    var divW = $("html").width();
+    
+    /* Итого */
+    var finalWidth = divW > divH ? bgImgWidth/bgImgHeight * divH : divW;
+    var finalHeight = divH > divW ? bgImgHeight/bgImgWidth * divW : divH;
+    $(".head_div").css({
+        'background-size'  : finalWidth+'px '+finalHeight+'px'
+    });    
+
     
 }); 
