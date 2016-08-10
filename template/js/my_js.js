@@ -644,11 +644,15 @@ function ucfirst(str) {
     $('body').on('keyup input', '.form-field', function(){
         $(this).css('border-color', '#c9b7a2');
     });
-
+// cut background for header and footer
     var divH = $("html").height();
     var divW = $("html").width();
 
     $(".head_div").css({
+        'background-size'  : divW+'px '+divH+'px',
+        'width' : divW+'px'
+    });
+    $(".copy_r").css({
         'background-size'  : divW+'px '+divH+'px',
         'width' : divW+'px'
     });
@@ -657,16 +661,20 @@ function ucfirst(str) {
     });
     $(window).resize(function(){
     
-    var divH = $("body").height();
-    var divW = $("body").width();
-
-        $(".head_div").css({
-            'background-size'  : divW+'px '+divH+'px',
-            'width' : divW+'px'
-        });
-            $("body").css({
-            'background-size'  : divW+'px '+divH+'px'
-        });
+        var divH = $("body").height();
+        var divW = $("body").width();
+    
+            $(".head_div").css({
+                'background-size'  : divW+'px '+divH+'px',
+                'width' : divW+'px'
+            });
+            $(".copy_r").css({
+                'background-size'  : divW+'px '+divH+'px',
+                'width' : divW+'px'
+            });
+                $("body").css({
+                'background-size'  : divW+'px '+divH+'px'
+            });
     });
     
 }); 
