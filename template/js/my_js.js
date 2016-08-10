@@ -650,8 +650,12 @@ function ucfirst(str) {
     var finalWidth = divW > divH ? bgImgWidth/bgImgHeight * divH : divW;
     var finalHeight = divH > divW ? bgImgHeight/bgImgWidth * divW : divH;
     $(".head_div").css({
-        'background-size'  : finalWidth+'px '+finalHeight+'px'
-    });    
+        'background-size'  : divW+'px '+divH+'px',
+        'width' : divW+'px'
+    });
+        $("body").css({
+        'background-size'  : divW+'px '+divH+'px'
+    });
 
     
 }); 
