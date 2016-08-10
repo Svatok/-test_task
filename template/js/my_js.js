@@ -516,6 +516,10 @@ function ucfirst(str) {
           if (!$("div").is("#container_tasks_"+id_project+" .add_task")){
             $.post("/projects/"+id_project, {}, function (data){
                 project_tr.after(data);
+                if ($('body').offsetHeight>$('body').clientHeight){
+                    alert('oH:'+($('body').offsetHeight+' cH:'+clientHeight)
+                }
+
                 $('.deadline_input').datepicker({
                     startDate: '01/01/2000',
                     dateFormat: 'yy-mm-dd',
