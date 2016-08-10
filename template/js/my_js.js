@@ -107,6 +107,7 @@ function ucfirst(str) {
                                         // remove element
                                         task_box.closest('.div_project_border').remove();   
                                     }
+                                    $(window).trigger('resize');
                                     $noty.close();
                                     noty({
                                         text: ucfirst(class_attr)+' deleted!',
@@ -296,6 +297,7 @@ function ucfirst(str) {
                                 }else{
                                     before_li.before(insert_task);
                                 }
+                                $(window).trigger('resize');
                             }
                         }
                     }
@@ -331,6 +333,7 @@ function ucfirst(str) {
                                 '</div>'+
                             '</div>';
         before_div.before(insert_project);
+        $(window).trigger('resize');
         $("#project_NEW .edit").trigger('click');
     });
 // lost focus after edit task (cancel or save)       
@@ -415,6 +418,7 @@ function ucfirst(str) {
                 $("#"+id_task_attr+" .div_deadline_nondisp").attr('class','div_deadline');
                 if ($("div").is("#div_project_NEW")){
                     $('#div_project_NEW').remove();
+                    $(window).trigger('resize');
                 }
             }
          });
@@ -516,14 +520,7 @@ function ucfirst(str) {
           if (!$("div").is("#container_tasks_"+id_project+" .add_task")){
             $.post("/projects/"+id_project, {}, function (data){
                 project_tr.after(data);
-                var header_height=$('.head_div').height();
-                var footer_height=$('.copy_r').height();
-                var content_height=($('.main_div').height()+header_height+footer_height);                
-                var window_height=$("body").height();
-                if (content_height>window_height){
-                     $(window).trigger('resize');
-                     alert('bigger');
-                }
+                $(window).trigger('resize');
                 $('.deadline_input').datepicker({
                     startDate: '01/01/2000',
                     dateFormat: 'yy-mm-dd',
@@ -571,14 +568,7 @@ function ucfirst(str) {
             });
           } else {
             $("#"+container_tasks_id+" .task, #"+container_tasks_id+" .add_task").remove();
-            var header_height=$('.head_div').height();
-            var footer_height=$('.copy_r').height();
-            var content_height=($('.main_div').height()+header_height+footer_height);
-            var window_height=$("body").height();
-            if (content_height<window_height){
-                $(window).trigger('resize');
-                alert('not bigger');
-            }
+            $(window).trigger('resize');
           }
     });  
 // log in button
@@ -665,6 +655,15 @@ function ucfirst(str) {
         $("body").css({
         'background-size'  : divW+'px '+divH+'px'
     });
+/*    function checkScroll() {
+        var header_height=$('.head_div').height();
+        var footer_height=$('.copy_r').height();
+        var content_height=($('.main_div').height()+header_height+footer_height);                
+        var window_height=$("body").height();
+        if (content_height>window_height){
+            $(window).trigger('resize');
+        }*/
+    
     $(window).resize(function(){
     
         var divH = $("body").height();
