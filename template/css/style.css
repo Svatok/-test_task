@@ -125,6 +125,7 @@ body {
     padding-top: 20px;
     font-size: 14px;
     color: #FFFFFF;
+    background: url(/template/img/bg.png) no-repeat bottom center;
 }
 
 .out_edit{
