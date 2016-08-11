@@ -15,4 +15,5 @@
 </head>
 
 <body>
+<div id="loader"><span class="spinner"></span></div>
 <div class="menu"></div>
