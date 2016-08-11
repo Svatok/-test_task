@@ -496,8 +496,8 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
     position: absolute;
     left: 50%;
     top: 50%;
-    background: url('/template/img/bg.png') no-repeat 50% 50%;
-    margin: -100px 0 0 -110px;
+    background: url('/template/img/ajax-loader.gif') no-repeat 50% 50%;
+    margin: -73px 0 0 -110px;
 }
 /* enter form */
 .form-container {
