@@ -478,6 +478,27 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
     border-style: solid;
     text-shadow:0px 1px 0px rgba(0,0,0,0.75);
 }
+
+#loader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+   /* background: #000;*/
+    z-index: 100500;
+    display:none;
+}
+
+#loader .spinner {
+    width: 220px;
+    height: 19px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: url('/template/img/bg.png') no-repeat 50% 50%;
+    margin: -100px 0 0 -110px;
+}
 /* enter form */
 .form-container {
     position: fixed; /* or absolute */
