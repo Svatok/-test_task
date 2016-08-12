@@ -586,6 +586,7 @@ function ucfirst(str) {
                     });              
                 },
                 complete: function(){
+                    me.data('requestRunning', false);
                     $('#loader').hide();
                 }
             });            
