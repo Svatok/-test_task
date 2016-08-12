@@ -519,7 +519,6 @@ function ucfirst(str) {
         if ( me.data('requestRunning') ) {
             return;
         }
-        me.data('requestRunning', true);
         var container_tasks_id=$(this).closest('.container_tasks').attr('id');
         var project_tr=$(this).closest('.project');
         var id_project=container_tasks_id.replace(/[^0-9]/gim,'');
@@ -528,6 +527,7 @@ function ucfirst(str) {
                 url: "/projects/"+id_project,
                 method: 'post',
                 beforeSend: function () {
+                    me.data('requestRunning', true);
                     $('#loader').show();
                 },
                 success: function (data) {
