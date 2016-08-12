@@ -515,10 +515,81 @@ function ucfirst(str) {
     }); 
 // get tasks of project   
     $('body').on('click', '.project .div_project_text, .project .project_icon', function(e){
-          var container_tasks_id=$(this).closest('.container_tasks').attr('id');
-          var project_tr=$(this).closest('.project');
-          var id_project=container_tasks_id.replace(/[^0-9]/gim,'');
-          if (!$("div").is("#container_tasks_"+id_project+" .add_task")){
+        var me = $(this);
+        if ( me.data('requestRunning') ) {
+            return;
+        }
+        me.data('requestRunning', true);
+        var container_tasks_id=$(this).closest('.container_tasks').attr('id');
+        var project_tr=$(this).closest('.project');
+        var id_project=container_tasks_id.replace(/[^0-9]/gim,'');
+        if (!$("div").is("#container_tasks_"+id_project+" .add_task")){
+            $.ajax({
+                url: "/projects/"+id_project,
+                method: 'post',
+                beforeSend: function () {
+                    $('#loader').show();
+                },
+                success: function (data) {
+                    project_tr.after(data);
+                    $(window).trigger('resize');
+                    $('.deadline_input').datepicker({
+                        startDate: '01/01/2000',
+                        dateFormat: 'yy-mm-dd',
+                        firstDay: 1,
+                        onSelect:
+                            function(dateText, inst) {
+                                var container_deadline=$(this).closest('.div_edit_buttons').children(".div_deadline");
+                                var task=$(this).closest('.task');
+                                var id_task=task.attr('id').replace(/[^0-9]/gim,'');
+                                if (dateText!=container_deadline.html()){
+                                    $.ajax({
+                                        data: {deadline:dateText},
+                                        url: '/task/edit/'+id_task,
+                                        method: 'post',
+                                        success: function (data) {
+                                            if (data){ 
+                                                var result_data = $.parseJSON(data);
+                                                var result_errors = false;
+                                                $.each(result_data, function(index, value){         
+                                                    if (value.replace(/\:.*/, '')=='Error'){
+                                                        result_errors = true;
+                                                        noty({
+                                                            text: value,
+                                                            type: 'error',
+                                                            timeout: '1000'
+                                                        }); 
+                                                    }
+                                                });
+                                                if (!result_errors){
+                                                    container_deadline.html(dateText);
+                                                }
+                                            }
+                                        },
+                                        error: function(){
+                                            noty({
+                                                text: 'Can not change deadline!',
+                                                type: 'error',
+                                                timeout: '1000'
+                                            });  
+                                        }
+                                     }); 
+                                }
+                            }
+                    });
+                },
+                error: function(){
+                    noty({
+                        text: 'Can not download tasks!',
+                        type: 'error',
+                        timeout: '1000'
+                    });              
+                },
+                complete: function(){
+                    $('#loader').hide();
+                }
+            });            
+/*            
             $.post("/projects/"+id_project, {}, function (data){
                 project_tr.after(data);
                 $(window).trigger('resize');
@@ -540,9 +611,9 @@ function ucfirst(str) {
                                         if (data){ 
                                             var result_data = $.parseJSON(data);
                                             var result_errors = false;
-                                            $.each(result_data, function(index, value){         
-                                                if (value.replace(/\:.*/, '')=='Error'){
-                                                    result_errors = true;
+                                            $.each(result_data, function(index, value){      */   
+//                                                if (value.replace(/\:.*/, '')=='Error'){
+/*                                                    result_errors = true;
                                                     noty({
                                                         text: value,
                                                         type: 'error',
@@ -566,11 +637,12 @@ function ucfirst(str) {
                             }
                         }
                 });
-            });
-          } else {
+                $('#loader').hide();
+            });*/
+        } else {
             $("#"+container_tasks_id+" .task, #"+container_tasks_id+" .add_task").remove();
             $(window).trigger('resize');
-          }
+        }
     });  
 // log in button
     $('body').on('click', '.submit-button, .reg-button', function(e){
