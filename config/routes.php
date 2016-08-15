@@ -9,6 +9,7 @@ return array (
   'user/register' => 'user/register',
   'user/login' => 'user/login',
   'user/logout' => 'user/logout',
+  '404' => '404/index',
   '' => 'projects/index', //actionIndex in ProjectsController
 );
 ?>
