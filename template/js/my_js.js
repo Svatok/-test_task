@@ -294,6 +294,7 @@ function ucfirst(str) {
                                 var priority_new=(container_tasks.find($("div.task")).length)+1;
                                 var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
                                 var d = new Date();
+                                d.setDate(d.getDate() + 1);
                                 var insert_task='<div priority="'+priority_new+'" class="task" id="task_'+result_data['taskId']+'">'+   
                                                     '<div class="div_check">'+
                                                         '<input id="check_'+result_data['taskId']+'" type="checkbox" class="task_status">'+
@@ -302,7 +303,7 @@ function ucfirst(str) {
                                                     '<div class="border_div"></div>'+
                                                     '<div class="div_task_container"><div class="div_task_text">'+task_text+'</div></div>'+
                                                     '<div class="div_edit_buttons">'+
-                                                        '<div class="div_deadline">'+d.setDate(d.getDate() + 1)+'</div>'+
+                                                        '<div class="div_deadline">'+d+'</div>'+
                                                         '<div class="out_edit">'+
                                                           '<div class="priority_buttons">'+
                                                               '<div class="up_task"></div> '+
@@ -771,6 +772,7 @@ function ucfirst(str) {
                             $('.head_div').after(data);
                             $('.menu').html(result_data['name_email']+', <a href="" id="log_out">Log out</a>');
                             $('.form-container').remove();
+                            $(window).trigger('resize');
                             if (class_button=='reg-button'){
                                 noty({
                                     text: 'You have successfully registered!',
@@ -815,6 +817,7 @@ function ucfirst(str) {
                 $.post("/views/user/login.php", {}, function (data){
                     $('.head_div').after(data);
                 });
+                $(window).trigger('resize');
             },
             complete: function(){
                 me.data('requestRunning', false);
