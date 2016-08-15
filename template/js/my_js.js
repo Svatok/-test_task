@@ -62,6 +62,10 @@ function ucfirst(str) {
 // delete task
     $('body').on('click', '.del', function(e){
       e.preventDefault();
+      var me = $(this);
+      if ( me.data('requestRunning') ) {
+        return;
+      }
       var id_project_attr=$(this).closest('.container_tasks').attr('id');
       var task_box=$(this).closest('.task, .project');
       var class_attr=task_box.attr('class');
@@ -76,6 +80,10 @@ function ucfirst(str) {
                         data: {status:"2"},
                         url: '/'+class_attr+'/edit/'+id_task,
                         method: 'post',
+                        beforeSend: function () {
+                            me.data('requestRunning', true);
+                            $('#loader').show();
+                        },
                         success: function (data) {
                             if (data){ 
                                 var result_data = $.parseJSON(data);
@@ -123,6 +131,10 @@ function ucfirst(str) {
                                 type: 'error',
                                 timeout: '1000'
                             });     
+                        },
+                        complete: function(){
+                            me.data('requestRunning', false);
+                            $('#loader').hide();
                         }
                     });
     			}
@@ -140,6 +152,10 @@ function ucfirst(str) {
         $("#"+id_task_attr+" .task_status").trigger('click');
     });
     $('body').on('click', '.task_status', function(){
+      var me = $(this);
+      if ( me.data('requestRunning') ) {
+         return;
+      }
       var id_task_attr=$(this).closest('.task').attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       var status = $(this).prop('checked');
@@ -156,6 +172,10 @@ function ucfirst(str) {
             data: {status:new_status},
             url: '/task/edit/'+id_task,
             method: 'post',
+            beforeSend: function () {
+                me.data('requestRunning', true);
+                $('#loader').show();
+            },
             success: function (data) {
                 if (data){ 
                     var result_data = $.parseJSON(data);
@@ -183,6 +203,10 @@ function ucfirst(str) {
             },
             error: function(data){
                 checkbox_edit.prop('checked', old_status_bul); 
+            },
+            complete: function(){
+                me.data('requestRunning', false);
+                $('#loader').hide();
             }
         }); 
       }else{
@@ -234,10 +258,18 @@ function ucfirst(str) {
                var errors = new Array();
                var successes = new Array();
                e.preventDefault();
+               var me = $(this);
+               if ( me.data('requestRunning') ) {
+                    return;
+               }
                $.ajax({
                     data: {name:task_text, project:id_project},
                     url: '/task/add',
                     method: 'post',
+                    beforeSend: function () {
+                        me.data('requestRunning', true);
+                        $('#loader').show();
+                    },
                     success: function (data) {
                         if (data){ 
                             var result_data = $.parseJSON(data);
@@ -300,6 +332,10 @@ function ucfirst(str) {
                                 $(window).trigger('resize');
                             }
                         }
+                    },
+                    complete: function(){
+                        me.data('requestRunning', false);
+                        $('#loader').hide();
                     }
                 });
             }
@@ -345,6 +381,10 @@ function ucfirst(str) {
             var focused_element=$(e.target);
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
+               var me = $(this);
+               if ( me.data('requestRunning') ) {
+                    return;
+               }
                var id_task=id_task_attr.replace(/[^0-9]/gim,'');
                if (id_task_attr=='project_NEW'){
                    url_str='/'+class_attr+'/add';
@@ -357,6 +397,10 @@ function ucfirst(str) {
                           data: {name:textarea_text.val()},
                           url: url_str,
                           method: 'post',
+                          beforeSend: function () {
+                            me.data('requestRunning', true);
+                            $('#loader').show();
+                          },
                           success: function (data) {
                              if (data){ 
                                 var result_data = $.parseJSON(data);
@@ -399,6 +443,10 @@ function ucfirst(str) {
                           },
                           error: function(){
                             editableTextBlurred(textarea_text, false, class_attr);  
+                          },
+                          complete: function(){
+                              me.data('requestRunning', false);
+                              $('#loader').hide();
                           }
                        });
                  }
@@ -427,6 +475,10 @@ function ucfirst(str) {
 // change priority of task to UP
     $('body').on('click', '.up_task', function(e){
       e.preventDefault();
+      var me = $(this);
+      if ( me.data('requestRunning') ) {
+          return;
+      }
       var container_tasks=$(this).closest('.container_tasks');
       var task=$(this).closest('.task');
       var id_task=task.attr('id').replace(/[^0-9]/gim,'');
@@ -438,6 +490,10 @@ function ucfirst(str) {
             data: {priority:priority_new},
             url: '/task/edit/'+id_task,
             method: 'post',
+            beforeSend: function () {
+                me.data('requestRunning', true);
+                $('#loader').show();
+            },
             success: function (data) {
                 if (data){ 
                     var result_data = $.parseJSON(data);
@@ -465,6 +521,10 @@ function ucfirst(str) {
                     type: 'error',
                     timeout: '1000'
                 });  
+            },
+            complete: function(){
+                me.data('requestRunning', false);
+                $('#loader').hide();
             }
          });
       }
@@ -472,6 +532,10 @@ function ucfirst(str) {
 // change priority of task to DOWN    
     $('body').on('click', '.down_task', function(e){
       e.preventDefault();
+      var me = $(this);
+      if ( me.data('requestRunning') ) {
+          return;
+      }
       var container_tasks=$(this).closest('.container_tasks');
       var task=$(this).closest('.task');
       var id_task=task.attr('id').replace(/[^0-9]/gim,'');
@@ -482,6 +546,10 @@ function ucfirst(str) {
             data: {priority:priority_new},
             url: '/task/edit/'+id_task,
             method: 'post',
+            beforeSend: function () {
+                me.data('requestRunning', true);
+                $('#loader').show();
+            },
             success: function (data) {
                 if (data){ 
                     var result_data = $.parseJSON(data);
@@ -509,6 +577,10 @@ function ucfirst(str) {
                     type: 'error',
                     timeout: '1000'
                 });  
+            },
+            complete: function(){
+                me.data('requestRunning', false);
+                $('#loader').hide();
             }
          });
       }
@@ -539,6 +611,10 @@ function ucfirst(str) {
                         firstDay: 1,
                         onSelect:
                             function(dateText, inst) {
+                                var me_date = $(this);
+                                if ( me_date.data('requestRunning') ) {
+                                    return;
+                                }
                                 var container_deadline=$(this).closest('.div_edit_buttons').children(".div_deadline");
                                 var task=$(this).closest('.task');
                                 var id_task=task.attr('id').replace(/[^0-9]/gim,'');
@@ -547,6 +623,10 @@ function ucfirst(str) {
                                         data: {deadline:dateText},
                                         url: '/task/edit/'+id_task,
                                         method: 'post',
+                                        beforeSend: function () {
+                                            me_date.data('requestRunning', true);
+                                            $('#loader').show();
+                                        },
                                         success: function (data) {
                                             if (data){ 
                                                 var result_data = $.parseJSON(data);
@@ -572,6 +652,10 @@ function ucfirst(str) {
                                                 type: 'error',
                                                 timeout: '1000'
                                             });  
+                                        },
+                                        complete: function(){
+                                            me_date.data('requestRunning', false);
+                                            $('#loader').hide();
                                         }
                                      }); 
                                 }
@@ -648,6 +732,10 @@ function ucfirst(str) {
 // log in button
     $('body').on('click', '.submit-button, .reg-button', function(e){
       e.preventDefault();
+      var me = $(this);
+      if ( me.data('requestRunning') ) {
+          return;
+      }
       var enter_form=$(this).closest('form');
       var class_button=$(this).attr('class');
       if (class_button=='reg-button'){
@@ -659,6 +747,10 @@ function ucfirst(str) {
             data: enter_form.serialize(),
             url: text_url,
             method: 'post',
+            beforeSend: function () {
+                me.data('requestRunning', true);
+                $('#loader').show();
+            },
             success: function (data) {
                 if (data){ 
                     var result_data = $.parseJSON(data);
@@ -696,19 +788,47 @@ function ucfirst(str) {
                     type: 'error',
                     timeout: '2000'
                 });  
+            },
+            complete: function(){
+                me.data('requestRunning', false);
+                $('#loader').hide();
             }
          });
     }); 
 // log out
     $('body').on('click', '#log_out', function(e){
         e.preventDefault();
+        var me = $(this);
+        if ( me.data('requestRunning') ) {
+            return;
+        }
+        $.ajax({
+            url: "/user/logout",
+            method: 'post',
+            beforeSend: function () {
+                me.data('requestRunning', true);
+                $('#loader').show();
+            },
+            success: function (data) {
+                $('.main_div').remove();
+                $('.menu').html('');
+                $.post("/views/user/login.php", {}, function (data){
+                    $('.head_div').after(data);
+                });
+            },
+            complete: function(){
+                me.data('requestRunning', false);
+                $('#loader').hide();
+            }
+         });
+/*            
         $.post("/user/logout", {}, function (){
             $('.main_div').remove();
             $('.menu').html('');
             $.post("/views/user/login.php", {}, function (data){
                 $('.head_div').after(data);
             });
-        });
+        });*/
     }); 
 // cancel red border of wrong data input   
     $('body').on('keyup input', '.form-field', function(){
