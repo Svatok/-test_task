@@ -76,9 +76,11 @@ class TasksController{
           $updateData['priority']='Error:Invalid priority of task!';
         }
       }
+      echo json_encode($updateData);
       
+    }else{
+      header("Location: /");
     }
-    echo json_encode($updateData);
     
     return true;
   }
@@ -105,8 +107,10 @@ class TasksController{
           $updateData['name']='Error:Invalid text of task!';
         }
       }
-    }
     echo json_encode($updateData);
+    }else{
+      header("Location: /");
+    }
 
     return true;
   }
