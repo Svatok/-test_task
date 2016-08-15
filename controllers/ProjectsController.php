@@ -4,41 +4,56 @@
 class ProjectsController{
   
   public function actionIndex(){
-    $userId=User::checkLogged();
-    
-    if ($userId){
-      $projectsList=array();
-      $projectsList=Projects::getProjectsList($userId);
-    }
 
-    require_once(ROOT.'/views/projects/index.php');
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $userId=User::checkLogged();
+      
+      if ($userId){
+        $projectsList=array();
+        $projectsList=Projects::getProjectsList($userId);
+      }
+  
+      require_once(ROOT.'/views/projects/index.php');
+    }else{
+      header("Location: /");
+    }
     
     return true;
     
   }
   
   public function actionProjects(){
-    $userId=User::checkLogged();
-    
-    if (!$userId){
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $userId=User::checkLogged();
+      
+      if (!$userId){
+        header("Location: /");
+      }
+      $projectsList=array();
+      $projectsList=Projects::getProjectsList($userId);
+      require_once(ROOT.'/views/projects/projects_list.php');
+    }else{
       header("Location: /");
     }
-    $projectsList=array();
-    $projectsList=Projects::getProjectsList($userId);
-    require_once(ROOT.'/views/projects/projects_list.php');
       
     return true;
     
   }
   
   public function actionTasks($params){
-    $userId=User::checkLogged();
-    
-    if ($userId){
-      $tasksList=array();
-      $tasksList=Projects::getTasksList($params[0]);
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $userId=User::checkLogged();
+      
+      if ($userId){
+        $tasksList=array();
+        $tasksList=Projects::getTasksList($params[0]);
+      }
+      require_once(ROOT.'/views/projects/tasks_list.php');
+    }else{
+      header("Location: /");
     }
-    require_once(ROOT.'/views/projects/tasks_list.php');
     
     return true;
     
@@ -56,7 +71,6 @@ class ProjectsController{
       if (!Projects::projectOwner($userId, $params[0])){
         header("Location: /");
       }
-
       if (isset($_POST['status'])){
         $projectStatus=Projects::clean($_POST['status']);
         if (Projects::checkStatus($projectStatus)){
@@ -86,8 +100,10 @@ class ProjectsController{
           $updateData['name']='Error:Invalid text of project!';
         }
       }
+      echo json_encode($updateData);
+    }else{
+      header("Location: /");
     }
-    echo json_encode($updateData);
     
     return true;
   }
@@ -113,8 +129,10 @@ class ProjectsController{
           $updateData['name']='Error:Invalid text of project!';
         }
       }
+      echo json_encode($updateData);
+    }else{
+      header("Location: /");
     }
-    echo json_encode($updateData);
     
     return true;
   }
