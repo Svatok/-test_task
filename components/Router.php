@@ -55,8 +55,8 @@ class Router {
   }
 
   public static function ErrorPage404(){
-    	header('HTTP/1.1 404 Not Found');
-	header("Status: 404 Not Found");
+    	//header('HTTP/1.1 404 Not Found');
+	//header("Status: 404 Not Found");
 	header('Location: '.ROOT.'/404');
   }
 }
