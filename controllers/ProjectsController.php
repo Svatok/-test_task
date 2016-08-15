@@ -4,19 +4,14 @@
 class ProjectsController{
   
   public function actionIndex(){
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $userId=User::checkLogged();
+    $userId=User::checkLogged();
       
-      if ($userId){
-        $projectsList=array();
-        $projectsList=Projects::getProjectsList($userId);
-      }
-  
-      require_once(ROOT.'/views/projects/index.php');
-    }else{
-      header("Location: /");
+    if ($userId){
+      $projectsList=array();
+      $projectsList=Projects::getProjectsList($userId);
     }
+    
+    require_once(ROOT.'/views/projects/index.php');
     
     return true;
     
