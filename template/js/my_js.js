@@ -303,7 +303,7 @@ function ucfirst(str) {
                                                     '<div class="border_div"></div>'+
                                                     '<div class="div_task_container"><div class="div_task_text">'+task_text+'</div></div>'+
                                                     '<div class="div_edit_buttons">'+
-                                                        '<div class="div_deadline">'+d+'</div>'+
+                                                        '<div class="div_deadline">'+d.toJSON().slice(0,10)+'</div>'+
                                                         '<div class="out_edit">'+
                                                           '<div class="priority_buttons">'+
                                                               '<div class="up_task"></div> '+
