@@ -27,6 +27,6 @@
 </div>
 <?php endforeach;?>
 <div class="div_add_button_project">
-    <button class="add_button_project"><img src="/template/img/a-11.fw.png" alt="">Add TODO List</button>
+    <button class="add_button_project"><img src="/template/img/add_pr.png" alt="">Add TODO List</button>
 </div>
 </div>
