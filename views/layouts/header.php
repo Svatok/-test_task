@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>SIMPLE TODO LISTS</title>
 <link href="template/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="/template/img/favicon.ico" type="image/x-icon">
 <script src="template/js/jquery.js"></script>
 <script src="template/js/my_js.js"></script>
 <script src="template/js/noty-2.3.8/js/noty/packaged/jquery.noty.packaged.min.js"></script>
