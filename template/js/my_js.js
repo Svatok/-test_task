@@ -248,6 +248,7 @@ function ucfirst(str) {
 // lost focus after add task (cancel or save)   
     $('body').on('blur', '.add_task_input input', function(event){
       var container_tasks=$(this).closest('.container_tasks');
+      var project_border_id=$(this).closest('.div_project_border').attr('id');
       var container_task_add=$(this).closest('.add_task');
       var id_project=container_tasks.attr('id').replace(/[^0-9]/gim,'');
       var textarea_text=$(this);
@@ -327,6 +328,9 @@ function ucfirst(str) {
                                                 '</div>';
                                 if ((priority_new-1)==0){
                                     container_task_add.after(insert_task);
+                                    $("#"+project_border_id).css({
+                                        'border-radius' : '0px 0px 0px 0px'
+                                    });
                                 }else{
                                     before_li.before(insert_task);
                                 }
@@ -593,6 +597,7 @@ function ucfirst(str) {
             return;
         }
         var container_tasks_id=$(this).closest('.container_tasks').attr('id');
+        var project_border_id=$(this).closest('.div_project_border').attr('id');
         var project_tr=$(this).closest('.project');
         var id_project=container_tasks_id.replace(/[^0-9]/gim,'');
         if (!$("div").is("#container_tasks_"+id_project+" .add_task")){
@@ -606,6 +611,11 @@ function ucfirst(str) {
                 success: function (data) {
                     project_tr.after(data);
                     $(window).trigger('resize');
+                    if ($("div").is("#"+project_border_id+" .task")){
+                        $("#"+project_border_id).css({
+                            'border-radius' : '0px 0px 15px 15px'
+                        });
+                    }
                     $('.deadline_input').datepicker({
                         startDate: '01/01/2000',
                         dateFormat: 'yy-mm-dd',
@@ -727,6 +737,9 @@ function ucfirst(str) {
             });*/
         } else {
             $("#"+container_tasks_id+" .task, #"+container_tasks_id+" .add_task").remove();
+            $("#"+project_border_id).css({
+                'border-radius' : '0px 0px 0px 0px'
+            });
             $(window).trigger('resize');
         }
     });  
