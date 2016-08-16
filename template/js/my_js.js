@@ -329,7 +329,7 @@ function ucfirst(str) {
                                 if ((priority_new-1)==0){
                                     container_task_add.after(insert_task);
                                     $("#"+project_border_id).css({
-                                        'border-radius' : '0px 0px 0px 0px'
+                                        'border-radius' : '0px 0px 15px 15px'
                                     });
                                 }else{
                                     before_li.before(insert_task);
