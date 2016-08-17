@@ -196,9 +196,17 @@ body {
  margin-top: 168px;
 }
 .block_404{
+ float: left;
+ width: 100%;
  text-align: center;
  margin-top: 168px;
  margin-bottom: 92px;
+}
+.block_404 .h1_div{
+ font-size:40px;
+}
+.block_404 .h2_div{
+ font-size:25px;
 }
 .copy_r {
     font-family:TeXGyreHeros;
