@@ -74,7 +74,7 @@ function ucfirst(str) {
       noty({
     	text: 'Do you want to delete '+class_attr+'?',
     	buttons: [
-    		{addClass: 'add_button_project', 
+    		{addClass: 'dialog_button', 
     		 text: 'Ok', 
     		 onClick: function($noty) {
                     $.ajax({
@@ -140,7 +140,9 @@ function ucfirst(str) {
                     });
     			}
     		},
-    		{text: 'Cancel', onClick: function($noty) {
+    		{addClass: 'dialog_button',
+    		 text: 'Cancel', 
+    		 onClick: function($noty) {
     				$noty.close();
     			}
     		}
