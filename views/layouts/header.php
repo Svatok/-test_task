@@ -24,3 +24,7 @@
        }
     ?>
 </div>
+<div class="head_div">
+    <div class="h1_div">SIMPLE TODO LISTS</div>
+    <div class="h2_div">FROM RUBY GARAGE</div>
+</div>
