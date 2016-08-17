@@ -19,7 +19,7 @@
 <div id="loader"><span class="spinner"></span></div>
 <div class="menu">
     <?php 
-       if (isset($projectsList)){
+       if ((isset($_SESSION['email'])) && ($_SESSION['email']!="")){
           echo $_SESSION['email'].', <a href="" id="log_out">Log out</a>'; 
        }
     ?>
