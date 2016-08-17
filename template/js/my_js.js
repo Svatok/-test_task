@@ -74,8 +74,9 @@ function ucfirst(str) {
       noty({
     	text: 'Do you want to delete '+class_attr+'?',
     	buttons: [
-    	//	addClass: 'btn btn-primary', 
-    		{text: 'Ok', onClick: function($noty) {
+    		{addClass: 'add_button_project', 
+    		 text: 'Ok', 
+    		 onClick: function($noty) {
                     $.ajax({
                         data: {status:"2"},
                         url: '/'+class_attr+'/edit/'+id_task,
