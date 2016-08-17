@@ -623,6 +623,11 @@ function ucfirst(str) {
                         startDate: '01/01/2000',
                         dateFormat: 'yy-mm-dd',
                         firstDay: 1,
+                        beforeShow: function() {
+                            setTimeout(function(){
+                                $('.ui-datepicker').css('z-index', 99999999999999);
+                            }, 0);
+                        },
                         onSelect:
                             function(dateText, inst) {
                                 var me_date = $(this);
