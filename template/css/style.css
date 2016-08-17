@@ -208,6 +208,13 @@ body {
 .block_404 .h2_div{
  font-size:25px;
 }
+.block_404 a:link {
+ text-decoration:none;
+ color:rgb(51,51,51);
+}
+.block_404 a:visited {
+ color:rgb(51,51,51);
+}
 .copy_r {
     font-family:TeXGyreHeros;
     font-size:14px;
