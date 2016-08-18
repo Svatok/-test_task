@@ -853,8 +853,8 @@ function ucfirst(str) {
             $('.menu').html('');
             $.post("/views/user/login.php", {}, function (data){
                 $('.head_div').after(data);
-            });*/
-        });
+            });
+        });*/
     }); 
 // cancel red border of wrong data input   
     $('body').on('keyup input', '.form-field', function(){
