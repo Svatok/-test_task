@@ -821,7 +821,7 @@ function ucfirst(str) {
 // log out
     $('body').on('click', '#log_out', function(e){
         e.preventDefault();
-/*        var me = $(this);
+        var me = $(this);
         if ( me.data('requestRunning') ) {
             return;
         }
@@ -844,15 +844,15 @@ function ucfirst(str) {
                 me.data('requestRunning', false);
                 $('#loader').hide();
             }
-         });*/
+         });
             
-        $.post("/user/logout", {}, function (){
+/*        $.post("/user/logout", {}, function (){
             $('.main_div').remove();
             $('.menu').html('');
             $.post("/views/user/login.php", {}, function (data){
                 $('.head_div').after(data);
             });
-        });
+        });*/
     }); 
 // cancel red border of wrong data input   
     $('body').on('keyup input', '.form-field', function(){
