@@ -821,6 +821,8 @@ function ucfirst(str) {
 // log out
     $('body').on('click', '#log_out', function(e){
         e.preventDefault();
+                    $('.main_div').remove();
+            $('.menu').html('');
 /*        var me = $(this);
         if ( me.data('requestRunning') ) {
             return;
@@ -845,13 +847,13 @@ function ucfirst(str) {
                 $('#loader').hide();
             }
          });
-            */
+            
         $.post("/user/logout", {}, function (){
             $('.main_div').remove();
             $('.menu').html('');
             $.post("/views/user/login.php", {}, function (data){
                 $('.head_div').after(data);
-            });
+            });*/
         });
     }); 
 // cancel red border of wrong data input   
