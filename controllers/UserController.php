@@ -109,6 +109,7 @@ class UserController{
       header("Location: /");
     }
     //header("Location: /user/login");
+    return true;
   }
 }
 ?>
