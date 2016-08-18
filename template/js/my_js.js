@@ -832,12 +832,12 @@ function ucfirst(str) {
                 me.data('requestRunning', true);
                 $('#loader').show();
             },
-            success: function (data) {
+            success: function () {
                 $('.main_div').remove();
                 $('.menu').html('');
-/*                $.post("/views/user/login.php", {}, function (data){
+                $.post("/views/user/login.php", {}, function (data){
                     $('.head_div').after(data);
-                });*/
+                });
                 $(window).trigger('resize');
             },
             complete: function(){
