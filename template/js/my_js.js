@@ -835,9 +835,9 @@ function ucfirst(str) {
             success: function (data) {
                 $('.main_div').remove();
                 $('.menu').html('');
-                $.post("/views/user/login.php", {}, function (data){
+/*                $.post("/views/user/login.php", {}, function (data){
                     $('.head_div').after(data);
-                });
+                });*/
                 $(window).trigger('resize');
             },
             complete: function(){
