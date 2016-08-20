@@ -804,7 +804,7 @@ function ucfirst(str) {
                             if(result_data['name_email']=='test@test.com'){
                                 noty({
                                     text: 'Click on the project title to see the tasks.',
-                                    closeWith: ['backdrop']
+                                    closeWith: ['button']
                                 });
                             }
                         });
