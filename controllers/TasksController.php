@@ -19,13 +19,13 @@ class TasksController{
         if (Tasks::checkStatus($taskStatus)){
           if ($taskData['status']!=$taskStatus){
             if(Tasks::editTaskData('status', $taskStatus, $params[0])){
-              $updateData['status']='Success:Status was changed!';
+              $updateData['status']='Success:Status of the task changed!';
             }else{
-              $updateData['status']='Error:Database Error: Status is not changed';
+              $updateData['status']='Error:Database Error: Status of the task not changed';
             }
           }          
         }else{
-          $updateData['status']='Error:Invalid status of task!';
+          $updateData['status']='Error:Invalid task status!';
         }
       }
       
@@ -34,13 +34,13 @@ class TasksController{
         if (Tasks::checkText($taskText)){
           if ($taskData['name']!=$taskText){
             if(Tasks::editTaskData('name', $taskText, $params[0])){
-              $updateData['name']='Success:Task was changed!';
+              $updateData['name']='Success:The task changed!';
             }else{
-              $updateData['name']='Error:Database Error: Task is not changed';
+              $updateData['name']='Error:Database Error: The task is not changed';
             }
           }          
         }else{
-          $updateData['name']='Error:Invalid text of task!';
+          $updateData['name']='Error:Incorrect text of the task!';
         }
       }
 
@@ -50,13 +50,13 @@ class TasksController{
         if ($taskDeadline){
           if ($taskData['deadline_date']!=$taskDeadline){
             if(Tasks::editTaskData('deadline_date', $taskDeadline, $params[0])){
-              $updateData['deadline']='Success:Deadline was changed!';
+              $updateData['deadline']='Success:The deadline changed!';
             }else{
-              $updateData['deadline']='Error:Database Error: Deadline is not changed';
+              $updateData['deadline']='Error:Database Error: The deadline is not changed!';
             }
           }          
         }else{
-          $updateData['deadline']='Error:Invalid text of deadline!';
+          $updateData['deadline']='Error:Incorrect date of the deadline!';
         }
       }
 
@@ -67,13 +67,13 @@ class TasksController{
           if ($taskData['priority']!=$taskPriority){
             $oldTaskId=Tasks::getOldTaskId($taskPriority, $params[0]);
             if((Tasks::editTaskData('priority', $taskPriority, $params[0])) && (Tasks::editTaskData('priority', $curPriority, $oldTaskId))){
-              $updateData['priority']='Success:Priority was changed!';
+              $updateData['priority']='Success:Priority of the task changed!';
             }else{
-              $updateData['priority']='Error:Database Error: Priority is not changed';
+              $updateData['priority']='Error:Database Error: Priority of the task is not changed!';
             }
           }          
         }else{
-          $updateData['priority']='Error:Invalid priority of task!';
+          $updateData['priority']='Error:Invalid priority of the task!';
         }
       }
       echo json_encode($updateData);
@@ -98,13 +98,13 @@ class TasksController{
         if (Tasks::checkText($taskText)){
             $taskId=Tasks::addTaskData($taskText,$projectId);
             if($taskId){
-              $updateData['name']='Success:Task was added!';
+              $updateData['name']='Success:The task is added!';
               $updateData['taskId']=$taskId;
             }else{
-              $updateData['name']='Error:Database Error: Task is not added';
+              $updateData['name']='Error:Database Error: The task is not added';
             }
         }else{
-          $updateData['name']='Error:Invalid text of task!';
+          $updateData['name']='Error:Incorrect text of the task!';
         }
       }
     echo json_encode($updateData);
