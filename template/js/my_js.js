@@ -525,7 +525,7 @@ function ucfirst(str) {
             },
             error: function(){
                 noty({
-                    text: 'Can not change the priority!',
+                    text: 'Can not change priority of the task!',
                     type: 'error',
                     timeout: '1000'
                 });  
@@ -581,7 +581,7 @@ function ucfirst(str) {
             },
             error: function(){
                 noty({
-                    text: 'Can not change the priority!',
+                    text: 'Can not change priority of the task!',
                     type: 'error',
                     timeout: '1000'
                 });  
