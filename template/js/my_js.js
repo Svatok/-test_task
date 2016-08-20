@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var allowedStatuses=[0,1,2]; // 0 - In work, 1 - Done, 2 - Delete
+    var allowedStatuses=[0,1,2]; // 0 - In work, 1 - Done, 2 - Delete 
     var before_edit;
 
 function ucfirst(str) {
