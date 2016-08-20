@@ -621,7 +621,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
     border-style: solid;
     text-shadow:0px 1px 0px rgba(0,0,0,0.75);
 }
-.save_add: hover{
+.save_add:hover{
    /* Firefox v3.6+ */
   background-image:-moz-linear-gradient(37% 0% -90deg,rgb(81,131,190) 0%,rgb(55,93,158) 99%); 
   /* safari v4.0+ and by Chrome v3.0+ */
