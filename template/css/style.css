@@ -58,6 +58,9 @@ body {
  text-decoration:none;
  color:rgb(51,51,51);
 }
+.menu a:hover {
+ text-decoration:underline;
+}
 .menu a:visited {
  color:rgb(51,51,51);
 }
@@ -118,6 +121,9 @@ body {
   -ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endColorstr=#ff375d9e,GradientType=0)";
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endColorstr=#ff375d9e,GradientType=0);
   border-radius: 3px;
+}
+.add_button_project:hover{
+    background-image: linear-gradient(rgb(150,205,176) 0%,rgb(77,132,100) 97%);
 }
 .dialog_button{
     width: 70px;
@@ -396,10 +402,16 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
   margin-left: 35px;
   background: url(/template/img/edit_pr.png) no-repeat;
 }
+.project .edit:hover{
+  background: url(/template/img/edit_pr_h.png) no-repeat;
+}
 .project .save{
   padding-right: 16px;
   margin-left: 35px;
   background: url(/template/img/save_pr.png) no-repeat;
+}
+.project .save:hover{
+  background: url(/template/img/save_pr_h.png) no-repeat;
 }
 .project .border_buttons{
  height: 16px;
@@ -411,9 +423,15 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
   padding-right: 16px;
   background: url(/template/img/del_pr.png) no-repeat;
 }
+.project .del:hover{
+  background: url(/template/img/del_pr_h.png) no-repeat;
+}
 .project .cancel{
   padding-right: 16px;
   background: url(/template/img/cancel_pr.png) no-repeat;
+}
+.project .cancel:hover{
+  background: url(/template/img/cancel_pr_h.png) no-repeat;
 }
 /* add div*/ 
 .add_icon{
@@ -479,6 +497,9 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
     background: url(/template/img/up.png) no-repeat;
     cursor: pointer;
 }
+.task .up_task:hover{
+    background: url(/template/img/up_h.png) no-repeat;
+}
 .border_proirity{
  height: 1px;
  width: 10px;
@@ -491,30 +512,48 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
     background: url(/template/img/down.png) no-repeat;
     cursor: pointer;
 }
+.task .down_task:hover{
+    background: url(/template/img/down_h.png) no-repeat;
+}
 .task .edit{
   padding-right: 12px;
   background: url(/template/img/edit_task.png) no-repeat;
   font-size: 11px;
+}
+.task .edit:hover{
+  background: url(/template/img/edit_task_h.png) no-repeat;
 }
 .task .save{
   padding-right: 12px;
   background: url(/template/img/save.png) no-repeat;
   font-size: 11px;
 }
+.task .save:hover{
+  background: url(/template/img/save_h.png) no-repeat;
+}
 .task .deadline{
   padding-right: 12px;
   background: url(/template/img/deadline.png) no-repeat;
   font-size: 11px;
+}
+.task .deadline:hover{
+  background: url(/template/img/deadline_h.png) no-repeat;
 }
 .task .del{
   padding-right: 12px;
   background: url(/template/img/del_task.png) no-repeat;
   font-size: 11px;
 }
+.task .del:hover{
+  background: url(/template/img/del_task_h.png) no-repeat;
+}
 .task .cancel{
   padding-right: 12px;
   background: url(/template/img/cancel_task.png) no-repeat;
   font-size: 11px;
+}
+.task .cancel:hover{
+  background: url(/template/img/cancel_task_h.png) no-repeat;
 }
 .out_edit .border_buttons:first-child{
  margin-left: 2px;
@@ -582,7 +621,19 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
     border-style: solid;
     text-shadow:0px 1px 0px rgba(0,0,0,0.75);
 }
-
+.save_add: hover{
+   /* Firefox v3.6+ */
+  background-image:-moz-linear-gradient(37% 0% -90deg,rgb(81,131,190) 0%,rgb(55,93,158) 99%); 
+  /* safari v4.0+ and by Chrome v3.0+ */
+  background-image:-webkit-gradient(linear,37% 0%,37% 100%,color-stop(0, rgb(81,131,190)),color-stop(0.99, rgb(55,93,158)));
+  /* Chrome v10.0+ and by safari nightly build*/
+  background-image:-webkit-linear-gradient(-90deg,rgb(81,131,190) 0%,rgb(55,93,158) 99%);
+  /* Opera v11.10+ */
+  background-image:-o-linear-gradient(-90deg,rgb(81,131,190) 0%,rgb(55,93,158) 99%);
+  /* IE v10+ */
+  background-image:-ms-linear-gradient(-90deg,rgb(81,131,190) 0%,rgb(55,93,158) 99%);
+  /*background-image:linear-gradient(-90deg,rgb(81,131,190) 0%,rgb(55,93,158) 99%);*/
+}
 #loader {
     position: fixed;
     left: 0;
@@ -691,25 +742,27 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 .submit-button:hover, .reg-button:hover {
    border: 1px solid #447314;
    text-shadow: #31540c 0 1px 0;
-   background: #6aa436;
+ /*  background: #6aa436;
    background: -webkit-gradient(linear, left top, left bottom, from(#8dc059), to(#6aa436));
    background: -webkit-linear-gradient(top, #8dc059, #6aa436);
    background: -moz-linear-gradient(top, #8dc059, #6aa436);
    background: -ms-linear-gradient(top, #8dc059, #6aa436);
    background: -o-linear-gradient(top, #8dc059, #6aa436);
-   background-image: -ms-linear-gradient(top, #8dc059 0%, #6aa436 100%);
+   background-image: -ms-linear-gradient(top, #8dc059 0%, #6aa436 100%);*/
+   background-image: linear-gradient(rgb(150,205,176) 0%,rgb(77,132,100) 97%);
    color: #fff;
    }
 .submit-button:active, .reg-button:active {
    text-shadow: #31540c 0 1px 0;
    border: 1px solid #447314;
-   background: #8dc059;
+/*   background: #8dc059;
    background: -webkit-gradient(linear, left top, left bottom, from(#6aa436), to(#6aa436));
    background: -webkit-linear-gradient(top, #6aa436, #8dc059);
    background: -moz-linear-gradient(top, #6aa436, #8dc059);
    background: -ms-linear-gradient(top, #6aa436, #8dc059);
    background: -o-linear-gradient(top, #6aa436, #8dc059);
-   background-image: -ms-linear-gradient(top, #6aa436 0%, #8dc059 100%);
+   background-image: -ms-linear-gradient(top, #6aa436 0%, #8dc059 100%);*/
+   background-image: linear-gradient(rgb(150,205,176) 0%,rgb(77,132,100) 97%);
    color: #fff;
    }
    
