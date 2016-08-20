@@ -72,7 +72,7 @@ function ucfirst(str) {
       var id_task_attr=task_box.attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       noty({
-    	text: 'Do you want to delete '+class_attr+'?',
+    	text: 'Do you want to delete the '+class_attr+'?',
     	buttons: [
     		{addClass: 'dialog_button', 
     		 text: 'Ok', 
@@ -93,7 +93,7 @@ function ucfirst(str) {
                                     if (value.replace(/\:.*/, '')=='Error'){
                                         result_errors = true;
                                         noty({
-                                            text: ucfirst(class_attr)+' not deleted!',
+                                            text: 'The '+class_attr+' is not deleted!',
                                             type: 'error',
                                             timeout: '1000'
                                         }); 
@@ -119,7 +119,7 @@ function ucfirst(str) {
                                     $(window).trigger('resize');
                                     $noty.close();
                                     noty({
-                                        text: ucfirst(class_attr)+' deleted!',
+                                        text: 'The '+class_attr+' is deleted!',
                                         type: 'success',
                                         timeout: '1000'
                                     }); 
@@ -128,7 +128,7 @@ function ucfirst(str) {
                         },
                         error: function(data){
                             noty({
-                                text: ucfirst(class_attr)+' not deleted!',
+                                text: 'The '+class_attr+' is not deleted!',
                                 type: 'error',
                                 timeout: '1000'
                             });     
@@ -214,7 +214,7 @@ function ucfirst(str) {
         }); 
       }else{
         var n = noty({
-            text: 'Invalid status of task!',
+            text: 'Invalid task status!',
             type: 'error',
             timeout: '1000'
         });                    
@@ -460,7 +460,7 @@ function ucfirst(str) {
                  }
                }else{
                     noty({
-                        text: 'Invalid text of '+class_attr+'!',
+                        text: 'Incorrect text of the '+class_attr+'!',
                         type: 'error',
                         timeout: '1000'
                     });                    
@@ -525,7 +525,7 @@ function ucfirst(str) {
             },
             error: function(){
                 noty({
-                    text: 'Can not change priority!',
+                    text: 'Can not change the priority!',
                     type: 'error',
                     timeout: '1000'
                 });  
@@ -581,7 +581,7 @@ function ucfirst(str) {
             },
             error: function(){
                 noty({
-                    text: 'Can not change priority!',
+                    text: 'Can not change the priority!',
                     type: 'error',
                     timeout: '1000'
                 });  
@@ -667,7 +667,7 @@ function ucfirst(str) {
                                         },
                                         error: function(){
                                             noty({
-                                                text: 'Can not change deadline!',
+                                                text: 'Can not change the deadline!',
                                                 type: 'error',
                                                 timeout: '1000'
                                             });  
@@ -683,7 +683,7 @@ function ucfirst(str) {
                 },
                 error: function(){
                     noty({
-                        text: 'Can not download tasks!',
+                        text: 'Can not load tasks!',
                         type: 'error',
                         timeout: '1000'
                     });              
