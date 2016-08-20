@@ -33,7 +33,7 @@ body {
  margin: 0;
  padding: 0;
  height: 100%;
- background: url(/template/img/bg.png) no-repeat center center fixed;
+ background: url(/template/img/bg.jpg) no-repeat center center fixed;
  -webkit-background-size: cover;
  -moz-background-size: cover;
  -o-background-size: cover;
@@ -165,7 +165,7 @@ body {
     width: 100%;
     height: 108px;
     padding-top: 60px;
-    background: url(/template/img/bg.png) no-repeat top center;
+    background: url(/template/img/bg.jpg) no-repeat top center;
 }
 .h1_div{
     font-family: texgyreheros;
@@ -227,7 +227,7 @@ body {
     left: 0;
     bottom: 0;
     padding-top: 39px;
-    background: url(/template/img/bg.png) no-repeat bottom center;
+    background: url(/template/img/bg.jpg) no-repeat bottom center;
 }
 
 .out_edit{
@@ -394,12 +394,12 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 .project .edit{
   padding-right: 16px;
   margin-left: 35px;
-  background: url(/template/img/edit_pr.fw.png) no-repeat;
+  background: url(/template/img/edit_pr.png) no-repeat;
 }
 .project .save{
   padding-right: 16px;
   margin-left: 35px;
-  background: url(/template/img/save_pr.fw.png) no-repeat;
+  background: url(/template/img/save_pr.png) no-repeat;
 }
 .project .border_buttons{
  height: 16px;
@@ -409,11 +409,11 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 }
 .project .del{
   padding-right: 16px;
-  background: url(/template/img/del_pr.fw.png) no-repeat;
+  background: url(/template/img/del_pr.png) no-repeat;
 }
 .project .cancel{
   padding-right: 16px;
-  background: url(/template/img/cancel_pr.fw.png) no-repeat;
+  background: url(/template/img/cancel_pr.png) no-repeat;
 }
 /* add div*/ 
 .add_icon{
@@ -452,11 +452,11 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
     height: 18px;
     width: 16px;
     margin: 0;
-    background-image: url("/template/img/check.fw.png");
+    background-image: url("/template/img/check.png");
     background-repeat: no-repeat;
 }
 .div_check input[type="checkbox"]:checked + label::before {
-    background-image: url("/template/img/check_1.fw.png");
+    background-image: url("/template/img/check_1.png");
     background-repeat: no-repeat;
 }
 .border_div{
@@ -476,7 +476,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 .task .up_task{
     height: 4px;
     margin-left: 1px;
-    background: url(/template/img/up.fw.png) no-repeat;
+    background: url(/template/img/up.png) no-repeat;
     cursor: pointer;
 }
 .border_proirity{
@@ -488,32 +488,32 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5183be,endCol
 .task .down_task{
     height: 4px;
     margin-left: 1px;
-    background: url(/template/img/down.fw.png) no-repeat;
+    background: url(/template/img/down.png) no-repeat;
     cursor: pointer;
 }
 .task .edit{
   padding-right: 12px;
-  background: url(/template/img/edit_task.fw.png) no-repeat;
+  background: url(/template/img/edit_task.png) no-repeat;
   font-size: 11px;
 }
 .task .save{
   padding-right: 12px;
-  background: url(/template/img/save.fw.png) no-repeat;
+  background: url(/template/img/save.png) no-repeat;
   font-size: 11px;
 }
 .task .deadline{
   padding-right: 12px;
-  background: url(/template/img/deadline.fw.png) no-repeat;
+  background: url(/template/img/deadline.png) no-repeat;
   font-size: 11px;
 }
 .task .del{
   padding-right: 12px;
-  background: url(/template/img/del_task.fw.png) no-repeat;
+  background: url(/template/img/del_task.png) no-repeat;
   font-size: 11px;
 }
 .task .cancel{
   padding-right: 12px;
-  background: url(/template/img/cancel_task.fw.png) no-repeat;
+  background: url(/template/img/cancel_task.png) no-repeat;
   font-size: 11px;
 }
 .out_edit .border_buttons:first-child{
