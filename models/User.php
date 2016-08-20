@@ -9,7 +9,11 @@ class User{
     $result=$db->prepare($sql);
     $result->bindParam(':email',$email,PDO::PARAM_STR);
     $result->bindParam(':password',$password,PDO::PARAM_STR);
-    return $result->execute();
+    if ($result->execute()){
+      return $db->lastInsertId('user_table_id_seq');
+    }else{
+      return false;
+    }
   }
   
   public static function checkUserData($email, $password){
@@ -31,15 +35,17 @@ class User{
     
   }
   
-  public static function auth($userId){
+  public static function auth($userId, $email){
     $_SESSION['user']=$userId;
+    $_SESSION['email']=$email;
   }
   
   public static function checkLogged(){
     if (isset($_SESSION['user'])){
       return $_SESSION['user'];
+    }else{
+      return false;
     }
-    header("location: /user/login");
   }
   
   public static function checkEmail($email) {

@@ -1,14 +1,11 @@
-<div>
-    <?php if (isset($errors) && is_array($errors)): ?>
-      <ul>
-        <?php foreach ($errors as $error): ?>
-          <li> - <?php echo $error; ?></li>
-        <?php endforeach; ?>
-      </ul>
-    <?php endif; ?>
-    <form action="#" method="post">
-      <input type="text" name="email" placeholder="E-mail" value="<?php echo $email; ?>"/>
-      <input type="password" name="password" placeholder="Pass" value="<?php echo $password; ?>"/>
-      <input type="submit" name="submit" value="Enter"/>
-    </form>
-  </div>
+<form action="" method="post" class="form-container">
+    <div class="form-title"><h2>Sign In or Sign Up</h2></div>
+    <div class="form-title">Email</div>
+    <input class="form-field" type="text" name="email" id="email" placeholder="E-mail" value="test@test.com" /><br />
+    <div class="form-title">Password</div>
+    <input class="form-field" type="password" name="password" id="password" placeholder="Password" value="test"/><br />
+    <div class="submit-container">
+        <input class="submit-button" type="submit" name="submit" value="Sign In" />
+        <input class="reg-button" type="button" name="submit" value="Sign Up" />
+    </div>
+</form>

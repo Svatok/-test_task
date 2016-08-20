@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var allowedStatuses=[0,1,2]; // 0 - In work, 1 - Done, 2 - Delete
+    var allowedStatuses=[0,1,2]; // 0 - In work, 1 - Done, 2 - Delete 
     var before_edit;
 
 function ucfirst(str) {
@@ -55,27 +55,36 @@ function ucfirst(str) {
       }
     } 
 // resize textbox
-    $('.main_div').on('keyup input', '.input_text', function(){
+    $('body').on('keyup input', '.input_text', function(){
         var offset = this.offsetHeight - this.clientHeight;
         $(this).css('height', 'auto').css('height', this.scrollHeight+offset);
     });
 // delete task
-    $('.main_div').on('click', '.del', function(e){
+    $('body').on('click', '.del', function(e){
       e.preventDefault();
-      var id_project_attr=$(this).closest('table').attr('id');
-      var task_box=$(this).closest('tr');
+      var me = $(this);
+      if ( me.data('requestRunning') ) {
+        return;
+      }
+      var id_project_attr=$(this).closest('.container_tasks').attr('id');
+      var task_box=$(this).closest('.task, .project');
       var class_attr=task_box.attr('class');
       var id_task_attr=task_box.attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       noty({
-    	text: 'Do you want to delete '+class_attr+'?',
+    	text: 'Do you want to delete the '+class_attr+'?',
     	buttons: [
-    	//	addClass: 'btn btn-primary', 
-    		{text: 'Ok', onClick: function($noty) {
+    		{addClass: 'dialog_button', 
+    		 text: 'Ok', 
+    		 onClick: function($noty) {
                     $.ajax({
                         data: {status:"2"},
                         url: '/'+class_attr+'/edit/'+id_task,
                         method: 'post',
+                        beforeSend: function () {
+                            me.data('requestRunning', true);
+                            $('#loader').show();
+                        },
                         success: function (data) {
                             if (data){ 
                                 var result_data = $.parseJSON(data);
@@ -84,7 +93,7 @@ function ucfirst(str) {
                                     if (value.replace(/\:.*/, '')=='Error'){
                                         result_errors = true;
                                         noty({
-                                            text: ucfirst(class_attr)+' not deleted!',
+                                            text: 'The '+class_attr+' is not deleted!',
                                             type: 'error',
                                             timeout: '1000'
                                         }); 
@@ -107,9 +116,10 @@ function ucfirst(str) {
                                         // remove element
                                         task_box.closest('.div_project_border').remove();   
                                     }
+                                    $(window).trigger('resize');
                                     $noty.close();
                                     noty({
-                                        text: ucfirst(class_attr)+' deleted!',
+                                        text: 'The '+class_attr+' is deleted!',
                                         type: 'success',
                                         timeout: '1000'
                                     }); 
@@ -118,15 +128,21 @@ function ucfirst(str) {
                         },
                         error: function(data){
                             noty({
-                                text: ucfirst(class_attr)+' not deleted!',
+                                text: 'The '+class_attr+' is not deleted!',
                                 type: 'error',
                                 timeout: '1000'
                             });     
+                        },
+                        complete: function(){
+                            me.data('requestRunning', false);
+                            $('#loader').hide();
                         }
                     });
     			}
     		},
-    		{text: 'Cancel', onClick: function($noty) {
+    		{addClass: 'dialog_button',
+    		 text: 'Cancel', 
+    		 onClick: function($noty) {
     				$noty.close();
     			}
     		}
@@ -134,8 +150,16 @@ function ucfirst(str) {
       });        
     }); 
 // change status of task
-    $('.main_div').on('click', '.task_status', function(){
-      var id_task_attr=$(this).closest('tr').attr('id');
+    $('body').on('click', '.div_task_text_check, .div_task_text', function(){
+        var id_task_attr=$(this).closest('.task').attr('id');
+        $("#"+id_task_attr+" .task_status").trigger('click');
+    });
+    $('body').on('click', '.task_status', function(){
+      var me = $(this);
+      if ( me.data('requestRunning') ) {
+         return;
+      }
+      var id_task_attr=$(this).closest('.task').attr('id');
       var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       var status = $(this).prop('checked');
       var checkbox_edit=$(this);
@@ -151,6 +175,10 @@ function ucfirst(str) {
             data: {status:new_status},
             url: '/task/edit/'+id_task,
             method: 'post',
+            beforeSend: function () {
+                me.data('requestRunning', true);
+                $('#loader').show();
+            },
             success: function (data) {
                 if (data){ 
                     var result_data = $.parseJSON(data);
@@ -166,17 +194,27 @@ function ucfirst(str) {
                         }
                     });
                     if (result_errors){
-                        checkbox_edit.prop('checked', old_status_bul); 
+                        checkbox_edit.prop('checked', old_status_bul);
+                    }else{
+                        if (old_status_bul){
+                            $('#'+id_task_attr+' .div_task_text_check').attr('class', 'div_task_text');
+                        }else{
+                            $('#'+id_task_attr+' .div_task_text').attr('class', 'div_task_text_check');
+                        }
                     }
                 }
             },
             error: function(data){
                 checkbox_edit.prop('checked', old_status_bul); 
+            },
+            complete: function(){
+                me.data('requestRunning', false);
+                $('#loader').hide();
             }
         }); 
       }else{
         var n = noty({
-            text: 'Invalid status of task!',
+            text: 'Invalid task status!',
             type: 'error',
             timeout: '1000'
         });                    
@@ -184,28 +222,37 @@ function ucfirst(str) {
       }
     }); 
 // text of task or project go in edit mode 
-    $('.main_div').on('click', '.edit', function(e){
+    $('body').on('click', '.edit', function(e){
       e.preventDefault();
-      var id_task_attr=$(this).closest('tr').attr('id');
-      var class_tr_attr=$(this).closest('tr').attr('class');
+      var id_task_attr=$(this).closest('.task, .project').attr('id');
+      var class_tr_attr=$(this).closest('.task, .project').attr('class');
       before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
       var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text");
       divClicked(div_text);
-      $("#"+id_task_attr+" .out_edit").hide();
+     // $("#"+id_task_attr+" .out_edit").css('display','none');
+      //$("."+class_tr_attr+":not(.out_edit):hover").css('display','none');
+      $("#"+id_task_attr+" .out_edit").attr('class','out_edit_nondisp');
+      $("#"+id_task_attr+" .div_deadline").attr('class','div_deadline_nondisp');
       $("#"+id_task_attr+" .in_edit").css('display','inline-block');
     });
+// deadline of task 
+    $('body').on('click', '.deadline', function(e){
+        e.preventDefault();
+        $(this).siblings('.deadline_input').datepicker("show");
+    });
 // cancel edit mode of text of task or project
-    $('.main_div').on('click', '.cancel', function(e){
+    $('body').on('click', '.cancel', function(e){
       e.preventDefault();
     });  
 // cancel action of link
-    $('.main_div').on('click', '.save_add', function(e){
+    $('body').on('click', '.save_add', function(e){
       e.preventDefault();
     });
 // lost focus after add task (cancel or save)   
-    $('.main_div').on('blur', '.add_task_input input', function(event){
-      var container_tasks=$(this).closest('table');
-      var container_task_add=$(this).closest('tr');
+    $('body').on('blur', '.add_task_input input', function(event){
+      var container_tasks=$(this).closest('.container_tasks');
+      var project_border_id=$(this).closest('.div_project_border').attr('id');
+      var container_task_add=$(this).closest('.add_task');
       var id_project=container_tasks.attr('id').replace(/[^0-9]/gim,'');
       var textarea_text=$(this);
       var task_text=textarea_text.val();
@@ -215,10 +262,18 @@ function ucfirst(str) {
                var errors = new Array();
                var successes = new Array();
                e.preventDefault();
+               var me = $(this);
+               if ( me.data('requestRunning') ) {
+                    return;
+               }
                $.ajax({
                     data: {name:task_text, project:id_project},
                     url: '/task/add',
                     method: 'post',
+                    beforeSend: function () {
+                        me.data('requestRunning', true);
+                        $('#loader').show();
+                    },
                     success: function (data) {
                         if (data){ 
                             var result_data = $.parseJSON(data);
@@ -240,31 +295,55 @@ function ucfirst(str) {
                                 }
                             });
                             if (!result_errors){
-                                var priority_new=(container_tasks.find($("tr.task")).length)+1;
+                                var priority_new=(container_tasks.find($("div.task")).length)+1;
                                 var before_li=container_tasks.find($('[priority = '+(priority_new-1)+']'));
-                                var insert_task='<tr priority="'+priority_new+'" class="task" id="task_'+result_data['taskId']+'">'+   
-                                                    '<td class="div_check"><input type="checkbox" class="task_status"></td>'+
-                                                    '<td class="div_task_container"><div class="div_task_text">'+task_text+'</div></td>'+
-                                                    '<td class="div_edit_buttons">'+
+                                var d = new Date();
+                                d.setDate(d.getDate() + 1);
+                                var insert_task='<div priority="'+priority_new+'" class="task" id="task_'+result_data['taskId']+'">'+   
+                                                    '<div class="div_check">'+
+                                                        '<input id="check_'+result_data['taskId']+'" type="checkbox" class="task_status">'+
+                                                        '<label for="check_'+result_data['taskId']+'"></label>'+
+                                                    '</div>'+
+                                                    '<div class="border_div"></div>'+
+                                                    '<div class="div_task_container"><div class="div_task_text">'+task_text+'</div></div>'+
+                                                    '<div class="div_edit_buttons">'+
+                                                        '<div class="div_deadline">'+d.toJSON().slice(0,10)+'</div>'+
                                                         '<div class="out_edit">'+
-                                                          '<a href="" class="up_task">Up</a> '+
-                                                          '<a href="" class="down_task">Down</a> '+
-                                                          '<a href="" class="edit">Edit</a> '+
-                                                          '<a href="" class="del">Del</a> '+
+                                                          '<div class="priority_buttons">'+
+                                                              '<div class="up_task"></div> '+
+                                                              '<div class="border_proirity"></div>'+
+                                                              '<div class="down_task"></div> '+
+                                                          '</div>'+
+                                                          '<a class="border_buttons"></a>'+
+                                                          '<a href="" class="edit"></a> '+
+                                                          '<a class="border_buttons"></a>'+
+                                                          '<input class="deadline_input" type="hidden" />'+
+                                                          '<a href="" class="deadline"></a>'+
+                                                          '<a class="border_buttons"></a>'+
+                                                          '<a href="" class="del"></a> '+
                                                         '</div>'+
                                                         '<div class="in_edit">'+
-                                                          '<a href="" class="save">Save</a> '+
-                                                          '<a href="" class="cancel">Cancel</a> '+
+                                                          '<a href="" class="save"></a> '+
+                                                          '<a class="border_buttons"></a>'+
+                                                          '<a href="" class="cancel"></a> '+
                                                         '</div>'+
-                                                    '</td>'+
-                                                '</tr>';
+                                                    '</div>'+
+                                                '</div>';
                                 if ((priority_new-1)==0){
                                     container_task_add.after(insert_task);
+                                    $("#"+project_border_id).css({
+                                        'border-radius' : '0px 0px 15px 15px'
+                                    });
                                 }else{
                                     before_li.before(insert_task);
                                 }
+                                $(window).trigger('resize');
                             }
                         }
+                    },
+                    complete: function(){
+                        me.data('requestRunning', false);
+                        $('#loader').hide();
                     }
                 });
             }
@@ -272,41 +351,48 @@ function ucfirst(str) {
          });
     });   
 // text of task or project go in edit mode 
-    $('.main_div').on('click', '.add_button_project button', function(e){
+    $('body').on('click', '.div_add_button_project button', function(e){
         e.preventDefault();
         before_div=$(this).closest('div');
         var insert_project='<div id="div_project_NEW" class="div_project_border">'+   
-                                '<table id="container_tasks_NEW" class="container_tasks">'+
-                                    '<tr class="project" id="project_NEW">'+
-                                        '<td class="project_icon">'+
-                                            '!!!'+
-                                        '</td>'+
-                                        '<td class="div_project_container"><div class="div_project_text"></div></td>'+
-                                        '<td class="div_edit_buttons">'+
+                                '<div id="container_tasks_NEW" class="container_tasks">'+
+                                    '<div class="project" id="project_NEW">'+
+                                        '<div class="project_icon">'+
+                                            '<img src="/template/img/logo_p.png">'+
+                                        '</div>'+
+                                        '<div class="div_project_container"><div class="div_project_text"></div></div>'+
+                                        '<div class="div_edit_buttons">'+
                                             '<div class="out_edit">'+
-                                                '<a href="" class="edit">Edit</a>'+
-                                                '<a href="" class="del">Del</a>'+
+                                                '<a href="" class="edit"></a>'+
+                                                '<a class="border_buttons"></a>'+
+                                                '<a href="" class="del"></a>'+
                                             '</div>'+
                                             '<div class="in_edit">'+
-                                                '<a href="" class="save">Save</a>'+
-                                                '<a href="" class="cancel">Cancel</a>'+
+                                                '<a href="" class="save"></a>'+
+                                                '<a class="border_buttons"></a>'+
+                                                '<a href="" class="cancel"></a>'+
                                             '</div>'+
-                                        '</td>'+
-                                    '</tr>'+
-                                '</table>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'+
                             '</div>';
         before_div.before(insert_project);
+        $(window).trigger('resize');
         $("#project_NEW .edit").trigger('click');
     });
 // lost focus after edit task (cancel or save)       
-    $('.main_div').on('blur', '.input_text', function(event){
-      var id_task_attr=$(this).closest('tr').attr('id');
-      var class_attr=$(this).closest('tr').attr('class');
+    $('body').on('blur', '.input_text', function(event){
+      var id_task_attr=$(this).closest('.task, .project').attr('id');
+      var class_attr=$(this).closest('.task, .project').attr('class');
       var textarea_text=$("#"+id_task_attr+" .input_text");
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
             if (focused_element.attr('class')=='save'){
                e.preventDefault();
+               var me = $(this);
+               if ( me.data('requestRunning') ) {
+                    return;
+               }
                var id_task=id_task_attr.replace(/[^0-9]/gim,'');
                if (id_task_attr=='project_NEW'){
                    url_str='/'+class_attr+'/add';
@@ -319,6 +405,10 @@ function ucfirst(str) {
                           data: {name:textarea_text.val()},
                           url: url_str,
                           method: 'post',
+                          beforeSend: function () {
+                            me.data('requestRunning', true);
+                            $('#loader').show();
+                          },
                           success: function (data) {
                              if (data){ 
                                 var result_data = $.parseJSON(data);
@@ -344,25 +434,33 @@ function ucfirst(str) {
                                 }else{
                                     editableTextBlurred(textarea_text, true, class_attr);
                                     $("#"+id_task_attr+" .in_edit").hide();
-                                    $("#"+id_task_attr+" .out_edit").css('display','inline-block');
+                                    //$("#"+id_task_attr+" .out_edit").css('display','inline-block');
+                                    //$("."+class_attr+":hover .out_edit").css('display','inline-block');
+                                    $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
+                                    $("#"+id_task_attr+" .div_deadline_nondisp").attr('class','div_deadline');
                                     //add project
                                     if (typeof result_data['projectId'] !=="undefined"){
                                         $('#div_project_NEW').attr('id', 'div_project_'+result_data['projectId']);
                                         $('#container_tasks_NEW').attr('id', 'container_tasks_'+result_data['projectId']);
                                         $('#project_NEW').attr('id', 'project_'+result_data['projectId']);
-                                        $("#project_"+result_data['projectId']+" .div_project_container").trigger('click');
+                                        $("#project_"+result_data['projectId']+" .div_project_text").trigger('click');
+                                        $(window).trigger('resize');
                                     }
                                 }
                              }
                           },
                           error: function(){
                             editableTextBlurred(textarea_text, false, class_attr);  
+                          },
+                          complete: function(){
+                              me.data('requestRunning', false);
+                              $('#loader').hide();
                           }
                        });
                  }
                }else{
                     noty({
-                        text: 'Invalid text of '+class_attr+'!',
+                        text: 'Incorrect text of the '+class_attr+'!',
                         type: 'error',
                         timeout: '1000'
                     });                    
@@ -371,20 +469,28 @@ function ucfirst(str) {
             }else{
                editableTextBlurred(textarea_text, false, class_attr);
                 $("#"+id_task_attr+" .in_edit").hide();
-                $("#"+id_task_attr+" .out_edit").css('display','inline-block');
+               // $("#"+id_task_attr+" .out_edit").css('display','inline-block');
+                //$("."+class_attr+":hover .out_edit").css('display','inline-block');
+                $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
+                $("#"+id_task_attr+" .div_deadline_nondisp").attr('class','div_deadline');
                 if ($("div").is("#div_project_NEW")){
                     $('#div_project_NEW').remove();
+                    $(window).trigger('resize');
                 }
             }
          });
     });   
 // change priority of task to UP
-    $('.main_div').on('click', '.up_task', function(e){
+    $('body').on('click', '.up_task', function(e){
       e.preventDefault();
-      var container_tasks=$(this).closest('table');
-      var task=$(this).closest('tr');
+      var me = $(this);
+      if ( me.data('requestRunning') ) {
+          return;
+      }
+      var container_tasks=$(this).closest('.container_tasks');
+      var task=$(this).closest('.task');
       var id_task=task.attr('id').replace(/[^0-9]/gim,'');
-      var kol_tasks=container_tasks.find($("tr.task")).length;
+      var kol_tasks=container_tasks.find($("div.task")).length;
       if (parseInt(task.attr('priority'))<kol_tasks){
          var priority_new=parseInt(task.attr('priority'))+1;
          var before_li=container_tasks.find($('[priority = '+priority_new+']'));
@@ -392,6 +498,10 @@ function ucfirst(str) {
             data: {priority:priority_new},
             url: '/task/edit/'+id_task,
             method: 'post',
+            beforeSend: function () {
+                me.data('requestRunning', true);
+                $('#loader').show();
+            },
             success: function (data) {
                 if (data){ 
                     var result_data = $.parseJSON(data);
@@ -415,19 +525,27 @@ function ucfirst(str) {
             },
             error: function(){
                 noty({
-                    text: 'Can not change priority!',
+                    text: 'Can not change priority of the task!',
                     type: 'error',
                     timeout: '1000'
                 });  
+            },
+            complete: function(){
+                me.data('requestRunning', false);
+                $('#loader').hide();
             }
          });
       }
     }); 
 // change priority of task to DOWN    
-    $('.main_div').on('click', '.down_task', function(e){
+    $('body').on('click', '.down_task', function(e){
       e.preventDefault();
-      var container_tasks=$(this).closest('table');
-      var task=$(this).closest('tr');
+      var me = $(this);
+      if ( me.data('requestRunning') ) {
+          return;
+      }
+      var container_tasks=$(this).closest('.container_tasks');
+      var task=$(this).closest('.task');
       var id_task=task.attr('id').replace(/[^0-9]/gim,'');
       if (parseInt(task.attr('priority'))>1){
          var priority_new=parseInt(task.attr('priority'))-1;
@@ -436,6 +554,10 @@ function ucfirst(str) {
             data: {priority:priority_new},
             url: '/task/edit/'+id_task,
             method: 'post',
+            beforeSend: function () {
+                me.data('requestRunning', true);
+                $('#loader').show();
+            },
             success: function (data) {
                 if (data){ 
                     var result_data = $.parseJSON(data);
@@ -459,43 +581,330 @@ function ucfirst(str) {
             },
             error: function(){
                 noty({
-                    text: 'Can not change priority!',
+                    text: 'Can not change priority of the task!',
                     type: 'error',
                     timeout: '1000'
                 });  
+            },
+            complete: function(){
+                me.data('requestRunning', false);
+                $('#loader').hide();
             }
          });
       }
     }); 
 // get tasks of project   
-/*    $(".project").click(function (e){
-          e.preventDefault();
-          var id=$(this).attr("data-id");
-          if ($("#container_tasks_"+id).is(':empty')){
-            $.post("/projects/"+id, {}, function (data){
-                $("#container_tasks_"+id).html(data);
- //               $(".input_text").each(function() {
-  //                 $(this).trigger('keyup');
-//                });
-            });
-          } else {
-            $("#container_tasks_"+id).empty();
-          }
-    });*/
-
-// get tasks of project   
-    $('.main_div').on('click', '.project .div_project_container, .project .project_icon', function(){
-//    $("").click(function (){
-          var container_tasks_id=$(this).closest('table').attr('id');
-          var project_tr=$(this).closest('.project');
-          var id_project=$(this).closest('tr').attr('id').replace(/[^0-9]/gim,'');
-          if (!$("tr").is("#container_tasks_"+id_project+" .add_task")){
+    $('body').on('click', '.project .div_project_text, .project .project_icon', function(e){
+        var me = $(this);
+        if ( me.data('requestRunning') ) {
+            return;
+        }
+        var container_tasks_id=$(this).closest('.container_tasks').attr('id');
+        var project_border_id=$(this).closest('.div_project_border').attr('id');
+        var project_tr=$(this).closest('.project');
+        var id_project=container_tasks_id.replace(/[^0-9]/gim,'');
+        if (!$("div").is("#container_tasks_"+id_project+" .add_task")){
+            $.ajax({
+                url: "/projects/"+id_project,
+                method: 'post',
+                beforeSend: function () {
+                    me.data('requestRunning', true);
+                    $('#loader').show();
+                },
+                success: function (data) {
+                    project_tr.after(data);
+                    $(window).trigger('resize');
+                    if ($("div").is("#"+project_border_id+" .task")){
+                        $("#"+project_border_id).css({
+                            'border-radius' : '0px 0px 15px 15px'
+                        });
+                    }
+                    $('.deadline_input').datepicker({
+                        startDate: '01/01/2000',
+                        dateFormat: 'yy-mm-dd',
+                        firstDay: 1,
+                        beforeShow: function() {
+                            setTimeout(function(){
+                                $('.ui-datepicker').css('z-index', 99999999999999);
+                            }, 0);
+                        },
+                        onSelect:
+                            function(dateText, inst) {
+                                var me_date = $(this);
+                                if ( me_date.data('requestRunning') ) {
+                                    return;
+                                }
+                                var container_deadline=$(this).closest('.div_edit_buttons').children(".div_deadline");
+                                var task=$(this).closest('.task');
+                                var id_task=task.attr('id').replace(/[^0-9]/gim,'');
+                                if (dateText!=container_deadline.html()){
+                                    $.ajax({
+                                        data: {deadline:dateText},
+                                        url: '/task/edit/'+id_task,
+                                        method: 'post',
+                                        beforeSend: function () {
+                                            me_date.data('requestRunning', true);
+                                            $('#loader').show();
+                                        },
+                                        success: function (data) {
+                                            if (data){ 
+                                                var result_data = $.parseJSON(data);
+                                                var result_errors = false;
+                                                $.each(result_data, function(index, value){         
+                                                    if (value.replace(/\:.*/, '')=='Error'){
+                                                        result_errors = true;
+                                                        noty({
+                                                            text: value,
+                                                            type: 'error',
+                                                            timeout: '1000'
+                                                        }); 
+                                                    }
+                                                });
+                                                if (!result_errors){
+                                                    container_deadline.html(dateText);
+                                                }
+                                            }
+                                        },
+                                        error: function(){
+                                            noty({
+                                                text: 'Can not change the deadline!',
+                                                type: 'error',
+                                                timeout: '1000'
+                                            });  
+                                        },
+                                        complete: function(){
+                                            me_date.data('requestRunning', false);
+                                            $('#loader').hide();
+                                        }
+                                     }); 
+                                }
+                            }
+                    });
+                },
+                error: function(){
+                    noty({
+                        text: 'Can not load tasks!',
+                        type: 'error',
+                        timeout: '1000'
+                    });              
+                },
+                complete: function(){
+                    me.data('requestRunning', false);
+                    $('#loader').hide();
+                }
+            });            
+/*            
             $.post("/projects/"+id_project, {}, function (data){
                 project_tr.after(data);
-            });
-          } else {
+                $(window).trigger('resize');
+                $('.deadline_input').datepicker({
+                    startDate: '01/01/2000',
+                    dateFormat: 'yy-mm-dd',
+                    firstDay: 1,
+                    onSelect:
+                        function(dateText, inst) {
+                            var container_deadline=$(this).closest('.div_edit_buttons').children(".div_deadline");
+                            var task=$(this).closest('.task');
+                            var id_task=task.attr('id').replace(/[^0-9]/gim,'');
+                            if (dateText!=container_deadline.html()){
+                                $.ajax({
+                                    data: {deadline:dateText},
+                                    url: '/task/edit/'+id_task,
+                                    method: 'post',
+                                    success: function (data) {
+                                        if (data){ 
+                                            var result_data = $.parseJSON(data);
+                                            var result_errors = false;
+                                            $.each(result_data, function(index, value){      */   
+//                                                if (value.replace(/\:.*/, '')=='Error'){
+/*                                                    result_errors = true;
+                                                    noty({
+                                                        text: value,
+                                                        type: 'error',
+                                                        timeout: '1000'
+                                                    }); 
+                                                }
+                                            });
+                                            if (!result_errors){
+                                                container_deadline.html(dateText);
+                                            }
+                                        }
+                                    },
+                                    error: function(){
+                                        noty({
+                                            text: 'Can not change deadline!',
+                                            type: 'error',
+                                            timeout: '1000'
+                                        });  
+                                    }
+                                 }); 
+                            }
+                        }
+                });
+                $('#loader').hide();
+            });*/
+        } else {
             $("#"+container_tasks_id+" .task, #"+container_tasks_id+" .add_task").remove();
-          }
+            $("#"+project_border_id).css({
+                'border-radius' : '0px 0px 0px 0px'
+            });
+            $(window).trigger('resize');
+        }
     });  
+// log in button
+    $('body').on('click', '.submit-button, .reg-button', function(e){
+      e.preventDefault();
+      var me = $(this);
+      if ( me.data('requestRunning') ) {
+          return;
+      }
+      var enter_form=$(this).closest('form');
+      var class_button=$(this).attr('class');
+      if (class_button=='reg-button'){
+        var text_url='/user/register';   
+      }else{
+        var text_url='/user/login';  
+      }
+         $.ajax({
+            data: enter_form.serialize(),
+            url: text_url,
+            method: 'post',
+            beforeSend: function () {
+                me.data('requestRunning', true);
+                $('#loader').show();
+            },
+            success: function (data) {
+                if (data){ 
+                    var result_data = $.parseJSON(data);
+                    var result_errors = false;
+                    $.each(result_data, function(index, value){
+                        if (value.replace(/\:.*/, '')=='Error'){
+                            result_errors = true;
+                            noty({
+                                text: value,
+                                type: 'error',
+                                timeout: '3000'
+                            });
+                            $('#'+index).css('border-color','red');
+                        }
+                    });
+                    if (!result_errors){
+                        $.post("/projects", {}, function (data){
+                            $('.head_div').after(data);
+                            $('.menu').html(result_data['name_email']+', <a href="" id="log_out">Log out</a>');
+                            $('.form-container').remove();
+                            $(window).trigger('resize');
+                            if (class_button=='reg-button'){
+                                noty({
+                                    text: 'You have successfully registered!',
+                                    type: 'success',
+                                    timeout: '1000'
+                                }); 
+                            }
+                            if(result_data['name_email']=='test@test.com'){
+                                noty({
+                                    text: 'Click on the project title to see the tasks.',
+                                    closeWith: ['button'],
+                                    timeout: '5000'
+                                });
+                            }
+                        });
+                    }
+                }
+            },
+            error: function(){
+                noty({
+                    text: 'Can not enter!',
+                    type: 'error',
+                    timeout: '2000'
+                });  
+            },
+            complete: function(){
+                me.data('requestRunning', false);
+                $('#loader').hide();
+            }
+         });
+    }); 
+// log out
+    $('body').on('click', '#log_out', function(e){
+        e.preventDefault();
+        var me = $(this);
+        if ( me.data('requestRunning') ) {
+            return;
+        }
+        $.ajax({
+            url: "/user/logout",
+            method: 'post',
+            beforeSend: function () {
+                me.data('requestRunning', true);
+                $('#loader').show();
+            },
+            success: function () {
+                $('.main_div').remove();
+                $('.menu').html('');
+                $.post("/views/user/login.php", {}, function (data){
+                    $('.head_div').after(data);
+                });
+                $(window).trigger('resize');
+            },
+            complete: function(){
+                me.data('requestRunning', false);
+                $('#loader').hide();
+            }
+         });
+            
+/*        $.post("/user/logout", {}, function (){
+            $('.main_div').remove();
+            $('.menu').html('');
+            $.post("/views/user/login.php", {}, function (data){
+                $('.head_div').after(data);
+            });
+        });*/
+    }); 
+// cancel red border of wrong data input   
+    $('body').on('keyup input', '.form-field', function(){
+        $(this).css('border-color', '#c9b7a2');
+    });
+// cut background for header and footer
+    var divH = $("html").height();
+    var divW = $("html").width();
+
+    $(".head_div").css({
+        'background-size'  : divW+'px '+divH+'px',
+        'width' : divW+'px'
+    });
+    $(".copy_r").css({
+        'background-size'  : divW+'px '+divH+'px',
+        'width' : divW+'px'
+    });
+        $("body").css({
+        'background-size'  : divW+'px '+divH+'px'
+    });
+/*    function checkScroll() {
+        var header_height=$('.head_div').height();
+        var footer_height=$('.copy_r').height();
+        var content_height=($('.main_div').height()+header_height+footer_height);                
+        var window_height=$("body").height();
+        if (content_height>window_height){
+            $(window).trigger('resize');
+        }*/
+    
+    $(window).resize(function(){
+    
+        var divH = $("body").height();
+        var divW = $("body").width();
+    
+            $(".head_div").css({
+                'background-size'  : divW+'px '+divH+'px',
+                'width' : divW+'px'
+            });
+            $(".copy_r").css({
+                'background-size'  : divW+'px '+divH+'px',
+                'width' : divW+'px'
+            });
+                $("body").css({
+                'background-size'  : divW+'px '+divH+'px'
+            });
+    });
     
 });

@@ -47,6 +47,7 @@ class Projects{
       $tasksList[$i]['name']=$row['name'];
       $tasksList[$i]['status']=$row['status'];
       $tasksList[$i]['priority']=$row['priority'];
+      $tasksList[$i]['deadline_date']=$row['deadline_date'];
       $i++;
     }
   
@@ -107,6 +108,21 @@ class Projects{
     }else{
       return false;
     }
+  }
+  
+  public static function projectOwner($userId, $projectId){
+    $db=Db::getConnection();
+    
+    $sql='SELECT * FROM projects WHERE id=:id AND user_id=:userId';
+    $result=$db->prepare($sql);
+    $result->bindParam(':id',$projectId,PDO::PARAM_INT);
+    $result->bindParam(':userId',$userId,PDO::PARAM_INT);
+    $result->execute();
+
+    if ($result->fetch()){
+      return true;
+    }
+      return false;
   }
   
 }
