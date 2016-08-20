@@ -1,9 +1,5 @@
-<?php include ROOT.'/views/layouts/header.php';?>
-<div class="head_div">
-    <h1>SIMPLE TODO LISTS</h1>
-    <h2>FROM RUBY GARAGE</h2>
-</div>
-<?php 
+<?php include ROOT.'/views/layouts/header.php';
+
    if (isset($projectsList)){
       include ROOT.'/views/projects/projects_list.php'; 
    }else{

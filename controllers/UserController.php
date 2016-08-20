@@ -39,12 +39,14 @@ class UserController{
         if ($userId){
           User::auth($userId, $email);
           $regData['id']="$userId";
+          $regData['name_email']=$email;
         }
       }
-
     
     echo json_encode($regData);  
     
+    }else{
+      header("Location: /");
     }
 
     //require_once(ROOT.'/views/user/register.php');
@@ -84,11 +86,14 @@ class UserController{
       }else{
         User::auth($userId, $email);
         $enterData['id']="$userId";
+        $enterData['name_email']=$email;
        // header("Location: /");
       }
       
       echo json_encode($enterData);
       
+    }else{
+      header("Location: /");
     }
     
     //require_once(ROOT.'/views/user/login.php');
@@ -97,8 +102,14 @@ class UserController{
   }
   
   public function actionLogout(){
-    unset($_SESSION["user"]);
-    header("Location: /user/login");
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+      unset($_SESSION["user"]);
+    }else{
+      unset($_SESSION["user"]);
+      header("Location: /");
+    }
+    //header("Location: /user/login");
+    return true;
   }
 }
 ?>

@@ -73,7 +73,22 @@ class Tasks{
     }else{
       return true;
     }
-  }    
+  }  
+
+  public static function checkDate($val){
+    $regularka = "/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/";
+   
+    if ( preg_match($regularka, $val, $razdeli) ){
+      /* Формат проверки - YYYY-MM-DD  */
+      if ( checkdate($razdeli[2],$razdeli[3],$razdeli[1]) ){
+        return $razdeli[1].'-'.$razdeli[2].'-'.$razdeli[3];
+      }else{
+        return false;
+      }
+    }else{
+      return false;
+    }
+  }   
   
   public static function checkPriority($val, $id){
       $id=intval($id);
@@ -116,6 +131,10 @@ class Tasks{
 
   public static function addTaskData($taskText, $projectId){
 
+    $date = new DateTime(date('Y-m-d'));
+    $date->add(new DateInterval('P1D'));
+    $curDate=$date->format('Y-m-d');
+    
     $db=Db::getConnection();
 
     $priorityData=array();
@@ -123,11 +142,12 @@ class Tasks{
     $priorityData=$result->fetch();
     $taskPriority=$priorityData['max_priority']+1;
     
-    $sql = "INSERT INTO tasks (name, status, priority, project_id) VALUES (:name, 0, :priority, :project_id)";
+    $sql = "INSERT INTO tasks (name, status, priority, project_id, deadline_date) VALUES (:name, 0, :priority, :project_id, :deadline_date)";
     $stmt = $db->prepare($sql);                                  
     $stmt->bindParam(':name',$taskText, PDO::PARAM_STR);       
     $stmt->bindParam(':priority', $taskPriority, PDO::PARAM_INT);   
-    $stmt->bindParam(':project_id', $projectId, PDO::PARAM_INT);   
+    $stmt->bindParam(':project_id', $projectId, PDO::PARAM_INT);
+    $stmt->bindParam(':deadline_date', $curDate , PDO::PARAM_STR); 
     if ($stmt->execute()){
       return $db->lastInsertId('tasks_id_seq');
     }else{

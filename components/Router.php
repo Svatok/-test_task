@@ -35,17 +35,31 @@ class Router {
         $controllerFile=ROOT.'/controllers/'.$controllerName.'.php';
         if (file_exists($controllerFile)){
           include_once($controllerFile);
+        }else{
+          Router::ErrorPage404();
         }
         // Create object and run Action
         $controllerObject=new $controllerName;
         //$result=call_user_func_array(array($controllerObject, $actionName), $parametrs);
-        $result=$controllerObject->$actionName($parametrs);
-        if ($result!=null){
-          break;
+        if(method_exists($controllerObject, $actionName)){
+          $result=$controllerObject->$actionName($parametrs);
+          if ($result!=null){
+            break;
+          }
+        }else{
+          Router::ErrorPage404();
         }
       } 
     }  
         
+  }
+
+  public static function ErrorPage404(){
+    	$host = 'https://'.$_SERVER['HTTP_HOST'].'/';
+   	header('HTTP/1.1 404 Not Found');
+//	header("Status: 404 Not Found");
+	header('Location:'.$host.'page404');
+//	header('Location: '.ROOT.'/page404');
   }
 }
 ?>
