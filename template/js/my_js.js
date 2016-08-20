@@ -801,6 +801,12 @@ function ucfirst(str) {
                                     timeout: '1000'
                                 }); 
                             }
+                            if(result_data['name_email']=='test@test.com'){
+                                noty({
+                                    text: 'Click on the project title to see the tasks.',
+                                    closeWith: ['backdrop']
+                                });
+                            }
                         });
                     }
                 }
