@@ -358,7 +358,7 @@ function ucfirst(str) {
                                 '<div id="container_tasks_NEW" class="container_tasks">'+
                                     '<div class="project" id="project_NEW">'+
                                         '<div class="project_icon">'+
-                                            '<img src="/template/img/logo_p.fw.png">'+
+                                            '<img src="/template/img/logo_p.png">'+
                                         '</div>'+
                                         '<div class="div_project_container"><div class="div_project_text"></div></div>'+
                                         '<div class="div_edit_buttons">'+
