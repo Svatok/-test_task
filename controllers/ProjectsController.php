@@ -71,13 +71,13 @@ class ProjectsController{
         if (Projects::checkStatus($projectStatus)){
           if ($projectData['status']!=$projectStatus){
             if(Projects::editProjectData('status', $projectStatus, $params[0])){
-              $updateData['status']='Success:Status was changed!';
+              $updateData['status']='Success:Status of the project changed!';
             }else{
-              $updateData['status']='Error:Database Error: Status is not changed';
+              $updateData['status']='Error:Database Error: Status of the project is not changed';
             }
           }          
         }else{
-          $updateData['status']='Error:Invalid status of project!';
+          $updateData['status']='Error:Invalid project status!';
         }
       }
       
@@ -86,13 +86,13 @@ class ProjectsController{
         if (Projects::checkText($projectText)){
           if ($projectData['name']!=$projectText){
             if(Projects::editProjectData('name', $projectText, $params[0])){
-              $updateData['name']='Success:Project was changed!';
+              $updateData['name']='Success:The project changed!';
             }else{
-              $updateData['name']='Error:Database Error: Project is not changed';
+              $updateData['name']='Error:Database Error: The project is not changed';
             }
           }          
         }else{
-          $updateData['name']='Error:Invalid text of project!';
+          $updateData['name']='Error:Incorrect text of the project!';
         }
       }
       echo json_encode($updateData);
@@ -115,13 +115,13 @@ class ProjectsController{
         if (Projects::checkText($projectText)){
             $projectId=Projects::addProjectData($projectText, $userId);
             if($projectId){
-              $updateData['name']='Success:Project was added!';
+              $updateData['name']='Success:The project is added!';
               $updateData['projectId']=$projectId;
             }else{
-              $updateData['name']='Error:Database Error: Project is not added';
+              $updateData['name']='Error:Database Error: The project is not added';
             }
         }else{
-          $updateData['name']='Error:Invalid text of project!';
+          $updateData['name']='Error:Incorrect text of the project!';
         }
       }
       echo json_encode($updateData);
