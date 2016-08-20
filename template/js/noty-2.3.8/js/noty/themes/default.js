@@ -54,12 +54,13 @@ $.noty.themes.defaultTheme = {
         });
 
         this.$message.css({
-            fontSize  : '13px',
-            lineHeight: '16px',
-            textAlign : 'center',
-            padding   : '8px 10px 9px',
-            width     : 'auto',
-            position  : 'relative'
+            fontSize    : '16px',
+            font-family : 'TeXGyreHeros',
+            lineHeight  : '16px',
+            textAlign   : 'center',
+            padding     : '8px 10px 9px',
+            width       : 'auto',
+            position    : 'relative'
         });
 
         this.$closeButton.css({
@@ -73,7 +74,7 @@ $.noty.themes.defaultTheme = {
 
         this.$buttons.css({
             padding        : 5,
-            textAlign      : 'right',
+            textAlign      : 'center',
             borderTop      : '1px solid #ccc',
             backgroundColor: '#fff'
         });
@@ -114,7 +115,7 @@ $.noty.themes.defaultTheme = {
                     border      : '1px solid #eee',
                     boxShadow   : "0 2px 4px rgba(0, 0, 0, 0.1)"
                 });
-                this.$message.css({fontSize: '13px', textAlign: 'center'});
+                this.$message.css({fontSize: '16px', font-family : 'TeXGyreHeros', textAlign: 'center'});
                 break;
             case 'topLeft':
             case 'topRight':
@@ -127,7 +128,7 @@ $.noty.themes.defaultTheme = {
                     border      : '1px solid #eee',
                     boxShadow   : "0 2px 4px rgba(0, 0, 0, 0.1)"
                 });
-                this.$message.css({fontSize: '13px', textAlign: 'left'});
+                this.$message.css({fontSize: '16px', font-family : 'TeXGyreHeros', textAlign: 'left'});
                 break;
             case 'bottom':
                 this.$bar.css({

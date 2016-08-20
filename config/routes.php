@@ -5,10 +5,11 @@ return array (
   'task/edit/([0-9]+)' => 'tasks/edit/$1',
   'project/edit/([0-9]+)' => 'projects/edit/$1',
   'projects/([0-9]+)' => 'projects/tasks/$1',
-  'projects' => 'projects/index',
+  'projects' => 'projects/projects',
   'user/register' => 'user/register',
   'user/login' => 'user/login',
   'user/logout' => 'user/logout',
+  'page404' => 'page404/index',
   '' => 'projects/index', //actionIndex in ProjectsController
 );
 ?>
