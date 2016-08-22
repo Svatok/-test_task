@@ -14,15 +14,17 @@
 </head>
 
 <body>
-<div id="loader"><span class="spinner"></span></div>
-<div class="menu">
-    <?php 
-       if ((isset($_SESSION['email'])) && ($_SESSION['email']!="")){
-          echo $_SESSION['email'].', <a href="" id="log_out">Log out</a>'; 
-       }
-    ?>
-</div>
-<div class="head_div">
-    <div class="h1_div">SIMPLE TODO LISTS</div>
-    <div class="h2_div">FROM RUBY GARAGE</div>
-</div>
+    <div id="loader"><span class="spinner"></span></div>
+    
+    <div class="menu">
+        <?php 
+           if ((isset($_SESSION['email'])) && ($_SESSION['email']!="")){
+              echo $_SESSION['email'].', <a href="" id="log_out">Log out</a>'; 
+           }
+        ?>
+    </div>
+    
+    <div class="head_div">
+        <div class="h1_div">SIMPLE TODO LISTS</div>
+        <div class="h2_div">FROM RUBY GARAGE</div>
+    </div>
