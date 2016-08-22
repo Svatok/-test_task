@@ -11,7 +11,7 @@ class ProjectsController{
       $projectsList=Projects::getProjectsList($userId);
     }
     
-    require_once(ROOT.'/views/projects/index.php');
+    require_once(ROOT.'/views/main/index.php');
     
     return true;
     
@@ -27,7 +27,7 @@ class ProjectsController{
       }
       $projectsList=array();
       $projectsList=Projects::getProjectsList($userId);
-      require_once(ROOT.'/views/projects/projects_list.php');
+      require_once(ROOT.'/views/main/projects_list.php');
     }else{
       header("Location: /");
     }
@@ -45,7 +45,7 @@ class ProjectsController{
         $tasksList=array();
         $tasksList=Projects::getTasksList($params[0]);
       }
-      require_once(ROOT.'/views/projects/tasks_list.php');
+      require_once(ROOT.'/views/main/tasks_list.php');
     }else{
       header("Location: /");
     }
