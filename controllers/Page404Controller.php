@@ -7,6 +7,7 @@ class Page404Controller{
     require_once(ROOT.'/views/layouts/page404.php');
     
     return true;
+  
   }
 
 }
