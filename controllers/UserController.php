@@ -2,11 +2,9 @@
 
 class UserController{
 
-
+  // Action for user registration.
   public function actionRegister(){
-  //  $email='';
-  //  $password='';
-    
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
       $email='';
       $password='';
@@ -14,9 +12,11 @@ class UserController{
       if (isset($_POST['email'])){
         $email=$_POST['email'];
       }
+ 
       if (isset($_POST['password'])){
         $password=$_POST['password'];
       }
+ 
       $errors=false;
       $regData=array();      
       
@@ -24,10 +24,12 @@ class UserController{
         $errors[]='Wrong e-mail!';
         $regData['email']='Error:Wrong e-mail!';
       }
+ 
       if (!User::checkPassword($password)){
         $errors[]='Password have to more then 4 symbols!';
         $regData['password']='Error:Password have to more then 4 symbols!';
       }      
+ 
       if (User::checkEmailExists($email)){
         $errors[]='E-mail is used!';
         $regData['email']='Error:E-mail is used!';
@@ -48,16 +50,14 @@ class UserController{
     }else{
       header("Location: /");
     }
-
-    //require_once(ROOT.'/views/user/register.php');
-    
+   
     return true;
+
   }
-  
+
+// Action for user login.  
   public function actionLogin(){
-  //  $email='test@test.com';
-  //  $password='test';
-    
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
       $email='';
       $password='';
@@ -65,9 +65,11 @@ class UserController{
       if (isset($_POST['email'])){
         $email=$_POST['email'];
       }
+
       if (isset($_POST['password'])){
         $password=$_POST['password'];
       }
+
       $errors=false;
       $enterData=array();
       
@@ -75,10 +77,12 @@ class UserController{
         $errors[]='Wrong e-mail!';
         $enterData['email']='Error:Wrong e-mail!';
       }
+
       if (!User::checkPassword($password)){
         $errors[]='Password have to more then 4 symbols!';
         $enterData['password']='Error:Password have to more then 4 symbols!';
       }      
+
       $userId=User::checkUserData($email, $password);
       if ($userId==false){
         $errors[]='Wrong data for enter!';
@@ -87,7 +91,6 @@ class UserController{
         User::auth($userId, $email);
         $enterData['id']="$userId";
         $enterData['name_email']=$email;
-       // header("Location: /");
       }
       
       echo json_encode($enterData);
@@ -95,21 +98,24 @@ class UserController{
     }else{
       header("Location: /");
     }
-    
-    //require_once(ROOT.'/views/user/login.php');
-    
+
     return true;
+
   }
-  
+
+// Action for the user exit.  
   public function actionLogout(){
+    
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
       unset($_SESSION["user"]);
     }else{
       unset($_SESSION["user"]);
       header("Location: /");
     }
-    //header("Location: /user/login");
+
     return true;
+
   }
+
 }
 ?>
