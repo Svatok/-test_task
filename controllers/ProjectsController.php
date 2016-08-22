@@ -36,25 +36,6 @@ class ProjectsController{
     
   }
   
-  //Action for getting tasks.
-  public function actionTasks($params){
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $userId=User::checkLogged();
-      
-      if ($userId){
-        $tasksList=array();
-        $tasksList=Projects::getTasksList($params[0]);
-      }
-      require_once(ROOT.'/views/main/tasks_list.php');
-    }else{
-      header("Location: /");
-    }
-    
-    return true;
-    
-  }
-  
   // Action for edit projects.
   public function actionEdit($params){
     $projectText='';
