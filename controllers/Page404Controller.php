@@ -1,4 +1,5 @@
 <?php
+
 class Page404Controller{
 
 // Controller connection page 404  
@@ -11,4 +12,5 @@ class Page404Controller{
   }
 
 }
+
 ?>
