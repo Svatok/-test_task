@@ -5,8 +5,8 @@
 <title>SIMPLE TODO LISTS</title>
 <link rel="shortcut icon" href="/template/img/favicon.ico" type="image/x-icon">
 <link href="template/css/style.css" rel="stylesheet" type="text/css" />
-<script src="template/js/my_js.js"></script>
 <script src="template/js/jquery.js"></script>
+<script src="template/js/my_js.js"></script>
 <script src="template/js/noty-2.3.8/js/noty/packaged/jquery.noty.packaged.js"></script>
 <link type="text/css"
     href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" />
