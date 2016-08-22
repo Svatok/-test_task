@@ -1,6 +1,8 @@
 <?php
+
 class Db {
 
+// Creating a database connection.
   public static function getConnection(){
     $paramsPath=ROOT.'/config/db_params.php';
     $params=include($paramsPath);
