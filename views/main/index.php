@@ -1,7 +1,7 @@
 <?php include ROOT.'/views/layouts/header.php';
 
    if (isset($projectsList)){
-      include ROOT.'/views/projects/projects_list.php'; 
+      include ROOT.'/views/main/projects_list.php'; 
    }else{
       include ROOT.'/views/user/login.php';       
    }
