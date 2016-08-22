@@ -1,5 +1,6 @@
 <?php
 
+// The parameters for the connection to the base.
 return array(
     'host'=>'ec2-54-228-219-2.eu-west-1.compute.amazonaws.com',
     'dbname'=>'d54a0dd3p463b',
