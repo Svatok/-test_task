@@ -1,9 +1,31 @@
 <?php
 class TasksController{
   
+  //Action for getting tasks.
+  public function actionTasks($params){
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $userId=User::checkLogged();
+      
+      if ($userId){
+        $tasksList=array();
+        $tasksList=Projects::getTasksList($params[0]);
+      }
+      require_once(ROOT.'/views/main/tasks_list.php');
+    }else{
+      header("Location: /");
+    }
+    
+    return true;
+    
+  }
+  
+  // Action for edit tasks.
   public function actionEdit($params){
+    
     $taskStatus='';
     $taskText='';
+    
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $userId=User::checkLogged();
       $taskData=Tasks::getTaskData($params[0]);
@@ -13,7 +35,7 @@ class TasksController{
       if (!Tasks::taskOwner($userId, $params[0])){
         header("Location: /");
       }
-      
+      // edit status of the task (delete task)
       if (isset($_POST['status'])){
         $taskStatus=Tasks::clean($_POST['status']);
         if (Tasks::checkStatus($taskStatus)){
@@ -29,6 +51,7 @@ class TasksController{
         }
       }
       
+      // edit text of the task
       if (isset($_POST['name'])){
         $taskText=Tasks::clean($_POST['name']);
         if (Tasks::checkText($taskText)){
@@ -44,6 +67,7 @@ class TasksController{
         }
       }
 
+      // edit deadline of the task
       if (isset($_POST['deadline'])){
         $taskDeadline=Tasks::clean($_POST['deadline']);
         $taskDeadline=Tasks::checkDate($taskDeadline);
@@ -60,6 +84,7 @@ class TasksController{
         }
       }
 
+      // edit priority of the task
       if (isset($_POST['priority'])){
         $taskPriority=Tasks::clean($_POST['priority']);
         $curPriority=Tasks::checkPriority($taskPriority, $params[0]);
@@ -76,6 +101,7 @@ class TasksController{
           $updateData['priority']='Error:Invalid priority of the task!';
         }
       }
+      
       echo json_encode($updateData);
       
     }else{
@@ -83,8 +109,10 @@ class TasksController{
     }
     
     return true;
+    
   }
 
+  // Action for add tasks.
   public function actionAdd(){
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -107,12 +135,15 @@ class TasksController{
           $updateData['name']='Error:Incorrect text of the task!';
         }
       }
+    
     echo json_encode($updateData);
+    
     }else{
       header("Location: /");
     }
 
     return true;
+  
   }
   
 }
