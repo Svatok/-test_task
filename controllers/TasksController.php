@@ -9,7 +9,7 @@ class TasksController{
       
       if ($userId){
         $tasksList=array();
-        $tasksList=Projects::getTasksList($params[0]);
+        $tasksList=Tasks::getTasksList($params[0]);
       }
       require_once(ROOT.'/views/main/tasks_list.php');
     }else{
