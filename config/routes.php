@@ -1,4 +1,5 @@
 <?php
+
 return array (
   'project/add' => 'projects/add',
   'task/add' => 'tasks/add',
@@ -10,6 +11,7 @@ return array (
   'user/login' => 'user/login',
   'user/logout' => 'user/logout',
   'page404' => 'page404/index',
-  '' => 'projects/index', //actionIndex in ProjectsController
+  '' => 'projects/index',
 );
+
 ?>
