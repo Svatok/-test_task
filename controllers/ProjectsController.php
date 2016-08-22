@@ -4,6 +4,7 @@ class ProjectsController{
 
 // Action for the connection of the main page and getting projects.  
   public function actionIndex(){
+    
     $userId=User::checkLogged();
       
     if ($userId){
@@ -25,9 +26,11 @@ class ProjectsController{
       if (!$userId){
         header("Location: /");
       }
+    
       $projectsList=array();
       $projectsList=Projects::getProjectsList($userId);
       require_once(ROOT.'/views/main/projects_list.php');
+    
     }else{
       header("Location: /");
     }
@@ -38,6 +41,7 @@ class ProjectsController{
   
   // Action for edit projects.
   public function actionEdit($params){
+    
     $projectText='';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -49,6 +53,7 @@ class ProjectsController{
       if (!Projects::projectOwner($userId, $params[0])){
         header("Location: /");
       }
+      
       // edit status of the project (delete project)
       if (isset($_POST['status'])){
         $projectStatus=Projects::clean($_POST['status']);
@@ -80,7 +85,9 @@ class ProjectsController{
           $updateData['name']='Error:Incorrect text of the project!';
         }
       }
+      
       echo json_encode($updateData);
+    
     }else{
       header("Location: /");
     }
@@ -88,6 +95,7 @@ class ProjectsController{
     return true;
     
   }
+  
   // Action for add projects.
   public function actionAdd(){
     
@@ -110,12 +118,15 @@ class ProjectsController{
           $updateData['name']='Error:Incorrect text of the project!';
         }
       }
+      
       echo json_encode($updateData);
+    
     }else{
       header("Location: /");
     }
     
     return true;
+  
   }
   
 }
