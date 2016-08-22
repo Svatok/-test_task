@@ -1,8 +1,8 @@
 <?php
 
-
 class ProjectsController{
-  
+
+// Action for the connection of the main page and getting projects.  
   public function actionIndex(){
     $userId=User::checkLogged();
       
@@ -16,7 +16,7 @@ class ProjectsController{
     return true;
     
   }
-  
+  //Action for getting projects.
   public function actionProjects(){
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -36,6 +36,7 @@ class ProjectsController{
     
   }
   
+  //Action for getting tasks.
   public function actionTasks($params){
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -53,7 +54,8 @@ class ProjectsController{
     return true;
     
   }
-
+  
+  // Action for edit projects.
   public function actionEdit($params){
     $projectText='';
 
@@ -66,6 +68,7 @@ class ProjectsController{
       if (!Projects::projectOwner($userId, $params[0])){
         header("Location: /");
       }
+      // edit status of the project (delete project)
       if (isset($_POST['status'])){
         $projectStatus=Projects::clean($_POST['status']);
         if (Projects::checkStatus($projectStatus)){
@@ -81,6 +84,7 @@ class ProjectsController{
         }
       }
       
+      // edit text of the project
       if (isset($_POST['name'])){
         $projectText=Projects::clean($_POST['name']);
         if (Projects::checkText($projectText)){
@@ -101,8 +105,9 @@ class ProjectsController{
     }
     
     return true;
+    
   }
-  
+  // Action for add projects.
   public function actionAdd(){
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
