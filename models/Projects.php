@@ -1,6 +1,8 @@
 <?php
+
 class Projects{
 
+  // Getting data of the project.
   public static function getProjectData($id){
     
     $id=intval($id);
@@ -12,8 +14,10 @@ class Projects{
     $projectData=$result->fetch();
   
     return $projectData;
+    
   }
   
+  // Getting projects.
   public static function getProjectsList($userId){
     
     $db=Db::getConnection();
@@ -30,30 +34,10 @@ class Projects{
     }
   
     return $projectsList;
+    
   }
   
-  public static function getTasksList($id){
-    
-    $id=intval($id);
-    
-    $db=Db::getConnection();
-    
-    $tasksList=array();
-    $result=$db->query('SELECT * FROM tasks WHERE project_id='.$id.' AND status IN (0, 1)  ORDER BY priority DESC');
-    
-    $i=0;
-    while($row=$result->fetch()){
-      $tasksList[$i]['id']=$row['id'];
-      $tasksList[$i]['name']=$row['name'];
-      $tasksList[$i]['status']=$row['status'];
-      $tasksList[$i]['priority']=$row['priority'];
-      $tasksList[$i]['deadline_date']=$row['deadline_date'];
-      $i++;
-    }
-  
-    return $tasksList;
-  }
-
+  // Editing the project/
   public static function editProjectData($prop, $val, $id){
     
     $id=intval($id);
@@ -63,27 +47,33 @@ class Projects{
     $stmt = $db->prepare($sql);    
     $stmt->bindParam(':val',$val, PDO::PARAM_STR);       
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);   
+    
     if ($stmt->execute()){
       return true;
     }else{
       return false;
     }
-  }
   
+  }
+  // Adding project.
   public static function addProjectData($projectText, $userId){
+    
     $db=Db::getConnection();
     
     $sql = "INSERT INTO projects (name, user_id, status) VALUES (:name, :user_id, 0)";
     $stmt = $db->prepare($sql);                                  
     $stmt->bindParam(':name',$projectText, PDO::PARAM_STR);
     $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    
     if ($stmt->execute()){
       return $db->lastInsertId('projects_id_seq');
     }else{
       return false;
     }
+    
   }
   
+  // Cleaning text of the project.
   public static function clean($value) {
       $value = trim($value);
       $value = stripslashes($value);
@@ -91,26 +81,36 @@ class Projects{
       $value = htmlspecialchars($value);
       
       return $value;
+      
   }
-  
+
+  // Checking text of the project.
   public static function checkText($val){
+    
     if((empty($val)) || (strlen($val) < 5) || (strlen($val) > 250)) {
       return false;
     }else{
       return true;
     }
+    
   }  
 
+  // Checking status of the project.
   public static function checkStatus($val){
+    
     $allowedStatuses = array("0", "1", "2"); // 0 - In work, 1 - Done, 2 - Delete
+    
     if (in_array($val, $allowedStatuses)){
       return true;
     }else{
       return false;
     }
+    
   }
   
+  // Checking user's id of the project.
   public static function projectOwner($userId, $projectId){
+    
     $db=Db::getConnection();
     
     $sql='SELECT * FROM projects WHERE id=:id AND user_id=:userId';
@@ -121,8 +121,10 @@ class Projects{
 
     if ($result->fetch()){
       return true;
-    }
+    }else{
       return false;
+    }
+    
   }
   
 }
