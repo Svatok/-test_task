@@ -3,8 +3,8 @@
 // FRONT CONTROLLER
 
 // 1. General settings
-ini_set('display_errors',1);
-error_reporting(E_ALL);
+ini_set('display_errors','Off');
+error_reporting(E_ERROR);
 
 session_start();
 
