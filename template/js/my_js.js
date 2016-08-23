@@ -457,76 +457,6 @@ $(document).ready(function () {
                                                         '</div>'+
                                                     '</div>'+
                                                 '</div>';
-                                
-                                // descripe datepiker for deadline of task
-                                $('.deadline_input').datepicker({
-                                    startDate: '01/01/2000',
-                                    dateFormat: 'yy-mm-dd',
-                                    firstDay: 1,
-                                    beforeShow: function() {
-                                        setTimeout(function(){
-                                            $('.ui-datepicker').css('z-index', 99999999999999);
-                                        }, 0);
-                                    },
-                                    onSelect:
-                                        function(dateText, inst) {
-            
-                                            var container_deadline=$(this).closest('.div_edit_buttons').children(".div_deadline");
-                                            var task=$(this).closest('.task');
-                                            var id_task=task.attr('id').replace(/[^0-9]/gim,'');
-                                            // Check the double-click
-                                            var me_date = $(this);
-                                            if ( me_date.data('requestRunning') ) {
-                                                return;
-                                            }
-            
-                                            // change date by datepicker
-                                            if (dateText!=container_deadline.html()){
-            
-                                                $.ajax({
-                                                    data: {deadline:dateText},
-                                                    url: '/task/edit/'+id_task,
-                                                    method: 'post',
-                                                    beforeSend: function () {
-                                                        me_date.data('requestRunning', true);
-                                                        $('#loader').show();
-                                                    },
-                                                    success: function (data) {
-                                                        if (data){ 
-                                                            var result_data = $.parseJSON(data);
-                                                            var result_errors = false;
-                                                            $.each(result_data, function(index, value){         
-                                                                if (value.replace(/\:.*/, '')=='Error'){
-                                                                    result_errors = true;
-                                                                    noty({
-                                                                        text: value,
-                                                                        type: 'error',
-                                                                        timeout: '1000'
-                                                                    }); 
-                                                                }
-                                                            });
-                                                            if (!result_errors){
-                                                                container_deadline.html(dateText);
-                                                            }
-                                                        }
-                                                    },
-                                                    error: function(){
-                                                        noty({
-                                                            text: 'Can not change the deadline!',
-                                                            type: 'error',
-                                                            timeout: '1000'
-                                                        });  
-                                                    },
-                                                    complete: function(){
-                                                        me_date.data('requestRunning', false);
-                                                        $('#loader').hide();
-                                                    }
-                                                 }); 
-                                                 
-                                            }
-                                        }
-                                });
-
                                 if ((priority_new-1)==0){
                                     container_task_add.after(insert_task);
                                     $("#"+project_border_id).css({
@@ -536,6 +466,19 @@ $(document).ready(function () {
                                     before_li.before(insert_task);
                                 }
                                 $(window).trigger('resize');
+                                
+                                // descripe datepiker for deadline of task
+                                $('#task_'+result_data['taskId']+' .deadline_input').datepicker({
+                                    startDate: '01/01/2000',
+                                    dateFormat: 'yy-mm-dd',
+                                    firstDay: 1,
+                                    beforeShow: function() {
+                                        setTimeout(function(){
+                                            $('.ui-datepicker').css('z-index', 99999999999999);
+                                        }, 0);
+                                    }
+                                });
+                                
                             }
                         }
                     },
