@@ -16,9 +16,13 @@ function ucfirst(str) {
         editableText.focus();
     }
 // function wich replace textbox on div after edit      
-    function editableTextBlurred(textarea, save, type) {
+    function editableTextBlurred(textarea, save, type, task_status) {
         var html = $(textarea).val();
-        var viewableText = $('<div class="div_'+type+'_text">');
+        if (task_status){
+            var viewableText = $('<div class="div_'+type+'_text_check">');
+        }else{
+            var viewableText = $('<div class="div_'+type+'_text">');
+        }
         if (save){
             viewableText.html(html);
         }else{
@@ -225,9 +229,13 @@ function ucfirst(str) {
     $('body').on('click', '.edit', function(e){
       e.preventDefault();
       var id_task_attr=$(this).closest('.task, .project').attr('id');
-      var class_tr_attr=$(this).closest('.task, .project').attr('class');
+      var class_tr_attr=$(this).closest('.task, .project, .div_task_text_check').attr('class');
       before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
-      var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text");
+      if ($("div").is("#"+id_task_attr+" .div_"+class_tr_attr+"_text")){
+        var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text");
+      }else{
+        var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text_check");
+      }
       divClicked(div_text);
      // $("#"+id_task_attr+" .out_edit").css('display','none');
       //$("."+class_tr_attr+":not(.out_edit):hover").css('display','none');
@@ -384,6 +392,11 @@ function ucfirst(str) {
     $('body').on('blur', '.input_text', function(event){
       var id_task_attr=$(this).closest('.task, .project').attr('id');
       var class_attr=$(this).closest('.task, .project').attr('class');
+      if (class_attr=='task'){
+        var task_status=$('#'+id_task_attr+' .task_status').prop('checked');
+      }else{
+        var task_status=false;  
+      }
       var textarea_text=$("#"+id_task_attr+" .input_text");
          $(document).one('click', function(e) {
             var focused_element=$(e.target);
@@ -430,9 +443,9 @@ function ucfirst(str) {
                                     }
                                 });
                                 if (result_errors){
-                                    editableTextBlurred(textarea_text, false, class_attr);    
+                                    editableTextBlurred(textarea_text, false, class_attr, task_status);    
                                 }else{
-                                    editableTextBlurred(textarea_text, true, class_attr);
+                                    editableTextBlurred(textarea_text, true, class_attr, task_status);
                                     $("#"+id_task_attr+" .in_edit").hide();
                                     //$("#"+id_task_attr+" .out_edit").css('display','inline-block');
                                     //$("."+class_attr+":hover .out_edit").css('display','inline-block');
@@ -450,7 +463,7 @@ function ucfirst(str) {
                              }
                           },
                           error: function(){
-                            editableTextBlurred(textarea_text, false, class_attr);  
+                            editableTextBlurred(textarea_text, false, class_attr, task_status);  
                           },
                           complete: function(){
                               me.data('requestRunning', false);
@@ -464,10 +477,10 @@ function ucfirst(str) {
                         type: 'error',
                         timeout: '1000'
                     });                    
-                    editableTextBlurred(textarea_text, false, class_attr);
+                    editableTextBlurred(textarea_text, false, class_attr, task_status);
                }   
             }else{
-               editableTextBlurred(textarea_text, false, class_attr);
+               editableTextBlurred(textarea_text, false, class_attr, task_status);
                 $("#"+id_task_attr+" .in_edit").hide();
                // $("#"+id_task_attr+" .out_edit").css('display','inline-block');
                 //$("."+class_attr+":hover .out_edit").css('display','inline-block');
