@@ -582,7 +582,7 @@ $(document).ready(function () {
     });
 
 // lost focus after edit task or project (cancel or save)       
-    $('body').on('focusout', '.input_text', function(event){
+    $('body').on('blur', '.input_text', function(event){
       
       var id_task_attr=$(this).closest('.task, .project').attr('id');
       var class_attr=$(this).closest('.task, .project').attr('class');
@@ -604,7 +604,7 @@ $(document).ready(function () {
                if (id_task_attr=='project_NEW'){
                    url_str='/'+class_attr+'/add';
                }else{
-                   url_str='/'+class_attr+'/edit/'+id_task
+                   url_str='/'+class_attr+'/edit/'+id_task;
                }
                 // Check the double-click
                var me = $(this);
@@ -691,6 +691,33 @@ $(document).ready(function () {
                 if ($("div").is("#div_project_NEW")){
                     $('#div_project_NEW').remove();
                     $(window).trigger('resize');
+                }else{
+                    
+                    // Check the double-click
+                    var me = $(this);
+                    if ( me.data('requestRunning') ) {
+                        return;
+                    }
+
+                    $.ajax({
+                        url: '/'+class_attr+'/text/'+id_task;,
+                        method: 'post',
+                        beforeSend: function () {
+                            me.data('requestRunning', true);
+                            $('#loader').show();
+                        },
+                        success: function (data) {
+                            if ($("div").is('#'+id_task_attr+'.div_'+class_attr+'_text_check')){
+                                $('#'+id_task_attr+'.div_'+class_attr+'_text_check').html(data);
+                            }else{
+                                $('#'+id_task_attr+'.div_'+class_attr+'_text').html(data);
+                            }
+                        },
+                        complete: function(){
+                            me.data('requestRunning', false);
+                            $('#loader').hide();
+                        }
+                    });                    
                 }
  
             }
