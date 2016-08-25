@@ -92,7 +92,7 @@ class ProjectsController{
             }
           }          
         }else{
-          $updateData['name']='Error:Incorrect text of the project!';
+          $updateData['name']='Error:Incorrect text of the project! (the title should be more than 5 characters)';
         }
       }
       
