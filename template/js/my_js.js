@@ -682,8 +682,9 @@ $(document).ready(function () {
 
                }   
             }else{
- 
-                editableTextBlurred(textarea_text, false, class_attr, task_status);
+                
+                $(textarea_text).val=before_edit;
+                editableTextBlurred(textarea_text, true, class_attr, task_status);
                 $("#"+id_task_attr+" .in_edit").hide();
                 $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
                 $("#"+id_task_attr+" .div_deadline_nondisp").attr('class','div_deadline');
@@ -693,7 +694,7 @@ $(document).ready(function () {
                     $(window).trigger('resize');
                 }else{
                     
-                    // Check the double-click
+ /*                   // Check the double-click
                     var me = $(this);
                     if ( me.data('requestRunning') ) {
                         return;
@@ -717,7 +718,7 @@ $(document).ready(function () {
                             me.data('requestRunning', false);
                             $('#loader').hide();
                         }
-                    });                    
+                    });   */                 
                 }
  
             }
