@@ -700,7 +700,7 @@ $(document).ready(function () {
                     }
 
                     $.ajax({
-                        url: '/'+class_attr+'/text/'+id_task;,
+                        url: '/'+class_attr+'/text/'+id_task,
                         method: 'post',
                         beforeSend: function () {
                             me.data('requestRunning', true);
