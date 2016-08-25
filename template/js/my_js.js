@@ -582,7 +582,7 @@ $(document).ready(function () {
     });
 
 // lost focus after edit task or project (cancel or save)       
-    $('body').on('blur', '.input_text', function(event){
+    $('body').on('focusout', '.input_text', function(event){
       
       var id_task_attr=$(this).closest('.task, .project').attr('id');
       var class_attr=$(this).closest('.task, .project').attr('class');
