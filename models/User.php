@@ -14,7 +14,7 @@ class User{
     $result->bindParam(':password',$password,PDO::PARAM_STR);
     
     if ($result->execute()){
-      return $db->lastInsertId('user_table_id_seq');
+      return $db->lastInsertId('user_id_seq');
     }else{
       return false;
     }
