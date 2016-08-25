@@ -73,7 +73,7 @@ class TasksController{
             }
           }          
         }else{
-          $updateData['name']='Error:Incorrect text of the task!';
+          $updateData['name']='Error:Incorrect text of the task! (the title should be more than 5 characters)';
         }
       }
 
@@ -142,7 +142,7 @@ class TasksController{
               $updateData['name']='Error:Database Error: The task is not added';
             }
         }else{
-          $updateData['name']='Error:Incorrect text of the task!';
+          $updateData['name']='Error:Incorrect text of the task! (the title should be more than 5 characters)';
         }
       }
     
