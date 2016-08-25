@@ -8,7 +8,6 @@ class Router {
     $this->routes=include($routesPath);
   }
   
-  
   // Returns request string
   private function getURI(){
       if (!empty($_SERVER['REQUEST_URI'])){
@@ -17,6 +16,7 @@ class Router {
   }
   
   public function run(){
+    
     // Take string request
     $uri=$this->getURI();
       
@@ -40,7 +40,6 @@ class Router {
         }
         // Create object and run Action
         $controllerObject=new $controllerName;
-        //$result=call_user_func_array(array($controllerObject, $actionName), $parametrs);
         if(method_exists($controllerObject, $actionName)){
           $result=$controllerObject->$actionName($parametrs);
           if ($result!=null){
@@ -54,12 +53,11 @@ class Router {
         
   }
 
+// Connect page 404
   public static function ErrorPage404(){
     	$host = 'https://'.$_SERVER['HTTP_HOST'].'/';
    	header('HTTP/1.1 404 Not Found');
-//	header("Status: 404 Not Found");
 	header('Location:'.$host.'page404');
-//	header('Location: '.ROOT.'/page404');
   }
 }
 ?>

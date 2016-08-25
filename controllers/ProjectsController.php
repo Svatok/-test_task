@@ -1,9 +1,10 @@
 <?php
 
-
 class ProjectsController{
-  
+
+// Action for the connection of the main page and getting projects.  
   public function actionIndex(){
+    
     $userId=User::checkLogged();
       
     if ($userId){
@@ -11,12 +12,12 @@ class ProjectsController{
       $projectsList=Projects::getProjectsList($userId);
     }
     
-    require_once(ROOT.'/views/projects/index.php');
+    require_once(ROOT.'/views/main/index.php');
     
     return true;
     
   }
-  
+  //Action for getting projects.
   public function actionProjects(){
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -25,9 +26,11 @@ class ProjectsController{
       if (!$userId){
         header("Location: /");
       }
+    
       $projectsList=array();
       $projectsList=Projects::getProjectsList($userId);
-      require_once(ROOT.'/views/projects/projects_list.php');
+      require_once(ROOT.'/views/main/projects_list.php');
+    
     }else{
       header("Location: /");
     }
@@ -36,25 +39,19 @@ class ProjectsController{
     
   }
   
-  public function actionTasks($params){
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $userId=User::checkLogged();
-      
-      if ($userId){
-        $tasksList=array();
-        $tasksList=Projects::getTasksList($params[0]);
-      }
-      require_once(ROOT.'/views/projects/tasks_list.php');
-    }else{
-      header("Location: /");
-    }
+    // Action for get text of project
+  public function actionText($params){
+    
+    $projectData=Projects::getProjectData($params[0]);
+    echo $projectData['name'];
     
     return true;
     
   }
-
+  
+  // Action for edit projects.
   public function actionEdit($params){
+    
     $projectText='';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -66,6 +63,8 @@ class ProjectsController{
       if (!Projects::projectOwner($userId, $params[0])){
         header("Location: /");
       }
+      
+      // edit status of the project (delete project)
       if (isset($_POST['status'])){
         $projectStatus=Projects::clean($_POST['status']);
         if (Projects::checkStatus($projectStatus)){
@@ -81,6 +80,7 @@ class ProjectsController{
         }
       }
       
+      // edit text of the project
       if (isset($_POST['name'])){
         $projectText=Projects::clean($_POST['name']);
         if (Projects::checkText($projectText)){
@@ -92,17 +92,21 @@ class ProjectsController{
             }
           }          
         }else{
-          $updateData['name']='Error:Incorrect text of the project!';
+          $updateData['name']='Error:Incorrect text of the project! (the title should be more than 5 characters)';
         }
       }
+      
       echo json_encode($updateData);
+    
     }else{
       header("Location: /");
     }
     
     return true;
+    
   }
   
+  // Action for add projects.
   public function actionAdd(){
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -121,15 +125,18 @@ class ProjectsController{
               $updateData['name']='Error:Database Error: The project is not added';
             }
         }else{
-          $updateData['name']='Error:Incorrect text of the project!';
+          $updateData['name']='Error:Incorrect text of the project! (the title should be more than 5 characters)';
         }
       }
+      
       echo json_encode($updateData);
+    
     }else{
       header("Location: /");
     }
     
     return true;
+  
   }
   
 }
