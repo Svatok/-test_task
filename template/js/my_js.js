@@ -691,7 +691,7 @@ $(document).ready(function () {
                }else{
 
                     noty({
-                        text: 'Incorrect text of the '+class_attr+'!',
+                        text: 'Incorrect text of the '+class_attr+'! (the title should be more than 5 characters)',
                         type: 'error',
                         timeout: '1000'
                     });                    
