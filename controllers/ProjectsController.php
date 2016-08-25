@@ -125,7 +125,7 @@ class ProjectsController{
               $updateData['name']='Error:Database Error: The project is not added';
             }
         }else{
-          $updateData['name']='Error:Incorrect text of the project!';
+          $updateData['name']='Error:Incorrect text of the project! (the title should be more than 5 characters)';
         }
       }
       
