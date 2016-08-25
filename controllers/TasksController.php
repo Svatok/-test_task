@@ -20,6 +20,16 @@ class TasksController{
     
   }
   
+  // Action for get text of task
+  public function actionText($params){
+    
+    $taskData=Tasks::getTaskData($params[0]);
+    echo $taskData['name'];
+    
+    return true;
+    
+  }
+  
   // Action for edit tasks.
   public function actionEdit($params){
     
