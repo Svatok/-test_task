@@ -644,8 +644,7 @@ $(document).ready(function () {
                                     }
                                 });
                                 if (result_errors){
-                                    $(textarea_text).val=before_edit;
-                                    editableTextBlurred(textarea_text, true, class_attr, task_status);
+                                    editableTextBlurred(textarea_text, false, class_attr, task_status);
                                     $("#"+id_task_attr+" .in_edit").hide();
                                     $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
                                     $("#"+id_task_attr+" .div_deadline_nondisp").attr('class','div_deadline');
@@ -671,8 +670,8 @@ $(document).ready(function () {
                              }
                           },
                           error: function(){
-                            $(textarea_text).val=before_edit;
-                            editableTextBlurred(textarea_text, true, class_attr, task_status);
+                              
+                            editableTextBlurred(textarea_text, false, class_attr, task_status);
                             $("#"+id_task_attr+" .in_edit").hide();
                             $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
                             $("#"+id_task_attr+" .div_deadline_nondisp").attr('class','div_deadline');
@@ -696,8 +695,8 @@ $(document).ready(function () {
                         type: 'error',
                         timeout: '1000'
                     });                    
-                    $(textarea_text).val=before_edit;
-                    editableTextBlurred(textarea_text, true, class_attr, task_status);
+                    
+                    editableTextBlurred(textarea_text, false, class_attr, task_status);
                     $("#"+id_task_attr+" .in_edit").hide();
                     $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
                     $("#"+id_task_attr+" .div_deadline_nondisp").attr('class','div_deadline');
