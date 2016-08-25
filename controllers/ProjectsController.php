@@ -39,6 +39,16 @@ class ProjectsController{
     
   }
   
+    // Action for get text of project
+  public function actionText($params){
+    
+    $projectData=Projects::getProjectData($params[0]);
+    echo $projectData['name'];
+    
+    return true;
+    
+  }
+  
   // Action for edit projects.
   public function actionEdit($params){
     
