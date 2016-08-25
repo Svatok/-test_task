@@ -644,7 +644,16 @@ $(document).ready(function () {
                                     }
                                 });
                                 if (result_errors){
-                                    editableTextBlurred(textarea_text, false, class_attr, task_status);    
+                                    $(textarea_text).val=before_edit;
+                                    editableTextBlurred(textarea_text, true, class_attr, task_status);
+                                    $("#"+id_task_attr+" .in_edit").hide();
+                                    $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
+                                    $("#"+id_task_attr+" .div_deadline_nondisp").attr('class','div_deadline');
+                     
+                                    if ($("div").is("#div_project_NEW")){
+                                        $('#div_project_NEW').remove();
+                                        $(window).trigger('resize');
+                                    }    
                                 }else{
                                     editableTextBlurred(textarea_text, true, class_attr, task_status);
                                     $("#"+id_task_attr+" .in_edit").hide();
@@ -662,7 +671,16 @@ $(document).ready(function () {
                              }
                           },
                           error: function(){
-                            editableTextBlurred(textarea_text, false, class_attr, task_status);  
+                            $(textarea_text).val=before_edit;
+                            editableTextBlurred(textarea_text, true, class_attr, task_status);
+                            $("#"+id_task_attr+" .in_edit").hide();
+                            $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
+                            $("#"+id_task_attr+" .div_deadline_nondisp").attr('class','div_deadline');
+             
+                            if ($("div").is("#div_project_NEW")){
+                                $('#div_project_NEW').remove();
+                                $(window).trigger('resize');
+                            }  
                           },
                           complete: function(){
                               me.data('requestRunning', false);
@@ -678,8 +696,16 @@ $(document).ready(function () {
                         type: 'error',
                         timeout: '1000'
                     });                    
-                    editableTextBlurred(textarea_text, false, class_attr, task_status);
-
+                    $(textarea_text).val=before_edit;
+                    editableTextBlurred(textarea_text, true, class_attr, task_status);
+                    $("#"+id_task_attr+" .in_edit").hide();
+                    $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
+                    $("#"+id_task_attr+" .div_deadline_nondisp").attr('class','div_deadline');
+     
+                    if ($("div").is("#div_project_NEW")){
+                        $('#div_project_NEW').remove();
+                        $(window).trigger('resize');
+                    }
                }   
             }else{
                 
