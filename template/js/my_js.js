@@ -712,7 +712,7 @@ $(document).ready(function () {
                }   
             }else{
                 
-                $(textarea_text).val(before_edit);
+                //$(textarea_text).val(before_edit);
                 editableTextBlurred(textarea_text, false, class_attr, task_status);
                 before_edit_bool=false;
                 
