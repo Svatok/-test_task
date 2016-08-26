@@ -584,6 +584,7 @@ $(document).ready(function () {
 // lost focus after edit task or project (cancel or save)       
     $('body').on('blur', '.input_text', function(event){
       
+      var before_edit_blur=before_edit;
       var id_task_attr=$(this).closest('.task, .project').attr('id');
       var class_attr=$(this).closest('.task, .project').attr('class');
       if (class_attr=='task'){
@@ -708,7 +709,7 @@ $(document).ready(function () {
                }   
             }else{
                 
-                $(textarea_text).val=before_edit;
+                $(textarea_text).val=before_edit_blur;
                 editableTextBlurred(textarea_text, true, class_attr, task_status);
                 $("#"+id_task_attr+" .in_edit").hide();
                 $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
