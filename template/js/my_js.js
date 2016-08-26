@@ -589,6 +589,7 @@ $(document).ready(function () {
     $('body').on('blur', '.input_text', function(event){
       
       var id_task_attr=$(this).closest('.task, .project').attr('id');
+      var id_task=id_task_attr.replace(/[^0-9]/gim,'');
       var class_attr=$(this).closest('.task, .project').attr('class');
       if (class_attr=='task'){
         var task_status=$('#'+id_task_attr+' .task_status').prop('checked');
@@ -604,7 +605,7 @@ $(document).ready(function () {
  
             if (focused_element.attr('class')=='save'){
 
-               var id_task=id_task_attr.replace(/[^0-9]/gim,'');
+               //var id_task=id_task_attr.replace(/[^0-9]/gim,'');
                if (id_task_attr=='project_NEW'){
                    url_str='/'+class_attr+'/add';
                }else{
@@ -713,15 +714,25 @@ $(document).ready(function () {
             }else{
                 
                 //$(textarea_text).val(before_edit);
-                editableTextBlurred(textarea_text, false, class_attr, task_status);
-                before_edit_bool=false;
+               // editableTextBlurred(textarea_text, false, class_attr, task_status);
+                //before_edit_bool=false;
                 
                 if (focused_element.attr('class')=='edit'){
+                  
+                    $.post("/"+class_attr+"/text/"+id_task, {}, function (data){
+                        $(textarea_text).val(data);
+                        editableTextBlurred(textarea_text, true, class_attr, task_status);
+                    });
+/*
                   var id_task_focused_attr=$(focused_element).closest('.task, .project').attr('id');
                   var textarea_focused_text=$("#"+id_task_focused_attr+" .input_text");
                   before_edit=$(textarea_focused_text).val();
-                  alert(before_edit);
+                  alert(before_edit);*/
+                }else{
+                    editableTextBlurred(textarea_text, false, class_attr, task_status);
                 }
+                
+                before_edit_bool=false;
                 
                 $("#"+id_task_attr+" .in_edit").hide();
                 $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
