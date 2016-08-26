@@ -720,6 +720,7 @@ $(document).ready(function () {
                   var id_task_focused_attr=$(focused_element).closest('.task, .project').attr('id');
                   var textarea_focused_text=$("#"+id_task_attr+" .input_text");
                   before_edit=$(textarea_focused_text).val();
+                  alert(before_edit);
                 }
                 
                 $("#"+id_task_attr+" .in_edit").hide();
