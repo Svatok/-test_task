@@ -312,7 +312,6 @@ $(document).ready(function () {
         if (save){
             viewableText.html(html);
         }else{
-            alert(before_edit);
             viewableText.html(before_edit);
         }
         $(textarea).replaceWith(viewableText);
@@ -558,15 +557,19 @@ $(document).ready(function () {
       
       var id_task_attr=$(this).closest('.task, .project').attr('id');
       var class_tr_attr=$(this).closest('.task, .project, .div_task_text_check').attr('class');
-      if (class_tr_attr=='div_task_text_check'){
+      
+  /*    if (class_tr_attr=='div_task_text_check'){
         before_edit=$("#"+id_task_attr+" .div_task_text_check").text();
       }else{
         before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
-      }
+      }*/
+      
       if ($("div").is("#"+id_task_attr+" .div_"+class_tr_attr+"_text")){
         var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text");
+        before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
       }else{
         var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text_check");
+        before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text_check").text();
       }
 
       divClicked(div_text);
@@ -722,7 +725,6 @@ $(document).ready(function () {
                     });
 
                 }else{
-                    alert(task_status);
                     editableTextBlurred(textarea_text, false, class_attr, task_status);
                 }
                 
