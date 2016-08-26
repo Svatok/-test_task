@@ -560,7 +560,6 @@ $(document).ready(function () {
       var class_tr_attr=$(this).closest('.task, .project, .div_task_text_check').attr('class');
       if (!before_edit_bool){
         before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
-        alert(before_edit);
         before_edit_bool=true;
       }
       if ($("div").is("#"+id_task_attr+" .div_"+class_tr_attr+"_text")){
