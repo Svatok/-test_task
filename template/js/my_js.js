@@ -558,7 +558,11 @@ $(document).ready(function () {
       
       var id_task_attr=$(this).closest('.task, .project').attr('id');
       var class_tr_attr=$(this).closest('.task, .project, .div_task_text_check').attr('class');
-      before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
+      if (class_tr_attr=='div_task_text_check'){
+        before_edit=$("#"+id_task_attr+" .div_task_text_check").text();
+      }else{
+        before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
+      }
       if ($("div").is("#"+id_task_attr+" .div_"+class_tr_attr+"_text")){
         var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text");
       }else{
