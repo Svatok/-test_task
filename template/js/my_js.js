@@ -2,6 +2,7 @@ $(document).ready(function () {
     
     var allowedStatuses=[0,1,2]; // 0 - In work, 1 - Done, 2 - Delete : statuses for task or project
     var before_edit; // value of task ot project text before edit
+    var before_edit_bool=false; // boolean wich show task ot project text in edit mode
 
 // cut background for header and footer
     var divH = $("html").height();
@@ -557,7 +558,10 @@ $(document).ready(function () {
       
       var id_task_attr=$(this).closest('.task, .project').attr('id');
       var class_tr_attr=$(this).closest('.task, .project, .div_task_text_check').attr('class');
-      before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
+      if (!before_edit_bool){
+        before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
+        before_edit_bool=true;
+      }
       if ($("div").is("#"+id_task_attr+" .div_"+class_tr_attr+"_text")){
         var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text");
       }else{
@@ -584,7 +588,6 @@ $(document).ready(function () {
 // lost focus after edit task or project (cancel or save)       
     $('body').on('blur', '.input_text', function(event){
       
-      var before_edit_blur=before_edit;
       var id_task_attr=$(this).closest('.task, .project').attr('id');
       var class_attr=$(this).closest('.task, .project').attr('class');
       if (class_attr=='task'){
@@ -709,8 +712,9 @@ $(document).ready(function () {
                }   
             }else{
                 
-                $(textarea_text).val=before_edit_blur;
-                editableTextBlurred(textarea_text, true, class_attr, task_status);
+                $(textarea_text).val=before_edit;
+                editableTextBlurred(textarea_text, false, class_attr, task_status);
+                before_edit_bool=false;
                 $("#"+id_task_attr+" .in_edit").hide();
                 $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
                 $("#"+id_task_attr+" .div_deadline_nondisp").attr('class','div_deadline');
