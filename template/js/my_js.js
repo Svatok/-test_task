@@ -312,6 +312,7 @@ $(document).ready(function () {
         if (save){
             viewableText.html(html);
         }else{
+            alert(before_edit);
             viewableText.html(before_edit);
         }
         $(textarea).replaceWith(viewableText);
