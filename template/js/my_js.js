@@ -716,6 +716,13 @@ $(document).ready(function () {
                 $(textarea_text).val=before_edit;
                 editableTextBlurred(textarea_text, false, class_attr, task_status);
                 before_edit_bool=false;
+                
+                if (focused_element.attr('class')=='edit'){
+                  var id_task_focused_attr=$(focused_element).closest('.task, .project').attr('id');
+                  var textarea_focused_text=$("#"+id_task_attr+" .input_text");
+                  before_edit=$(textarea_focused_text).val;
+                }
+                
                 $("#"+id_task_attr+" .in_edit").hide();
                 $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
                 $("#"+id_task_attr+" .div_deadline_nondisp").attr('class','div_deadline');
