@@ -557,13 +557,6 @@ $(document).ready(function () {
       
       var id_task_attr=$(this).closest('.task, .project').attr('id');
       var class_tr_attr=$(this).closest('.task, .project, .div_task_text_check').attr('class');
-      
-  /*    if (class_tr_attr=='div_task_text_check'){
-        before_edit=$("#"+id_task_attr+" .div_task_text_check").text();
-      }else{
-        before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
-      }*/
-      
       if ($("div").is("#"+id_task_attr+" .div_"+class_tr_attr+"_text")){
         var div_text=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text");
         before_edit=$("#"+id_task_attr+" .div_"+class_tr_attr+"_text").text();
@@ -609,7 +602,6 @@ $(document).ready(function () {
  
             if (focused_element.attr('class')=='save'){
 
-               //var id_task=id_task_attr.replace(/[^0-9]/gim,'');
                if (id_task_attr=='project_NEW'){
                    url_str='/'+class_attr+'/add';
                }else{
@@ -727,7 +719,6 @@ $(document).ready(function () {
                 }else{
                     editableTextBlurred(textarea_text, false, class_attr, task_status);
                 }
-                
                 
                 $("#"+id_task_attr+" .in_edit").hide();
                 $("#"+id_task_attr+" .out_edit_nondisp").attr('class','out_edit');
