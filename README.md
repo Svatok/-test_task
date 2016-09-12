@@ -11,10 +11,11 @@ Pass: test
 
 All queries were tested in the MySql database.
 
-Given tables:
-•	tasks (id, name, status, project_id)
-•	projects (id, name)
-Queries:
+##Given tables:
++•	tasks (id, name, status, project_id)
++•	projects (id, name)
+
+##Queries:
 1.	Get all statuses, not repeating, alphabetically ordered.
 `SELECT DISTINCT status FROM tasks ORDER BY status`
 
