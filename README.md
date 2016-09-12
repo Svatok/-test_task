@@ -16,7 +16,7 @@ Given tables:
 •	projects (id, name)
 Queries:
 1.	Get all statuses, not repeating, alphabetically ordered.
-SELECT DISTINCT status FROM tasks ORDER BY status
+`SELECT DISTINCT status FROM tasks ORDER BY status`
 
 2.	Get the count of all tasks in each project, order by tasks count descending.
 SELECT p.name as project_name, count(t.id) as count_tasks FROM projects p LEFT JOIN tasks t ON  t.project_id = p.id  GROUP BY project_name ORDER BY count_tasks DESC
