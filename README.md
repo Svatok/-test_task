@@ -17,7 +17,7 @@ All queries were tested in the MySql database.
 
 ##Queries:
 1.	Get all statuses, not repeating, alphabetically ordered.
-```
+```SQL
 SELECT DISTINCT status FROM tasks ORDER BY status
 ```
 
