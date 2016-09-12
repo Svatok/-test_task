@@ -50,7 +50,7 @@ SELECT name FROM tasks GROUP BY name HAVING count(*)>1 ORDER BY name
 SELECT t.name, t.status, COUNT(*) as task_count FROM tasks t, projects p WHERE p.name="Garage" AND t.project_id = p.id GROUP BY t.name, t.status HAVING count(*)>1 ORDER BY task_count
 ```
 
-8)	Get the list of project names having more than 10 tasks in status `completed`. Order by project_i.
+8)	Get the list of project names having more than 10 tasks in status `completed`. Order by project_id.
 ```SQL
 SELECT p.name FROM projects p WHERE EXISTS (SELECT 1 FROM tasks t WHERE p.id=t.project_id AND t.status="completed" HAVING count(*)>10) ORDER BY p.id
 ```
