@@ -7,7 +7,7 @@ For test APP:
 login: test@test.com
 Pass: test
 
-SQL Task:
+#SQL Task:
 
 All queries were tested in the MySql database.
 
